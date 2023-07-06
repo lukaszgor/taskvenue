@@ -9,6 +9,8 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
+import { useTranslation } from "react-i18next";
+import { Select, MenuItem } from "@mui/material";
 
 export let userEmail
 export let userId
@@ -45,6 +47,18 @@ function a11yProps(index) {
 }
 //end navigate
 function Auth() {
+
+
+//set translate
+	const { t, i18n } = useTranslation();
+
+	const handleChangeLng = (lng) => {
+		i18n.changeLanguage(lng);
+		localStorage.setItem("lng", lng);
+	};
+
+
+
 //menu tabs
 const [value, setValue] = useState(0);
 
@@ -96,11 +110,11 @@ localStorage.setItem('userIdFromLocalStorage', session?.user.id);
     if(error){
       setRMsg(error.message)
     }else{
-      setRMsg('Pomyślna rejestracja')
+      setRMsg(t("Successful registration"))
       setUser(data.user)
     }
   }
-let errorMessageLogin='Wprowadź poprawne dane'
+let errorMessageLogin=t("Enter correct data")
   const Login = async () => {
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
@@ -109,71 +123,88 @@ let errorMessageLogin='Wprowadź poprawne dane'
     if(error){
       setLMsg(errorMessageLogin)
     }else{
-      setLMsg('Zalogowano pomyślnie')
+      setLMsg(t("Logged successfully"))
       setUser(data.user)
       setSession(data.session)
       console.log(data.session)
       navigate('/home')
     }
   }
-let ErrorMessageMagicLink="Wprowadz poprawny adres email"
+let ErrorMessageMagicLink=t("Enter a valid email address")
   const SendMagicLink = async () => {
     const {user,error}=await supabase.auth.signInWithOtp({email})
     if(error){
         setLMsgL(ErrorMessageMagicLink)
       }else{
-        setLMsgL('Logowanie zakonczone sukcesem, sprawdź skrzynkę pocztową')
+        setLMsgL(t("Login successfully completed, check your mailbox"))
     
       }
   }
 
 return (
     <div className="App">
+<div>
+<Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+<p>{t("language")}</p>
+<Select
+      value={""}
+      onChange={(event) => handleChangeLng(event.target.value)}
+      variant="outlined"
+    >
+      <MenuItem onClick={() => handleChangeLng("en")}>English</MenuItem>
+      <MenuItem onClick={() => handleChangeLng("pl")}>Polish</MenuItem>
+ </Select>
+</Box>
+
+
+</div>
+
+
       <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Logowanie" {...a11yProps(0)} />
-          <Tab label="Rejestracja" {...a11yProps(1)} />
-          <Tab label="Magiczny link" {...a11yProps(2)} />
+          <Tab label={t("sign in")} {...a11yProps(0)} />
+          <Tab label={t("sign up")} {...a11yProps(1)} />
+          <Tab label={t("sign in via superlink")} {...a11yProps(2)} />
         </Tabs>
       </Box>
 
       <TabPanel value={value} index={0}>
-      <h1>Zaloguj się</h1>
-      <TextField id="standard-basic" label="E-mail" placeholder="Enter your email" type="email" onChange={(e) => setEmail(e.target.value)} variant="standard" />
+      <h1>{t("sign in")}</h1>
+      <TextField id="standard-basic" label={t("enter your email")} placeholder={t("enter your email")} type="email" onChange={(e) => setEmail(e.target.value)} variant="standard" />
       <br/>      
-      <TextField id="standard-password-input" label="Hasło"  type="password" placeholder="Wprowadz hasło" autoComplete="current-password" variant="standard" onChange={(e) =>
+      <TextField id="standard-password-input" label={t("enter your password")} type="password" placeholder={t("enter your password")} autoComplete="current-password" variant="standard" onChange={(e) =>
          setPassword(e.target.value)} />
       <br/>
       <br/>
-      <Button size="small" variant="contained" onClick={Login}>Zaloguj się</Button>
+      <Button size="small" variant="contained" onClick={Login}>{t("sign in")}</Button>
       <p>{Lmsg}</p>
      
       <br/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-      <h1>Zarejestruj się</h1>
-         <TextField id="standard-basic" label="E-mail" variant="standard" onChange={(e) => 
+      <h1>{t("sign up")}</h1>
+         <TextField id="standard-basic" label={t("enter your email")}variant="standard" onChange={(e) => 
         setEmail(e.target.value)} />
       <br/>
-         <TextField id="standard-password-input" label="Hasło" type="password" autoComplete="current-password" variant="standard" onChange={(e) =>
+         <TextField id="standard-password-input" label={t("enter your password")} type="password" autoComplete="current-password" variant="standard" onChange={(e) =>
          setPassword(e.target.value)} />
            <br/>
         {/* <TextField id="standard-basic" label="Imie" variant="standard" onChange={(e) => 
         setUsername(e.target.value)} /> */}
           <br/>
           <br/>
-      <Button size="small" variant="contained" onClick={Register}>Zarejestruj się</Button>
+      <Button size="small" variant="contained" onClick={Register}>{t("sign up")}</Button>
       <p>{Rmsg}</p>
       </TabPanel>
       <TabPanel value={value} index={2}>
-      <h1>Zaloguj się za pomocą magicznego linka</h1>
+      <h1>{t("sign in via superlink")}</h1>
       <br/>
       <br/>
-      <TextField id="standard-basic" label="E-mail" placeholder="Wpisz swój adres e-mail"  type="email" onChange={(e) => setEmail(e.target.value)} variant="standard" />
+      <TextField id="standard-basic" label={t("enter your email")} placeholder={t("enter your email")}  type="email" onChange={(e) => setEmail(e.target.value)} variant="standard" />
       <br/> 
       <br/> 
-      <Button size="small" variant="contained" onClick={SendMagicLink}>Wyślij magiczny link</Button>
+      <Button size="small" variant="contained" onClick={SendMagicLink}>{t("send magic link")}</Button>
       <p>{LmsgL}</p>
       </TabPanel>
     </Box>

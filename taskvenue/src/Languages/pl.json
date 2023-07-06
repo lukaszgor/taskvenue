@@ -1,0 +1,14 @@
+{
+	"language": "język",
+    "sign in": "zaloguj się",
+    "sign up": "zarejestruj się",
+    "sign in via superlink": "zaloguj się przez magic link", 
+    "send magic link": "wyślij magic link",
+    "enter your email": "wprowadź email",
+    "enter your password": "wprowadź hasło",
+    "Successful registration": "Prawidłowe logowanie",
+    "Enter correct data": "Wprowadź poprawne dane",
+    "Logged successfully": "Prawidłowe zalogowanie",
+    "Enter a valid email address": "Wprowadź poprawny adres email",
+    "Login successfully completed, check your mailbox": "Logowanie zakończone sukcesem, sprawdź swoją skrzynkę e-mail"
+}
