@@ -165,7 +165,7 @@ return (
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label={t("sign in")} {...a11yProps(0)} />
           <Tab label={t("sign up")} {...a11yProps(1)} />
-          <Tab label={t("sign in via superlink")} {...a11yProps(2)} />
+          <Tab label={t("sign in via magic link")} {...a11yProps(2)} />
         </Tabs>
       </Box>
 
@@ -198,7 +198,7 @@ return (
       <p>{Rmsg}</p>
       </TabPanel>
       <TabPanel value={value} index={2}>
-      <h1>{t("sign in via superlink")}</h1>
+      <h1>{t("sign in via magic link")}</h1>
       <br/>
       <br/>
       <TextField id="standard-basic" label={t("enter your email")} placeholder={t("enter your email")}  type="email" onChange={(e) => setEmail(e.target.value)} variant="standard" />

@@ -2,7 +2,7 @@
 	"language": "language",
 	"sign in": "sign in",
     "sign up": "sign up",
-    "sign in via superlink": "sign in via magiclink",
+    "sign in via magic link": "sign in via magic link",
     "send magic link": "send magic link",
     "enter your email": "enter your email",
     "enter your password": "enter your password",
@@ -11,6 +11,5 @@
     "Logged successfully": "Logged successfully",
     "Enter a valid email address": "Enter a valid email address",
     "Login successfully completed, check your mailbox": "Login successfully completed, check your mailbox"
-  
 
 }
