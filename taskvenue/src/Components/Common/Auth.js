@@ -47,8 +47,6 @@ function a11yProps(index) {
 }
 //end navigate
 function Auth() {
-
-
 //set translate
 	const { t, i18n } = useTranslation();
 
@@ -56,8 +54,6 @@ function Auth() {
 		i18n.changeLanguage(lng);
 		localStorage.setItem("lng", lng);
 	};
-
-
 
 //menu tabs
 const [value, setValue] = useState(0);
@@ -162,7 +158,6 @@ return (
           >
             CleanMyRoom
           </Typography>
-
   </div>
 </Box>
 
@@ -179,10 +174,7 @@ return (
  </Select>
 </Box>
 
-
 </div>
-
-
       <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
