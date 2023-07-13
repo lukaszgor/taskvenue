@@ -144,6 +144,28 @@ let ErrorMessageMagicLink=t("Enter a valid email address")
 return (
     <div className="App">
 <div>
+
+<Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
+  <div>
+  <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/home"
+            sx={{
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            CleanMyRoom
+          </Typography>
+
+  </div>
+</Box>
+
 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
 <p>{t("language")}</p>
 <div>&nbsp;</div>
