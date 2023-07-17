@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Link,useParams } from "react-router-dom"
 
 import Login from "../Pages/Common/Login"
 import Home from "../Pages/Common/Home"
+import NoAccessLicence from "../Pages/Common/NoAccessLicence";
 
 
 function Routing() {
@@ -12,6 +13,7 @@ function Routing() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/Home" element={<Home />} />
+        <Route path="/NoAccessLicence" element={<NoAccessLicence />} />
       </Routes>
     </BrowserRouter>
   );
