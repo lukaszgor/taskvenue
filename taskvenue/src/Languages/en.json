@@ -10,6 +10,14 @@
     "Enter correct data": "Enter correct data",
     "Logged successfully": "Logged successfully",
     "Enter a valid email address": "Enter a valid email address",
-    "Login successfully completed, check your mailbox": "Login successfully completed, check your mailbox"
+    "Login successfully completed, check your mailbox": "Login successfully completed, check your mailbox",
+    "Profile": "Profile",
+    "Administration": "Administration",
+    "Locations": "Locations",
+    "Schedule": "Schedule",
+    "Tasks": "Tasks",
+    "Reports": "Reports",
+    "Home": "Home",
+    "Sign out": "Sign out"
 
 }

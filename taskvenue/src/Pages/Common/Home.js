@@ -3,9 +3,10 @@ import { useState, useEffect } from 'react';
 import supabase from "../../supabaseClient";
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
-import Tasks from "../../Components/Manager/Tasks";
+import MainView from "../../Components/Manager/MainView";
 import WorkerTasks from "../../Components/Worker/WorkerTasks";
-import ClientTasks from "../../Components/Client/ClientTasks";
+import ClientMainView from "../../Components/Client/ClientMainView";
+
 import moment from "moment";
 
 function Home() {
@@ -87,9 +88,9 @@ function Home() {
 
     return (
         <div>
-            {isVerified === 'manager' && <Tasks />}
+            {isVerified === 'manager' && <MainView />}
             {isVerified === 'worker' && <WorkerTasks />}
-            {isVerified === 'client' && <ClientTasks />}
+            {isVerified === 'client' && <ClientMainView />}
             {isVerified === null && (
                 <Box style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <p></p>

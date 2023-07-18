@@ -49,6 +49,7 @@ function a11yProps(index) {
 function Auth() {
 //set translate
 	const { t, i18n } = useTranslation();
+    const [selectedLanguage, setSelectedLanguage] = useState(localStorage.getItem("lng") || "en");
 
 	const handleChangeLng = (lng) => {
 		i18n.changeLanguage(lng);
@@ -156,7 +157,7 @@ return (
               textDecoration: 'none',
             }}
           >
-            CleanMyRoom
+            TaskVenue
           </Typography>
   </div>
 </Box>
@@ -164,14 +165,26 @@ return (
 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
 <p>{t("language")}</p>
 <div>&nbsp;</div>
-<Select
+{/* <Select
       value={""}
       onChange={(event) => handleChangeLng(event.target.value)}
       variant="outlined"
     >
       <MenuItem onClick={() => handleChangeLng("en")}>English</MenuItem>
       <MenuItem onClick={() => handleChangeLng("pl")}>Polish</MenuItem>
- </Select>
+ </Select> */}
+  <Select
+      value={selectedLanguage} // Set the value prop to the state variable
+      onChange={(event) => {
+        const selectedLng = event.target.value;
+        handleChangeLng(selectedLng);
+        setSelectedLanguage(selectedLng); // Update the selected language in the state
+      }}
+      variant="outlined"
+    >
+      <MenuItem value="en">English</MenuItem>
+      <MenuItem value="pl">Polish</MenuItem>
+    </Select>
 </Box>
 
 </div>

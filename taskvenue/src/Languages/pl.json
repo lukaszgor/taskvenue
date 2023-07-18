@@ -10,5 +10,13 @@
     "Enter correct data": "Wprowadź poprawne dane",
     "Logged successfully": "Prawidłowe zalogowanie",
     "Enter a valid email address": "Wprowadź poprawny adres email",
-    "Login successfully completed, check your mailbox": "Logowanie zakończone sukcesem, sprawdź swoją skrzynkę e-mail"
+    "Login successfully completed, check your mailbox": "Logowanie zakończone sukcesem, sprawdź swoją skrzynkę e-mail",
+    "Profile": "Profil",
+    "Administration": "Administracja",
+    "Locations": "Lokalizacje",
+    "Schedule": "Planowanie",
+    "Tasks": "Zadania",
+    "Reports": "Raporty",
+    "Home": "Strona główna",
+    "Sign out": "Wyloguj"
 }
