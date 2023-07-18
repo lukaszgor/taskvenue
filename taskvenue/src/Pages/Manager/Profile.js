@@ -1,11 +1,13 @@
 import React from 'react';
 import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
+import PasswordChange from '../../Components/Common/PasswordChange';
 
 const Profile = () => {
     return (
         <div>
             <ManagerNavBar></ManagerNavBar>
-            <p>Profile</p>
+         <PasswordChange></PasswordChange>
+
       
       </div>
       );
