@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Schedule = () => {
+const Reports = () => {
     return (
         <div>
-            <p>Schedule</p>
+            <p>Reports</p>
       
       </div>
       );
 };
 
-export default Schedule;
+export default Reports;

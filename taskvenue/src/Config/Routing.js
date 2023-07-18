@@ -5,6 +5,12 @@ import { BrowserRouter, Routes, Route, Link,useParams } from "react-router-dom"
 import Login from "../Pages/Common/Login"
 import Home from "../Pages/Common/Home"
 import NoAccessLicence from "../Pages/Common/NoAccessLicence";
+import Administration from "../Pages/Manager/Administration";
+import LocationDashboard from "../Pages/Manager/LocationDashboard";
+import Schedule from "../Pages/Manager/Schedule";
+import Reports from "../Pages/Manager/Reports";
+import Tasks from "../Pages/Manager/Tasks";
+import Profile from "../Pages/Common/Profile";
 
 
 function Routing() {
@@ -14,6 +20,12 @@ function Routing() {
         <Route path="/" element={<Login />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/NoAccessLicence" element={<NoAccessLicence />} />
+        <Route path="/Administration" element={<Administration />} />
+        <Route path="/LocationDashboard" element={<LocationDashboard />} />
+        <Route path="/Schedule" element={<Schedule />} />
+        <Route path="/Reports" element={<Reports />} />
+        <Route path="/Tasks" element={<Tasks />} />
+        <Route path="/Profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );

@@ -101,7 +101,7 @@ function ManagerNavBar() {
       }
         //go to Location 
     const Locations =  () => {
-        navigate('/Location')
+        navigate('/LocationDashboard')
     }
         //go to Tasks 
     const Tasks =  () => {
