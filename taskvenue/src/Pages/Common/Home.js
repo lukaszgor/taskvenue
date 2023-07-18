@@ -15,7 +15,7 @@ function Home() {
     const [isVerified, setIsVerified] = useState(null);
     const [licenseValidationDate, setLicenseValidationDate] = useState(null);
     const [date, setDate] = useState(null);
-    const [idConfiguration, setIdConfiguration] = useState(null);
+    
 
     useEffect(() => {
         const userIdFromLocalStorage = localStorage.getItem('userIdFromLocalStorage');
@@ -38,7 +38,7 @@ function Home() {
             console.log(profileError);
         } else if (profileData) {
             setIsVerified(profileData.profile_type);
-            setIdConfiguration(profileData.id_configuration);
+            localStorage.setItem('idConfiguration', profileData.id_configuration);
 
             const { data: configData, error: configError } = await supabase
                 .from('configurations')
