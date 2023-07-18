@@ -4,8 +4,8 @@ import supabase from "../../supabaseClient";
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import MainView from "../../Components/Manager/MainView";
-import WorkerTasks from "../../Components/Worker/WorkerTasks";
 import ClientMainView from "../../Components/Client/ClientMainView";
+import WorkerMainView from "../../Components/Worker/WorkerMainView"
 
 import moment from "moment";
 
@@ -89,7 +89,7 @@ function Home() {
     return (
         <div>
             {isVerified === 'manager' && <MainView />}
-            {isVerified === 'worker' && <WorkerTasks />}
+            {isVerified === 'worker' && <WorkerMainView />}
             {isVerified === 'client' && <ClientMainView />}
             {isVerified === null && (
                 <Box style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
