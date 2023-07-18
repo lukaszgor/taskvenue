@@ -3,6 +3,7 @@ import { TextField, Button } from '@mui/material';
 import supabase from '../../supabaseClient';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import { useTranslation } from "react-i18next";
 
 function PasswordChange() {
     const [password, setPassword] = useState('');
@@ -10,6 +11,7 @@ function PasswordChange() {
     const [userID, setUserID] = useState('');
     const [user,setUser] =useState(null)
     const [error, setError] = useState('');
+    const { t, i18n } = useTranslation();
     let userIdFromLocalStorage;
   
   
@@ -35,10 +37,9 @@ function PasswordChange() {
   
     const handlePasswordChange = async () => {
         if (password.length < 6) {
-            setError('Hasło musi zawierać co najmniej 6 znaków');
+            setError(t("The password must contain at least 6 characters"));
           } else {
             setError('');
-            // Kontynuuj logikę przetwarzania formularza
             await supabase.auth.updateUser({ password: password })
             handleClickAlert()
           }
@@ -69,10 +70,10 @@ const handleCloseAlert = (event, reason) => {
     return (   
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           
-          <p>Zmiana hasła</p>
+          <p>{t("Password change")}</p>
       
       <TextField
-              label="Nowe hasło"
+              label={t("New password")} 
               type="password"
               value={password}
               error={!!error}
@@ -82,24 +83,24 @@ const handleCloseAlert = (event, reason) => {
             />
           
            <Button variant="contained" color="error" style={{ marginBottom: '10px', maxWidth: '300px' }} onClick={handlePasswordChange}>
-            Zapisz
+           {t("Submit")}
           </Button>
           
-          <p>Zmiana imienia i nazwiska</p>
+          <p> {t("First and last name change")}</p>
         <TextField
-                      label="Imię i nazwisko"
+                      label={t("First and last name")} 
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
                       style={{ marginBottom: '10px', maxWidth: '300px' }}
                     />
         
         <Button type="submit" variant="contained" color="primary" style={{ marginLeft: '10px' }} onClick={handleFullNameChange}>
-        Zapisz
+        {t("Submit")}
         </Button>
       <Snackbar open={open}
           autoHideDuration={2000}
           onClose={handleCloseAlert}>
-        <Alert severity="success">Zaktualizowano!</Alert>
+        <Alert severity="success"> {t("Updated!")}</Alert>
         </Snackbar>
   
         </div>

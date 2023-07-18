@@ -18,6 +18,13 @@
     "Tasks": "Tasks",
     "Reports": "Reports",
     "Home": "Home",
-    "Sign out": "Sign out"
+    "Sign out": "Sign out",
+    "Password change": "Password change",
+    "New password": "New password",
+    "Submit": "Submit",
+    "First and last name change": "First and last name change",
+    "First and last name": "First and last name",
+    "Updated!": "Updated!",
+    "The password must contain at least 6 characters": "The password must contain at least 6 characters"
 
 }

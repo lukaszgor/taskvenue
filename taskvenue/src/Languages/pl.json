@@ -18,5 +18,13 @@
     "Tasks": "Zadania",
     "Reports": "Raporty",
     "Home": "Strona główna",
-    "Sign out": "Wyloguj"
+    "Sign out": "Wyloguj",
+    "Password change": "Zmiana hasła",
+    "New password": "Nowe hasło",
+    "Submit": "Zapisz",
+    "First and last name change": "Zmiana imienia i nazwiska",
+    "First and last name": "Imię i nazwisko",
+    "Updated!": "Zaktualizowano!",
+    "The password must contain at least 6 characters": "Hasło musi zawierać co najmniej 6 znaków"
+
 }
