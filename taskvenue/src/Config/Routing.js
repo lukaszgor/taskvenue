@@ -10,7 +10,7 @@ import LocationDashboard from "../Pages/Manager/LocationDashboard";
 import Schedule from "../Pages/Manager/Schedule";
 import Reports from "../Pages/Manager/Reports";
 import Tasks from "../Pages/Manager/Tasks";
-import Profile from "../Pages/Common/Profile";
+import Profile from "../Pages/Manager/Profile";
 
 
 function Routing() {
