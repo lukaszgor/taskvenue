@@ -29,6 +29,14 @@
     "Users": "Użytkownicy",
     "License": "Licencja",
     "Settings": "Ustawienia",
-    "Services": "Usługi"
+    "Services": "Usługi",
+    "No services":"Brak usług",
+    "Name":"Nazwa",
+    "Description":"Opis",
+    "Cost":"Cena",
+    "Unit":"Jednostka",
+    "Add":"Dodaj",
+    "Delete":"Usuń",
+    "Action":"Akcje"
 
 }

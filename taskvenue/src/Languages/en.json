@@ -29,6 +29,16 @@
     "Users": "Users",
     "License": "License",
     "Settings": "Settings",
-    "Services": "Services"
+    "Services": "Services",
+    "No services":"No services",
+    "Name":"Name",
+    "Description":"Description",
+    "Cost":"Cost",
+    "Unit":"Unit",
+    "Add":"Add",
+    "Delete":"Delete",
+    "Action":"Action"
+
+  
 
 }
