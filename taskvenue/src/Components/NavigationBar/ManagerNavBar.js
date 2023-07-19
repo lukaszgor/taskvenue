@@ -172,7 +172,6 @@ function ManagerNavBar() {
               }}
             >
  <Button onClick={Home}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Home")}</Button>
-<Button onClick={Profile}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Profile")}</Button>
 <Button onClick={Administration}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Administration")}</Button>
 <Button onClick={Locations}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Locations")}</Button>
 <Button onClick={Tasks}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Tasks")}</Button>
@@ -196,10 +195,8 @@ function ManagerNavBar() {
               textDecoration: 'none',
             }}
           >
-           
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-<Button onClick={Profile}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Profile")}</Button>
 <Button onClick={Administration} sx={{ my: 2, color: 'white', display: 'block' }}>{t("Administration")}</Button>
 <Button onClick={Locations}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Locations")}</Button>
 <Button onClick={Tasks}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Tasks")}</Button>

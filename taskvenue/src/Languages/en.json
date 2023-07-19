@@ -25,6 +25,10 @@
     "First and last name change": "First and last name change",
     "First and last name": "First and last name",
     "Updated!": "Updated!",
-    "The password must contain at least 6 characters": "The password must contain at least 6 characters"
+    "The password must contain at least 6 characters": "The password must contain at least 6 characters",
+    "Users": "Users",
+    "License": "License",
+    "Settings": "Settings",
+    "Services": "Services"
 
 }
