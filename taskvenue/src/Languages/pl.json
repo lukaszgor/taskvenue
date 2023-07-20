@@ -37,6 +37,10 @@
     "Unit":"Jednostka",
     "Add":"Dodaj",
     "Delete":"Usuń",
-    "Action":"Akcje"
+    "Action":"Akcje",
+    "No users":"Brak userów",
+    "Type":"Typ",
+    "details":"szczegóły",
+    "new":"nowy"
 
 }

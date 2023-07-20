@@ -58,7 +58,7 @@ const insertService = async()=>{
     useEffect(() => {
         const idConfiguration = localStorage.getItem('idConfiguration');
         if (idConfiguration === null) {
-            console.log('bład pobierania danych')
+            
         } else {
             setIdConfiguration(idConfiguration)
             fetchServices(idConfiguration)
