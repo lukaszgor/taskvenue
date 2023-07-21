@@ -11,7 +11,8 @@ import Schedule from "../Pages/Manager/Schedule";
 import Reports from "../Pages/Manager/Reports";
 import Tasks from "../Pages/Manager/Tasks";
 import Profile from "../Pages/Manager/Profile";
-
+import Register from "../Pages/Manager/Register";
+import UserDetails from "../Pages/Manager/UserDetails";
 
 function Routing() {
   return (
@@ -26,6 +27,8 @@ function Routing() {
         <Route path="/Reports" element={<Reports />} />
         <Route path="/Tasks" element={<Tasks />} />
         <Route path="/Profile" element={<Profile />} />
+        <Route path="/Register" element={<Register />} />
+        <Route path="/UserDetails/:id" element={<UserDetails />} />
       </Routes>
     </BrowserRouter>
   );
