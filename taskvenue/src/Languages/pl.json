@@ -41,6 +41,14 @@
     "No users":"Brak userów",
     "Type":"Typ",
     "details":"szczegóły",
-    "new":"nowy"
+    "new":"nowy",
+    "An error occurred while registering the user:":"An error occurred while registering the user:",
+    "address":"adres",
+    "phone number":"numer telefonu",
+    "profile type":"typ profilu",
+    "Register":"Zarejestruj",
+    "description":"Opis",
+    "password":"hasło"
+ 
 
 }

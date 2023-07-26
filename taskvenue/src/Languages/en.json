@@ -41,7 +41,14 @@
     "No users":"No users",
     "Type":"Type",
     "details":"details",
-    "new":"new"
+    "new":"new",
+    "An error occurred while registering the user:":"An error occurred while registering the user:",
+    "address":"address",
+    "phone number":"phone number",
+    "profile type":"profile type",
+    "Register":"Register",
+    "description":"description",
+    "password":"password"
 
   
 
