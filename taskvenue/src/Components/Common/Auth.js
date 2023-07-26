@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom"
 import { useState,useEffect } from 'react';
 import supabase from "../../supabaseClient"  
@@ -148,7 +147,7 @@ return (
             variant="h6"
             noWrap
             component="a"
-            href="/home"
+            href="/"
             sx={{
               fontFamily: 'monospace',
               fontWeight: 700,
