@@ -71,12 +71,12 @@ function ManagerNavBar() {
     userIdFromLocalStorage = localStorage.getItem('userIdFromLocalStorage');
     const{data,error} =  await supabase
     .from('profiles')
-    .select('full_name')
+    .select('username')
     .eq('id',userIdFromLocalStorage)
     .single()
     if(error){
     }if(data){
-      setUser(data.full_name)
+      setUser(data.username)
     }
     }
 
