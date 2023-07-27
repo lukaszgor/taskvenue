@@ -49,7 +49,11 @@
     "Register":"Register",
     "description":"description",
     "password":"password",
-    "User edit":"User edit"
+    "User edit":"User edit",
+    "Landing...":"Landing...",
+    "An error occurred while downloading data.":"An error occurred while downloading data.",
+    "Your license is valid until:":"Your license is valid until:"
+ 
 
   
 

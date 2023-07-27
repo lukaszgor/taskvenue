@@ -49,7 +49,10 @@
     "Register":"Zarejestruj",
     "description":"Opis",
     "password":"hasło",
-    "User edit":"Edycja uzytkownika"
+    "User edit":"Edycja uzytkownika",
+    "Landing...":"Ładowanie...",
+    "An error occurred while downloading data.":"Wystąpił błąd podczas pobierania danych.",
+    "Your license is valid until:":"Twoja licencja jest ważna do:"
  
 
 }
