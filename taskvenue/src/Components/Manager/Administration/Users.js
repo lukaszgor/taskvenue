@@ -45,7 +45,8 @@ const Register=()=>{
 }
     const columns = [
         { field: 'id', headerName: 'ID', type: 'number', width: 300 },
-        { field: 'full_name', headerName: t("First and last name"), type: 'number',width: 200 },
+        { field: 'username', headerName: t("First and last name"), type: 'number',width: 200 },
+        { field: 'full_name', headerName: t("Email"), type: 'number',width: 200 },
         { field: 'profile_type', headerName: t("Type"), width: 130 },
         {
             field: "Akcje",headerName: t("Action"), width: 200 ,
