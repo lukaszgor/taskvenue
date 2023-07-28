@@ -137,7 +137,7 @@ const insertContractor = async()=>{
             <Grid item xs={12} sm={6}>
               <TextField
                 name="name"
-                label="name"
+                label={t("Name or company name")}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 fullWidth
