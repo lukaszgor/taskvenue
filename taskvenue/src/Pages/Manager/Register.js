@@ -169,7 +169,6 @@ try {
     </div>
         </form>
       </Container>
-      {}
       <FetchSupabaseData sendData={handleGetData}></FetchSupabaseData>
       <div>
       <p>Received Data in ComponentB:</p>

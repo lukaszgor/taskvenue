@@ -10,6 +10,7 @@ import License from '../../Components/Manager/Administration/License';
 import ServicesDictionary from '../../Components/Manager/Administration/ServicesDictionary';
 import Settings from '../../Components/Manager/Administration/Settings';
 import Users from '../../Components/Manager/Administration/Users';
+import Contractors from '../../Components/Manager/Administration/Contractors';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -60,6 +61,7 @@ function Administration() {
           <Tab label={t("License")} {...a11yProps(1)} />
           <Tab label={t("Settings")}  {...a11yProps(2)} />
           <Tab label={t("Services")}  {...a11yProps(3)} />
+          <Tab label={t("Contractors")}  {...a11yProps(4)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
@@ -73,6 +75,9 @@ function Administration() {
       </TabPanel>
       <TabPanel value={value} index={3}>
     <ServicesDictionary></ServicesDictionary>
+      </TabPanel>
+      <TabPanel value={value} index={4}>
+    <Contractors></Contractors>
       </TabPanel>
     </Box>
       </div>   

@@ -52,7 +52,11 @@
     "User edit":"Edycja uzytkownika",
     "Landing...":"Ładowanie...",
     "An error occurred while downloading data.":"Wystąpił błąd podczas pobierania danych.",
-    "Your license is valid until:":"Twoja licencja jest ważna do:"
+    "Your license is valid until:":"Twoja licencja jest ważna do:",
+    "Contractors":"Kontrahenci",
+    "contact person":"osoba kontaktowa",
+    "National Economy Register ID":"REGON",
+    "Tax ID":"NIP"
  
 
 }

@@ -31,7 +31,7 @@ const License = () => {
 
       setIsLoading(false);
     } catch (error) {
-      console.error('Błąd zapytania:', error);
+      console.error('error:', error);
       setHasError(true);
       setIsLoading(false);
     }

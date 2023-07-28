@@ -13,6 +13,7 @@ import Tasks from "../Pages/Manager/Tasks";
 import Profile from "../Pages/Manager/Profile";
 import Register from "../Pages/Manager/Register";
 import UserDetails from "../Pages/Manager/UserDetails";
+import ContractorsDetails from "../Pages/Manager/ContractorsDetails";
 
 function Routing() {
   return (
@@ -29,6 +30,7 @@ function Routing() {
         <Route path="/Profile" element={<Profile />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/UserDetails/:id" element={<UserDetails />} />
+        <Route path="/ContractorsDetails/:id" element={<ContractorsDetails />} />
       </Routes>
     </BrowserRouter>
   );
