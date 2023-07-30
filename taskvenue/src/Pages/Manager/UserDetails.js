@@ -1,12 +1,13 @@
 import React from 'react';
 import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import { useState,useEffect } from 'react';
-import { TextField, Button, Grid, Container, Typography, Select, MenuItem,Checkbox,FormControlLabel } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography, Select, MenuItem,Checkbox,FormControlLabel,FormControl,InputLabel } from '@mui/material';
 import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import FetchSupabaseData from '../../Config/FetchSupabaseData';
 
 const UserDetails = () => {
     const {id} = useParams()
@@ -18,6 +19,37 @@ const UserDetails = () => {
     const [description, setDescription] = useState('');
     const [profile_type, setProfileType] = useState('');
     const [isBlocked, setIsBlocked] = useState(null);
+   
+        const [contractors, setContractors] = useState([]);
+        const [selectedContractorId, setSelectedContractorId] = useState(null);
+        const [receivedData, setReceivedData] = useState({ userId: '', idConfiguration: '', profileType: '' });
+        const handleGetData = (userId, idConfiguration, profileType) => {
+            setReceivedData({ userId, idConfiguration, profileType });
+          };
+   
+        useEffect(() => {
+          fetchContractors();
+        }, [receivedData.idConfiguration]);
+
+  const fetchContractors = async () => {
+    try {
+      const { data, error } = await supabase
+      .from('contractor')
+      .select()
+      .eq('id_configuration',receivedData.idConfiguration);
+      if (error) {
+        throw new Error(error.message);
+      }
+      setContractors(data);
+
+    } catch (err) {
+      console.error('Error fetching contractors:', err.message);
+    }
+  };
+    const handleChange = (event) => {
+        setSelectedContractorId(event.target.value);
+      };
+
 
 const FetchUserData = async () => {
     const{data,error} =  await supabase
@@ -35,6 +67,7 @@ const FetchUserData = async () => {
         setDescription(data.description)
         setProfileType(data.profile_type)
         setIsBlocked(data.isBlocked)
+        setSelectedContractorId(data.id_contractor)
     }
     }
     useEffect(()=>{
@@ -50,7 +83,7 @@ const FetchUserData = async () => {
 const updateUser =async()=>{
     const{data,error}=await supabase
     .from('profiles')
-    .update({'username':name,'full_name':email,'profile_type':profile_type,'description':description,'phone_number':phone_number,'address':address,'isBlocked':isBlocked})
+    .update({'username':name,'full_name':email,'profile_type':profile_type,'description':description,'phone_number':phone_number,'address':address,'id_contractor':selectedContractorId})
     .eq('id',id)
     handleClickAlert()
 }
@@ -74,6 +107,7 @@ const handleCloseAlert = (event, reason) => {
     return (
         <div>
          <ManagerNavBar></ManagerNavBar>
+         <FetchSupabaseData sendData={handleGetData}></FetchSupabaseData>
 <Container maxWidth="md">
         <Typography variant="h4" align="center" gutterBottom>
        {t("User edit")} 
@@ -149,6 +183,25 @@ const handleCloseAlert = (event, reason) => {
                     onChange={handleCheckboxChange}
                     color="primary"/>} label={t("Blocked")} />
             </Grid>
+            <Grid item xs={12} sm={6}>
+            {profile_type === 'client' && (
+          <FormControl fullWidth>
+            <Select
+              labelId="contractor-select-label"
+              id="contractor-select"
+              value={selectedContractorId}
+              onChange={handleChange}
+              label={t("Select Contractor")}
+            >
+              {contractors.map((contractor) => (
+                <MenuItem key={contractor.id} value={contractor.id}>
+                  {contractor.nameOrCompanyName}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        )}
+             </Grid>
             <Grid item xs={12}>
               <Button
                 type="submit"
@@ -159,7 +212,7 @@ const handleCloseAlert = (event, reason) => {
                 {t("Submit")}
               </Button>
             </Grid>
-          </Grid>
+            </Grid>
           <div>
     </div>
         </form>

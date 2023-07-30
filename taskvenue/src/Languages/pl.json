@@ -58,7 +58,8 @@
     "National Economy Register ID":"REGON",
     "Tax ID":"NIP",
     "Name or company name":"Imię i nazwisko lub nazwa firmy",
-    "Blocked":"Zablokowany"
+    "Blocked":"Zablokowany",
+    "Select Contractor":"Wybór kontrahenta"
  
 
 }
