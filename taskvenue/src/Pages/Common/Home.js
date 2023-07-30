@@ -16,6 +16,7 @@ function Home() {
     const [isVerified, setIsVerified] = useState(null);
     const [licenseValidationDate, setLicenseValidationDate] = useState(null);
     const [date, setDate] = useState(null);
+    const [isBlocked, setIsBlocked] = useState(null);
     
 
     useEffect(() => {
@@ -40,6 +41,7 @@ function Home() {
         } else if (profileData) {
             setIsVerified(profileData.profile_type);
             localStorage.setItem('idConfiguration', profileData.id_configuration);
+            setIsBlocked(profileData.isBlocked)
 
             const { data: configData, error: configError } = await supabase
                 .from('configurations')
@@ -54,7 +56,26 @@ function Home() {
             }
         }
     }
+    useEffect(() => {
+        if (date && licenseValidationDate) {
+            const currentDate = moment(date, 'DD:MM:YYYY HH:mm');
+            const licenseValidationDateParsed = moment(licenseValidationDate, 'DD:MM:YYYY HH:mm');
+            if (currentDate.isAfter(licenseValidationDateParsed)) {
+                console.log("no access licence");
+                console.log(date)
+                console.log(licenseValidationDate)
+                SignOut()
+            }
+        }
+    }, [date, licenseValidationDate]);
 
+    useEffect(() => {
+        if (isBlocked === 1) {
+            navigate('/')
+            SignOut();
+        }
+      }, [isBlocked]);
+      
     // compare dates if date > licenseValidationDate
     useEffect(() => {
         if (date && licenseValidationDate) {

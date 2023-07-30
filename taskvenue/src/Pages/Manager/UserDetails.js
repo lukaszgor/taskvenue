@@ -1,7 +1,7 @@
 import React from 'react';
 import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import { useState,useEffect } from 'react';
-import { TextField, Button, Grid, Container, Typography, Select, MenuItem } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography, Select, MenuItem,Checkbox,FormControlLabel } from '@mui/material';
 import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
@@ -17,6 +17,7 @@ const UserDetails = () => {
     const [phone_number, setPhoneNumber] = useState('');
     const [description, setDescription] = useState('');
     const [profile_type, setProfileType] = useState('');
+    const [isBlocked, setIsBlocked] = useState(null);
 
 const FetchUserData = async () => {
     const{data,error} =  await supabase
@@ -33,6 +34,7 @@ const FetchUserData = async () => {
         setPhoneNumber(data.phone_number)
         setDescription(data.description)
         setProfileType(data.profile_type)
+        setIsBlocked(data.isBlocked)
     }
     }
     useEffect(()=>{
@@ -48,10 +50,13 @@ const FetchUserData = async () => {
 const updateUser =async()=>{
     const{data,error}=await supabase
     .from('profiles')
-    .update({'username':name,'full_name':email,'profile_type':profile_type,'description':description,'phone_number':phone_number,'address':address,})
+    .update({'username':name,'full_name':email,'profile_type':profile_type,'description':description,'phone_number':phone_number,'address':address,'isBlocked':isBlocked})
     .eq('id',id)
     handleClickAlert()
 }
+const handleCheckboxChange = (event) => {
+    setIsBlocked((prevState) => (prevState === null ? 1 : null));
+  };
 
 //alert configuration
 const [open,setOpen] =useState(null)
@@ -135,6 +140,14 @@ const handleCloseAlert = (event, reason) => {
                 <MenuItem value="worker">Worker</MenuItem>
                 <MenuItem value="client">Client</MenuItem>
               </Select>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+            
+                    <FormControlLabel 
+                    control={<Checkbox
+                    checked={isBlocked !== null}
+                    onChange={handleCheckboxChange}
+                    color="primary"/>} label={t("Blocked")} />
             </Grid>
             <Grid item xs={12}>
               <Button
