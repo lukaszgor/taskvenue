@@ -5,7 +5,6 @@ import supabase from '../../../supabaseClient';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { useTranslation } from "react-i18next";
-import FetchSupabaseData from '../../../Config/FetchSupabaseData';
 import { TextField, Button, Grid, Container, Typography } from '@mui/material';
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
@@ -23,14 +22,44 @@ function Contractors() {
   const [email, setEmail] = useState('');
   const [contactPerson, setContactPerson] = useState('');
 const [contractors, setContractors] = useState('');
-  const [receivedData, setReceivedData] = useState({ userId: '', idConfiguration: '', profileType: '' });
-  const handleGetData = (userId, idConfiguration, profileType) => {
-      setReceivedData({ userId, idConfiguration, profileType });
-    };
+const [userID, setUserID] = useState('');
+const [idConfig, setIdConfiguration] = useState('');
 
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
-  
+
+    useEffect(() => {
+        const checkSession = async () => {
+          const { data } = await supabase.auth.getSession();
+          if (data.session) {
+            setUserID(data.session.user.id);
+            fetchData(data.session.user.id);
+          }
+        };
+        checkSession();
+      }, []);
+      
+      const fetchData = async (userId) => {
+        const { data: profileData, error: profileError } = await supabase
+            .from('profiles')
+            .select('id_configuration')
+            .eq('id', userId)
+            .single();
+        if (profileError) {
+            console.log(profileError);
+        } else if (profileData) {
+            setIdConfiguration(profileData.id_configuration);
+        }
+    }
+ useEffect(() => {
+        if (idConfig) {
+            fetchServices();
+          
+        }
+      }, [idConfig]);
+
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     insertContractor();
@@ -46,7 +75,7 @@ const [contractors, setContractors] = useState('');
 const insertContractor = async()=>{
   const{data,error} =  await supabase
   .from('contractor')
-  .insert([{id_configuration:receivedData.idConfiguration,nameOrCompanyName:name,taxId:taxtId,description:description,nationalEconomyRegisterNumber:nationalEconomyRegisterNumber,address:address,email:email,contactPerson:contactPerson,phone_number:phone_number}])
+  .insert([{id_configuration:idConfig,nameOrCompanyName:name,taxId:taxtId,description:description,nationalEconomyRegisterNumber:nationalEconomyRegisterNumber,address:address,email:email,contactPerson:contactPerson,phone_number:phone_number}])
   handleClickAlert()
   fetchServices()
   if(error){
@@ -55,19 +84,13 @@ const insertContractor = async()=>{
    
   }
 }
-    useEffect(() => {
-        if (receivedData.idConfiguration) {
-            fetchServices();
-        }
-      }, [receivedData.idConfiguration]);
-
     //download data
     const fetchServices = async()=>{
         try {
             const{data,error} =  await supabase
             .from('contractor')
             .select()
-            .eq('id_configuration',receivedData.idConfiguration);
+            .eq('id_configuration',idConfig);
             if(data){
               setContractors(data)
               setIsLoading(false);
@@ -125,7 +148,6 @@ const insertContractor = async()=>{
     ];
     return (
       <div>
-           <FetchSupabaseData sendData={handleGetData}></FetchSupabaseData>
             <div>
               <p></p>
               <Container maxWidth="md">
