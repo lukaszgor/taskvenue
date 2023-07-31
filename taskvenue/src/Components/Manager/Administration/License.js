@@ -52,7 +52,7 @@ const fetchValidityDate = async () => {
   const fetchData = async (userId) => {
     const { data: profileData, error: profileError } = await supabase
         .from('profiles')
-        .select()
+        .select('id_configuration')
         .eq('id', userId)
         .single();
     if (profileError) {
