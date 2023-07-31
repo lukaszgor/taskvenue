@@ -59,7 +59,11 @@
     "Tax ID":"Tax ID",
     "Name or company name":"Name or company name",
     "Blocked":"Zablokowany",
-    "Select Contractor":"Select Contractor"
+    "Select Contractor":"Select Contractor",
+    "Copy the ID and deliver to your administrator to add you to the appropriate configuration":"Copy the ID and deliver to your administrator to add you to the appropriate configuration",
+    "Copy":"Copy",
+    "User ID":"User ID",
+    "your identifier is ":"your identifier is "
  
 
   

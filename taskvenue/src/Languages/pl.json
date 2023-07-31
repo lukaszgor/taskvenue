@@ -59,7 +59,11 @@
     "Tax ID":"NIP",
     "Name or company name":"Imię i nazwisko lub nazwa firmy",
     "Blocked":"Zablokowany",
-    "Select Contractor":"Wybór kontrahenta"
+    "Select Contractor":"Wybór kontrahenta",
+    "Copy the ID and deliver to your administrator to add you to the appropriate configuration":"Skopiuj ID oraz dostarcz do twojego administratora w celu dodania Cię do odpowiedniej konfiguracjin",
+    "Copy":"Kopiuj",
+    "User ID":"User ID",
+    "your identifier is ":"Twoj identyfikator to"
  
 
 }

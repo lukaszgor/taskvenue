@@ -84,7 +84,7 @@ try {
             <Grid item xs={12} sm={6}>
               <TextField
                 name="email"
-                label="Adres email"
+                label="email"
                 value={formData.email}
                 onChange={handleChange}
                 fullWidth
