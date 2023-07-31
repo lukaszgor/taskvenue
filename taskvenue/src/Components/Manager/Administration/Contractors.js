@@ -53,7 +53,7 @@ const [idConfig, setIdConfiguration] = useState('');
     }
  useEffect(() => {
         if (idConfig) {
-            fetchServices();
+            fetchContractor();
           
         }
       }, [idConfig]);
@@ -77,7 +77,7 @@ const insertContractor = async()=>{
   .from('contractor')
   .insert([{id_configuration:idConfig,nameOrCompanyName:name,taxId:taxtId,description:description,nationalEconomyRegisterNumber:nationalEconomyRegisterNumber,address:address,email:email,contactPerson:contactPerson,phone_number:phone_number}])
   handleClickAlert()
-  fetchServices()
+  fetchContractor()
   if(error){
       console.log(error)
   }if(data){
@@ -85,7 +85,7 @@ const insertContractor = async()=>{
   }
 }
     //download data
-    const fetchServices = async()=>{
+    const fetchContractor = async()=>{
         try {
             const{data,error} =  await supabase
             .from('contractor')
