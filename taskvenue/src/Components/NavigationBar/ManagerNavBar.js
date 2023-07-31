@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom"
 import { useState,useEffect } from 'react';
 import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
+import IdConfigurationGuard from '../../Config/IdConfigurationGuard';
 
 const pages = ['Administration','Locations','Tasks','Schedule','Reports','Profile'];
 
@@ -122,6 +123,7 @@ function ManagerNavBar() {
 
   return (
     <AppBar position="static">
+        <IdConfigurationGuard></IdConfigurationGuard>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
