@@ -170,14 +170,14 @@ try {
         </form>
       </Container>
       <FetchSupabaseData sendData={handleGetData}></FetchSupabaseData>
-      <div>
+      {/* <div>
       <p>Received Data in ComponentB:</p>
       <ul>
         <li>Data 1: {receivedData.userId}</li>
         <li>Data 2: {receivedData.idConfiguration}</li>
         <li>Data 3: {receivedData.profileType}</li>
       </ul>
-    </div>
+    </div> */}
     </div>
   );
 };
