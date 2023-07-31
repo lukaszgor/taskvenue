@@ -17,6 +17,7 @@ function Home() {
     const [licenseValidationDate, setLicenseValidationDate] = useState(null);
     const [date, setDate] = useState(null);
     const [isBlocked, setIsBlocked] = useState(null);
+    const [isConfigurationID,setConfigurationID]=useState('')
     
 
     useEffect(() => {
@@ -42,6 +43,7 @@ function Home() {
             setIsVerified(profileData.profile_type);
             localStorage.setItem('idConfiguration', profileData.id_configuration);
             setIsBlocked(profileData.isBlocked)
+            setConfigurationID(profileData.id_configuration)
 
             const { data: configData, error: configError } = await supabase
                 .from('configurations')
@@ -50,7 +52,6 @@ function Home() {
                 .single();
 
             if (configError) {
-                console.log(configError);
             } else if (configData) {
                 setLicenseValidationDate(configData.validity_date);
             }
@@ -75,7 +76,13 @@ function Home() {
             SignOut();
         }
       }, [isBlocked]);
-      
+
+      useEffect(() => {
+        if (isConfigurationID === null) {
+            navigate('/WaitingRoomForNewUser')
+        }
+      }, [isConfigurationID]);
+
     // compare dates if date > licenseValidationDate
     useEffect(() => {
         if (date && licenseValidationDate) {

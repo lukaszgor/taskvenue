@@ -14,6 +14,7 @@ import Profile from "../Pages/Manager/Profile";
 import Register from "../Pages/Manager/Register";
 import UserDetails from "../Pages/Manager/UserDetails";
 import ContractorsDetails from "../Pages/Manager/ContractorsDetails";
+import WaitingRoomForNewUser from "../Pages/Common/WaitingRoomForNewUser";
 
 function Routing() {
   return (
@@ -22,6 +23,7 @@ function Routing() {
         <Route path="/" element={<Login />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/NoAccessLicence" element={<NoAccessLicence />} />
+        <Route path="/WaitingRoomForNewUser" element={<WaitingRoomForNewUser />} />
         <Route path="/Administration" element={<Administration />} />
         <Route path="/LocationDashboard" element={<LocationDashboard />} />
         <Route path="/Schedule" element={<Schedule />} />
