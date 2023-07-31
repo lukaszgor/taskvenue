@@ -13,18 +13,22 @@ import { useState,useEffect } from 'react';
 import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
 import IdConfigurationGuard from '../../Config/IdConfigurationGuard';
-
-
+import FetchSupabaseData from '../../Config/FetchSupabaseData';
 
 const pages = ['Administration','Locations','Tasks','Schedule','Reports','Profile'];
 
 
 function ManagerNavBar() {
     const [user,setUser] =useState(null)
-    let userIdFromLocalStorage;
     const [userType, setUserType] = useState('');
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const { t, i18n } = useTranslation();
+  const [receivedData, setReceivedData] = useState({ userId: '', idConfiguration: '', profileType: '' });
+
+
+  const handleGetData = (userId, idConfiguration, profileType) => {
+    setReceivedData({ userId, idConfiguration, profileType });
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -38,7 +42,7 @@ function ManagerNavBar() {
     const { data, error } = await supabase
       .from('profiles')
       .select('profile_type')
-      .eq('id', userIdFromLocalStorage)
+      .eq('id', receivedData.userId)
       .single();
 
     if (error) {
@@ -48,15 +52,14 @@ function ManagerNavBar() {
     }
   };
 
-
-  useEffect(()=>{
-    FetchUserName();
-    userIdFromLocalStorage = localStorage.getItem('userIdFromLocalStorage');
-    if(userIdFromLocalStorage ===null){
-      navigate('/')
+  useEffect(() => {
+        if(receivedData.userId ===null){
+              navigate('/')
+            }else{
+        FetchUserName();
+        fetchProfile();   
     }
-    fetchProfile();
-  },[])
+  }, [receivedData.userId]);
 
   useEffect(() => {
     if (userType === 'manager') {
@@ -71,11 +74,10 @@ function ManagerNavBar() {
 
   //download username
   const FetchUserName = async () => {
-    userIdFromLocalStorage = localStorage.getItem('userIdFromLocalStorage');
     const{data,error} =  await supabase
     .from('profiles')
     .select('username')
-    .eq('id',userIdFromLocalStorage)
+    .eq('id',receivedData.userId)
     .single()
     if(error){
     }if(data){
@@ -126,6 +128,7 @@ function ManagerNavBar() {
   return (
     <AppBar position="static">
             <IdConfigurationGuard></IdConfigurationGuard>
+            <FetchSupabaseData sendData={handleGetData}></FetchSupabaseData>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
