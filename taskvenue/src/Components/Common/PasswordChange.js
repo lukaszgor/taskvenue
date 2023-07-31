@@ -48,7 +48,7 @@ function PasswordChange() {
     const handleFullNameChange = async () => {
           const{data,error}=await supabase
           .from('profiles')
-          .update({'full_name':fullName})
+          .update({'username':fullName})
           .eq('id',userID)
           handleClickAlert()
     };
