@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-import FetchSupabaseData from '../../Config/FetchSupabaseData';
+
 
 const UserDetails = () => {
     const {id} = useParams()
@@ -22,35 +22,10 @@ const UserDetails = () => {
    
         const [contractors, setContractors] = useState([]);
         const [selectedContractorId, setSelectedContractorId] = useState(null);
-        const [receivedData, setReceivedData] = useState({ userId: '', idConfiguration: '', profileType: '' });
-        const handleGetData = (userId, idConfiguration, profileType) => {
-            setReceivedData({ userId, idConfiguration, profileType });
-          };
-   
-        useEffect(() => {
-          fetchContractors();
-        }, [receivedData.idConfiguration]);
 
-  const fetchContractors = async () => {
-    try {
-      const { data, error } = await supabase
-      .from('contractor')
-      .select()
-      .eq('id_configuration',receivedData.idConfiguration);
-      if (error) {
-        throw new Error(error.message);
-      }
-      setContractors(data);
-
-    } catch (err) {
-      console.error('Error fetching contractors:', err.message);
-    }
-  };
     const handleChange = (event) => {
         setSelectedContractorId(event.target.value);
       };
-
-
 const FetchUserData = async () => {
     const{data,error} =  await supabase
     .from('profiles')
@@ -107,7 +82,6 @@ const handleCloseAlert = (event, reason) => {
     return (
         <div>
          <ManagerNavBar></ManagerNavBar>
-         <FetchSupabaseData sendData={handleGetData}></FetchSupabaseData>
 <Container maxWidth="md">
         <Typography variant="h4" align="center" gutterBottom>
        {t("User edit")} 
