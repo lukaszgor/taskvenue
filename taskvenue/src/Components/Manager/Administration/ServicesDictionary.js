@@ -17,9 +17,42 @@ function ServicesDictionary() {
   const [unit, setUnit] = useState('');
   const [fetchError,setFetchError] =useState(null)
   const [service,setService] =useState(null)
-  const [idConfiguration,setIdConfiguration] =useState(null)
   const {id} = useParams()
 
+
+  const [userID, setUserID] = useState('');
+  const [idConfig, setIdConfiguration] = useState('');
+  
+      useEffect(() => {
+          const checkSession = async () => {
+            const { data } = await supabase.auth.getSession();
+            if (data.session) {
+              setUserID(data.session.user.id);
+              fetchData(data.session.user.id);
+            }
+          };
+          checkSession();
+        }, []);
+        
+        const fetchData = async (userId) => {
+          const { data: profileData, error: profileError } = await supabase
+              .from('profiles')
+              .select('id_configuration')
+              .eq('id', userId)
+              .single();
+          if (profileError) {
+              console.log(profileError);
+          } else if (profileData) {
+              setIdConfiguration(profileData.id_configuration);
+          }
+      }
+   useEffect(() => {
+          if (idConfig) {
+            fetchServices(idConfig)
+            
+          }
+        }, [idConfig]);
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     insertService();
@@ -35,7 +68,7 @@ function ServicesDictionary() {
   .from('service_dictionary')
   .delete().eq('id', cellValues.row.id);
   handleClickAlert();
-  fetchServices(idConfiguration);
+  fetchServices(idConfig);
   if(error){
       console.log(error)
   }if(data){
@@ -46,26 +79,17 @@ function ServicesDictionary() {
 const insertService = async()=>{
   const{data,error} =  await supabase
   .from('service_dictionary')
-  .insert([{id_configuration:idConfiguration,name:name,cost:cost,description:description,unit:unit}])
+  .insert([{id_configuration:idConfig,name:name,cost:cost,description:description,unit:unit}])
   handleClickAlert()
-  fetchServices(idConfiguration)
+  fetchServices(idConfig)
   if(error){
       console.log(error)
   }if(data){
    
   }
 }
-    useEffect(() => {
-        const idConfiguration = localStorage.getItem('idConfiguration');
-        if (idConfiguration === null) {
-            
-        } else {
-            setIdConfiguration(idConfiguration)
-            fetchServices(idConfiguration)
-        }
-    }, []);
 
-    //download data
+//download data
     const fetchServices = async(idConfiguration)=>{
       const{data,error} =  await supabase
       .from('service_dictionary')
@@ -170,7 +194,6 @@ const insertService = async()=>{
    </div>
      </div>
      )}
-   
    </div>
    <Snackbar open={open}
      autoHideDuration={2000}
