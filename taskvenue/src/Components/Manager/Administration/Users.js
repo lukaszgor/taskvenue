@@ -10,23 +10,45 @@ function Users() {
     const [fetchError,setFetchError] =useState(null)
     const [user,setUser] =useState(null)
     const navigate = useNavigate()
-    const [idConfiguration,setIdConfiguration] =useState(null)
-
-    useEffect(() => {
-        const idConfiguration = localStorage.getItem('idConfiguration');
-        if (idConfiguration === null) {
+    const [userID, setUserID] = useState('');
+    const [idConfig, setIdConfiguration] = useState('');
+    
+        useEffect(() => {
+            const checkSession = async () => {
+              const { data } = await supabase.auth.getSession();
+              if (data.session) {
+                setUserID(data.session.user.id);
+                fetchData(data.session.user.id);
+              }
+            };
+            checkSession();
+          }, []);
           
-        } else {
-            setIdConfiguration(idConfiguration)
-            fetchUsers(idConfiguration)
+          const fetchData = async (userId) => {
+            const { data: profileData, error: profileError } = await supabase
+                .from('profiles')
+                .select('id_configuration')
+                .eq('id', userId)
+                .single();
+            if (profileError) {
+                console.log(profileError);
+            } else if (profileData) {
+                setIdConfiguration(profileData.id_configuration);
+            }
         }
-    }, []);
+     useEffect(() => {
+            if (idConfig) {
+                fetchUsers(idConfig)
+              
+            }
+          }, [idConfig]);
 
-    const fetchUsers = async(idConfiguration)=>{
+
+    const fetchUsers = async(idConfig)=>{
         const{data,error} =  await supabase
         .from('profiles')
         .select()
-        .eq('id_configuration',idConfiguration);
+        .eq('id_configuration',idConfig);
         if(error){
             console.log(error)
             setUser(null)
