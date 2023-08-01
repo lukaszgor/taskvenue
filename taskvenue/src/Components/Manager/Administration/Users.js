@@ -1,9 +1,11 @@
 import { useState,useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { Button } from "@mui/material";
 import supabase from '../../../supabaseClient';
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next";
+import { TextField, Button, Grid, Container, Typography, Select, MenuItem,Checkbox,FormControlLabel,FormControl,InputLabel } from '@mui/material';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 function Users() {
     const { t, i18n } = useTranslation();
@@ -12,7 +14,10 @@ function Users() {
     const navigate = useNavigate()
     const [userID, setUserID] = useState('');
     const [idConfig, setIdConfiguration] = useState('');
-    
+    const [foreignUserID, setForeignUserID] = useState('');
+    const [profile_type, setProfileType] = useState('');
+    const [foreignProfileType, setProfileForeignType] = useState('worker');
+  
         useEffect(() => {
             const checkSession = async () => {
               const { data } = await supabase.auth.getSession();
@@ -39,7 +44,6 @@ function Users() {
      useEffect(() => {
             if (idConfig) {
                 fetchUsers(idConfig)
-              
             }
           }, [idConfig]);
 
@@ -84,8 +88,81 @@ const Register=()=>{
             }
           },
       ];
+      const handleSubmit = (event) => {
+        event.preventDefault();
+      updateUser();
+      setForeignUserID('');
+       
+      };
+      const updateUser =async()=>{
+        const{data,error}=await supabase
+        .from('profiles')
+        .update({'profile_type':foreignProfileType,'id_configuration':idConfig})
+        .eq('id',foreignUserID)
+        handleClickAlert()
+    }
+      //alert configuration
+      const [open,setOpen] =useState(null)
+
+      const handleClickAlert = () => {
+        setOpen(true);
+      };
+      
+      const handleCloseAlert = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+        setOpen(false);
+      };
     return (
       <div>
+   <form onSubmit={handleSubmit} >
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="User ID"
+                label={t("User ID")}
+                onChange={(e) => setForeignUserID(e.target.value)}
+                fullWidth
+                required
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Select
+                name="profile_type"
+                label={t("profile type")}
+                value={foreignProfileType}
+                onChange={(e) => setProfileForeignType(e.target.value)}
+                fullWidth
+                required
+              >
+                <MenuItem value="manager">Manager</MenuItem>
+                <MenuItem value="worker">Worker</MenuItem>
+                <MenuItem value="client">Client</MenuItem>
+              </Select>
+            </Grid>
+            <Grid item xs={12}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                fullWidth
+                disabled={!foreignUserID} 
+              >
+                {t("Submit")}
+              </Button>
+              <Container>
+            <Snackbar open={open}
+            autoHideDuration={2000}
+            onClose={handleCloseAlert}>
+          <Alert severity="success"> {t("Updated!")}!</Alert>
+          </Snackbar>
+      </Container>
+            </Grid>
+            </Grid>
+          <div>
+    </div>
+        </form>
           {fetchError &&(<p>{fetchError}</p>)}
         {user &&(
         <div>
@@ -103,7 +180,9 @@ const Register=()=>{
       </div>
         </div>
         )}
+    
       </div>
+      
     );
   }
   export default Users;
