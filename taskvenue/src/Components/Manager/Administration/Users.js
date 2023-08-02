@@ -15,7 +15,6 @@ function Users() {
     const [userID, setUserID] = useState('');
     const [idConfig, setIdConfiguration] = useState('');
     const [foreignUserID, setForeignUserID] = useState('');
-    const [profile_type, setProfileType] = useState('');
     const [foreignProfileType, setProfileForeignType] = useState('worker');
   
         useEffect(() => {
@@ -66,9 +65,7 @@ const UserDetails=(event, cellValues)=>{
     console.log(cellValues.row);
     navigate('/UserDetails/'+cellValues.row.id)
 }
-const Register=()=>{
-    navigate('/Register')
-}
+
     const columns = [
         { field: 'id', headerName: 'ID', type: 'number', width: 300 },
         { field: 'username', headerName: t("First and last name"), type: 'number',width: 200 },
@@ -167,7 +164,6 @@ const Register=()=>{
         {user &&(
         <div>
       <p> </p>
-      <Button color="primary" onClick={Register}>{t('new')}</Button>
       <div style={{ height: 400, width: '100%' }}>
             <DataGrid
               rows={user}
