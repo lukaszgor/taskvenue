@@ -100,9 +100,9 @@ function ManagerNavBar() {
     const Profile =  () => {
         navigate('/Profile')
       }
-        //go to Location 
-    const Locations =  () => {
-        navigate('/LocationDashboard')
+        //go to Venue 
+    const Venue =  () => {
+        navigate('/VenueDashboard')
     }
         //go to Tasks 
     const Tasks =  () => {
@@ -175,7 +175,7 @@ function ManagerNavBar() {
             >
  <Button onClick={Home}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Home")}</Button>
 <Button onClick={Administration}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Administration")}</Button>
-<Button onClick={Locations}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Locations")}</Button>
+<Button onClick={Venue}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Venues")}</Button>
 <Button onClick={Tasks}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Tasks")}</Button>
 <Button onClick={Schedule}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Schedule")}</Button>
 <Button onClick={Reports}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Reports")}</Button>
@@ -200,7 +200,7 @@ function ManagerNavBar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 <Button onClick={Administration} sx={{ my: 2, color: 'white', display: 'block' }}>{t("Administration")}</Button>
-<Button onClick={Locations}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Locations")}</Button>
+<Button onClick={Venue}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Venues")}</Button>
 <Button onClick={Tasks}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Tasks")}</Button>
 <Button onClick={Schedule}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Schedule")}</Button>
 <Button onClick={Reports}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Reports")}</Button>

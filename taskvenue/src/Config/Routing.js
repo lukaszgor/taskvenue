@@ -6,7 +6,7 @@ import Login from "../Pages/Common/Login"
 import Home from "../Pages/Common/Home"
 import NoAccessLicence from "../Pages/Common/NoAccessLicence";
 import Administration from "../Pages/Manager/Administration";
-import LocationDashboard from "../Pages/Manager/LocationDashboard";
+import VenueDashboard from "../Pages/Manager/VenueDashboard";
 import Schedule from "../Pages/Manager/Schedule";
 import Reports from "../Pages/Manager/Reports";
 import Tasks from "../Pages/Manager/Tasks";
@@ -25,7 +25,7 @@ function Routing() {
         <Route path="/NoAccessLicence" element={<NoAccessLicence />} />
         <Route path="/WaitingRoomForNewUser" element={<WaitingRoomForNewUser />} />
         <Route path="/Administration" element={<Administration />} />
-        <Route path="/LocationDashboard" element={<LocationDashboard />} />
+        <Route path="/VenueDashboard" element={<VenueDashboard />} />
         <Route path="/Schedule" element={<Schedule />} />
         <Route path="/Reports" element={<Reports />} />
         <Route path="/Tasks" element={<Tasks />} />
