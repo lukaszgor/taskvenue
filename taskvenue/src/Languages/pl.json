@@ -63,7 +63,11 @@
     "Copy the ID and deliver to your administrator to add you to the appropriate configuration":"Skopiuj ID oraz dostarcz do twojego administratora w celu dodania Cię do odpowiedniej konfiguracjin",
     "Copy":"Kopiuj",
     "User ID":"User ID",
-    "your identifier is ":"Twoj identyfikator to"
+    "your identifier is ":"Twoj identyfikator to",
+    "Contractor":"Kontrahent",
+    "Search by name":"Wyszukaj po nazwie",
+    "Search by number":"Wyszukaj po numerze",
+    "Search by contractor":"Wyszukaj po kontrahencie"
  
 
 }
