@@ -80,20 +80,23 @@ useEffect(() => {
         }
       };
 
-      //redirection to details room
-      const handleButtonClickRoomDetails=(venue)=>{
-        
-        navigate('/settings/'+venue.id)
+      //redirection to details venue
+      const handleButtonClickVenueDetails=(venue)=>{
+        navigate('/VenueDetalils/'+venue.id)
     }
     const addNewRoom=()=>{
-        navigate('/Add')
+        navigate('/AddNewVenue')
     }
 
     return (
         <div>
             <ManagerNavBar></ManagerNavBar>
 <p></p>
+ <p></p>
             <div style={{ marginBottom: '20px' }}>
+            <Button  style={{ marginLeft: '20px',marginBottom: '20px' }} type="submit" variant="contained" color="primary"  onClick={addNewRoom} >
+                {t("Add")}
+              </Button>
           <TextField
           style={{ marginLeft: '20px',marginBottom: '20px' }}
             label={t("Search by number")}
@@ -139,7 +142,7 @@ useEffect(() => {
                   <Button
                     variant="contained"
                     color="primary"
-                    onClick={() => handleButtonClickRoomDetails(venue)}
+                    onClick={() => handleButtonClickVenueDetails(venue)}
                   >
                     {t("details")}
                   </Button>
