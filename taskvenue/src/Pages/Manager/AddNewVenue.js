@@ -3,7 +3,7 @@ import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import { useState,useEffect } from 'react';
 import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
-import { TextField, Button, Grid, Container, Typography, Select, MenuItem,Checkbox,FormControlLabel,FormControl,InputLabel } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography, Select, MenuItem,FormControl } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
