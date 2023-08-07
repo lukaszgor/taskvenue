@@ -136,7 +136,7 @@ useEffect(() => {
                   {t("Description")} : {venue.description}
                   </Typography>
                   <Typography variant="body2" color="textSecondary">
-                  {t("Contractor")} {venue.contractor?.nameOrCompanyName}
+                  {t("Contractor")} : {venue.contractor?.nameOrCompanyName}
                   </Typography>
                   <p></p>
                   <Button
