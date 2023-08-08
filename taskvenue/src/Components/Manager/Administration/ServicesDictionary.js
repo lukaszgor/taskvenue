@@ -1,8 +1,7 @@
 
 import { useState,useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import { TextField, Button, Grid, Container, Typography } from '@mui/material';
 import supabase from '../../../supabaseClient';
 import { useParams } from "react-router-dom";
 import Snackbar from '@mui/material/Snackbar';
@@ -18,7 +17,6 @@ function ServicesDictionary() {
   const [fetchError,setFetchError] =useState(null)
   const [service,setService] =useState(null)
   const {id} = useParams()
-
 
   const [userID, setUserID] = useState('');
   const [idConfig, setIdConfiguration] = useState('');
@@ -146,37 +144,69 @@ const insertService = async()=>{
               <p></p>
        
        <form onSubmit={handleSubmit} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-   <TextField
-     label={t("Name")}
-     value={name}
-     onChange={(event) => setName(event.target.value)}
-     style={{ marginRight: '10px' }}
-   />
-   <TextField
-     label={t("Description")}
-     value={description}
-     onChange={(event) => setDescription(event.target.value)}
-     style={{ marginRight: '10px' }}
-   />
-     <TextField
-     label={t("Cost")}
-     value={cost}
-     onChange={(event) => setCost(event.target.value)}
-     style={{ marginRight: '10px' }}
-     type="number" 
-   />
-     <TextField
-     label={t("Unit")}
-     value={unit}
-     onChange={(event) => setUnit(event.target.value)}
-     style={{ marginRight: '10px' }}
-   />
-   <Button variant="contained" color="primary" type="submit">
-   {t("Add")}
-   </Button>
+
+       <Container maxWidth="md">
+        <Typography variant="h4" align="center" gutterBottom>
+       <p></p>
+        </Typography>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+            <TextField
+                    label={t("Name")}
+                    value={name}
+                    onChange={(event) => setName(event.target.value)}
+                    style={{ marginRight: '10px' }}
+                    fullWidth
+                />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+            <TextField
+                    label={t("Description")}
+                    value={description}
+                    onChange={(event) => setDescription(event.target.value)}
+                    style={{ marginRight: '10px' }}
+                    fullWidth
+                />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+            <TextField
+                    label={t("Cost")}
+                    value={cost}
+                    onChange={(event) => setCost(event.target.value)}
+                    style={{ marginRight: '10px' }}
+                    type="number" 
+                    fullWidth
+                />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+            <TextField
+                    label={t("Unit")}
+                    value={unit}
+                    onChange={(event) => setUnit(event.target.value)}
+                    style={{ marginRight: '10px' }}
+                    fullWidth
+                />
+            </Grid>
+            <Grid item xs={12}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                fullWidth
+              >
+                  {t("Add")}
+              </Button>
+            </Grid>
+          </Grid>
+          <div>
+    </div>
+        <Snackbar open={open}
+            autoHideDuration={2000}
+            onClose={handleCloseAlert}>
+          <Alert severity="success"> {t("Updated!")}!</Alert>
+          </Snackbar>
+      </Container>
  </form>
-
-
  <div>
      {fetchError &&(<p>{fetchError}</p>)}
      {service &&(
@@ -195,11 +225,11 @@ const insertService = async()=>{
      </div>
      )}
    </div>
-   <Snackbar open={open}
+   {/* <Snackbar open={open}
      autoHideDuration={2000}
      onClose={handleCloseAlert}>
    <Alert severity="success">{t("Updated!")}</Alert>
-   </Snackbar>
+   </Snackbar> */}
    </div>
       </div>
     );
