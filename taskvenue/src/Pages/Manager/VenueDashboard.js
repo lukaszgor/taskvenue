@@ -84,7 +84,7 @@ useEffect(() => {
       const handleButtonClickVenueDetails=(venue)=>{
         navigate('/VenueDetalils/'+venue.id)
     }
-    const addNewRoom=()=>{
+    const addNewVenue=()=>{
         navigate('/AddNewVenue')
     }
 
@@ -94,7 +94,7 @@ useEffect(() => {
 <p></p>
  <p></p>
             <div style={{ marginBottom: '20px' }}>
-            <Button  style={{ marginLeft: '20px',marginBottom: '20px' }} type="submit" variant="contained" color="primary"  onClick={addNewRoom} >
+            <Button  style={{ marginLeft: '20px',marginBottom: '20px' }} type="submit" variant="contained" color="primary"  onClick={addNewVenue} >
                 {t("Add")}
               </Button>
           <TextField
