@@ -62,7 +62,7 @@ function Users() {
         }
     }
 const UserDetails=(event, cellValues)=>{
-    console.log(cellValues.row);
+    // console.log(cellValues.row);
     navigate('/UserDetails/'+cellValues.row.id)
 }
 

@@ -18,7 +18,9 @@ const UserDetails = () => {
     const [phone_number, setPhoneNumber] = useState('');
     const [description, setDescription] = useState('');
     const [profile_type, setProfileType] = useState('');
-    const [isBlocked, setIsBlocked] = useState(null);
+    const [isBlocked, setIsBlocked] = useState(0);
+    const [userID, setUserID] = useState('');
+    const [idConfig, setIdConfiguration] = useState('');
    
         const [contractors, setContractors] = useState([]);
         const [selectedContractorId, setSelectedContractorId] = useState(null);
@@ -45,9 +47,56 @@ const FetchUserData = async () => {
         setSelectedContractorId(data.id_contractor)
     }
     }
-    useEffect(()=>{
-        FetchUserData();
-      },[])
+
+    const handleFetchContractors = async (idConfig) => {
+        const { data, error } = await supabase
+            .from('contractor')
+            .select()
+            .eq('id_configuration', idConfig);
+
+        if (error) {
+            console.log(error)
+        }
+        if (data) {
+            setContractors(data)
+        }
+    };
+
+    useEffect(() => {
+        const checkSession = async () => {
+            const { data } = await supabase.auth.getSession();
+            if (data.session) {
+                setUserID(data.session.user.id);
+                fetchData(data.session.user.id);
+            }
+        };
+        checkSession();
+    }, []);
+
+    const fetchData = async (userId) => {
+        const { data: profileData, error: profileError } = await supabase
+            .from('profiles')
+            .select('id_configuration')
+            .eq('id', userId)
+            .single();
+
+        if (profileError) {
+            console.log(profileError);
+        } else if (profileData) {
+            setIdConfiguration(profileData.id_configuration);
+        }
+    }
+
+
+
+
+
+    useEffect(() => {
+        if (idConfig) {
+            handleFetchContractors(idConfig);
+            FetchUserData();
+        }
+    }, [idConfig]);
 
       const handleSubmit = (event) => {
         event.preventDefault();

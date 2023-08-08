@@ -123,7 +123,7 @@ const VenueDetalils = () => {
             <ManagerNavBar></ManagerNavBar>
             <Container maxWidth="md">
                 <Typography variant="h4" align="center" gutterBottom>
-                    {t("Add venue")}
+                    {t("Update venue")}
                     <p></p>
                 </Typography>
                 <form onSubmit={handleSubmit} >
