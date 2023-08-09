@@ -84,7 +84,7 @@ useEffect(() => {
         // navigate('/VenueDetalils/'+venue.id)
     }
     const addNewTask=()=>{
-        // navigate('/AddNewVenue')
+        navigate('/AddNewTask')
     }
 
     return (

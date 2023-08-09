@@ -72,7 +72,10 @@
     "Add venue":"Dodaj miejsce",
     "Update venue":"Zaktualizuj miejsce",
     "Open Tasks":"Otwarte zadania",
-    "Closed Tasks":"Zamknięte zadania"
+    "Closed Tasks":"Zamknięte zadania",
+    "Basic data":"Dane podstawowe",
+    "Venue":"Miejsca",
+    "Working time":"Czas pracy"
  
 
 }
