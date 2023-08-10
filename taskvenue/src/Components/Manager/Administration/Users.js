@@ -114,6 +114,7 @@ const UserDetails=(event, cellValues)=>{
     return (
       <div>
    <form onSubmit={handleSubmit} >
+   <Container maxWidth="md">
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -148,15 +149,16 @@ const UserDetails=(event, cellValues)=>{
               >
                 {t("Submit")}
               </Button>
-              <Container>
+             
             <Snackbar open={open}
             autoHideDuration={2000}
             onClose={handleCloseAlert}>
           <Alert severity="success"> {t("Updated!")}!</Alert>
           </Snackbar>
-      </Container>
+    
             </Grid>
             </Grid>
+            </Container>
           <div>
     </div>
         </form>
