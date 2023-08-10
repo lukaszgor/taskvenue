@@ -6,6 +6,10 @@ import Box from '@mui/material/Box';
 import { useState } from 'react';
 import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import { useTranslation } from "react-i18next";
+import ManagerBasicDataEdit from '../../Components/Manager/Tasks/ManagerBasicDataEdit';
+import ManagerServicesEdit from '../../Components/Manager/Tasks/ManagerServicesEdit';
+import ManagerVenueEdit from '../../Components/Manager/Tasks/ManagerVenueEdit';
+import ManagerWorkingTimeEdit from '../../Components/Manager/Tasks/ManagerWorkingTimeEdit';
 
 
 function TabPanel(props) {
@@ -60,16 +64,16 @@ function TaskDetails() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <p>Basic datae</p>
+        <ManagerBasicDataEdit></ManagerBasicDataEdit>
       </TabPanel>
       <TabPanel value={value} index={1}>
-      <p>Venue</p>
+     <ManagerVenueEdit></ManagerVenueEdit>
       </TabPanel>
       <TabPanel value={value} index={2}>
-      <p>Services</p>
+     <ManagerServicesEdit></ManagerServicesEdit>
       </TabPanel>
       <TabPanel value={value} index={3}>
-      <p>Working time</p>
+    <ManagerWorkingTimeEdit></ManagerWorkingTimeEdit>
       </TabPanel>
     </Box>
       </div>   
