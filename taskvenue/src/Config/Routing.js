@@ -18,6 +18,7 @@ import WaitingRoomForNewUser from "../Pages/Common/WaitingRoomForNewUser";
 import AddNewVenue from "../Pages/Manager/AddNewVenue";
 import VenueDetalils from "../Pages/Manager/VenueDetalils";
 import AddNewTask from "../Pages/Manager/AddNewTask";
+import TaskDetails from "../Pages/Manager/TaskDetails";
 
 function Routing() {
   return (
@@ -39,6 +40,7 @@ function Routing() {
         <Route path="/UserDetails/:id" element={<UserDetails />} />
         <Route path="/ContractorsDetails/:id" element={<ContractorsDetails />} />
         <Route path="/VenueDetalils/:id" element={<VenueDetalils />} />
+        <Route path="/TaskDetails/:id" element={<TaskDetails />} />
       </Routes>
     </BrowserRouter>
   );

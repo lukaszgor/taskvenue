@@ -79,9 +79,9 @@ useEffect(() => {
         }
       };
 
-      //redirection to details venue
+      //redirection to details task
       const handleButtonClickTaskDetails=(task)=>{
-        // navigate('/VenueDetalils/'+venue.id)
+        navigate('/TaskDetails/'+task.id)
     }
     const addNewTask=()=>{
         navigate('/AddNewTask')
