@@ -1,14 +1,304 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { TextField, Button, Grid, Container, Select, MenuItem, FormControl,FormControlLabel,Checkbox } from '@mui/material';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 import { useParams } from "react-router-dom";
+import supabase from '../../../supabaseClient';
+import { useTranslation } from "react-i18next";
+import styled from 'styled-components';
+
+
+const DateInput = styled.input`
+width: 100%;
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-size: 14px;
+box-sizing: border-box;
+`;
 
 
 const ManagerBasicDataEdit = () => {
-    const {id} = useParams()
+    const { t, i18n } = useTranslation();
+    const { id } = useParams();
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [contractors, setContractors] = useState([]);
+    const [profiles, setProfiles] = useState([]);
+    const [status, setStatus] = useState('');
+    const [type, setType] = useState('');
+    const [isSettled, setSettled] = useState(null);
+    const [selectedContractorId, setSelectedContractorId] = useState('');
+    const [selectedAsignedId, setSelectedAsignedId] = useState('');
+    const [userID, setUserID] = useState('');
+    const [idConfig, setIdConfiguration] = useState('');
+    const [open, setOpen] = useState(false);
+    const [deadline, setDeadline] = useState('');
+    const [kickoff, setKickoff] = useState('');
+    const [createdDate, setCreatedDate] = useState('');
+
+
+
+    const handleFetchData = async () => {
+        const { data, error } = await supabase
+            .from('tasks')
+            .select()
+            .eq('id', id)
+            .single();
+
+        if (error) {
+            // Handle error if needed
+        }
+        if (data) {
+            setName(data.name)
+            setDescription(data.description)
+            setSelectedContractorId(data.id_contractor);
+            setSelectedAsignedId(data.asigned_user)
+        }
+    };
+
+    const handleFetchContractors = async (idConfig) => {
+        const { data, error } = await supabase
+            .from('contractor')
+            .select()
+            .eq('id_configuration', idConfig);
+
+        if (error) {
+            console.log(error)
+        }
+        if (data) {
+            setContractors(data)
+        }
+    };
+    const handleFetchUsers = async (idConfig) => {
+        const { data, error } = await supabase
+            .from('profiles')
+            .select()
+            .eq('id_configuration', idConfig)
+            .in('profile_type', ['manager', 'worker']);
+
+        if (error) {
+            console.log(error)
+        }
+        if (data) {
+            setProfiles(data)
+        }
+    };
+
+    const handleUpdateTask = async () => {
+        const { data, error } = await supabase
+            .from('venues')
+            .update([{ name: name, description: description, id_contractor: selectedContractorId }])
+            .eq('id', id);
+            handleClickAlert();
+        if (error) {
+            console.log(error)
+        }
+        if (data) {
+            handleClickAlert();
+        }
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        handleUpdateTask();
+    };
+
+    useEffect(() => {
+        const checkSession = async () => {
+            const { data } = await supabase.auth.getSession();
+            if (data.session) {
+                setUserID(data.session.user.id);
+                fetchData(data.session.user.id);
+            }
+        };
+        checkSession();
+    }, []);
+
+    const fetchData = async (userId) => {
+        const { data: profileData, error: profileError } = await supabase
+            .from('profiles')
+            .select('id_configuration')
+            .eq('id', userId)
+            .single();
+
+        if (profileError) {
+            console.log(profileError);
+        } else if (profileData) {
+            setIdConfiguration(profileData.id_configuration);
+        }
+    }
+
+    useEffect(() => {
+        if (idConfig) {
+            handleFetchContractors(idConfig);
+            handleFetchUsers(idConfig)
+            handleFetchData();
+        }
+    }, [idConfig]);
+
+    const handleChangeContractor = (event) => {
+        const value = event.target.value;
+        setSelectedContractorId(value);
+    };
+    const handleChangeAsignedUser = (event) => {
+        const value = event.target.value;
+        setSelectedAsignedId(value);
+    };
+
+
+    const handleClickAlert = () => {
+        setOpen(true);
+    };
+
+    const handleCloseAlert = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setOpen(false);
+    };
+    const handleCheckboxChange = (event) => {
+        setSettled((prevState) => (prevState === null ? 1 : null));
+      };
+      const handleDeadlineChange = (event) => {
+        setDeadline(event.target.value);
+      };
+      const handleKickoffChange = (event) => {
+        setKickoff(event.target.value);
+      };
+    
     return (
         <div>
-<p>Basic data {id}</p>
-      </div>
-      );
+            <Container maxWidth="md">
+                <form onSubmit={handleSubmit} >
+                    <Grid container spacing={2}>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                name="name"
+                                label={t("name")}
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                fullWidth
+                                required
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                name="description"
+                                label={t("description")}
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                                fullWidth
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <Select
+                                name="status"
+                                label={t("status")}
+                                value={status}
+                                onChange={(e) => setStatus(e.target.value)}
+                                fullWidth
+                                required
+                            >
+                                <MenuItem value="open">{t("Open")}</MenuItem>
+                                <MenuItem value="inProgress">{t("In progress")}</MenuItem>
+                                <MenuItem value="completed">{t("Completed")}</MenuItem>
+                            </Select>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                name="type"
+                                label={t("type")}
+                                value={type}
+                                onChange={(e) => setType(e.target.value)}
+                                fullWidth
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <FormControl fullWidth>
+                                <Select
+                                    labelId="contractor-select-label"
+                                    id="contractor-select"
+                                    value={selectedContractorId}
+                                    disabled
+                                    onChange={handleChangeContractor}
+                                    label={t("Select Contractor")} >
+                                    {contractors.map((contractor) => (
+                                        <MenuItem key={contractor.id} value={contractor.id}>
+                                            {contractor.nameOrCompanyName}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <FormControl fullWidth>
+                                <Select
+                                    labelId="asigned-select-label"
+                                    id="asigned-select"
+                                    value={selectedAsignedId}
+                                    onChange={handleChangeAsignedUser}
+                                    label={t("Select Asigned user")} >
+                                    {profiles.map((profiles) => (
+                                        <MenuItem key={profiles.id} value={profiles.id}>
+                                            {profiles.username}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                                <FormControlLabel 
+                                control={<Checkbox
+                                checked={isSettled !== null}
+                                onChange={handleCheckboxChange}
+                                color="primary"/>} label={t("Settled")} />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                        <label>CreatedDate </label>
+                        <DateInput
+                            type="date"
+                            value={createdDate}
+                            disabled
+                        />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                        <label>Kickoff </label>
+                        <DateInput
+                            type="date"
+                            value={kickoff}
+                            onChange={handleKickoffChange}
+                        />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                        <label>Deadline </label>
+                           <DateInput
+                            type="date"
+                            value={deadline}
+                            onChange={handleDeadlineChange}
+                        />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Button
+                                type="submit"
+                                variant="contained"
+                                color="primary"
+                                fullWidth
+                            >
+                                {t("Submit")}
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </form>
+                <Snackbar open={open}
+                    autoHideDuration={2000}
+                    onClose={handleCloseAlert}>
+                    <Alert severity="success"> {t("Updated!")}!</Alert>
+                </Snackbar>
+            </Container>
+            
+        </div>
+    );
 };
 
 export default ManagerBasicDataEdit;
