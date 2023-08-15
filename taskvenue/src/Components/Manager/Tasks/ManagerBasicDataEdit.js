@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Grid, Container, Select, MenuItem, FormControl,FormControlLabel,Checkbox } from '@mui/material';
+import { TextField, Button, Grid, Container, Select, MenuItem, FormControl,FormControlLabel,Checkbox,InputLabel } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { useParams } from "react-router-dom";
 import supabase from '../../../supabaseClient';
 import { useTranslation } from "react-i18next";
 import styled from 'styled-components';
+
 
 
 const DateInput = styled.input`
@@ -16,7 +17,6 @@ border-radius: 4px;
 font-size: 14px;
 box-sizing: border-box;
 `;
-
 
 const ManagerBasicDataEdit = () => {
     const { t, i18n } = useTranslation();
@@ -38,7 +38,6 @@ const ManagerBasicDataEdit = () => {
     const [createdDate, setCreatedDate] = useState('');
 
 
-
     const handleFetchData = async () => {
         const { data, error } = await supabase
             .from('tasks')
@@ -53,7 +52,13 @@ const ManagerBasicDataEdit = () => {
             setName(data.name)
             setDescription(data.description)
             setSelectedContractorId(data.id_contractor);
-            setSelectedAsignedId(data.asigned_user)
+            setSelectedAsignedId(data.asigned_user);
+            setCreatedDate(data.createdDate);
+            setKickoff(data.kickoffDate);
+            setDeadline(data.deadline);
+            setSettled(data.settled);
+            setStatus(data.status);
+            setType(data.type);
         }
     };
 
@@ -87,8 +92,8 @@ const ManagerBasicDataEdit = () => {
 
     const handleUpdateTask = async () => {
         const { data, error } = await supabase
-            .from('venues')
-            .update([{ name: name, description: description, id_contractor: selectedContractorId }])
+            .from('tasks')
+            .update([{ name: name, description: description,asigned_user:selectedAsignedId,createdDate:createdDate,kickoffDate:kickoff,deadline:deadline,status:status,type:type }])
             .eq('id', id);
             handleClickAlert();
         if (error) {
@@ -183,15 +188,8 @@ const ManagerBasicDataEdit = () => {
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <TextField
-                                name="description"
-                                label={t("description")}
-                                value={description}
-                                onChange={(e) => setDescription(e.target.value)}
-                                fullWidth
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
+                        <FormControl fullWidth>
+                        <InputLabel id="status-select-select-label">{t("status")}</InputLabel>
                             <Select
                                 name="status"
                                 label={t("status")}
@@ -204,6 +202,7 @@ const ManagerBasicDataEdit = () => {
                                 <MenuItem value="inProgress">{t("In progress")}</MenuItem>
                                 <MenuItem value="completed">{t("Completed")}</MenuItem>
                             </Select>
+                            </FormControl>
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <TextField
@@ -216,6 +215,7 @@ const ManagerBasicDataEdit = () => {
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <FormControl fullWidth>
+                            <InputLabel id="contractor-select-select-label">{t("Select Contractor")}</InputLabel>
                                 <Select
                                     labelId="contractor-select-label"
                                     id="contractor-select"
@@ -233,6 +233,7 @@ const ManagerBasicDataEdit = () => {
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <FormControl fullWidth>
+                            <InputLabel id="asigned-select-label">{t("Select Asigned user")}</InputLabel>
                                 <Select
                                     labelId="asigned-select-label"
                                     id="asigned-select"
@@ -246,13 +247,6 @@ const ManagerBasicDataEdit = () => {
                                     ))}
                                 </Select>
                             </FormControl>
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                                <FormControlLabel 
-                                control={<Checkbox
-                                checked={isSettled !== null}
-                                onChange={handleCheckboxChange}
-                                color="primary"/>} label={t("Settled")} />
                         </Grid>
                         <Grid item xs={12} sm={6}>
                         <label>CreatedDate </label>
@@ -277,6 +271,23 @@ const ManagerBasicDataEdit = () => {
                             value={deadline}
                             onChange={handleDeadlineChange}
                         />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                                <FormControlLabel 
+                                control={<Checkbox
+                                checked={isSettled !== null}
+                                onChange={handleCheckboxChange}
+                                color="primary"/>} label={t("Settled")} />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                name="description"
+                                label={t("description")}
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                                fullWidth
+                                multiline
+                            />
                         </Grid>
                         <Grid item xs={12}>
                             <Button
