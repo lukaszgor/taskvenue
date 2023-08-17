@@ -41,6 +41,7 @@ const VenueDetalils = () => {
         const { data, error } = await supabase
             .from('contractor')
             .select()
+            .is('isDeleted', null) 
             .eq('id_configuration', idConfig);
 
         if (error) {
