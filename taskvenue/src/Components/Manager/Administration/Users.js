@@ -126,6 +126,8 @@ const UserDetails=(event, cellValues)=>{
               />
             </Grid>
             <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+            <InputLabel id="status-select-select-label">{t("profile type")}</InputLabel>
               <Select
                 name="profile_type"
                 label={t("profile type")}
@@ -138,6 +140,7 @@ const UserDetails=(event, cellValues)=>{
                 <MenuItem value="worker">Worker</MenuItem>
                 <MenuItem value="client">Client</MenuItem>
               </Select>
+              </FormControl>
             </Grid>
             <Grid item xs={12}>
               <Button

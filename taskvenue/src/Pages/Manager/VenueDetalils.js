@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
-import { TextField, Button, Grid, Container, Typography, Select, MenuItem, FormControl } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography, Select, MenuItem, FormControl,InputLabel } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { useParams } from "react-router-dom";
@@ -159,6 +159,7 @@ const VenueDetalils = () => {
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <FormControl fullWidth>
+            <InputLabel id="status-select-select-label">{t("Select Contractor")}</InputLabel>
                                 <Select
                                     labelId="contractor-select-label"
                                     id="contractor-select"
