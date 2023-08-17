@@ -32,6 +32,7 @@ const [name, setName] = useState('');
     .from('contractor')
     .select()
     .eq('id',id)
+    .is('isDeleted', null) 
     .single()
     if(error){
         console.log(error)
@@ -56,10 +57,11 @@ const updateContrator =async()=>{
 }
 
   //Delete
-  const DeleteContractor = async(event, cellValues)=>{
+  const DeleteContractor = async()=>{
     const{data,error} =  await supabase
-.from('contractor')
-.delete().eq('id',id);
+    .from('contractor')
+    .update({'isDeleted':1})
+    .eq('id',id);
 handleClickAlert();
 navigate('/Administration');
 if(error){

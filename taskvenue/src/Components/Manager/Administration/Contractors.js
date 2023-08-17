@@ -90,7 +90,8 @@ const insertContractor = async()=>{
             const{data,error} =  await supabase
             .from('contractor')
             .select()
-            .eq('id_configuration',idConfig);
+            .eq('id_configuration',idConfig)
+            .is('isDeleted', null) 
             if(data){
               setContractors(data)
               setIsLoading(false);
