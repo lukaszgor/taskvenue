@@ -11,6 +11,7 @@ import ServicesDictionary from '../../Components/Manager/Administration/Services
 import Settings from '../../Components/Manager/Administration/Settings';
 import Users from '../../Components/Manager/Administration/Users';
 import Contractors from '../../Components/Manager/Administration/Contractors';
+import TaskTypeDictionary from '../../Components/Manager/Administration/TaskTypeDictionary';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -62,6 +63,7 @@ function Administration() {
           <Tab label={t("Settings")}  {...a11yProps(2)} />
           <Tab label={t("Services")}  {...a11yProps(3)} />
           <Tab label={t("Contractors")}  {...a11yProps(4)} />
+          <Tab label={t("Task type")}  {...a11yProps(5)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
@@ -78,6 +80,9 @@ function Administration() {
       </TabPanel>
       <TabPanel value={value} index={4}>
     <Contractors></Contractors>
+      </TabPanel>
+      <TabPanel value={value} index={5}>
+    <TaskTypeDictionary></TaskTypeDictionary>
       </TabPanel>
     </Box>
       </div>   
