@@ -11,9 +11,6 @@ import { useTranslation } from "react-i18next";
 function TaskTypeDictionary() {
   const { t, i18n } = useTranslation();
   const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [cost, setCost] = useState(0);
-  const [unit, setUnit] = useState('');
   const [fetchError,setFetchError] =useState(null)
   const [service,setService] =useState(null)
   const {id} = useParams()
@@ -55,9 +52,6 @@ function TaskTypeDictionary() {
     event.preventDefault();
     insertService();
     setName('');
-    setDescription('');
-    setCost('');
-    setUnit('');
   };
 
   //Delete
