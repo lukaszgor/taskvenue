@@ -75,9 +75,16 @@
     "Closed Tasks":"Closed Tasks",
     "Basic data":"Basic data",
     "Venue":"Venue",
-    "Working time":"Working time"
- 
-
+    "Working time":"Working time",
+    "status":"status",
+    "Open":"Open",
+    "In progress":"In progress",
+    "Completed":"Completed",
+    "Select Asigned user":"Select Asigned user",
+    "Creation date":"Creation date",
+    "Start of implementation":"Start of implementation",
+    "Deadline":"Deadlinen",
+    "Settled":"Settled"
   
 
 }

@@ -75,7 +75,16 @@
     "Closed Tasks":"Zamknięte zadania",
     "Basic data":"Dane podstawowe",
     "Venue":"Miejsca",
-    "Working time":"Czas pracy"
+    "Working time":"Czas pracy",
+    "status":"status",
+    "Open":"Otwarte",
+    "In progress":"W realizacji",
+    "Completed":"Zakończone",
+    "Select Asigned user":"Przypisany uzytkownik",
+    "Creation date":"Data utworzenia",
+    "Start of implementation":"Start realizacji",
+    "Deadline":"Planowana data wykonania",
+    "Settled":"Rozliczone"
  
 
 }

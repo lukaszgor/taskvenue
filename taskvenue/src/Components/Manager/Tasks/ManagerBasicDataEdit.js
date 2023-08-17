@@ -249,7 +249,7 @@ const ManagerBasicDataEdit = () => {
                             </FormControl>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                        <label>CreatedDate </label>
+                        <label>{t("Creation date")}  </label>
                         <DateInput
                             type="date"
                             value={createdDate}
@@ -257,7 +257,7 @@ const ManagerBasicDataEdit = () => {
                         />
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                        <label>Kickoff </label>
+                        <label>{t("Start of implementation")}  </label>
                         <DateInput
                             type="date"
                             value={kickoff}
@@ -265,7 +265,7 @@ const ManagerBasicDataEdit = () => {
                         />
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                        <label>Deadline </label>
+                        <label>{t("Deadline")}  </label>
                            <DateInput
                             type="date"
                             value={deadline}
