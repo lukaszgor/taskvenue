@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import ManagerAdministrationUserBreadcrumbs from '../../Components/Breadcrumbs/ManagerAdministrationUserBreadcrumbs';
 
 
 const UserDetails = () => {
@@ -131,9 +132,9 @@ const handleCloseAlert = (event, reason) => {
     return (
         <div>
          <ManagerNavBar></ManagerNavBar>
+         <ManagerAdministrationUserBreadcrumbs></ManagerAdministrationUserBreadcrumbs>
 <Container maxWidth="md">
         <Typography variant="h4" align="center" gutterBottom>
-       {t("User edit")} 
        <p></p>
         </Typography>
         <form onSubmit={handleSubmit} >

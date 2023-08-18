@@ -10,6 +10,7 @@ import ManagerBasicDataEdit from '../../Components/Manager/Tasks/ManagerBasicDat
 import ManagerServicesEdit from '../../Components/Manager/Tasks/ManagerServicesEdit';
 import ManagerVenueEdit from '../../Components/Manager/Tasks/ManagerVenueEdit';
 import ManagerWorkingTimeEdit from '../../Components/Manager/Tasks/ManagerWorkingTimeEdit';
+import ManagerTaskBreadcrumbs from '../../Components/Breadcrumbs/ManagerTaskBreadcrumbs';
 
 
 function TabPanel(props) {
@@ -54,6 +55,7 @@ function TaskDetails() {
     return (
       <div>
              <ManagerNavBar></ManagerNavBar>
+             <ManagerTaskBreadcrumbs></ManagerTaskBreadcrumbs>
             <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">

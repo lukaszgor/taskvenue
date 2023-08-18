@@ -5,7 +5,8 @@ import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import MainView from "../../Components/Manager/MainView";
 import ClientMainView from "../../Components/Client/ClientMainView";
-import WorkerMainView from "../../Components/Worker/WorkerMainView"
+import WorkerMainView from "../../Components/Worker/WorkerMainView";
+
 
 import moment from "moment";
 

@@ -6,6 +6,7 @@ import Alert from '@mui/material/Alert';
 import { useParams } from "react-router-dom";
 import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
+import ManagerVenueBreadcrumbs from '../../Components/Breadcrumbs/ManagerVenueBreadcrumbs';
 
 const VenueDetalils = () => {
     const { t, i18n } = useTranslation();
@@ -122,6 +123,7 @@ const VenueDetalils = () => {
     return (
         <div>
             <ManagerNavBar></ManagerNavBar>
+            <ManagerVenueBreadcrumbs></ManagerVenueBreadcrumbs>
             <Container maxWidth="md">
                 <Typography variant="h4" align="center" gutterBottom>
                     {t("Update venue")}

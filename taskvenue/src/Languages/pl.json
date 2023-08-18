@@ -74,7 +74,7 @@
     "Open Tasks":"Otwarte zadania",
     "Closed Tasks":"Zamknięte zadania",
     "Basic data":"Dane podstawowe",
-    "Venue":"Miejsca",
+    "Venue":"Miejsce",
     "Working time":"Czas pracy",
     "status":"status",
     "Open":"Otwarte",
@@ -84,7 +84,8 @@
     "Creation date":"Data utworzenia",
     "Start of implementation":"Start realizacji",
     "Deadline":"Planowana data wykonania",
-    "Settled":"Rozliczone"
+    "Settled":"Rozliczone",
+    "Task":"Zadanie"
  
 
 }
