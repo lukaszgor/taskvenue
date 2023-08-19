@@ -155,7 +155,7 @@ const ManagerBasicDataEdit = () => {
     }
   };
 
-  const handleFetchTaskTypes = async () => {
+  const handleFetchTaskTypes = async (idConfig) => {
     const { data, error } = await supabase
       .from('task_type_dictionary')
       .select('name')
@@ -173,13 +173,11 @@ const ManagerBasicDataEdit = () => {
     if (idConfig) {
       handleFetchContractors(idConfig);
       handleFetchUsers(idConfig);
+      handleFetchTaskTypes(idConfig);
       handleFetchData();
     }
   }, [idConfig]);
 
-  useEffect(() => {
-    handleFetchTaskTypes();
-  }, [idConfig]);
 
   const handleChangeContractor = (event) => {
     const value = event.target.value;
