@@ -188,6 +188,7 @@ const ManagerVenueEdit = () => {
             <Typography variant="h6">{selectedVenue.description}</Typography>
             <Typography variant="h11">{t('Address')}</Typography>
             <Typography variant="h6">{selectedVenue.GPS_location}</Typography>
+            <p></p>
 
             <Box display="flex" justifyContent="flex-end">
                 <Button
