@@ -1,16 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  TextField,
-  Button,
-  Grid,
-  Container,
-  Select,
-  MenuItem,
-  FormControl,
-  FormControlLabel,
-  Checkbox,
-  InputLabel,
-} from '@mui/material';
+import {TextField,Button,Grid,Container,Select,MenuItem,FormControl,FormControlLabel,Checkbox,InputLabel,Box} from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { useParams } from 'react-router-dom';
@@ -352,14 +341,16 @@ const ManagerBasicDataEdit = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Button
+            <Box display="flex" justifyContent="flex-end">
+                <Button
                 type="submit"
                 variant="contained"
                 color="primary"
-                fullWidth
-              >
+                style={{ minWidth: 'auto' }}
+                >
                 {t('Submit')}
-              </Button>
+                </Button>
+            </Box>
             </Grid>
           </Grid>
         </form>

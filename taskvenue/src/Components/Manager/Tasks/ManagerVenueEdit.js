@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Grid,Container,Select,MenuItem,FormControl,InputLabel,Typography, Button,} from '@mui/material';
+import {Grid,Container,Select,MenuItem,FormControl,InputLabel,Typography, Button,Box} from '@mui/material';
 import { useParams } from 'react-router-dom';
 import supabase from '../../../supabaseClient';
 import { useTranslation } from 'react-i18next';
@@ -181,19 +181,25 @@ const ManagerVenueEdit = () => {
             </Select>
           </FormControl>
         </Grid>
+        <p></p>
         {selectedVenue && (
           <Grid item xs={12}>
-            <Typography variant="h10">{t('Description')}</Typography>
+            <Typography variant="h11">{t('Description')}</Typography>
             <Typography variant="h6">{selectedVenue.description}</Typography>
-            <Typography variant="h10">{t('Address')}</Typography>
+            <Typography variant="h11">{t('Address')}</Typography>
             <Typography variant="h6">{selectedVenue.GPS_location}</Typography>
-            <Button
-                      variant="outlined"
-                      color="success"
-                      onClick={() => handleButtonClickLocation(selectedVenue)}
-                    >
-                      {t('Open in Google Maps')}
-                    </Button>
+
+            <Box display="flex" justifyContent="flex-end">
+                <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                onClick={() => handleButtonClickLocation(selectedVenue)}
+                style={{ minWidth: 'auto' }}
+                >
+            {t('Open in Google Maps')}
+                </Button>
+            </Box>
           </Grid>
         )}
                 <Snackbar

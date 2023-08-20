@@ -5,7 +5,7 @@ import supabase from '../../../supabaseClient';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { useTranslation } from "react-i18next";
-import { TextField, Button, Grid, Container, Typography } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography,Box } from '@mui/material';
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 
@@ -231,14 +231,16 @@ const insertContractor = async()=>{
               />
             </Grid>
             <Grid item xs={12}>
-              <Button
+             <Box display="flex" justifyContent="flex-end">
+                <Button
                 type="submit"
                 variant="contained"
                 color="primary"
-                fullWidth
-              >
-                {t("Submit")}
-              </Button>
+                style={{ minWidth: 'auto' }}
+                >
+                {t('Submit')}
+                </Button>
+            </Box>
             </Grid>
           </Grid>
           <div>

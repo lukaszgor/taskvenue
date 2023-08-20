@@ -3,7 +3,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import supabase from '../../../supabaseClient';
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next";
-import { TextField, Button, Grid, Container, Typography, Select, MenuItem,Checkbox,FormControlLabel,FormControl,InputLabel } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography, Select, MenuItem,Checkbox,FormControlLabel,FormControl,InputLabel,Box } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
@@ -143,16 +143,17 @@ const UserDetails=(event, cellValues)=>{
               </FormControl>
             </Grid>
             <Grid item xs={12}>
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                fullWidth
-                disabled={!foreignUserID} 
-              >
-                {t("Submit")}
-              </Button>
-             
+            <Box display="flex" justifyContent="flex-end">
+                                <Button
+                                type="submit"
+                                variant="contained"
+                                color="primary"
+                                style={{ minWidth: 'auto' }}
+                                disabled={!foreignUserID} 
+                                >
+                                {t('Submit')}
+                                </Button>
+                            </Box>
             <Snackbar open={open}
             autoHideDuration={2000}
             onClose={handleCloseAlert}>

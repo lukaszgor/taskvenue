@@ -1,7 +1,7 @@
 
 import { useState,useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { TextField, Button, Grid, Container, Typography } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography,Box } from '@mui/material';
 import supabase from '../../../supabaseClient';
 import { useParams } from "react-router-dom";
 import Snackbar from '@mui/material/Snackbar';
@@ -188,14 +188,16 @@ const insertService = async()=>{
                 />
             </Grid>
             <Grid item xs={12}>
-              <Button
+              <Box display="flex" justifyContent="flex-end">
+                <Button
                 type="submit"
                 variant="contained"
                 color="primary"
-                fullWidth
-              >
-                  {t("Add")}
-              </Button>
+                style={{ minWidth: 'auto' }}
+                >
+                {t('Submit')}
+                </Button>
+            </Box>
             </Grid>
           </Grid>
           <div>
