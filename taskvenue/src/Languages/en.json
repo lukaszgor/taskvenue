@@ -85,7 +85,9 @@
     "Start of implementation":"Start of implementation",
     "Deadline":"Deadlinen",
     "Settled":"Settled",
-    "Task":"Task"
+    "Task":"Task",
+    "Address":"Address",
+    "Select Venue":"Select Venue"
   
 
 }

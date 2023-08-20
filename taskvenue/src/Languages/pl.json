@@ -85,7 +85,9 @@
     "Start of implementation":"Start realizacji",
     "Deadline":"Planowana data wykonania",
     "Settled":"Rozliczone",
-    "Task":"Zadanie"
+    "Task":"Zadanie",
+    "Address":"Adres",
+    "Select Venue":"Wybierz miejsce"
  
 
 }
