@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Grid,Container,Select,MenuItem,FormControl,InputLabel,Typography,} from '@mui/material';
+import {Grid,Container,Select,MenuItem,FormControl,InputLabel,Typography, Button,} from '@mui/material';
 import { useParams } from 'react-router-dom';
 import supabase from '../../../supabaseClient';
 import { useTranslation } from 'react-i18next';
@@ -147,6 +147,17 @@ const ManagerVenueEdit = () => {
     setOpen(false);
   };
 
+  //redirection to googlemaps
+  const handleButtonClickLocation = (selectedVenue) => {
+    const locationString = selectedVenue.GPS_location; 
+    const [latitude, longitude] = locationString.split(',').map((coordinate) => coordinate.trim());
+    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
+    window.open(googleMapsUrl);
+    console.log('Pole location:', selectedVenue.GPS_location);
+  };
+
+
+
   return (
     <div>
       <Container maxWidth="md">
@@ -176,6 +187,13 @@ const ManagerVenueEdit = () => {
             <Typography variant="h6">{selectedVenue.description}</Typography>
             <Typography variant="h10">{t('Address')}</Typography>
             <Typography variant="h6">{selectedVenue.GPS_location}</Typography>
+            <Button
+                      variant="outlined"
+                      color="success"
+                      onClick={() => handleButtonClickLocation(selectedVenue)}
+                    >
+                      {t('Open in Google Maps')}
+                    </Button>
           </Grid>
         )}
                 <Snackbar
