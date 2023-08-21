@@ -125,10 +125,7 @@ const VenueDetalils = () => {
             <ManagerNavBar></ManagerNavBar>
             <ManagerVenueBreadcrumbs></ManagerVenueBreadcrumbs>
             <Container maxWidth="md">
-                <Typography variant="h4" align="center" gutterBottom>
-                    {t("Update venue")}
                     <p></p>
-                </Typography>
                 <form onSubmit={handleSubmit} >
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
