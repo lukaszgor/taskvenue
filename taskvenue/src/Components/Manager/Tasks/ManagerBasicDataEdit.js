@@ -32,6 +32,7 @@ const ManagerBasicDataEdit = () => {
   const [idConfig, setIdConfiguration] = useState('');
   const [open, setOpen] = useState(false);
   const [deadline, setDeadline] = useState('');
+  const [estimatedTime, setEstimatedTime] = useState('');
   const [kickoff, setKickoff] = useState('');
   const [createdDate, setCreatedDate] = useState('');
   const [taskTypes, setTaskTypes] = useState([]);
@@ -54,6 +55,7 @@ const ManagerBasicDataEdit = () => {
       setCreatedDate(data.createdDate);
       setKickoff(data.kickoffDate);
       setDeadline(data.deadline);
+      setEstimatedTime(data.estimatedTime);
       setSettled(data.settled);
       setStatus(data.status);
       setType(data.type);
@@ -102,6 +104,7 @@ const ManagerBasicDataEdit = () => {
           deadline: deadline,
           status: status,
           type: type,
+          estimatedTime:estimatedTime
         },
       ])
       .eq('id', id);
@@ -208,8 +211,8 @@ const ManagerBasicDataEdit = () => {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                name="name"
-                label={t('name')}
+                name="Name"
+                label={t('Name')}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 fullWidth
@@ -219,11 +222,11 @@ const ManagerBasicDataEdit = () => {
             <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
                 <InputLabel id="status-select-select-label">
-                  {t('status')}
+                  {t('Status')}
                 </InputLabel>
                 <Select
-                  name="status"
-                  label={t('status')}
+                  name="Status"
+                  label={t('Status')}
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}
                   fullWidth
@@ -299,6 +302,16 @@ const ManagerBasicDataEdit = () => {
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
+              <TextField
+                name="Estimated time"
+                label={t('Estimated time')}
+                value={estimatedTime}
+                onChange={(e) => setEstimatedTime(e.target.value)}
+                fullWidth
+                type="number" 
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
               <label>{t('Creation date')}</label>
               <DateInput type="date" value={createdDate} disabled />
             </Grid>
@@ -319,6 +332,16 @@ const ManagerBasicDataEdit = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
+              <TextField
+                name="Description"
+                label={t('Description')}
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                fullWidth
+                multiline
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
               <FormControlLabel
                 control={
                   <Checkbox
@@ -330,16 +353,7 @@ const ManagerBasicDataEdit = () => {
                 label={t('Settled')}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                name="description"
-                label={t('description')}
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                fullWidth
-                multiline
-              />
-            </Grid>
+
             <Grid item xs={12}>
             <Box display="flex" justifyContent="flex-end">
                 <Button

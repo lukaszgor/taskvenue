@@ -88,7 +88,9 @@
     "Task":"Zadanie",
     "Address":"Adres",
     "Select Venue":"Wybierz miejsce",
-    "Open in Google Maps":"Otwórz w Google Maps"
+    "Open in Google Maps":"Otwórz w Google Maps",
+    "Estimated time":"Czas estymowany",
+    "Status":"Status"
  
 
 }

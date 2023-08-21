@@ -88,7 +88,9 @@
     "Task":"Task",
     "Address":"Address",
     "Select Venue":"Select Venue",
-    "Open in Google Maps":"Open in Google Maps"
+    "Open in Google Maps":"Open in Google Maps",
+    "Estimated time":"estimated time",
+    "Status":"Status"
   
 
 }
