@@ -90,7 +90,10 @@
     "Select Venue":"Select Venue",
     "Open in Google Maps":"Open in Google Maps",
     "Estimated time":"estimated time",
-    "Status":"Status"
+    "Status":"Status",
+    "Select service from dictionary":"Select service from dictionary",
+    "Total":"Total",
+    "Quantity":"Quantity"
   
 
 }

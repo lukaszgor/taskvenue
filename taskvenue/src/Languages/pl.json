@@ -90,7 +90,10 @@
     "Select Venue":"Wybierz miejsce",
     "Open in Google Maps":"Otwórz w Google Maps",
     "Estimated time":"Czas estymowany",
-    "Status":"Status"
+    "Status":"Status",
+    "Select service from dictionary":"Wybierz usługi ze słownika",
+    "Total":"Suma",
+    "Quantity":"Ilośc"
  
 
 }
