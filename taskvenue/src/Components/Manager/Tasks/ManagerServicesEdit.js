@@ -16,6 +16,7 @@ function ManagerServicesEdit() {
   const [unit, setUnit] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [total, setTotal] = useState(0);
+  const [fullTotalTask, setFullTotalTask] = useState(0);
   const [dictionaryServices, setDictionaryServices] = useState([]);
   const [fetchError,setFetchError] =useState(null)
   const [service,setService] =useState(null)
@@ -71,6 +72,15 @@ function ManagerServicesEdit() {
             const calculatedTotal = cost * quantity;
             setTotal(calculatedTotal);
         }, [cost, quantity]);
+
+        useEffect(() => {
+            if (service) {
+              // Calculate the sum of 'total' values from the fetched services
+              const calculatedFullTotal = service.reduce((acc, serviceItem) => acc + serviceItem.total, 0);
+              setFullTotalTask(calculatedFullTotal);
+            }
+          }, [service]);
+
   
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -175,6 +185,22 @@ const insertService = async()=>{
       <div>
             <div>
               <p></p>
+              <div>
+      {/* ... (existing JSX) */}
+      <div>
+        {fetchError && <p>{fetchError}</p>}
+        {service && (
+          <div>
+            {/* ... (existing JSX) */}
+            <div style={{ textAlign: 'center' }}>
+              <Typography variant="h6">
+                {t('Summary')}: {fullTotalTask}
+              </Typography>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
 
        <form onSubmit={handleSubmit} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
        <Container maxWidth="md">
