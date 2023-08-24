@@ -94,7 +94,10 @@
     "Select service from dictionary":"Wybierz usługi ze słownika",
     "Total":"Suma",
     "Quantity":"Ilośc",
-    "Summary":"Podsumowanie"
+    "Summary":"Podsumowanie",
+    "No work time":"Brak czasu pracy",
+    "Date":"Data",
+    "Time":"Czas"
  
 
 }

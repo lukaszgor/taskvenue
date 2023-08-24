@@ -94,7 +94,10 @@
     "Select service from dictionary":"Select service from dictionary",
     "Total":"Total",
     "Quantity":"Quantity",
-    "Summary":"Summary"
+    "Summary":"Summary",
+    "No work time":"No work time",
+    "Date":"Date",
+    "Time":"Time"
   
 
 }
