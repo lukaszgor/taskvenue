@@ -63,7 +63,7 @@ useEffect(() => {
       setFilteredTasks(filteredData);
   }, [tasks, searchName,searchNumber,searchContractor]);
   
-        const fetchTasks = async (idConfiguration) => {
+        const fetchTasks = async (idConfig) => {
             const { data, error } = await supabase
                 .from('tasks')
                 .select(`*,
