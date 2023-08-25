@@ -4,6 +4,7 @@ import supabase from '../../supabaseClient';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { useNavigate } from 'react-router-dom';
 const localizer = momentLocalizer(moment);
 
 const Schedule = () => {
@@ -12,7 +13,8 @@ const Schedule = () => {
     const [idConfig, setIdConfiguration] = useState('');
     const [tasks, setTasks] = useState([]);
     const [events, setEvents] = useState([]);
-    
+  
+
         useEffect(() => {
             const checkSession = async () => {
               const { data } = await supabase.auth.getSession();
@@ -24,6 +26,15 @@ const Schedule = () => {
             checkSession();
           }, []);
           
+          const navigate = useNavigate();
+
+          const handleEventClick = (event) => {
+            // Obsługa kliknięcia w wydarzenie
+            // Przekierowanie użytkownika na stronę szczegółów zadania
+            navigate(`/TaskDetails/${event.id}`); // Przekierowanie na odpowiedni adres za pomocą useNavigate
+          };
+
+
           const fetchData = async (userId) => {
             const { data: profileData, error: profileError } = await supabase
                 .from('profiles')
@@ -45,7 +56,7 @@ const Schedule = () => {
           const fetchTasks = async (idConfig) => {
             const { data, error } = await supabase
               .from('tasks')
-              .select('name, kickoffDate, deadline, status')
+              .select('name, kickoffDate, deadline, status,id')
               .eq('id_configuration', idConfig);
       
             if (error) {
@@ -57,8 +68,9 @@ const Schedule = () => {
                 end: task.deadline,
                 allDay: true,
                 status:task.status,
+                id:task.id
               }));
-              setEvents(formattedEvents);  // Zapisz sformatowane wydarzenia do stanu
+              setEvents(formattedEvents);  
             }
           };
     
@@ -97,7 +109,8 @@ const Schedule = () => {
       events={events}
       startAccessor="start"
       endAccessor="end"
-      eventPropGetter={eventStyleGetter} // Przypisanie niestandardowych stylów do wydarzeń
+      eventPropGetter={eventStyleGetter} 
+      onSelectEvent={handleEventClick}
     />
   </div>
       </div>
