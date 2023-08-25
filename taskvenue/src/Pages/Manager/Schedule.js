@@ -48,7 +48,7 @@ const Schedule = () => {
           const fetchTasks = async (idConfig) => {
             const { data, error } = await supabase
               .from('tasks')
-              .select('name, kickoffDate, deadline')
+              .select('name, kickoffDate, deadline, status')
               .eq('id_configuration', idConfig);
       
             if (error) {
@@ -58,13 +58,38 @@ const Schedule = () => {
                 title: task.name,
                 start: task.kickoffDate,
                 end: task.deadline,
+                status:task.status,
               }));
               
               setEvents(formattedEvents);  // Zapisz sformatowane wydarzenia do stanu
             }
           };
     
-       
+
+          const eventStyleGetter = (event) => {
+            const eventStatus = event.status.toLowerCase();
+            let backgroundColor = '';
+        
+            switch (eventStatus) {
+              case 'completed':
+                backgroundColor = 'blue';
+                break;
+              case 'inprogress':
+                backgroundColor = 'orange';
+                break;
+              case 'open':
+                backgroundColor = 'green';
+                break;
+              default:
+                backgroundColor = 'gray';
+            }
+            return {
+              style: {
+                backgroundColor,
+              },
+            };
+          };
+        
     return (
         <div>
             <ManagerNavBar></ManagerNavBar>
@@ -76,6 +101,7 @@ const Schedule = () => {
       startAccessor="start"
       endAccessor="end"
       views={['month','agenda']} 
+      eventPropGetter={eventStyleGetter} // Przypisanie niestandardowych stylów do wydarzeń
     />
   </div>
       </div>
