@@ -4,12 +4,9 @@ import supabase from '../../supabaseClient';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-
-
 const localizer = momentLocalizer(moment);
 
 const Schedule = () => {
-
 
     const [userID, setUserID] = useState('');
     const [idConfig, setIdConfiguration] = useState('');
@@ -58,9 +55,9 @@ const Schedule = () => {
                 title: task.name,
                 start: task.kickoffDate,
                 end: task.deadline,
+                allDay: true,
                 status:task.status,
               }));
-              
               setEvents(formattedEvents);  // Zapisz sformatowane wydarzenia do stanu
             }
           };
@@ -72,13 +69,13 @@ const Schedule = () => {
         
             switch (eventStatus) {
               case 'completed':
-                backgroundColor = 'blue';
+                backgroundColor = '#87CEEB';
                 break;
               case 'inprogress':
                 backgroundColor = 'orange';
                 break;
               case 'open':
-                backgroundColor = 'green';
+                backgroundColor = '#B2E8A6';
                 break;
               default:
                 backgroundColor = 'gray';
@@ -100,7 +97,6 @@ const Schedule = () => {
       events={events}
       startAccessor="start"
       endAccessor="end"
-      views={['month','agenda']} 
       eventPropGetter={eventStyleGetter} // Przypisanie niestandardowych stylów do wydarzeń
     />
   </div>
