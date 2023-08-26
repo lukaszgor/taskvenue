@@ -97,7 +97,10 @@
     "Summary":"Summary",
     "No work time":"No work time",
     "Date":"Date",
-    "Time":"Time"
+    "Time":"Time",
+    "Vacation":"Vacation",
+    "Disease":"Disease",
+    "Legend":"Legend"
   
 
 }

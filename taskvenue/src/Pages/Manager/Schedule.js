@@ -5,6 +5,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { useNavigate } from 'react-router-dom';
+import ScheduleLegend from '../../Components/Common/ScheduleLegend';
 const localizer = momentLocalizer(moment);
 
 const Schedule = () => {
@@ -84,7 +85,7 @@ const Schedule = () => {
                 backgroundColor = '#87CEEB';
                 break;
               case 'inprogress':
-                backgroundColor = 'orange';
+                backgroundColor = '#EF8354';
                 break;
               case 'open':
                 backgroundColor = '#B2E8A6';
@@ -113,6 +114,8 @@ const Schedule = () => {
       onSelectEvent={handleEventClick}
     />
   </div>
+  <p></p>
+  <ScheduleLegend></ScheduleLegend>
       </div>
       );
 };

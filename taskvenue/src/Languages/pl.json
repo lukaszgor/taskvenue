@@ -97,7 +97,10 @@
     "Summary":"Podsumowanie",
     "No work time":"Brak czasu pracy",
     "Date":"Data",
-    "Time":"Czas"
+    "Time":"Czas",
+    "Vacation":"Urlop",
+    "Disease":"Choroba",
+    "Legend":"Legenda"
  
 
 }
