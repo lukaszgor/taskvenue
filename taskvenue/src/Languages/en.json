@@ -101,7 +101,8 @@
     "Vacation":"Vacation",
     "Sick leave":"Sick leave",
     "Legend":"Legend",
-    "Task type":"Task type"
+    "Task type":"Task type",
+    "Status of the implementation of issues in the last 30 day":"Status of the implementation of issues in the last 30 day"
   
 
 }

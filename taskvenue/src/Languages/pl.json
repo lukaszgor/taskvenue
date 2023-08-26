@@ -101,7 +101,8 @@
     "Vacation":"Urlop",
     "Sick leave":"Choroba",
     "Legend":"Legenda",
-    "Task type":"Rodzaje zadań"
+    "Task type":"Rodzaje zadań",
+    "Status of the implementation of issues in the last 30 day":"Status realizacji zadań z ostatnich 30 dni"
  
 
 }
