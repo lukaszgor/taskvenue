@@ -10,7 +10,7 @@ function ScheduleLegend() {
         { color: '#EF8354', label: t('In progress') },
         { color: '#B2E8A6', label: t('Open') },
         { color: '#FF5733', label: t('Vacation') },
-        { color: '#7A5980', label: t('Disease')  },
+        { color: '#7A5980', label: t('Sick leave')  },
       ];
     return (   
         <Box p={3} border="1px solid #ccc" boxShadow={1}>
