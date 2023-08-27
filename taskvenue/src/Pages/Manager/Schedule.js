@@ -6,6 +6,8 @@ import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { useNavigate } from 'react-router-dom';
 import ScheduleLegend from '../../Components/Common/ScheduleLegend';
+import { useTranslation } from 'react-i18next';
+import { Button } from '@mui/material';
 const localizer = momentLocalizer(moment);
 
 const Schedule = () => {
@@ -14,7 +16,7 @@ const Schedule = () => {
     const [idConfig, setIdConfiguration] = useState('');
     const [tasks, setTasks] = useState([]);
     const [events, setEvents] = useState([]);
-  
+    const { t, i18n } = useTranslation();
 
         useEffect(() => {
             const checkSession = async () => {
@@ -30,10 +32,11 @@ const Schedule = () => {
           const navigate = useNavigate();
 
           const handleEventClick = (event) => {
-            // Obsługa kliknięcia w wydarzenie
-            // Przekierowanie użytkownika na stronę szczegółów zadania
-            navigate(`/TaskDetails/${event.id}`); // Przekierowanie na odpowiedni adres za pomocą useNavigate
+            navigate(`/TaskDetails/${event.id}`); 
           };
+          const addNewTask = () => {
+            navigate('/AddNewTask')
+        };
 
 
           const fetchData = async (userId) => {
@@ -104,6 +107,9 @@ const Schedule = () => {
         <div>
             <ManagerNavBar></ManagerNavBar>
             <p></p><p></p>
+            <Button  style={{ marginLeft: '20px',marginBottom: '20px' }} type="submit" variant="contained" color="primary"  onClick={addNewTask} >
+                {t("Add")}
+              </Button>
             <div style={{ height: '500px' }}>
     <Calendar
       localizer={localizer}
