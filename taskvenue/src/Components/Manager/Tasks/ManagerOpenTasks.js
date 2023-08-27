@@ -109,6 +109,9 @@ const ManagerOpenTasks = () => {
 
     return (
         <div>
+            <Button  style={{ marginLeft: '20px',marginBottom: '20px' }} type="submit" variant="contained" color="primary"  onClick={addNewTask} >
+                {t("Add")}
+              </Button>
             <Button
                 style={{ marginLeft: '20px', marginBottom: '20px' }}
                 variant="contained"
