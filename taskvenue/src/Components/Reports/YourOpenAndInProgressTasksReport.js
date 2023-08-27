@@ -3,6 +3,7 @@ import { PieChart, Pie, Cell, Tooltip,Label } from 'recharts';
 import { Container, Box } from '@mui/material';
 import supabase from '../../supabaseClient';
 import { useTranslation } from 'react-i18next';
+import { userId } from '../Common/Auth';
 
 
 const YourOpenAndInProgressTasksReport = () => {
@@ -10,12 +11,14 @@ const YourOpenAndInProgressTasksReport = () => {
     const [mockedData, setMockedData] = useState([]);
     const { t } = useTranslation();
     const [idConfig, setIdConfiguration] = useState('');
+    const [user, setUser] = useState('');
   
     useEffect(() => {
       const checkSession = async () => {
         const { data } = await supabase.auth.getSession();
         if (data.session) {
           fetchData(data.session.user.id);
+          setUser(data.session.user.id);
         }
       };
       checkSession();
@@ -37,7 +40,7 @@ const YourOpenAndInProgressTasksReport = () => {
     useEffect(() => {
       if (idConfig) {
         async function fetchAndSetData() {
-          const tasksData = await fetchTasksData(idConfig);
+          const tasksData = await fetchTasksData(idConfig,user);
           const transformedData = transformData(tasksData);
           setMockedData(transformedData);
         }
@@ -46,15 +49,14 @@ const YourOpenAndInProgressTasksReport = () => {
       }
     }, [idConfig]);
   
-    async function fetchTasksData(idConfig) {
- 
-
-  
+    async function fetchTasksData(idConfig,user) {
       const { data, error } = await supabase
         .from('tasks')
-        .select('status,id')
+        .select('status,id,asigned_user')
+        .eq('asigned_user',user)
         .eq('id_configuration', idConfig)
         .in('status', ['inProgress', 'open'])
+        
 
       if (error) {
         console.error('Error fetching data:', error.message);
