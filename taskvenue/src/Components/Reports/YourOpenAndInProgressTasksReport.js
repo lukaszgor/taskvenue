@@ -5,7 +5,7 @@ import supabase from '../../supabaseClient';
 import { useTranslation } from 'react-i18next';
 
 
-const PieChartWithCustomizedLabel = () => {
+const YourOpenAndInProgressTasksReport = () => {
 
     const [mockedData, setMockedData] = useState([]);
     const { t } = useTranslation();
@@ -106,7 +106,6 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 
   return (
     <div>
-      <h2>{t('Your open and in progress tasks')}</h2>    
     <Container>
       <Box
         display="flex"
@@ -139,4 +138,4 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   );
 };
 
-export default PieChartWithCustomizedLabel;
+export default YourOpenAndInProgressTasksReport;

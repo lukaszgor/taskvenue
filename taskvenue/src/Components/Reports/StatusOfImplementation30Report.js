@@ -92,7 +92,6 @@ const StatusOfImplementation30Report = () => {
 
   return (
     <div>
-      <h2>{t('Status of the implementation of issues in the last 30 days')}</h2>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={mockedData}>
           <CartesianGrid strokeDasharray="3 3" />
