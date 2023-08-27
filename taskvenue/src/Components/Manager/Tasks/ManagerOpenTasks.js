@@ -72,7 +72,8 @@ const ManagerOpenTasks = () => {
                     nameOrCompanyName
                 )
             ` )
-            .eq('id_configuration', idConfig);
+            .eq('id_configuration', idConfig)
+            .in('status', ['inProgress', 'open']);
 
         if (error) {
             console.error(error);
