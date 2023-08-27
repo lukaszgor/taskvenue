@@ -126,6 +126,7 @@ const VenueDashboard = () => {
             <Dialog open={isFilterPopupOpen} onClose={() => setIsFilterPopupOpen(false)}>
     <DialogTitle>{t("Filter Venues")}</DialogTitle>
     <DialogContent>
+      <p></p>
         <div style={{ marginBottom: '16px' }}>
             <TextField
                 label={t("Search by number")}

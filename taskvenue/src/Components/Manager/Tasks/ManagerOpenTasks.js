@@ -120,6 +120,7 @@ const ManagerOpenTasks = () => {
 
             <Dialog open={isFilterPopupOpen} onClose={() => setIsFilterPopupOpen(false)}>
                 <DialogTitle>{t("Filter Tasks")}</DialogTitle>
+     <p></p>
                 <DialogContent>
                     <div style={{ marginBottom: '16px' }}>
                         <TextField
