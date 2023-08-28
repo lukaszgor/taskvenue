@@ -139,9 +139,9 @@ const insertService = async()=>{
 
     const columns = [
 
-        { field: 'description', headerName: t("Description"), width: 220 },
+        { field: 'description', headerName: t("Description"), width: 220,},
         { field: 'time', headerName: t("Time"), width: 70 },
-        { field: 'date', headerName: t("Date"), width: 120 },
+        { field: 'date', headerName: t("Date"), width: 140 },
         {
             field: "Action",headerName: t("Action"), width: 100 ,
             renderCell: (cellValues) => {
