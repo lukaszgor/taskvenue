@@ -5,7 +5,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { useNavigate } from 'react-router-dom';
-import ScheduleLegend from '../../Components/Common/ScheduleLegend';
+import ScheduleLegend from '../../Components/Common/Legends/ScheduleLegend';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@mui/material';
 const localizer = momentLocalizer(moment);

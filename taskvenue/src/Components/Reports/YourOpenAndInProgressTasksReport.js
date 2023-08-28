@@ -4,6 +4,7 @@ import { Container, Box } from '@mui/material';
 import supabase from '../../supabaseClient';
 import { useTranslation } from 'react-i18next';
 import { userId } from '../Common/Auth';
+import OpenAndInProgressLegend from '../Common/Legends/OpenAndInProgressLegend';
 
 const YourOpenAndInProgressTasksReport = () => {
   const [mockedData, setMockedData] = useState([]);
@@ -88,7 +89,7 @@ const YourOpenAndInProgressTasksReport = () => {
     return transformedData;
   }
 
-  const COLORS = ['#00C49F', '#FFBB28'];
+  const COLORS = ['#EF8354', '#B2E8A6'];
 
   const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
     const RADIAN = Math.PI / 180;
@@ -133,6 +134,7 @@ const YourOpenAndInProgressTasksReport = () => {
           </PieChart>
         </Box>
       </Container>
+      <OpenAndInProgressLegend></OpenAndInProgressLegend>
     </div>
   );
 };
