@@ -198,9 +198,9 @@ return (
 
       <TabPanel value={value} index={0}>
       <h1>{t("sign in")}</h1>
-      <TextField id="standard-basic" label={t("enter your email")} placeholder={t("enter your email")} type="email" onChange={(e) => setEmail(e.target.value)} variant="standard" />
+      <TextField style={{ width: "250px" }} id="standard-basic" label={t("enter your email")} placeholder={t("enter your email")} type="email" onChange={(e) => setEmail(e.target.value)} variant="standard" />
       <br/>      
-      <TextField id="standard-password-input" label={t("enter your password")} type="password" placeholder={t("enter your password")} autoComplete="current-password" variant="standard" onChange={(e) =>
+      <TextField   style={{ width: "250px" }} id="standard-password-input" label={t("enter your password")} type="password" placeholder={t("enter your password")} autoComplete="current-password" variant="standard" onChange={(e) =>
          setPassword(e.target.value)} />
       <br/>
       <br/>
@@ -211,10 +211,10 @@ return (
       </TabPanel>
       <TabPanel value={value} index={1}>
       <h1>{t("sign up")}</h1>
-         <TextField id="standard-basic" label={t("enter your email")}variant="standard" onChange={(e) => 
+         <TextField style={{ width: "250px" }} id="standard-basic" label={t("enter your email")}variant="standard" onChange={(e) => 
         setEmail(e.target.value)} />
       <br/>
-         <TextField id="standard-password-input" label={t("enter your password")} type="password" autoComplete="current-password" variant="standard" onChange={(e) =>
+         <TextField style={{ width: "250px" }} id="standard-password-input" label={t("enter your password")} type="password" autoComplete="current-password" variant="standard" onChange={(e) =>
          setPassword(e.target.value)} />
            <br/>
         {/* <TextField id="standard-basic" label="Imie" variant="standard" onChange={(e) => 
@@ -228,7 +228,7 @@ return (
       <h1>{t("sign in via magic link")}</h1>
       <br/>
       <br/>
-      <TextField id="standard-basic" label={t("enter your email")} placeholder={t("enter your email")}  type="email" onChange={(e) => setEmail(e.target.value)} variant="standard" />
+      <TextField style={{ width: "250px" }} id="standard-basic" label={t("enter your email")} placeholder={t("enter your email")}  type="email" onChange={(e) => setEmail(e.target.value)} variant="standard" />
       <br/> 
       <br/> 
       <Button size="small" variant="contained" onClick={SendMagicLink}>{t("send magic link")}</Button>
