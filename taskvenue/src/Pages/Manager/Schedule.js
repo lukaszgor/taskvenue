@@ -7,7 +7,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { useNavigate } from 'react-router-dom';
 import ScheduleLegend from '../../Components/Common/Legends/ScheduleLegend';
 import { useTranslation } from 'react-i18next';
-import { Button } from '@mui/material';
+import { Button, FormControl, InputLabel, Select, MenuItem } from '@mui/material'; 
 const localizer = momentLocalizer(moment);
 
 const Schedule = () => {
@@ -17,6 +17,8 @@ const Schedule = () => {
     const [tasks, setTasks] = useState([]);
     const [events, setEvents] = useState([]);
     const { t, i18n } = useTranslation();
+    const [selectedUser, setSelectedUser] = useState('');
+    const [profiles, setProfiles] = useState([]);
 
         useEffect(() => {
             const checkSession = async () => {
@@ -37,8 +39,6 @@ const Schedule = () => {
           const addNewTask = () => {
             navigate('/AddNewTask')
         };
-
-
           const fetchData = async (userId) => {
             const { data: profileData, error: profileError } = await supabase
                 .from('profiles')
@@ -51,32 +51,63 @@ const Schedule = () => {
                 setIdConfiguration(profileData.id_configuration);
             }
         }
-     useEffect(() => {
-            if (idConfig) {
-                fetchTasks(idConfig);
-            }
-          }, [idConfig]);
 
-          const fetchTasks = async (idConfig) => {
-            const { data, error } = await supabase
-              .from('tasks')
-              .select('name, kickoffDate, deadline, status,id')
-              .eq('id_configuration', idConfig);
-      
-            if (error) {
-              console.error(error);
-            } else {
-              const formattedEvents = data.map(task => ({
+    useEffect(() => {
+        if (idConfig) {
+            handleFetchUsers(idConfig);
+            fetchTasks(idConfig, selectedUser); // Pobierz zadania z uwzględnieniem wybranego użytkownika
+        }
+    }, [idConfig, selectedUser]);
+    
+    const handleFetchUsers = async (idConfig) => {
+        const { data, error } = await supabase
+            .from('profiles')
+            .select()
+            .eq('id_configuration', idConfig)
+            .in('profile_type', ['manager', 'worker']);
+
+        if (error) {
+            console.log(error);
+        }
+        if (data) {
+            setProfiles(data);
+        }
+    };
+
+    const handleUserChange = (event) => {
+        const newSelectedUser = event.target.value;
+        setSelectedUser(newSelectedUser);
+        fetchTasks(idConfig, newSelectedUser); // Aktualizuj listę zadań po zmianie użytkownika
+    };
+
+    
+
+    const fetchTasks = async (idConfig, selectedUser = '') => { // Dodaj userId jako argument domyślnie pustego
+        let query = supabase.from('tasks').select('name, kickoffDate, deadline, status, id');
+
+        if (selectedUser) {
+            query = query.eq('asigned_user', selectedUser); // Uwzględnij wybranego użytkownika w zapytaniu
+        } else {
+            query = query.eq('id_configuration', idConfig);
+        }
+
+        const { data, error } = await query;
+
+        if (error) {
+            console.error(error);
+        } else {
+            const formattedEvents = data.map(task => ({
                 title: task.name,
                 start: task.kickoffDate,
                 end: task.deadline,
                 allDay: true,
-                status:task.status,
-                id:task.id
-              }));
-              setEvents(formattedEvents);  
-            }
-          };
+                status: task.status,
+                id: task.id
+            }));
+            setEvents(formattedEvents);
+        }
+    };
+
     
 
           const eventStyleGetter = (event) => {
@@ -106,10 +137,30 @@ const Schedule = () => {
     return (
         <div>
             <ManagerNavBar></ManagerNavBar>
-            <p></p><p></p>
+            <p></p>
+           <div>
             <Button  style={{ marginLeft: '20px',marginBottom: '20px' }} type="submit" variant="contained" color="primary"  onClick={addNewTask} >
                 {t("Add")}
               </Button>
+              <FormControl style={{ marginLeft: '20px' }}>
+              <InputLabel id="type-select-label">
+                    {t('Select User')}
+                    </InputLabel>
+                <Select
+                label={t('Select User')}
+                labelId="type-select-label"
+                    value={selectedUser}
+                    onChange={handleUserChange}
+                    style={{ width: "250px" }}
+                >
+                    <MenuItem value="">{t("All users")}</MenuItem>
+                    {profiles.map(profile => (
+                        <MenuItem key={profile.id} value={profile.id}>{profile.username}</MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
+            <p></p>
+            </div>
             <div style={{ height: '500px' }}>
     <Calendar
       localizer={localizer}
@@ -127,3 +178,43 @@ const Schedule = () => {
 };
 
 export default Schedule;
+
+
+
+
+
+{/* <Container maxWidth="md">
+<Typography variant="h4" align="center" gutterBottom>
+<p></p>
+</Typography>
+  <Grid container spacing={2}>
+    <Grid item xs={12} sm={6}>
+    <FormControl style={{ marginLeft: '20px' }}>
+                <InputLabel>{t("Select User")}</InputLabel>
+                <Select
+                    value={selectedUser}
+                    onChange={handleUserChange}
+                >
+                    <MenuItem value="">All Users</MenuItem>
+                    {profiles.map(profile => (
+                        <MenuItem key={profile.id} value={profile.id}>{profile.username}</MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
+    </Grid>
+    <Grid item xs={12} sm={6}>
+    <Button  style={{ marginLeft: '20px',marginBottom: '20px' }} type="submit" variant="contained" color="primary"  onClick={addNewTask} >
+                {t("Add")}
+              </Button>
+    </Grid>
+
+    {/* <Grid item xs={12}>
+      <Box display="flex" justifyContent="flex-end">
+
+    </Box>
+    </Grid> */}
+//   </Grid>
+//   <div>
+// </div>
+
+// </Container> */}
