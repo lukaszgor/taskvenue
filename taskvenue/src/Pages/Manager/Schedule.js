@@ -52,12 +52,7 @@ const Schedule = () => {
             }
         }
 
-    useEffect(() => {
-        if (idConfig) {
-            handleFetchUsers(idConfig);
-            fetchTasks(idConfig, selectedUser); // Pobierz zadania z uwzględnieniem wybranego użytkownika
-        }
-    }, [idConfig, selectedUser]);
+  
     
     const handleFetchUsers = async (idConfig) => {
         const { data, error } = await supabase
@@ -77,38 +72,59 @@ const Schedule = () => {
     const handleUserChange = (event) => {
         const newSelectedUser = event.target.value;
         setSelectedUser(newSelectedUser);
-        fetchTasks(idConfig, newSelectedUser); // Aktualizuj listę zadań po zmianie użytkownika
+        fetchEvents(idConfig, newSelectedUser);
     };
 
-    
-
-    const fetchTasks = async (idConfig, selectedUser = '') => { // Dodaj userId jako argument domyślnie pustego
-        let query = supabase.from('tasks').select('name, kickoffDate, deadline, status, id');
-
+    const fetchEvents = async (idConfig, selectedUser = '') => {
+        let absencesQuery = supabase.from('absences').select('*').eq('id_configuration', idConfig).eq('status', 'approved');
+        let tasksQuery = supabase.from('tasks').select('*').eq('id_configuration', idConfig);
+        
         if (selectedUser) {
-            query = query.eq('asigned_user', selectedUser); // Uwzględnij wybranego użytkownika w zapytaniu
+            absencesQuery = absencesQuery.eq('id_owner_user', selectedUser);
+            tasksQuery = tasksQuery.eq('asigned_user', selectedUser);
+        } 
+        // else {
+        //     absencesQuery = absencesQuery.eq('id_configuration', idConfig);
+        //     tasksQuery = tasksQuery.eq('id_configuration', idConfig);
+        // }
+    
+        const { data: absencesData, error: absencesError } = await absencesQuery;
+        const { data: tasksData, error: tasksError } = await tasksQuery;
+        
+        if (absencesError || tasksError) {
+            console.error(absencesError || tasksError);
         } else {
-            query = query.eq('id_configuration', idConfig);
-        }
-
-        const { data, error } = await query;
-
-        if (error) {
-            console.error(error);
-        } else {
-            const formattedEvents = data.map(task => ({
+            const absencesEvents = absencesData.map(absence => ({
+                title: absence.typeOfAbsence,
+                start: new Date(absence.kickoffDate),
+                end: new Date(absence.finishDate),
+                allDay: true,
+                status: absence.typeOfAbsence,
+                id: absence.id,
+                type: 'absence'
+            }));
+    
+            const tasksEvents = tasksData.map(task => ({
                 title: task.name,
-                start: task.kickoffDate,
-                end: task.deadline,
+                start: new Date(task.kickoffDate),
+                end: new Date(task.deadline),
                 allDay: true,
                 status: task.status,
-                id: task.id
+                id: task.id,
+                type: 'task'
             }));
-            setEvents(formattedEvents);
+    
+            const allEvents = [...absencesEvents, ...tasksEvents];
+            setEvents(allEvents);
         }
     };
 
-    
+    useEffect(() => {
+        if (idConfig) {
+            handleFetchUsers(idConfig);
+            fetchEvents(idConfig, selectedUser);
+        }
+    }, [idConfig, selectedUser]);
 
           const eventStyleGetter = (event) => {
             const eventStatus = event.status.toLowerCase();
@@ -123,6 +139,12 @@ const Schedule = () => {
                 break;
               case 'open':
                 backgroundColor = '#B2E8A6';
+                break;
+              case 'vacation':
+                backgroundColor = '#8d99ae';
+                break;
+              case 'sickleave':
+                backgroundColor = '#7A5980';
                 break;
               default:
                 backgroundColor = 'gray';
