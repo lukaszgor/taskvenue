@@ -8,6 +8,8 @@ import { useParams } from "react-router-dom";
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { useNavigate } from "react-router-dom"
+import ManagerAdministrationContractorBreadcrumbs from '../../Components/Breadcrumbs/ManagerAdministrationContractorBreadcrumbs';
+
 
 
 const ContractorsDetails = () => {
@@ -92,6 +94,7 @@ const handleSubmit = (event) => {
     return (
         <div>
          <ManagerNavBar></ManagerNavBar>
+         <ManagerAdministrationContractorBreadcrumbs></ManagerAdministrationContractorBreadcrumbs>
          <Container maxWidth="md">
         <Typography variant="h4" align="center" gutterBottom>
        <p></p>
