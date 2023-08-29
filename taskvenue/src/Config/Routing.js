@@ -19,6 +19,7 @@ import AddNewVenue from "../Pages/Manager/AddNewVenue";
 import VenueDetalils from "../Pages/Manager/VenueDetalils";
 import AddNewTask from "../Pages/Manager/AddNewTask";
 import TaskDetails from "../Pages/Manager/TaskDetails";
+import Absences from "../Pages/Manager/Absences";
 
 function Routing() {
   return (
@@ -33,6 +34,7 @@ function Routing() {
         <Route path="/Schedule" element={<Schedule />} />
         <Route path="/Reports" element={<Reports />} />
         <Route path="/Tasks" element={<Tasks />} />
+        <Route path="/Absences" element={<Absences />} />
         <Route path="/Profile" element={<Profile />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/AddNewVenue" element={<AddNewVenue />} />
