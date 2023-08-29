@@ -16,9 +16,8 @@ const MainView = () => {
           <Typography variant="h6" fontWeight="bold">{t('Status of the implementation of issues in the last 30 days')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            <StatusOfImplementation30Report></StatusOfImplementation30Report>
-          </Typography>
+          <Typography></Typography>
+          <StatusOfImplementation30Report></StatusOfImplementation30Report>
         </AccordionDetails>
       </Accordion>
 
@@ -27,9 +26,8 @@ const MainView = () => {
           <Typography variant="h6" fontWeight="bold">{t('Your open and in progress tasks')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            <YourOpenAndInProgressTasksReport></YourOpenAndInProgressTasksReport>
-          </Typography>
+          <Typography></Typography>
+          <YourOpenAndInProgressTasksReport></YourOpenAndInProgressTasksReport>
         </AccordionDetails>
       </Accordion>
   </div>
