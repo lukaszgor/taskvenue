@@ -34,8 +34,13 @@ const Schedule = () => {
           const navigate = useNavigate();
 
           const handleEventClick = (event) => {
-            navigate(`/TaskDetails/${event.id}`); 
+            if (event.type === "absence") {
+                navigate(`/Absence/${event.id}`);
+            } else {
+              navigate(`/TaskDetails/${event.id}`);
+            }
           };
+
           const addNewTask = () => {
             navigate('/AddNewTask')
         };
@@ -52,8 +57,6 @@ const Schedule = () => {
             }
         }
 
-  
-    
     const handleFetchUsers = async (idConfig) => {
         const { data, error } = await supabase
             .from('profiles')
@@ -95,7 +98,10 @@ const Schedule = () => {
             console.error(absencesError || tasksError);
         } else {
             const absencesEvents = absencesData.map(absence => ({
-                title: absence.typeOfAbsence,
+                title: {
+                    vacation: t("Vacation"),
+                    sickleave: t("Sick leave")
+                  }[absence.typeOfAbsence],
                 start: new Date(absence.kickoffDate),
                 end: new Date(absence.finishDate),
                 allDay: true,
