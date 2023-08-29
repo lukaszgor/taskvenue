@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import { useTranslation } from "react-i18next";
 import FilterListIcon from '@mui/icons-material/FilterList'; 
+import ManagerVenuesBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerVenuesBreadcrumbs';
 
 const VenueDashboard = () => {
     const [venues, setVenues] = useState([]);
@@ -110,6 +111,7 @@ const VenueDashboard = () => {
     return (
         <div>
             <ManagerNavBar></ManagerNavBar>
+          <ManagerVenuesBreadcrumbs></ManagerVenuesBreadcrumbs>
             <p></p>
             <Button  style={{ marginLeft: '20px',marginBottom: '20px' }} type="submit" variant="contained" color="primary"  onClick={addNewVenue} >
                 {t("Add")}

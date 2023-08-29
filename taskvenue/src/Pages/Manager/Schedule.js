@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import ScheduleLegend from '../../Components/Common/Legends/ScheduleLegend';
 import { useTranslation } from 'react-i18next';
 import { Button, FormControl, InputLabel, Select, MenuItem } from '@mui/material'; 
+import ManagerScheduleBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerScheduleBreadcrumbs';
 const localizer = momentLocalizer(moment);
 
 const Schedule = () => {
@@ -165,6 +166,7 @@ const Schedule = () => {
     return (
         <div>
             <ManagerNavBar></ManagerNavBar>
+            <ManagerScheduleBreadcrumbs></ManagerScheduleBreadcrumbs>
             <p></p>
            <div>
             <Button  style={{ marginLeft: '20px',marginBottom: '20px' }} type="submit" variant="contained" color="primary"  onClick={addNewTask} >

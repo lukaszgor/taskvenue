@@ -6,12 +6,14 @@ import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import { useTranslation } from "react-i18next";
 import StatusOfImplementation30Report from '../../Components/Reports/StatusOfImplementation30Report';
 import YourOpenAndInProgressTasksReport from '../../Components/Reports/YourOpenAndInProgressTasksReport';
+import ManagerReportsBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerScheduleBreadcrumbs';
 function Reports() {
     const { t, i18n } = useTranslation();
 
   return (
     <div>
         <ManagerNavBar></ManagerNavBar>
+        <ManagerReportsBreadcrumbs></ManagerReportsBreadcrumbs>
         <p></p>
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>

@@ -12,6 +12,7 @@ import Settings from '../../Components/Manager/Administration/Settings';
 import Users from '../../Components/Manager/Administration/Users';
 import Contractors from '../../Components/Manager/Administration/Contractors';
 import TaskTypeDictionary from '../../Components/Manager/Administration/TaskTypeDictionary';
+import ManagerAdministrationBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerAdministrationBreadcrumbs';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -55,6 +56,7 @@ function Administration() {
     return (
       <div>
              <ManagerNavBar></ManagerNavBar>
+             <ManagerAdministrationBreadcrumbs></ManagerAdministrationBreadcrumbs>
             <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">

@@ -8,6 +8,8 @@ import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import { useTranslation } from "react-i18next";
 import ManagerOpenAbsences from '../../Components/Manager/Absences/ManagerOpenAbsences';
 import ManagerApprovedAndRejectedAbsences from '../../Components/Manager/Absences/ManagerApprovedAndRejectedAbsences';
+import ManagerAbsencesBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerAbsencesBreadcrumbs';
+
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -51,6 +53,7 @@ function Absences() {
     return (
       <div>
              <ManagerNavBar></ManagerNavBar>
+             <ManagerAbsencesBreadcrumbs></ManagerAbsencesBreadcrumbs>
             <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
