@@ -181,8 +181,10 @@ return (
       }}
       variant="outlined"
     >
+      
       <MenuItem value="en">English</MenuItem>
       <MenuItem value="pl">Polish</MenuItem>
+      <MenuItem value="de">German</MenuItem>
     </Select>
 </Box>
 

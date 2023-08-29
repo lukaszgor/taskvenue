@@ -3,6 +3,7 @@ import { initReactI18next } from "react-i18next";
 
 import en from "./Languages/en.json";
 import pl from "./Languages/pl.json";
+import de from "./Languages/de.json";
 
 
 i18next.use(initReactI18next).init({
@@ -12,6 +13,9 @@ i18next.use(initReactI18next).init({
 		},
 		pl: {
 			translation: pl,
+		},
+		de: {
+			translation: de,
 		},
 	},
 	lng: localStorage.getItem("lng") || "en",
