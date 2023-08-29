@@ -14,7 +14,7 @@ import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
 import IdConfigurationGuard from '../../Config/IdConfigurationGuard';
 
-const pages = ['Administration','Locations','Tasks','Schedule','Reports','Profile'];
+const pages = ['Administration','Locations','Tasks','Absences','Schedule','Reports','Profile'];
 
 
 function ManagerNavBar() {
@@ -108,6 +108,10 @@ function ManagerNavBar() {
     const Tasks =  () => {
         navigate('/Tasks')
         }
+        //go to Tasks 
+    const Absences =  () => {
+      navigate('/Absences')
+      }
         //go to Schedule 
     const Schedule =  () => {
         navigate('/Schedule')
@@ -177,6 +181,7 @@ function ManagerNavBar() {
 <Button onClick={Administration}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Administration")}</Button>
 <Button onClick={Venue}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Venues")}</Button>
 <Button onClick={Tasks}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Tasks")}</Button>
+<Button onClick={Absences}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Absences")}</Button>
 <Button onClick={Schedule}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Schedule")}</Button>
 <Button onClick={Reports}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Reports")}</Button>
             </Menu>
@@ -202,6 +207,7 @@ function ManagerNavBar() {
 <Button onClick={Administration} sx={{ my: 2, color: 'white', display: 'block' }}>{t("Administration")}</Button>
 <Button onClick={Venue}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Venues")}</Button>
 <Button onClick={Tasks}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Tasks")}</Button>
+<Button onClick={Absences}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Absences")}</Button>
 <Button onClick={Schedule}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Schedule")}</Button>
 <Button onClick={Reports}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Reports")}</Button>
           </Box>
