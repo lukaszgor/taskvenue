@@ -124,7 +124,8 @@
     "Client":"Client",
     "Worker":"Worker",
     "Approved":"Approved",
-    "Rejected":"Rejected"
+    "Rejected":"Rejected",
+    "About configuration":"About configuration"
     
   
 
