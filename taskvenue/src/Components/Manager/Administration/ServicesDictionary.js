@@ -1,7 +1,8 @@
 
 import { useState,useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { TextField, Button, Grid, Container, Typography,Box } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography,Box,Accordion, AccordionSummary, AccordionDetails  } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import supabase from '../../../supabaseClient';
 import { useParams } from "react-router-dom";
 import Snackbar from '@mui/material/Snackbar';
@@ -142,73 +143,81 @@ const insertService = async()=>{
       <div>
             <div>
               <p></p>
-       
-       <form onSubmit={handleSubmit} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Add')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+          <form onSubmit={handleSubmit} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
 
-       <Container maxWidth="md">
-        <Typography variant="h4" align="center" gutterBottom>
-       <p></p>
-        </Typography>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-            <TextField
-                    label={t("Name")}
-                    value={name}
-                    onChange={(event) => setName(event.target.value)}
-                    style={{ marginRight: '10px' }}
-                    fullWidth
-                />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-            <TextField
-                    label={t("Description")}
-                    value={description}
-                    onChange={(event) => setDescription(event.target.value)}
-                    style={{ marginRight: '10px' }}
-                    fullWidth
-                />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-            <TextField
-                    label={t("Cost")}
-                    value={cost}
-                    onChange={(event) => setCost(event.target.value)}
-                    style={{ marginRight: '10px' }}
-                    type="number" 
-                    fullWidth
-                />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-            <TextField
-                    label={t("Unit")}
-                    value={unit}
-                    onChange={(event) => setUnit(event.target.value)}
-                    style={{ marginRight: '10px' }}
-                    fullWidth
-                />
-            </Grid>
-            <Grid item xs={12}>
-              <Box display="flex" justifyContent="flex-end">
-                <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                style={{ minWidth: 'auto' }}
-                >
-                {t('Submit')}
-                </Button>
-            </Box>
-            </Grid>
-          </Grid>
-          <div>
-    </div>
-        <Snackbar open={open}
-            autoHideDuration={2000}
-            onClose={handleCloseAlert}>
-          <Alert severity="success"> {t("Updated!")}!</Alert>
-          </Snackbar>
-      </Container>
- </form>
+<Container maxWidth="md">
+ <Typography variant="h4" align="center" gutterBottom>
+<p></p>
+ </Typography>
+   <Grid container spacing={2}>
+     <Grid item xs={12} sm={6}>
+     <TextField
+             label={t("Name")}
+             value={name}
+             onChange={(event) => setName(event.target.value)}
+             style={{ marginRight: '10px' }}
+             fullWidth
+         />
+     </Grid>
+     <Grid item xs={12} sm={6}>
+     <TextField
+             label={t("Description")}
+             value={description}
+             onChange={(event) => setDescription(event.target.value)}
+             style={{ marginRight: '10px' }}
+             fullWidth
+         />
+     </Grid>
+     <Grid item xs={12} sm={6}>
+     <TextField
+             label={t("Cost")}
+             value={cost}
+             onChange={(event) => setCost(event.target.value)}
+             style={{ marginRight: '10px' }}
+             type="number" 
+             fullWidth
+         />
+     </Grid>
+     <Grid item xs={12} sm={6}>
+     <TextField
+             label={t("Unit")}
+             value={unit}
+             onChange={(event) => setUnit(event.target.value)}
+             style={{ marginRight: '10px' }}
+             fullWidth
+         />
+     </Grid>
+     <Grid item xs={12}>
+       <Box display="flex" justifyContent="flex-end">
+         <Button
+         type="submit"
+         variant="contained"
+         color="primary"
+         style={{ minWidth: 'auto' }}
+         >
+         {t('Submit')}
+         </Button>
+     </Box>
+     </Grid>
+   </Grid>
+   <div>
+</div>
+ <Snackbar open={open}
+     autoHideDuration={2000}
+     onClose={handleCloseAlert}>
+   <Alert severity="success"> {t("Updated!")}!</Alert>
+   </Snackbar>
+</Container>
+</form>
+        </AccordionDetails>
+      </Accordion>
+       
  <div>
      {fetchError &&(<p>{fetchError}</p>)}
      {service &&(

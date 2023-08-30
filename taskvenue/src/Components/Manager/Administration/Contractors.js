@@ -5,7 +5,8 @@ import supabase from '../../../supabaseClient';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { useTranslation } from "react-i18next";
-import { TextField, Button, Grid, Container, Typography,Box } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography,Box,Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 
@@ -151,11 +152,17 @@ const insertContractor = async()=>{
       <div>
             <div>
               <p></p>
-              <Container maxWidth="md">
+              <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Add')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+          <Container maxWidth="md">
         <Typography variant="h4" align="center" gutterBottom>
        <p></p>
         </Typography>
-        <form onSubmit={handleSubmit} >
+          <form onSubmit={handleSubmit} >
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -246,13 +253,10 @@ const insertContractor = async()=>{
           <div>
     </div>
         </form>
-        <Snackbar open={open}
-            autoHideDuration={2000}
-            onClose={handleCloseAlert}>
-          <Alert severity="success"> {t("Updated!")}!</Alert>
-          </Snackbar>
-      </Container>
-
+        </Container>
+        </AccordionDetails>
+      </Accordion>
+      
       {isLoading ? (
         <p>{t("Landing...")}</p>
       ) : hasError ? (

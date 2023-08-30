@@ -3,10 +3,11 @@ import { DataGrid } from '@mui/x-data-grid';
 import supabase from '../../../supabaseClient';
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next";
-import { TextField, Button, Grid, Container, Typography, Select, MenuItem,Checkbox,FormControlLabel,FormControl,InputLabel,Box } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography,Accordion, AccordionSummary, AccordionDetails, Select, MenuItem,Checkbox,FormControlLabel,FormControl,InputLabel,Box } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 function Users() {
     const { t, i18n } = useTranslation();
     const [fetchError,setFetchError] =useState(null)
@@ -112,8 +113,15 @@ const UserDetails=(event, cellValues)=>{
         setOpen(false);
       };
     return (
+
       <div>
-   <form onSubmit={handleSubmit} >
+      <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Add new user')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+          <form onSubmit={handleSubmit} >
    <Container maxWidth="md">
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
@@ -166,6 +174,15 @@ const UserDetails=(event, cellValues)=>{
           <div>
     </div>
         </form>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Users')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
           {fetchError &&(<p>{fetchError}</p>)}
         {user &&(
         <div>
@@ -183,8 +200,12 @@ const UserDetails=(event, cellValues)=>{
         </div>
         )}
     
-      </div>
-      
+        </AccordionDetails>
+      </Accordion>
+  </div>
+
+
+    
     );
   }
   export default Users;
