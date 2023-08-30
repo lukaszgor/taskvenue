@@ -119,7 +119,10 @@
     "Absence":"Absence",
     "Start date":"Start date",
     "End date":"End date",
-    "Add new user":"Add new user"
+    "Add new user":"Add new user",
+    "Manager":"Manager",
+    "Client":"Client",
+    "Worker":"Worker"
     
   
 

@@ -71,7 +71,23 @@ const UserDetails=(event, cellValues)=>{
         { field: 'id', headerName: 'ID', type: 'number', width: 300 },
         { field: 'username', headerName: t("First and last name"), type: 'number',width: 200 },
         { field: 'full_name', headerName: t("Email"), type: 'number',width: 200 },
-        { field: 'profile_type', headerName: t("Type"), width: 130 },
+        {
+          field: 'profile_type',
+          headerName: t("Type"),
+          width: 130,
+          valueGetter: (params) => {
+              const profileType = params.value;
+              if (profileType === 'manager') {
+                  return t('Manager');
+              } else if (profileType === 'client') {
+                  return t('Client');
+              } else if (profileType === 'worker') {
+                  return t('Worker');
+              } else {
+                  return profileType;
+              }
+          },
+      },
         {
             field: "Akcje",headerName: t("Action"), width: 200 ,
             renderCell: (cellValues) => {
@@ -144,9 +160,9 @@ const UserDetails=(event, cellValues)=>{
                 fullWidth
                 required
               >
-                <MenuItem value="manager">Manager</MenuItem>
-                <MenuItem value="worker">Worker</MenuItem>
-                <MenuItem value="client">Client</MenuItem>
+                <MenuItem value="manager">{t('Manager')}</MenuItem>
+                <MenuItem value="worker">{t('Worker')}</MenuItem>
+                <MenuItem value="client">{t('Client')}</MenuItem>
               </Select>
               </FormControl>
             </Grid>
