@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { useTranslation } from "react-i18next";
+import Tooltip from '@mui/material/Tooltip';
 
 function ServicesDictionary() {
   const { t, i18n } = useTranslation();
@@ -120,9 +121,31 @@ const insertService = async()=>{
   
 
   const columns = [
-      { field: 'name', headerName: t("Name"), width: 130 },
-      { field: 'description', headerName: t("Description"), width: 220 },
-      { field: 'cost', headerName: t("Cost"), width: 220 },
+      {
+        field: 'name',
+        headerName: t("Name"),
+        width: 300, 
+        renderCell: (params) => (
+          <Tooltip title={params.value} arrow>
+            <div style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '100%' }}>
+              {params.value}
+            </div>
+          </Tooltip>
+        ),
+      },
+      {
+        field: 'description',
+        headerName: t("Description"),
+        width: 600, 
+        renderCell: (params) => (
+          <Tooltip title={params.value} arrow>
+            <div style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '100%' }}>
+              {params.value}
+            </div>
+          </Tooltip>
+        ),
+      },
+      { field: 'cost', headerName: t("Cost"), width: 80 },
       { field: 'unit', headerName: t("Unit"), width: 220 },
       {
           field: "Action",headerName: t("Action"), width: 200 ,
@@ -172,6 +195,7 @@ const insertService = async()=>{
              onChange={(event) => setDescription(event.target.value)}
              style={{ marginRight: '10px' }}
              fullWidth
+             multiline
          />
      </Grid>
      <Grid item xs={12} sm={6}>

@@ -9,6 +9,7 @@ import { TextField, Button, Grid, Container, Typography,Box,Accordion, Accordion
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
+import Tooltip from '@mui/material/Tooltip';
 
 function Contractors() {
     const navigate = useNavigate()
@@ -125,13 +126,57 @@ const insertContractor = async()=>{
   };
   
   const columns = [
-      { field: 'nameOrCompanyName', headerName: t("Name"), width: 130 },
-      { field: 'description', headerName: t("Description"), width: 130 },
+      {
+        field: 'nameOrCompanyName',
+        headerName: t("Name"),
+        width: 200, 
+        renderCell: (params) => (
+          <Tooltip title={params.value} arrow>
+            <div style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '100%' }}>
+              {params.value}
+            </div>
+          </Tooltip>
+        ),
+      },
+      {
+        field: 'description',
+        headerName: t("Description"),
+        width: 200, 
+        renderCell: (params) => (
+          <Tooltip title={params.value} arrow>
+            <div style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '100%' }}>
+              {params.value}
+            </div>
+          </Tooltip>
+        ),
+      },
       { field: 'taxId', headerName: t("Tax ID"), width: 130 },
-      { field: 'nationalEconomyRegisterNumber', headerName: t("National Economy Register ID"), width: 130 },
-      { field: 'address', headerName: t("address"), width: 130 },
+      { field: 'nationalEconomyRegisterNumber', headerName: t("National Economy Register ID"), width: 110 },
+      {
+        field: 'address',
+        headerName: t("address"),
+        width: 130, 
+        renderCell: (params) => (
+          <Tooltip title={params.value} arrow>
+            <div style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '100%' }}>
+              {params.value}
+            </div>
+          </Tooltip>
+        ),
+      },
       { field: 'phone_number', headerName: t("phone number"), width: 130 },
-      { field: 'email', headerName: t("email"), width: 130 },
+      {
+        field: 'email',
+        headerName: t("email"),
+        width: 130, 
+        renderCell: (params) => (
+          <Tooltip title={params.value} arrow>
+            <div style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '100%' }}>
+              {params.value}
+            </div>
+          </Tooltip>
+        ),
+      },
       { field: 'contactPerson', headerName: t("contact person"), width: 130 },
       {
           field: "Action",headerName: t("Action"), width: 200 ,
@@ -256,7 +301,7 @@ const insertContractor = async()=>{
         </Container>
         </AccordionDetails>
       </Accordion>
-      
+
       {isLoading ? (
         <p>{t("Landing...")}</p>
       ) : hasError ? (
