@@ -124,7 +124,7 @@ const ManagerApprovedAndRejectedAbsences = () => {
                     </div>
                     <div style={{ marginBottom: '16px' }}>
                         <TextField
-                            label={t("Search by User")}//do tlumaczenia
+                            label={t("Search by User")}
                             variant="outlined"
                             value={searchUser}
                             onChange={(e) => setsearchUser(e.target.value)}
