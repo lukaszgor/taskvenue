@@ -113,7 +113,12 @@
     "Select User":"Select User",
     "All users":"All users",
     "Absences":"Absences",
-    "Contractor edit":"Contractor edit"
+    "Contractor edit":"Contractor edit",
+    "Closed":"Closed",
+    "User":"User",
+    "Absence":"Absence",
+    "Start date":"Start date",
+    "End date":"End date"
     
   
 

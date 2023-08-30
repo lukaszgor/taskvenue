@@ -113,7 +113,12 @@
     "Select User":"Wybierz użytkownika ",
     "All users":"Wszyscy użytkownicy",
     "Absences":"Absencje",
-    "Contractor edit":"Edycja kontrahenta"
+    "Contractor edit":"Edycja kontrahenta",
+    "Closed":"Zamknięte",
+    "User":"Użytkownik",
+    "Absence":"Absencja",
+    "Start date":"Data rozpoczęcia",
+    "End date":"Data zakończenia"
     
  
 
