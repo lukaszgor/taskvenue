@@ -163,7 +163,7 @@ const ManagerApprovedAndRejectedAbsences = () => {
                                     {t("End date")} : {absence.finishDate}
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary">
-                                    {t("Status")} : {absence.status}
+                                    {t("Status")} : {{ open: t("Open"),approved: t("Approved"),rejected:t("Rejected")}[absence.status]}
                                 </Typography>
                                 <p></p>
                                 <Button

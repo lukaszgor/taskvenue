@@ -130,7 +130,7 @@ const ManagerOpenAbsences = () => {
                     </div>
                     <div style={{ marginBottom: '16px' }}>
                         <TextField
-                            label={t("Search by User")}//do tlumaczenia
+                            label={t("Search by User")}
                             variant="outlined"
                             value={searchUser}
                             onChange={(e) => setsearchUser(e.target.value)}
@@ -169,7 +169,7 @@ const ManagerOpenAbsences = () => {
                                     {t("End date")} : {absence.finishDate}
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary">
-                                    {t("Status")} : {absence.status}
+                                {t("Status")} : {{ open: t("Open"),approved: t("Approved"),rejected:t("Rejected")}[absence.status]}
                                 </Typography>
                                 <p></p>
                                 <Button

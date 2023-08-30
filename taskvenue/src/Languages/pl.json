@@ -122,7 +122,9 @@
     "Add new user":"Dodaj nowego użytkownika",
     "Manager":"Kierownik",
     "Client":"Klient",
-    "Worker":"Pracownik"
+    "Worker":"Pracownik",
+    "Approved":"Zatwierdzony",
+    "Rejected":"Odrzucony"
     
  
 
