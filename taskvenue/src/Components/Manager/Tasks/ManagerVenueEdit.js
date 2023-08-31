@@ -208,7 +208,7 @@ const ManagerVenueEdit = () => {
           autoHideDuration={2000}
           onClose={handleCloseAlert}
         >
-          <Alert severity="success">{t('Updated')}!</Alert>
+          <Alert severity="success">{t('Updated!')}</Alert>
         </Snackbar>
       </Container>
     </div>
