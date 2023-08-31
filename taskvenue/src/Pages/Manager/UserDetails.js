@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import ManagerAdministrationUserBreadcrumbs from '../../Components/Breadcrumbs/ManagerAdministrationUserBreadcrumbs';
-
+import { useNavigate } from "react-router-dom"
 
 const UserDetails = () => {
     const {id} = useParams()
@@ -22,6 +22,7 @@ const UserDetails = () => {
     const [isBlocked, setIsBlocked] = useState(0);
     const [userID, setUserID] = useState('');
     const [idConfig, setIdConfiguration] = useState('');
+    const navigate = useNavigate();
    
         const [contractors, setContractors] = useState([]);
         const [selectedContractorId, setSelectedContractorId] = useState(null);
@@ -37,7 +38,7 @@ const FetchUserData = async () => {
     .eq('id_configuration', idConfig)
     .single()
     if(error){
-     
+      navigate('/home')
     }if(data){
         setEmail(data.full_name)
         setName(data.username)

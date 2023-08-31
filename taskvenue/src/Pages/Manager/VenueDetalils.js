@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
 import ManagerVenueBreadcrumbs from '../../Components/Breadcrumbs/ManagerVenueBreadcrumbs';
+import { useNavigate } from "react-router-dom"
 
 const VenueDetalils = () => {
     const { t, i18n } = useTranslation();
@@ -19,6 +20,7 @@ const VenueDetalils = () => {
     const [userID, setUserID] = useState('');
     const [idConfig, setIdConfiguration] = useState('');
     const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
 
     const handleFetchData = async () => {
         const { data, error } = await supabase
@@ -30,6 +32,7 @@ const VenueDetalils = () => {
 
         if (error) {
             // Handle error if needed
+            navigate('/home')
         }
         if (data) {
             setName(data.name)

@@ -26,7 +26,8 @@ const [name, setName] = useState('');
   const [contactPerson, setContactPerson] = useState('');
   const [userID, setUserID] = useState('');
   const [idConfig, setIdConfiguration] = useState('');
-  
+
+
   useEffect(() => {
       const checkSession = async () => {
           const { data } = await supabase.auth.getSession();
@@ -68,6 +69,7 @@ const [name, setName] = useState('');
     .single()
     if(error){
         console.log(error)
+        navigate('/home')
     }if(data){
         setName(data.nameOrCompanyName);
         setDescription(data.description);

@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import supabase from '../../../supabaseClient';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
+import { useNavigate } from "react-router-dom"
 
 const DateInput = styled.input`
   width: 100%;
@@ -36,6 +37,7 @@ const ManagerBasicDataEdit = () => {
   const [kickoff, setKickoff] = useState('');
   const [createdDate, setCreatedDate] = useState('');
   const [taskTypes, setTaskTypes] = useState([]);
+  const navigate = useNavigate();
 
   const handleFetchData = async () => {
     const { data, error } = await supabase
@@ -47,6 +49,8 @@ const ManagerBasicDataEdit = () => {
 
     if (error) {
       // Handle error if needed
+      navigate('/home')
+      
     }
     if (data) {
       setName(data.name);
