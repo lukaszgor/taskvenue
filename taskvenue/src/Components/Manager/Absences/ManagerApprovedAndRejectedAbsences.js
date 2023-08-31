@@ -79,7 +79,7 @@ const ManagerApprovedAndRejectedAbsences = () => {
     };
 
     const handleButtonClickAbsenceDetails = (absence) => {
-        navigate('/Absence/' + absence.id)
+        navigate('/AbsenceDetails/' + absence.id)
     };
 
 

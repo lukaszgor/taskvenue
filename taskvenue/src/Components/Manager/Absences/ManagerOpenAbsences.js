@@ -79,7 +79,7 @@ const ManagerOpenAbsences = () => {
     };
 
     const handleButtonClickAbsenceDetails = (absence) => {
-        navigate('/Absence/' + absence.id)
+        navigate('/AbsenceDetails/' + absence.id)
     };
 
     const addNewAbsence = () => {

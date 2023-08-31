@@ -20,6 +20,7 @@ import VenueDetalils from "../Pages/Manager/VenueDetalils";
 import AddNewTask from "../Pages/Manager/AddNewTask";
 import TaskDetails from "../Pages/Manager/TaskDetails";
 import Absences from "../Pages/Manager/Absences";
+import AbsenceDetails from "../Pages/Manager/AbsenceDetails";
 
 function Routing() {
   return (
@@ -43,6 +44,7 @@ function Routing() {
         <Route path="/ContractorsDetails/:id" element={<ContractorsDetails />} />
         <Route path="/VenueDetalils/:id" element={<VenueDetalils />} />
         <Route path="/TaskDetails/:id" element={<TaskDetails />} />
+        <Route path="/AbsenceDetails/:id" element={<AbsenceDetails />} />
       </Routes>
     </BrowserRouter>
   );
