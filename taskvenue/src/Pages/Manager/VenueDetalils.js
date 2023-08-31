@@ -25,6 +25,7 @@ const VenueDetalils = () => {
             .from('venues')
             .select()
             .eq('id', id)
+            .eq('id_configuration', idConfig)
             .single();
 
         if (error) {
@@ -154,6 +155,7 @@ const VenueDetalils = () => {
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                                 fullWidth
+                                multiline
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
