@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
 import styled from 'styled-components';
+import ManagerAbsenceBreadcrumbs from '../../Components/Breadcrumbs/ManagerAbsenceBreadcrumbs';
+
 
 const DateInput = styled.input`
   width: 100%;
@@ -65,7 +67,6 @@ const AbsenceDetails = () => {
             .eq('id', id)
             .eq('id_configuration', idConfig)
             .single();
-//dodac eq id configuracji i przetestowac - jak dziala wszedzie to dodac w innych miejscach takich jak task,venue,user,contractor
         if (error) {
             // Handle error if needed
         }
@@ -106,6 +107,7 @@ const AbsenceDetails = () => {
         }
         if (data) {
             handleClickAlert();
+  
         }
     };
 
@@ -140,7 +142,7 @@ const AbsenceDetails = () => {
     return (
         <div>
             <ManagerNavBar></ManagerNavBar>
-          {/* breadcrumbsy */}
+ <ManagerAbsenceBreadcrumbs></ManagerAbsenceBreadcrumbs>
             <Container maxWidth="md">
                     <p></p>
                 <form onSubmit={handleSubmit} >
