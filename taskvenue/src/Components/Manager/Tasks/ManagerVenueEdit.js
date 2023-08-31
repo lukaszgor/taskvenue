@@ -46,7 +46,6 @@ const ManagerVenueEdit = () => {
       .from('venues')
       .select()
       .eq('id_configuration', idConfig);
-
     if (error) {
       console.log(error);
     }
@@ -88,6 +87,7 @@ const ManagerVenueEdit = () => {
       .from('tasks')
       .select('id_venue')
       .eq('id', id)
+      .eq('id_configuration', idConfig) 
       .single();
     if (error) {
       // Handle error if needed

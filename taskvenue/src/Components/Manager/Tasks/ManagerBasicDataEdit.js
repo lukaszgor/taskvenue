@@ -42,6 +42,7 @@ const ManagerBasicDataEdit = () => {
       .from('tasks')
       .select()
       .eq('id', id)
+      .eq('id_configuration', idConfig) 
       .single();
 
     if (error) {
