@@ -24,17 +24,47 @@ const [name, setName] = useState('');
   const [phone_number, setPhone_number] = useState('');
   const [email, setEmail] = useState('');
   const [contactPerson, setContactPerson] = useState('');
+  const [userID, setUserID] = useState('');
+  const [idConfig, setIdConfiguration] = useState('');
+  
+  useEffect(() => {
+      const checkSession = async () => {
+          const { data } = await supabase.auth.getSession();
+          if (data.session) {
+              setUserID(data.session.user.id);
+              fetchData(data.session.user.id);
+          }
+      };
+      checkSession();
+  }, []);
 
-  useEffect(()=>{
-    FetchContractor();
-  },[])
+  const fetchData = async (userId) => {
+      const { data: profileData, error: profileError } = await supabase
+          .from('profiles')
+          .select('id_configuration')
+          .eq('id', userId)
+          .single();
+      if (profileError) {
+          console.log(profileError);
+      } else if (profileData) {
+          setIdConfiguration(profileData.id_configuration);
+      }
+  }
 
-  const FetchContractor = async()=>{
+  useEffect(() => {
+      if (idConfig) {
+        FetchContractor(idConfig);
+      }
+  }, [idConfig]);
+
+
+  const FetchContractor = async(idConfig)=>{
     const{data,error} =  await supabase
     .from('contractor')
     .select()
     .eq('id',id)
-    .is('isDeleted', null) 
+    .is('isDeleted', null)
+    .eq('id_configuration', idConfig) 
     .single()
     if(error){
         console.log(error)
