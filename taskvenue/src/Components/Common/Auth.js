@@ -5,14 +5,21 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from "react-i18next";
-import { Select, MenuItem } from "@mui/material";
+import { Box, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 
 export let userEmail
 export let userId
+
+
+  const languageOptions = [
+    { value: 'en', label: '🇬🇧 English' },
+    { value: 'pl', label: '🇵🇱 Polish' },
+    { value: 'de', label: '🇩🇪 German' },
+  ];
+
 //navigate menu section
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -162,17 +169,28 @@ return (
 </Box>
 
 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-<p>{t("language")}</p>
+{/* <p>{t("language")}</p> */}
 <div>&nbsp;</div>
-{/* <Select
-      value={""}
-      onChange={(event) => handleChangeLng(event.target.value)}
-      variant="outlined"
-    >
-      <MenuItem onClick={() => handleChangeLng("en")}>English</MenuItem>
-      <MenuItem onClick={() => handleChangeLng("pl")}>Polish</MenuItem>
- </Select> */}
-  <Select
+<FormControl variant="outlined" style={{ marginRight: '16px', width: 'auto' }}>
+      <InputLabel id="language-select-label">Select Language</InputLabel>
+      <Select
+        labelId="language-select-label"
+        value={selectedLanguage}
+        onChange={(event) => {
+          const selectedLng = event.target.value;
+          handleChangeLng(selectedLng);
+          setSelectedLanguage(selectedLng);
+        }}
+        label="Select Language"
+      >
+        {languageOptions.map((option) => (
+          <MenuItem key={option.value} value={option.value}>
+            {option.label}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+  {/* <Select
       value={selectedLanguage} // Set the value prop to the state variable
       onChange={(event) => {
         const selectedLng = event.target.value;
@@ -185,7 +203,7 @@ return (
       <MenuItem value="en">English</MenuItem>
       <MenuItem value="pl">Polish</MenuItem>
       <MenuItem value="de">German</MenuItem>
-    </Select>
+    </Select> */}
 </Box>
 
 </div>
