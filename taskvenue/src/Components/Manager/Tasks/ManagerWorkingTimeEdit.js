@@ -1,6 +1,6 @@
 import { useState,useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { TextField, Button, Grid, Container, Typography,Box,Select,MenuItem,FormControl,InputLabel } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography,Box,Select,MenuItem,FormControl,InputLabel,Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import supabase from '../../../supabaseClient';
 import { useParams } from "react-router-dom";
 import Snackbar from '@mui/material/Snackbar';
@@ -8,6 +8,8 @@ import Alert from '@mui/material/Alert';
 import { useTranslation } from "react-i18next";
 import styled from 'styled-components';
 import { format } from 'date-fns';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 
 const DateInput = styled.input`
   width: 100%;
@@ -182,9 +184,9 @@ const insertService = async()=>{
         {fetchError && <p>{fetchError}</p>}
         {workTime && (
           <div>
-            <div style={{ textAlign: 'center' }}>
+            <div style={{ textAlign: 'right' }}>
               <Typography variant="h6">
-                {t('Summary')}: {fullTime}
+                {t('Summary')}: {fullTime} <AccessTimeOutlinedIcon fontSize='medium' />
               </Typography>
             </div>
           </div>
@@ -192,7 +194,13 @@ const insertService = async()=>{
       </div>
     </div>
 
-       <form onSubmit={handleSubmit} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Add')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+          <form onSubmit={handleSubmit} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
        <Container maxWidth="md">
         <Typography variant="h4" align="center" gutterBottom>
        <p></p>
@@ -247,6 +255,8 @@ const insertService = async()=>{
           </Snackbar>
       </Container>
  </form>
+        </AccordionDetails>
+      </Accordion>
  <div>
      {fetchError &&(<p>{fetchError}</p>)}
      {workTime &&(

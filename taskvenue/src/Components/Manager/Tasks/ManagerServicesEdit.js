@@ -1,12 +1,14 @@
 
 import { useState,useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { TextField, Button, Grid, Container, Typography,Box,Select,MenuItem,FormControl,InputLabel } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography,Box,Select,MenuItem,FormControl,InputLabel,Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import supabase from '../../../supabaseClient';
 import { useParams } from "react-router-dom";
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { useTranslation } from "react-i18next";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import LocalAtmOutlinedIcon from '@mui/icons-material/LocalAtmOutlined';
 
 function ManagerServicesEdit() {
   const { t, i18n } = useTranslation();
@@ -159,9 +161,10 @@ const insertService = async()=>{
     setOpen(false);
   };
 
+
   const columns = [
-      { field: 'name', headerName: t("Name"), width: 130 },
-      { field: 'description', headerName: t("Description"), width: 220 },
+      { field: 'name', headerName: t("Name"), width: 250 },
+      { field: 'description', headerName: t("Description"), width: 400},
       { field: 'cost', headerName: t("Cost"), width: 70 },
       { field: 'quantity', headerName: t("Quantity"), width: 70 },
       { field: 'unit', headerName: t("Unit"), width: 100 },
@@ -192,9 +195,9 @@ const insertService = async()=>{
         {service && (
           <div>
             {/* ... (existing JSX) */}
-            <div style={{ textAlign: 'center' }}>
+            <div style={{ textAlign: 'right' }}>
               <Typography variant="h6">
-                {t('Summary')}: {fullTotalTask}
+               {t('Summary')}: {fullTotalTask} <LocalAtmOutlinedIcon fontSize='medium' />
               </Typography>
             </div>
           </div>
@@ -202,7 +205,13 @@ const insertService = async()=>{
       </div>
     </div>
 
-       <form onSubmit={handleSubmit} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Add')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+          <form onSubmit={handleSubmit} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
        <Container maxWidth="md">
         <Typography variant="h4" align="center" gutterBottom>
        <p></p>
@@ -304,6 +313,9 @@ const insertService = async()=>{
           </Snackbar>
       </Container>
  </form>
+        </AccordionDetails>
+      </Accordion>
+
  <div>
      {fetchError &&(<p>{fetchError}</p>)}
      {service &&(
