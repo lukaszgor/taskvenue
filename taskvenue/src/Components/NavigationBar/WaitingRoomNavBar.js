@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import FetchSupabaseData from '../../Config/FetchSupabaseData';
 
 
+
 function WaitingRoomNavBar() {
     const [user,setUser] =useState(null)
   const { t, i18n } = useTranslation();
