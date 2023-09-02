@@ -4,6 +4,9 @@ import supabase from '../../supabaseClient';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { useTranslation } from "react-i18next";
+import { Accordion, AccordionSummary, AccordionDetails, Typography,FormControl,Grid,Container} from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 
 function PasswordChange() {
     const [password, setPassword] = useState('');
@@ -53,7 +56,6 @@ function PasswordChange() {
           handleClickAlert()
     };
 
-
          //alert configuration
 const [open,setOpen] =useState(null)
 
@@ -68,10 +70,16 @@ const handleCloseAlert = (event, reason) => {
   setOpen(false);
 };
     return (   
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          
-          <p>{t("Password change")}</p>
-      
+      <div >
+        <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Password change')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+          <Container maxWidth="md">
+        <Grid item xs={12} sm={6}>
+          <FormControl fullWidth>
       <TextField
               label={t("New password")} 
               type="password"
@@ -81,12 +89,25 @@ const handleCloseAlert = (event, reason) => {
               onChange={(e) => setPassword(e.target.value)}
               style={{ marginBottom: '10px', maxWidth: '300px' }}
             />
-          
            <Button variant="contained" color="error" style={{ marginBottom: '10px', maxWidth: '300px' }} onClick={handlePasswordChange}>
            {t("Submit")}
           </Button>
+          </FormControl>
+            </Grid>
+            </Container>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('First and last name change')}</Typography>
           
-          <p> {t("First and last name change")}</p>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+          <Container maxWidth="md">
+        <Grid item xs={12} sm={6}>
+          <FormControl fullWidth>
         <TextField
                       label={t("First and last name")} 
                       value={fullName}
@@ -94,14 +115,21 @@ const handleCloseAlert = (event, reason) => {
                       style={{ marginBottom: '10px', maxWidth: '300px' }}
                     />
         
-        <Button type="submit" variant="contained" color="primary" style={{ marginLeft: '10px' }} onClick={handleFullNameChange}>
+        <Button type="submit" variant="contained" color="primary" style={{ maxWidth: '300px'}} onClick={handleFullNameChange}>
         {t("Submit")}
         </Button>
+        </FormControl>
+            </Grid>
+            </Container>
       <Snackbar open={open}
           autoHideDuration={2000}
           onClose={handleCloseAlert}>
         <Alert severity="success"> {t("Updated!")}</Alert>
         </Snackbar>
+        </AccordionDetails>
+      </Accordion>
+
+
   
         </div>
      
