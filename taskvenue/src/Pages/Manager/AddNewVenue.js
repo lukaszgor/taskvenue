@@ -3,9 +3,10 @@ import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import { useState,useEffect } from 'react';
 import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
-import { TextField, Button, Grid, Container, Typography, Select, MenuItem,FormControl } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography, Select, MenuItem,FormControl,InputLabel } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import ManagerVenueBreadcrumbs from '../../Components/Breadcrumbs/ManagerVenueBreadcrumbs';
 
 
 const AddNewVenue = () => {
@@ -99,11 +100,9 @@ const handleCloseAlert = (event, reason) => {
     return (
         <div>
             <ManagerNavBar></ManagerNavBar>
+            <ManagerVenueBreadcrumbs></ManagerVenueBreadcrumbs>
             <Container maxWidth="md">
-        <Typography variant="h4" align="center" gutterBottom>
-       {t("Add venue")} 
-       <p></p>
-        </Typography>
+
         <form onSubmit={handleSubmit} >
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
@@ -136,6 +135,9 @@ const handleCloseAlert = (event, reason) => {
             </Grid>
             <Grid item xs={12} sm={6}>
           <FormControl fullWidth>
+          <InputLabel id="contractor-select-label">
+                  {t('Select Contractor')}
+                </InputLabel>
             <Select
               labelId="contractor-select-label"
               id="contractor-select"
