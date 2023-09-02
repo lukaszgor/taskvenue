@@ -125,7 +125,9 @@
     "Worker":"Pracownik",
     "Approved":"Zatwierdzony",
     "Rejected":"Odrzucony",
-    "About configuration":"Informacje o konfiguracji"
+    "About configuration":"Informacje o konfiguracji",
+    "Add absence":"Dodaj absencje",
+    "Add task":"Dodaj task"
     
  
 

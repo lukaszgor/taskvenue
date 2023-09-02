@@ -125,7 +125,9 @@
     "Worker":"Worker",
     "Approved":"Approved",
     "Rejected":"Rejected",
-    "About configuration":"About configuration"
+    "About configuration":"About configuration",
+    "Add absence":"Add absence",
+    "Add task":"Add task"
     
   
 

@@ -45,6 +45,9 @@ const Schedule = () => {
           const addNewTask = () => {
             navigate('/AddNewTask')
         };
+        const addNewAbsence = () => {
+            navigate('/AddNewAbsence')
+        };
           const fetchData = async (userId) => {
             const { data: profileData, error: profileError } = await supabase
                 .from('profiles')
@@ -170,7 +173,10 @@ const Schedule = () => {
             <p></p>
            <div>
             <Button  style={{ marginLeft: '20px',marginBottom: '20px' }} type="submit" variant="contained" color="primary"  onClick={addNewTask} >
-                {t("Add")}
+                {t("Add task")}
+              </Button>
+              <Button  style={{ marginLeft: '20px',marginBottom: '20px' }} type="submit" variant="contained" color="primary"  onClick={addNewAbsence} >
+                {t("Add absence")}
               </Button>
               <FormControl style={{ marginLeft: '20px' }}>
               <InputLabel id="type-select-label">
