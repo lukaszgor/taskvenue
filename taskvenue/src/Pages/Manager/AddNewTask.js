@@ -11,6 +11,7 @@ import supabase from '../../supabaseClient';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import moment from 'moment';
+import ManagerTaskBreadcrumbs from '../../Components/Breadcrumbs/ManagerTaskBreadcrumbs';
 
 
 const DateInput = styled.input`
@@ -221,6 +222,7 @@ function AddNewTask() {
     return (
       <div>
              <ManagerNavBar></ManagerNavBar>
+             <ManagerTaskBreadcrumbs></ManagerTaskBreadcrumbs>
             <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
