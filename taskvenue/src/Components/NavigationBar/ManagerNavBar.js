@@ -175,6 +175,15 @@ function ManagerNavBar() {
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: 'block', md: 'none' },
+                // Apply styles when the menu is open
+                '&.MuiPaper-root': {
+                  minWidth: '400px', // Adjust the width as needed
+                  padding: '16px', // Add padding as needed
+                },
+                '& .MuiButton-root': {
+                  fontSize: '20px', // Increase text size
+                  color: '#0166FF', // Dodaj kolor tekstu
+                },
               }}
             >
  <Button onClick={Home}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Home")}</Button>
