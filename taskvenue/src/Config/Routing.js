@@ -21,6 +21,7 @@ import AddNewTask from "../Pages/Manager/AddNewTask";
 import TaskDetails from "../Pages/Manager/TaskDetails";
 import Absences from "../Pages/Manager/Absences";
 import AbsenceDetails from "../Pages/Manager/AbsenceDetails";
+import AddNewAbsence from "../Pages/Manager/AddNewAbsence";
 
 function Routing() {
   return (
@@ -40,6 +41,7 @@ function Routing() {
         <Route path="/Register" element={<Register />} />
         <Route path="/AddNewVenue" element={<AddNewVenue />} />
         <Route path="/AddNewTask" element={<AddNewTask />} />
+        <Route path="/AddNewAbsence" element={<AddNewAbsence />} />
         <Route path="/UserDetails/:id" element={<UserDetails />} />
         <Route path="/ContractorsDetails/:id" element={<ContractorsDetails />} />
         <Route path="/VenueDetalils/:id" element={<VenueDetalils />} />

@@ -19,7 +19,7 @@ const DateInput = styled.input`
   box-sizing: border-box;
 `;
 
-const AbsenceDetails = () => {
+const AddNewAbsence = () => {
     const { t, i18n } = useTranslation();
     const { id } = useParams();
     const [profiles, setProfiles] = useState([]);
@@ -59,26 +59,7 @@ const AbsenceDetails = () => {
         }
     }
 
-    const handleFetchData = async (idConfig) => {
 
-        const { data, error } = await supabase
-            .from('absences')
-            .select()
-            .eq('id', id)
-            .eq('id_configuration', idConfig)
-            .single();
-        if (error) {
-            // Handle error if needed
-        }
-        if (data) {
-            setId_ownerUser(data.id_owner_user)
-            setDescription(data.description)
-            setKickoffDate(data.kickoffDate);
-            setFinishDate(data.finishDate)
-            setTypeOfAbsence(data.typeOfAbsence)
-            setStatus(data.status);
-        }
-    };
 
     const handleFetchProfiles = async (idConfig) => {
         const { data, error } = await supabase
@@ -99,7 +80,7 @@ const AbsenceDetails = () => {
     const handleUpdateAbsences = async () => {
         const { data, error } = await supabase
             .from('absences')
-            .update([{ description: description, status: status, kickoffDate: kickoffDate, finishDate: finishDate }])
+            .upsert([{ description: description, status: status, kickoffDate: kickoffDate, finishDate: finishDate,id_configuration:idConfig,typeOfAbsence:typeOfAbsence,id_owner_user:id_owner_user }])
             .eq('id', id);
             handleClickAlert();
         if (error) {
@@ -119,7 +100,6 @@ const AbsenceDetails = () => {
     useEffect(() => {
         if (idConfig) {
             handleFetchProfiles(idConfig);
-            handleFetchData(idConfig);
         }
     }, [idConfig]);
 
@@ -164,7 +144,7 @@ const AbsenceDetails = () => {
                             />
                             </Grid>
                             <Grid item xs={12} sm={6}>
-                            <FormControl fullWidth disabled>
+                            <FormControl fullWidth >
                                 <InputLabel id="status-select-select-label">
                                 {t('Absence')}
                                 </InputLabel>
@@ -212,7 +192,7 @@ const AbsenceDetails = () => {
                             </Grid>
                         <Grid item xs={12} sm={6}>
                         {profiles.length > 0 && (
-                            <FormControl fullWidth disabled>
+                            <FormControl fullWidth >
                                 <InputLabel id="status-select-select-label">
                                     {t("User")}
                                 </InputLabel>
@@ -257,4 +237,4 @@ const AbsenceDetails = () => {
     );
 };
 
-export default AbsenceDetails;
+export default AddNewAbsence;
