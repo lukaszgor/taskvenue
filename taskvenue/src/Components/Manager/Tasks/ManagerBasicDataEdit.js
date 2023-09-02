@@ -1,14 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import {TextField,Button,Grid,Container,Select,MenuItem,FormControl,FormControlLabel,Checkbox,InputLabel,Box} from '@mui/material';
+import {
+  TextField,
+  Button,
+  Grid,
+  Container,
+  Select,
+  MenuItem,
+  FormControl,
+  FormControlLabel,
+  Checkbox,
+  InputLabel,
+  Box,
+} from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { useParams } from 'react-router-dom';
 import supabase from '../../../supabaseClient';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
 
-const DateInput = styled.input`
+const DateTimeInput = styled.input`
   width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
@@ -44,13 +56,12 @@ const ManagerBasicDataEdit = () => {
       .from('tasks')
       .select()
       .eq('id', id)
-      .eq('id_configuration', idConfig) 
+      .eq('id_configuration', idConfig)
       .single();
 
     if (error) {
       // Handle error if needed
-      navigate('/home')
-      
+      navigate('/home');
     }
     if (data) {
       setName(data.name);
@@ -109,7 +120,7 @@ const ManagerBasicDataEdit = () => {
           deadline: deadline,
           status: status,
           type: type,
-          estimatedTime:estimatedTime
+          estimatedTime: estimatedTime,
         },
       ])
       .eq('id', id);
@@ -175,7 +186,6 @@ const ManagerBasicDataEdit = () => {
     }
   }, [idConfig]);
 
-
   const handleChangeContractor = (event) => {
     const value = event.target.value;
     setSelectedContractorId(value);
@@ -201,12 +211,12 @@ const ManagerBasicDataEdit = () => {
     setSettled((prevState) => (prevState === null ? 1 : null));
   };
 
-  const handleDeadlineChange = (event) => {
-    setDeadline(event.target.value);
+  const handleKickoffChange = (event) => {
+    setKickoff(event.target.value); // Przechowuje datę i godzinę w formacie YYYY-MM-DDTHH:MM
   };
 
-  const handleKickoffChange = (event) => {
-    setKickoff(event.target.value);
+  const handleDeadlineChange = (event) => {
+    setDeadline(event.target.value); // Przechowuje datę i godzinę w formacie YYYY-MM-DDTHH:MM
   };
 
   return (
@@ -246,10 +256,10 @@ const ManagerBasicDataEdit = () => {
             <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
                 <InputLabel id="type-select-label">
-                    {t('Type')}
-                    </InputLabel>
+                  {t('Type')}
+                </InputLabel>
                 <Select
-                   name="type"
+                  name="type"
                   label={t('Type')}
                   labelId="type-select-label"
                   id="type-select"
@@ -313,25 +323,25 @@ const ManagerBasicDataEdit = () => {
                 value={estimatedTime}
                 onChange={(e) => setEstimatedTime(e.target.value)}
                 fullWidth
-                type="number" 
+                type="number"
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <label>{t('Creation date')}</label>
-              <DateInput type="date" value={createdDate} disabled />
+              <DateTimeInput type="datetime-local" value={createdDate} disabled />
             </Grid>
             <Grid item xs={12} sm={6}>
               <label>{t('Start of implementation')}</label>
-              <DateInput
-                type="date"
+              <DateTimeInput
+                type="datetime-local"
                 value={kickoff}
                 onChange={handleKickoffChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <label>{t('Deadline')}</label>
-              <DateInput
-                type="date"
+              <DateTimeInput
+                type="datetime-local"
                 value={deadline}
                 onChange={handleDeadlineChange}
               />
@@ -360,16 +370,16 @@ const ManagerBasicDataEdit = () => {
             </Grid>
 
             <Grid item xs={12}>
-            <Box display="flex" justifyContent="flex-end">
+              <Box display="flex" justifyContent="flex-end">
                 <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                style={{ minWidth: 'auto' }}
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  style={{ minWidth: 'auto' }}
                 >
-                {t('Submit')}
+                  {t('Submit')}
                 </Button>
-            </Box>
+              </Box>
             </Grid>
           </Grid>
         </form>

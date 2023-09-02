@@ -14,7 +14,7 @@ import moment from 'moment';
 import ManagerTaskBreadcrumbs from '../../Components/Breadcrumbs/ManagerTaskBreadcrumbs';
 
 
-const DateInput = styled.input`
+const DateTimeInput = styled.input`
   width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
@@ -77,7 +77,7 @@ function AddNewTask() {
   const [currentDate, setCurrentDate] = useState('');
 
   useEffect(() => {
-    const formattedDate = moment().format('YYYY-MM-DD');
+    const formattedDate = moment().format('YYYY-MM-DDTHH:mm');
     setCurrentDate(formattedDate);
   }, []); 
 
@@ -338,21 +338,25 @@ function AddNewTask() {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <label>{t('Creation date')}</label>
-              <DateInput type="date" value={createdDate} disabled />
+            <label>{t('Creation date')}</label>
+            <DateTimeInput
+            value={createdDate} 
+                type="datetime-local"
+                disabled
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
               <label>{t('Start of implementation')}</label>
-              <DateInput
-                type="date"
+              <DateTimeInput
+                type="datetime-local"
                 value={kickoff}
                 onChange={handleKickoffChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <label>{t('Deadline')}</label>
-              <DateInput
-                type="date"
+              <DateTimeInput
+                type="datetime-local"
                 value={deadline}
                 onChange={handleDeadlineChange}
               />

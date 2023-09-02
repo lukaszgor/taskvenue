@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import ManagerAbsenceBreadcrumbs from '../../Components/Breadcrumbs/ManagerAbsenceBreadcrumbs';
 
 
-const DateInput = styled.input`
+const DateTimeInput = styled.input`
   width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
@@ -149,16 +149,16 @@ const AbsenceDetails = () => {
                     <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
                             <label>{t('Start date')}</label>
-                            <DateInput
-                                type="date"
+                            <DateTimeInput
+                                type="datetime-local"
                                 value={kickoffDate}
                                 onChange={(e) => setKickoffDate(e.target.value)}
                             />
                             </Grid>
                             <Grid item xs={12} sm={6}>
                             <label>{t('End date')}</label>
-                            <DateInput
-                                type="date"
+                            <DateTimeInput
+                                type="datetime-local"
                                 value={finishDate}
                                 onChange={(e) => setFinishDate(e.target.value)}
                             />

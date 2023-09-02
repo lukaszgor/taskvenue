@@ -4,6 +4,8 @@ import supabase from '../../../supabaseClient';
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next";
 import FilterListIcon from '@mui/icons-material/FilterList'; 
+import moment from 'moment';
+import 'moment/locale/pl'; 
 
 const ManagerOpenAbsences = () => {
     const [absences, setAbsences] = useState([]);
@@ -17,6 +19,7 @@ const ManagerOpenAbsences = () => {
     const [idConfig, setIdConfiguration] = useState('');
     const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
     
+
     useEffect(() => {
         const checkSession = async () => {
             const { data } = await supabase.auth.getSession();
@@ -100,6 +103,10 @@ const ManagerOpenAbsences = () => {
         setIsFilterPopupOpen(false);
     };
 
+    const formatDate = (date) => {
+        return moment(date).format('YYYY-MM-DD HH:mm');
+      };
+
     return (
         <div>
             <Button  style={{ marginLeft: '20px',marginBottom: '20px' }} type="submit" variant="contained" color="primary"  onClick={addNewAbsence} >
@@ -163,10 +170,10 @@ const ManagerOpenAbsences = () => {
                                     {t("Absence")} : {{ vacation: t("Vacation"),sickleave: t("Sick leave")}[absence.typeOfAbsence]}
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary">
-                                    {t("Start date")} : {absence.kickoffDate}
+                                {t("Start date")} : {formatDate(absence.kickoffDate)}
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary">
-                                    {t("End date")} : {absence.finishDate}
+                                {t("End date")} : {formatDate(absence.finishDate)}
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary">
                                 {t("Status")} : {{ open: t("Open"),approved: t("Approved"),rejected:t("Rejected")}[absence.status]}
