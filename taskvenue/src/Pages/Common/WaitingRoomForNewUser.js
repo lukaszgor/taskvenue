@@ -7,6 +7,7 @@ import clipboardCopy from 'clipboard-copy';
 import WaitingRoomNavBar from '../../Components/NavigationBar/WaitingRoomNavBar';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import WavingHandOutlinedIcon from '@mui/icons-material/WavingHandOutlined';
+import Game from '../../Components/Common/Game';
 
 const WaitingRoomForNewUser = () => {
     const { t, i18n } = useTranslation();
@@ -51,14 +52,17 @@ const WaitingRoomForNewUser = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Button
+            <div style={{ textAlign: 'center' }}>
+            <Button
                 type="submit"
                 variant="contained"
                 color="primary"
-                fullWidth
+                style={{ width: '200px' }}
               >
                 {t("Copy")}
               </Button>
+            </div>
+
             </Grid>
             <Grid item xs={12}>
             <p> {t("Copy the ID and deliver to your administrator to add you to the appropriate configuration")}</p>
@@ -72,7 +76,15 @@ const WaitingRoomForNewUser = () => {
         </AccordionDetails>
       </Accordion>
 
-
+      <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t("Are you waiting? let's play a game")}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+<Game></Game>
+        </AccordionDetails>
+      </Accordion>
 
 
  

@@ -127,7 +127,19 @@
     "Rejected":"Rejected",
     "About configuration":"About configuration",
     "Add absence":"Add absence",
-    "Add task":"Add task"
+    "Add task":"Add task",
+    "Are you waiting? let's play a game":"Are you waiting? let's play a game",
+    "game": {
+        "rock": "Rock",
+        "paper": "Paper",
+        "scissors": "Scissors",
+        "playerChoice": "Your choice: {{choice}}",
+        "computerChoice": "Computer's choice: {{choice}}",
+        "tie": "It's a tie!",
+        "playerWins": "You win!",
+        "computerWins": "Computer wins."
+      }
+   
     
   
 

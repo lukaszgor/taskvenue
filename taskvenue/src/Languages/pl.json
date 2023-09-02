@@ -127,7 +127,18 @@
     "Rejected":"Odrzucony",
     "About configuration":"Informacje o konfiguracji",
     "Add absence":"Dodaj absencje",
-    "Add task":"Dodaj task"
+    "Add task":"Dodaj task",
+    "Are you waiting? let's play a game":"Czekasz? zagraj w gre",
+    "game": {
+        "rock": "Kamień",
+        "paper": "Papier",
+        "scissors": "Nożyce",
+        "playerChoice": "Twój wybór: {{choice}}",
+        "computerChoice": "Wybór komputera: {{choice}}",
+        "tie": "Remis!",
+        "playerWins": "Wygrałeś!",
+        "computerWins": "Komputer wygrał."
+      }
     
  
 
