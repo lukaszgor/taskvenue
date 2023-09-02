@@ -36,7 +36,7 @@ const Schedule = () => {
 
   const handleEventClick = (event) => {
     if (event.type === "absence") {
-      navigate(`/Absence/${event.id}`);
+      navigate(`/AbsenceDetails/${event.id}`);
     } else {
       navigate(`/TaskDetails/${event.id}`);
     }
@@ -163,6 +163,11 @@ const Schedule = () => {
       },
     };
   };
+  const minTime = new Date();
+  minTime.setHours(6, 0, 0); // Ustawia godzinę na 8:00 rano
+
+  const maxTime = new Date();
+  maxTime.setHours(23, 0, 0); // Ustawia godzinę na 23:00 wieczorem
 
   return (
     <div>
@@ -203,6 +208,8 @@ const Schedule = () => {
           endAccessor="end"
           eventPropGetter={eventStyleGetter}
           onSelectEvent={handleEventClick}
+          min={minTime}
+          max={maxTime}
         />
       </div>
       <p></p>
