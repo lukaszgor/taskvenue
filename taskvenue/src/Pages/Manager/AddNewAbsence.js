@@ -32,6 +32,7 @@ const AddNewAbsence = () => {
     const [userID, setUserID] = useState('');
     const [idConfig, setIdConfiguration] = useState('');
     const [open, setOpen] = useState(false);
+    const [errorDate, setErrorDate] = useState(null);
 
 
     useEffect(() => {
@@ -94,7 +95,14 @@ const AddNewAbsence = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        handleUpdateAbsences();
+        if (new Date(finishDate) < new Date(kickoffDate)) {
+            // Ustaw błąd w stanie
+            setErrorDate(t('Incorrect dates'));
+        } else {
+            // Jeśli dane są poprawne, zresetuj stan błędu i wykonaj aktualizację absencji
+            setErrorDate(null);
+            handleUpdateAbsences();
+        }
     };
 
     useEffect(() => {
@@ -230,8 +238,13 @@ const AddNewAbsence = () => {
                 <Snackbar open={open}
                     autoHideDuration={2000}
                     onClose={handleCloseAlert}>
-                    <Alert severity="success"> {t("Updated!")}!</Alert>
+                    <Alert severity="success"> {t("Updated!")}</Alert>
                 </Snackbar>
+                <Snackbar open={!!errorDate} autoHideDuration={2000} onClose={() => setErrorDate(null)}>
+                <Alert severity="error" onClose={() => setErrorDate(null)}>
+                    {errorDate}
+                </Alert>
+            </Snackbar>
             </Container>
         </div>
     );

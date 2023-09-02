@@ -50,6 +50,7 @@ const ManagerBasicDataEdit = () => {
   const [createdDate, setCreatedDate] = useState('');
   const [taskTypes, setTaskTypes] = useState([]);
   const navigate = useNavigate();
+  const [errorDate, setErrorDate] = useState(null);
 
   const handleFetchData = async () => {
     const { data, error } = await supabase
@@ -133,10 +134,18 @@ const ManagerBasicDataEdit = () => {
     }
   };
 
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    handleUpdateTask();
-  };
+    if (new Date(deadline) < new Date(kickoff)) {
+        // Ustaw błąd w stanie
+        setErrorDate(t('Incorrect dates'));
+    } else {
+        // Jeśli dane są poprawne, zresetuj stan błędu i wykonaj aktualizację absencji
+        setErrorDate(null);
+        handleUpdateTask();
+    }
+};
 
   useEffect(() => {
     const checkSession = async () => {
@@ -390,6 +399,11 @@ const ManagerBasicDataEdit = () => {
         >
           <Alert severity="success">{t('Updated!')}</Alert>
         </Snackbar>
+        <Snackbar open={!!errorDate} autoHideDuration={2000} onClose={() => setErrorDate(null)}>
+                <Alert severity="error" onClose={() => setErrorDate(null)}>
+                    {errorDate}
+                </Alert>
+            </Snackbar>
       </Container>
     </div>
   );

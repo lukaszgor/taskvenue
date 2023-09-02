@@ -12,6 +12,8 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import moment from 'moment';
 import ManagerTaskBreadcrumbs from '../../Components/Breadcrumbs/ManagerTaskBreadcrumbs';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 
 const DateTimeInput = styled.input`
@@ -75,6 +77,7 @@ function AddNewTask() {
   const [createdDate, setCreatedDate] = useState('');
   const [taskTypes, setTaskTypes] = useState([]);
   const [currentDate, setCurrentDate] = useState('');
+  const [errorDate, setErrorDate] = useState(null);
 
   useEffect(() => {
     const formattedDate = moment().format('YYYY-MM-DDTHH:mm');
@@ -138,10 +141,18 @@ function AddNewTask() {
     }
   };
 
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    handleInsertTask();
-  };
+    if (new Date(deadline) < new Date(kickoff)) {
+        // Ustaw błąd w stanie
+        setErrorDate(t('Incorrect dates'));
+    } else {
+        // Jeśli dane są poprawne, zresetuj stan błędu i wykonaj aktualizację absencji
+        setErrorDate(null);
+        handleInsertTask();
+    }
+};
 
   useEffect(() => {
     const checkSession = async () => {
@@ -398,6 +409,11 @@ function AddNewTask() {
             </Grid>
           </Grid>
         </form>
+        <Snackbar open={!!errorDate} autoHideDuration={2000} onClose={() => setErrorDate(null)}>
+                <Alert severity="error" onClose={() => setErrorDate(null)}>
+                    {errorDate}
+                </Alert>
+            </Snackbar>
         </Container>
       </TabPanel>
       <TabPanel value={value} index={1} >
