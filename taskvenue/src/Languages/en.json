@@ -139,7 +139,11 @@
         "playerWins": "You win!",
         "computerWins": "Computer wins."
       },
-      "Incorrect dates":"Incorrect dates"
+      "Incorrect dates":"Incorrect dates",
+      "Date from : ":"Date from : ",
+      "Date to : ":"Date to : ",
+      "Report realization of issues for the customers [only completed]":"Report realization of issues for the customers [only completed]"
+
 
    
     
