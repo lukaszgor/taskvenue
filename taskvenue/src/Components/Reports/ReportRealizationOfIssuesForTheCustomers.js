@@ -10,7 +10,7 @@ function formatDateToISOString(date) {
   return isoString.slice(0, 16); // Obcina ostatnie trzy znaki (sekundy i milisekundy)
 }
 
-const StatusOfImplementation30Report = () => {
+const ReportRealizationOfIssuesForTheCustomers = () => {
   const [mockedData, setMockedData] = useState([]);
   const { t } = useTranslation();
   const [idConfig, setIdConfiguration] = useState('');
@@ -38,7 +38,7 @@ const StatusOfImplementation30Report = () => {
       .eq('id', userId)
       .single();
     if (profileError) {
-      console.log(profileError);
+      console.error(profileError);
     } else if (profileData) {
       setIdConfiguration(profileData.id_configuration);
     }
@@ -48,8 +48,14 @@ const StatusOfImplementation30Report = () => {
     if (idConfig) {
       async function fetchAndSetData() {
         const tasksData = await fetchTasksData(idConfig);
-        const transformedData = transformData(tasksData);
-        setMockedData(transformedData);
+        const contractorData = await fetchContractorData();
+
+        if (tasksData && contractorData) {
+          const transformedData = transformData(tasksData, contractorData);
+          setMockedData(transformedData);
+        } else {
+          console.error('Error fetching data');
+        }
       }
 
       fetchAndSetData();
@@ -59,9 +65,9 @@ const StatusOfImplementation30Report = () => {
   async function fetchTasksData(idConfig) {
     const { data, error } = await supabase
       .from('tasks')
-      .select('status,id')
+      .select()
       .eq('id_configuration', idConfig)
-      .in('status', ['inProgress', 'open', 'completed'])
+      .eq('status', 'completed') 
       .gte('created_at', daysAgo)
       .lte('created_at', currentDate);
 
@@ -72,27 +78,43 @@ const StatusOfImplementation30Report = () => {
     return data || [];
   }
 
-  const statusMapping = {
-    inProgress: t('In progress'),
-    open: t('Open'),
-    completed: t('Completed'),
-  };
+  async function fetchContractorData() {
+    const { data, error } = await supabase.from('contractor').select('id,nameOrCompanyName');
 
-  function transformData(tasksData) {
+    if (error) {
+      console.error('Error fetching contractor data:', error.message);
+      return [];
+    }
+    return data || [];
+  }
+
+  function transformData(tasksData, contractorData) {
+    if (!tasksData || !contractorData) {
+      console.error('Data is undefined');
+      return [];
+    }
+
+    const contractorMap = {};
+
+    // Tworzenie mapy id_contractor -> name
+    contractorData.forEach((contractor) => {
+      contractorMap[contractor.id] = contractor.nameOrCompanyName;
+    });
+
     const statusCounts = {};
     tasksData.forEach((task) => {
-      const translatedStatus = statusMapping[task.status];
-      if (translatedStatus) {
-        if (statusCounts[translatedStatus]) {
-          statusCounts[translatedStatus]++;
+      const contractorName = contractorMap[task.id_contractor];
+      if (contractorName) {
+        if (statusCounts[contractorName]) {
+          statusCounts[contractorName]++;
         } else {
-          statusCounts[translatedStatus] = 1;
+          statusCounts[contractorName] = 1;
         }
       }
     });
 
-    const transformedData = Object.entries(statusCounts).map(([status, value]) => ({
-      status,
+    const transformedData = Object.entries(statusCounts).map(([nameOrCompanyName, value]) => ({
+      nameOrCompanyName,
       value,
     }));
 
@@ -124,15 +146,15 @@ const StatusOfImplementation30Report = () => {
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={mockedData}>
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="status" />
+          <XAxis dataKey="nameOrCompanyName" />
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="value" fill="#3498db" name={t('Tasks')} />
+          <Bar dataKey="value" fill="#0077B6" name={t('Tasks')} />
         </BarChart>
       </ResponsiveContainer>
     </div>
   );
 };
 
-export default StatusOfImplementation30Report;
+export default ReportRealizationOfIssuesForTheCustomers;

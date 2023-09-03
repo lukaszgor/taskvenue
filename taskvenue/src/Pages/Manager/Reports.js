@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import StatusOfImplementation30Report from '../../Components/Reports/StatusOfImplementation30Report';
 import YourOpenAndInProgressTasksReport from '../../Components/Reports/YourOpenAndInProgressTasksReport';
 import ManagerReportsBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerReportsBreadcrumbs';
+import ReportRealizationOfIssuesForTheCustomers from '../../Components/Reports/ReportRealizationOfIssuesForTheCustomers';
 function Reports() {
     const { t, i18n } = useTranslation();
 
@@ -33,6 +34,16 @@ function Reports() {
         <AccordionDetails>
           <Typography></Typography>
           <YourOpenAndInProgressTasksReport></YourOpenAndInProgressTasksReport>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Report realization of issues for the customers [only completed]')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+          <ReportRealizationOfIssuesForTheCustomers></ReportRealizationOfIssuesForTheCustomers>
         </AccordionDetails>
       </Accordion>
     </div>
