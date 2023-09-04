@@ -5,12 +5,24 @@ import YourOpenAndInProgressTasksReport from '../Reports/YourOpenAndInProgressTa
 import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useTranslation } from "react-i18next";
+import ManagerMainSummary from '../Reports/ManagerMainSummary';
+
 const MainView = () => {
   const { t, i18n } = useTranslation();
   return (
     <div>
         <ManagerNavBar></ManagerNavBar>
         <p></p>
+        <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Summary')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+          <ManagerMainSummary></ManagerMainSummary>
+        </AccordionDetails>
+      </Accordion>
+
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">{t('Status of the implementation of issues in the last 30 days')}</Typography>
