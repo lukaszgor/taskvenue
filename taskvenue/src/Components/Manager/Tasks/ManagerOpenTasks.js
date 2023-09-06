@@ -14,6 +14,7 @@ import supabase from '../../../supabaseClient';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import FilterListIcon from '@mui/icons-material/FilterList';
+import moment from 'moment';
 
 const ManagerOpenTasks = () => {
   const [tasks, setTasks] = useState([]);
@@ -151,6 +152,11 @@ const ManagerOpenTasks = () => {
     setInProgressFilter(!inProgressFilter);
   };
 
+  const formatDate = (dateStr) => {
+    const formattedDate = moment(dateStr).format('DD.MM.YY HH:mm');
+    return formattedDate;
+  }
+
   return (
     <div>
       <Button
@@ -243,9 +249,9 @@ const ManagerOpenTasks = () => {
                 <Typography variant="h6" gutterBottom>
                   {t('Name')} : {task.name}
                 </Typography>
-                <Typography variant="body2" color="textSecondary">
+                {/* <Typography variant="body2" color="textSecondary">
                   {t('Description')} : {task.description}
-                </Typography>
+                </Typography> */}
                 <Typography variant="body2" color="textSecondary">
                   {t('Status')} :{' '}
                   {task.status === 'open'
@@ -256,6 +262,12 @@ const ManagerOpenTasks = () => {
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
                   {t('Contractor')} : {task.contractor?.nameOrCompanyName}
+                </Typography>
+                <Typography variant="body2" color="textSecondary">
+                  {t('Start of implementation')}: {formatDate(task.kickoffDate)}
+                </Typography>
+                <Typography variant="body2" color="textSecondary">
+                 {t('Deadline')}: {formatDate(task.deadline)}
                 </Typography>
                 <p></p>
                 <Button
