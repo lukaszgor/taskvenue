@@ -4,6 +4,7 @@ import supabase from '../../../supabaseClient';
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next";
 import FilterListIcon from '@mui/icons-material/FilterList'; 
+import moment from 'moment';
 
 const ManagerClosedTasks = () => {
     const [tasks, setTasks] = useState([]);
@@ -106,6 +107,11 @@ const ManagerClosedTasks = () => {
         setFilteredTasks(filteredData);
         setIsFilterPopupOpen(false);
     };
+    const formatDate = (dateStr) => {
+        const formattedDate = moment(dateStr).format('DD.MM.YY HH:mm');
+        return formattedDate;
+      }
+    
 
     return (
         <div>
@@ -178,6 +184,12 @@ const ManagerClosedTasks = () => {
                                 <Typography variant="body2" color="textSecondary">
                                     {t("Contractor")} : {task.contractor?.nameOrCompanyName}
                                 </Typography>
+                                <Typography variant="body2" color="textSecondary">
+                                    {t('Start of implementation')}: {formatDate(task.kickoffDate)}
+                                    </Typography>
+                                    <Typography variant="body2" color="textSecondary">
+                                    {t('Deadline')}: {formatDate(task.deadline)}
+                                    </Typography>
                                 <p></p>
                                 <Button
                                     variant="contained"
