@@ -179,6 +179,9 @@ const ManagerOpenTasks = () => {
                                     {t("Description")} : {task.description}
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary">
+                                    {t("Status")} : {task.status === 'open' ? t('Open') : task.status === 'inProgress' ? t('In progress') : ''}
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary">
                                     {t("Contractor")} : {task.contractor?.nameOrCompanyName}
                                 </Typography>
                                 <p></p>
