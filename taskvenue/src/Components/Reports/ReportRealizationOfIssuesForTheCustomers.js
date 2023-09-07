@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid } from 'recharts';
 import { Grid, Container, Typography } from '@mui/material';
 import supabase from '../../supabaseClient';
 import { useTranslation } from 'react-i18next';
@@ -143,16 +143,16 @@ const ReportRealizationOfIssuesForTheCustomers = () => {
           />
         </Grid>
       </Grid>
-      <ResponsiveContainer width="100%" height={300}>
-        <BarChart data={mockedData}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="nameOrCompanyName" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="value" fill="#0077B6" name={t('Tasks')} />
-        </BarChart>
-      </ResponsiveContainer>
+      <ResponsiveContainer width="90%" height={300}>
+  <BarChart data={mockedData} layout="vertical" margin={{ top: 10, right: 10, bottom: 20, left: 100 }} > {/* Ustawienie layout na "vertical" */}
+    <CartesianGrid strokeDasharray="3 3" />
+    <YAxis dataKey="nameOrCompanyName" type="category" /> 
+    <XAxis type="number" />
+    <Legend />
+    <Bar dataKey="value" fill="#0077B6" name={t('Tasks')} />
+  </BarChart>
+</ResponsiveContainer>
+
     </div>
   );
 };
