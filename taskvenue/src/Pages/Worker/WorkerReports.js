@@ -16,16 +16,6 @@ function WorkerReports() {
              <WorkerNavBar></WorkerNavBar>
         <ManagerReportsBreadcrumbs></ManagerReportsBreadcrumbs>
         <p></p>
-      <Accordion>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        <Typography variant="h6" fontWeight="bold">{t('Status of the implementation of issues in the last 30 days')}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography></Typography>
-          <StatusOfImplementation30Report></StatusOfImplementation30Report>
-        </AccordionDetails>
-      </Accordion>
-
 
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -37,15 +27,7 @@ function WorkerReports() {
         </AccordionDetails>
       </Accordion>
 
-      <Accordion>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t('Report realization of issues for the customers [only completed]')}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography></Typography>
-          <ReportRealizationOfIssuesForTheCustomers></ReportRealizationOfIssuesForTheCustomers>
-        </AccordionDetails>
-      </Accordion>
+
     </div>
   );
 }
