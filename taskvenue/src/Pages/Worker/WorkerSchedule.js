@@ -36,18 +36,16 @@ const WorkerSchedule = () => {
 
   const handleEventClick = (event) => {
     if (event.type === "absence") {
-      navigate(`/AbsenceDetails/${event.id}`);
+      navigate(`/WorkerAbsenceDetails/${event.id}`);
     } else {
-      navigate(`/TaskDetails/${event.id}`);
+      navigate(`/WorkerTaskDetails/${event.id}`);
     }
   };
 
-  const addNewTask = () => {
-    navigate('/AddNewTask');
-  };
+
   
   const addNewAbsence = () => {
-    navigate('/AddNewAbsence');
+    navigate('/AddNewWorkerAbsence');
   };
 
   const fetchData = async (userId) => {
@@ -81,12 +79,12 @@ const WorkerSchedule = () => {
   const handleUserChange = (event) => {
     const newSelectedUser = event.target.value;
     setSelectedUser(newSelectedUser);
-    fetchEvents(idConfig, newSelectedUser);
+    fetchEvents(idConfig, newSelectedUser,userID);
   };
 
-  const fetchEvents = async (idConfig, selectedUser = '') => {
-    let absencesQuery = supabase.from('absences').select('*').eq('id_configuration', idConfig).eq('status', 'approved');
-    let tasksQuery = supabase.from('tasks').select('*').eq('id_configuration', idConfig);
+  const fetchEvents = async (idConfig, selectedUser = '',userID) => {
+    let absencesQuery = supabase.from('absences').select('*').eq('id_configuration', idConfig).eq('status', 'approved').eq('id_owner_user', userID);
+    let tasksQuery = supabase.from('tasks').select('*').eq('id_configuration', idConfig).eq('asigned_user', userID);
 
     if (selectedUser) {
       absencesQuery = absencesQuery.eq('id_owner_user', selectedUser);
@@ -130,9 +128,9 @@ const WorkerSchedule = () => {
   useEffect(() => {
     if (idConfig) {
       handleFetchUsers(idConfig);
-      fetchEvents(idConfig, selectedUser);
+      fetchEvents(idConfig, selectedUser,userID);
     }
-  }, [idConfig, selectedUser]);
+  }, [idConfig, selectedUser,userID]);
 
   const eventStyleGetter = (event) => {
     const eventStatus = event.status.toLowerCase();
@@ -175,13 +173,10 @@ const WorkerSchedule = () => {
       <WorkerScheduleBreadcrumbs />
       <p></p>
       <div>
-        <Button style={{ marginLeft: '20px', marginBottom: '20px' }} type="submit" variant="contained" color="primary" onClick={addNewTask}>
-          {t("Add task")}
-        </Button>
         <Button style={{ marginLeft: '20px', marginBottom: '20px' }} type="submit" variant="contained" color="primary" onClick={addNewAbsence}>
           {t("Add absence")}
         </Button>
-        <FormControl style={{ marginLeft: '20px' }}>
+        {/* <FormControl style={{ marginLeft: '20px' }}>
           <InputLabel id="type-select-label">
             {t('Select User')}
           </InputLabel>
@@ -197,7 +192,7 @@ const WorkerSchedule = () => {
               <MenuItem key={profile.id} value={profile.id}>{profile.username}</MenuItem>
             ))}
           </Select>
-        </FormControl>
+        </FormControl> */}
         <p></p>
       </div>
       <div style={{ height: '500px' }}>
