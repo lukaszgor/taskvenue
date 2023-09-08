@@ -44,7 +44,7 @@ function TabPanel(props) {
     };
   }
 
-function WorkerAbsence() {
+function WorkerAbsences() {
     const { t, i18n } = useTranslation();
     const [value, setValue] = useState(0);
     const handleChange = (event, newValue) => {
@@ -72,4 +72,4 @@ function WorkerAbsence() {
     );
   }
   
-  export default WorkerAbsence;
+  export default WorkerAbsences;
