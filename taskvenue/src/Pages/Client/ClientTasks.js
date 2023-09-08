@@ -8,7 +8,7 @@ import ClientNavBar from '../../Components/NavigationBar/ClientNavBar';
 import { useTranslation } from "react-i18next";
 import ManagerClosedTasks from '../../Components/Manager/Tasks/ManagerClosedTasks';
 import ManagerOpenTasks from '../../Components/Manager/Tasks/ManagerOpenTasks';
-import ManagerTasksBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerTasksBreadcrumbs';
+import ClientTasksBreadcrumbs from '../../Components/Breadcrumbs/Client/ClientTasksBreadcrumbs';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -52,7 +52,7 @@ function ClientTasks() {
     return (
       <div>
              <ClientNavBar></ClientNavBar>
-             <ManagerTasksBreadcrumbs></ManagerTasksBreadcrumbs>
+             <ClientTasksBreadcrumbs></ClientTasksBreadcrumbs>
             <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">

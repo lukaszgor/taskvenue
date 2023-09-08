@@ -8,7 +8,7 @@ import WorkerNavBar from '../../Components/NavigationBar/WorkerNavBar';
 import { useTranslation } from "react-i18next";
 import ManagerClosedTasks from '../../Components/Manager/Tasks/ManagerClosedTasks';
 import ManagerOpenTasks from '../../Components/Manager/Tasks/ManagerOpenTasks';
-import ManagerTasksBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerTasksBreadcrumbs';
+import WorkerTasksBreadcrumbs from '../../Components/Breadcrumbs/Worker/WorkerTasksBreadcrumbs';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -52,7 +52,7 @@ function WorkerTasks() {
     return (
       <div>
              <WorkerNavBar></WorkerNavBar>
-             <ManagerTasksBreadcrumbs></ManagerTasksBreadcrumbs>
+             <WorkerTasksBreadcrumbs></WorkerTasksBreadcrumbs>
             <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">

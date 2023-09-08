@@ -8,7 +8,7 @@ import WorkerNavBar from '../../Components/NavigationBar/WorkerNavBar';
 import { useTranslation } from "react-i18next";
 import ManagerOpenAbsences from '../../Components/Manager/Absences/ManagerOpenAbsences';
 import ManagerApprovedAndRejectedAbsences from '../../Components/Manager/Absences/ManagerApprovedAndRejectedAbsences';
-import ManagerAbsencesBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerAbsencesBreadcrumbs';
+import WorkerAbsencesBreadcrumbs from '../../Components/Breadcrumbs/Worker/WorkerAbsencesBreadcrumbs';
 
 
 function TabPanel(props) {
@@ -53,7 +53,7 @@ function WorkerAbsences() {
     return (
       <div>
              <WorkerNavBar></WorkerNavBar>
-             <ManagerAbsencesBreadcrumbs></ManagerAbsencesBreadcrumbs>
+             <WorkerAbsencesBreadcrumbs></WorkerAbsencesBreadcrumbs>
             <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">

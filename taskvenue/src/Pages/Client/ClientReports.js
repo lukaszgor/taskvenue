@@ -6,15 +6,15 @@ import ClientNavBar from '../../Components/NavigationBar/ClientNavBar';
 import { useTranslation } from "react-i18next";
 import StatusOfImplementation30Report from '../../Components/Reports/StatusOfImplementation30Report';
 import YourOpenAndInProgressTasksReport from '../../Components/Reports/YourOpenAndInProgressTasksReport';
-import ManagerReportsBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerReportsBreadcrumbs';
 import ReportRealizationOfIssuesForTheCustomers from '../../Components/Reports/ReportRealizationOfIssuesForTheCustomers';
+import ClientReportsBreadcrumbs from '../../Components/Breadcrumbs/Client/ClientReportsBreadcrumbs';
 function ClientReports() {
     const { t, i18n } = useTranslation();
 
   return (
     <div>
              <ClientNavBar></ClientNavBar>
-        <ManagerReportsBreadcrumbs></ManagerReportsBreadcrumbs>
+        <ClientReportsBreadcrumbs></ClientReportsBreadcrumbs>
         <p></p>
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>

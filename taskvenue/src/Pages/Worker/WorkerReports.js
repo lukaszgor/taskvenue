@@ -4,17 +4,16 @@ import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import WorkerNavBar from '../../Components/NavigationBar/WorkerNavBar';
 import { useTranslation } from "react-i18next";
-import StatusOfImplementation30Report from '../../Components/Reports/StatusOfImplementation30Report';
 import YourOpenAndInProgressTasksReport from '../../Components/Reports/YourOpenAndInProgressTasksReport';
-import ManagerReportsBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerReportsBreadcrumbs';
-import ReportRealizationOfIssuesForTheCustomers from '../../Components/Reports/ReportRealizationOfIssuesForTheCustomers';
+import WorkerReportsBreadcrumbs from '../../Components/Breadcrumbs/Worker/WorkerReportsBreadcrumbs';
+
 function WorkerReports() {
     const { t, i18n } = useTranslation();
 
   return (
     <div>
              <WorkerNavBar></WorkerNavBar>
-        <ManagerReportsBreadcrumbs></ManagerReportsBreadcrumbs>
+        <WorkerReportsBreadcrumbs></WorkerReportsBreadcrumbs>
         <p></p>
 
       <Accordion>
