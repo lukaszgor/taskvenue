@@ -6,8 +6,8 @@ import Box from '@mui/material/Box';
 import { useState } from 'react';
 import WorkerNavBar from '../../Components/NavigationBar/WorkerNavBar';
 import { useTranslation } from "react-i18next";
-import ManagerClosedTasks from '../../Components/Manager/Tasks/ManagerClosedTasks';
-import ManagerOpenTasks from '../../Components/Manager/Tasks/ManagerOpenTasks';
+import WorkerClosedTasks from '../../Components/Worker/Tasks/WorkerClosedTasks';
+import WorkerOpenTasks from '../../Components/Worker/Tasks/WorkerOpenTasks';
 import WorkerTasksBreadcrumbs from '../../Components/Breadcrumbs/Worker/WorkerTasksBreadcrumbs';
 
 function TabPanel(props) {
@@ -61,10 +61,10 @@ function WorkerTasks() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <ManagerOpenTasks></ManagerOpenTasks>
+        <WorkerOpenTasks></WorkerOpenTasks>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <ManagerClosedTasks></ManagerClosedTasks>
+        <WorkerClosedTasks></WorkerClosedTasks>
       </TabPanel>
     </Box>
       </div>   
