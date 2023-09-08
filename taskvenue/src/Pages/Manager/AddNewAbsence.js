@@ -8,7 +8,7 @@ import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
 import styled from 'styled-components';
 import ManagerAbsenceBreadcrumbs from '../../Components/Breadcrumbs/ManagerAbsenceBreadcrumbs';
-
+import { useNavigate } from "react-router-dom";
 
 const DateTimeInput = styled.input`
   width: 100%;
@@ -33,7 +33,7 @@ const AddNewAbsence = () => {
     const [idConfig, setIdConfiguration] = useState('');
     const [open, setOpen] = useState(false);
     const [errorDate, setErrorDate] = useState(null);
-
+    const navigate = useNavigate();
 
     useEffect(() => {
         const checkSession = async () => {
@@ -84,6 +84,7 @@ const AddNewAbsence = () => {
             .upsert([{ description: description, status: status, kickoffDate: kickoffDate, finishDate: finishDate,id_configuration:idConfig,typeOfAbsence:typeOfAbsence,id_owner_user:id_owner_user }])
             .eq('id', id);
             handleClickAlert();
+            navigate('/Absences');
         if (error) {
             console.log(error)
         }
