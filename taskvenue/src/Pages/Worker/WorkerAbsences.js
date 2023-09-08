@@ -6,9 +6,9 @@ import Box from '@mui/material/Box';
 import { useState } from 'react';
 import WorkerNavBar from '../../Components/NavigationBar/WorkerNavBar';
 import { useTranslation } from "react-i18next";
-import ManagerOpenAbsences from '../../Components/Manager/Absences/ManagerOpenAbsences';
-import ManagerApprovedAndRejectedAbsences from '../../Components/Manager/Absences/ManagerApprovedAndRejectedAbsences';
 import WorkerAbsencesBreadcrumbs from '../../Components/Breadcrumbs/Worker/WorkerAbsencesBreadcrumbs';
+import WorkerOpenAbsences from '../../Components/Worker/Absences/WorkerOpenAbsences';
+import WorkerApprovedAndRejectedAbsences from '../../Components/Worker/Absences/WorkerApprovedAndRejectedAbsences';
 
 
 function TabPanel(props) {
@@ -62,10 +62,10 @@ function WorkerAbsences() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <ManagerOpenAbsences></ManagerOpenAbsences>
+        <WorkerOpenAbsences></WorkerOpenAbsences>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <ManagerApprovedAndRejectedAbsences></ManagerApprovedAndRejectedAbsences>
+        <WorkerApprovedAndRejectedAbsences></WorkerApprovedAndRejectedAbsences>
       </TabPanel>
     </Box>
       </div>   
