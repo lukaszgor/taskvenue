@@ -25,17 +25,8 @@ const WorkerMainView = () => {
       </Accordion>
       
       <Grid container spacing={4}>
-      <Grid item xs={12} sm={8}>
-      <Accordion defaultExpanded>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t('Status of the implementation of issues in the last 30 days')}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography></Typography>
-          <StatusOfImplementation30Report></StatusOfImplementation30Report>
-        </AccordionDetails>
-      </Accordion>
-      </Grid>
+      {/* <Grid item xs={12} sm={8}>
+      </Grid> */}
 
       <Grid item xs={12} sm={4}>
       <Accordion defaultExpanded>
