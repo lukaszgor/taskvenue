@@ -22,6 +22,11 @@ import TaskDetails from "../Pages/Manager/TaskDetails";
 import Absences from "../Pages/Manager/Absences";
 import AbsenceDetails from "../Pages/Manager/AbsenceDetails";
 import AddNewAbsence from "../Pages/Manager/AddNewAbsence";
+import WorkerAbsence from "../Pages/Worker/WorkerAbsence";
+import WorkerProfile from "../Pages/Worker/WorkerProfile";
+import WorkerReports from "../Pages/Worker/WorkerReports";
+import WorkerSchedule from "../Pages/Worker/WorkerSchedule";
+import WorkerTasks from "../Pages/Worker/WorkerTasks";
 
 function Routing() {
   return (
@@ -47,6 +52,12 @@ function Routing() {
         <Route path="/VenueDetalils/:id" element={<VenueDetalils />} />
         <Route path="/TaskDetails/:id" element={<TaskDetails />} />
         <Route path="/AbsenceDetails/:id" element={<AbsenceDetails />} />
+
+        <Route path="/WorkerAbsences" element={<WorkerAbsence />} />
+        <Route path="/WorkerProfile" element={<WorkerProfile />} />
+        <Route path="/WorkerReports" element={<WorkerReports />} />
+        <Route path="/WorkerSchedule" element={<WorkerSchedule />} />
+        <Route path="/WorkerTasks" element={<WorkerTasks />} />
       </Routes>
     </BrowserRouter>
   );
