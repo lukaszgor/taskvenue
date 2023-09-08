@@ -30,6 +30,7 @@ import WorkerTasks from "../Pages/Worker/WorkerTasks";
 import ClientProfile from "../Pages/Client/ClientProfile";
 import ClientReports from "../Pages/Client/ClientReports";
 import ClientTasks from "../Pages/Client/ClientTasks";
+import AddNewWorkerAbsence from "../Pages/Worker/AddNewWorkerAbsence";
 
 function Routing() {
   return (
@@ -61,6 +62,7 @@ function Routing() {
         <Route path="/WorkerReports" element={<WorkerReports />} />
         <Route path="/WorkerSchedule" element={<WorkerSchedule />} />
         <Route path="/WorkerTasks" element={<WorkerTasks />} />
+        <Route path="/AddNewWorkerAbsence" element={<AddNewWorkerAbsence />} />
 
         <Route path="/ClientReports" element={<ClientReports />} />
         <Route path="/ClientProfile" element={<ClientProfile />} />
