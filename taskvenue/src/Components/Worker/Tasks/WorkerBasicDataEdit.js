@@ -240,7 +240,7 @@ const WorkerBasicDataEdit = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 fullWidth
-                required
+                disabled
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -275,6 +275,7 @@ const WorkerBasicDataEdit = () => {
                   value={type}
                   onChange={(e) => setType(e.target.value)}
                   fullWidth
+                  disabled
                 >
                   {taskTypes.map((taskType) => (
                     <MenuItem key={taskType.name} value={taskType.name}>
@@ -285,7 +286,7 @@ const WorkerBasicDataEdit = () => {
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <FormControl fullWidth>
+              <FormControl fullWidth disabled>
                 <InputLabel id="contractor-select-select-label">
                   {t('Select Contractor')}
                 </InputLabel>
@@ -306,7 +307,7 @@ const WorkerBasicDataEdit = () => {
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <FormControl fullWidth>
+              <FormControl fullWidth disabled>
                 <InputLabel id="asigned-select-label">
                   {t('Select Asigned user')}
                 </InputLabel>
@@ -333,6 +334,7 @@ const WorkerBasicDataEdit = () => {
                 onChange={(e) => setEstimatedTime(e.target.value)}
                 fullWidth
                 type="number"
+                disabled
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -366,7 +368,7 @@ const WorkerBasicDataEdit = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <FormControlLabel
+              <FormControlLabel disabled
                 control={
                   <Checkbox
                     checked={isSettled !== null}

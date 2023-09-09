@@ -162,7 +162,7 @@ const WorkerVenue = () => {
     <div>
       <Container maxWidth="md">
         <Grid item xs={12} sm={6}>
-          <FormControl fullWidth>
+          <FormControl fullWidth disabled>
             <InputLabel id="venue-select-select-label">
               {t('Select Venue')}
             </InputLabel>
