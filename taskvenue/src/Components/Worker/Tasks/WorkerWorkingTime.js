@@ -137,7 +137,6 @@ const insertWorkTime = async()=>{
       }if(data){
         setWorkTime(data)
         setFetchError(null)
-        console.log(data);
       }
   }
 
