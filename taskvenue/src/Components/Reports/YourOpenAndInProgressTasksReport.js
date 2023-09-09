@@ -114,7 +114,7 @@ const YourOpenAndInProgressTasksReport = () => {
           height="30vh"
           padding={2}
         >
-          <PieChart width={500} height={500}>
+          <PieChart width={250} height={500}>
             <Pie
               data={mockedData}
               dataKey="value"
