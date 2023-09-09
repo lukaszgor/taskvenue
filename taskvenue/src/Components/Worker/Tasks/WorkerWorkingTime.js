@@ -89,7 +89,7 @@ useEffect(() => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    insertService();
+    insertWorkTime();
   };
 
   //Delete
@@ -106,10 +106,10 @@ useEffect(() => {
   }
   }
     //insert
-const insertService = async()=>{
+const insertWorkTime = async()=>{
   const{data,error} =  await supabase
   .from('workTime')
-  .insert([{id_configuration:idConfig,time:time,description:description,idTask:id,date:formattedDate}])
+  .insert([{id_configuration:idConfig,time:time,description:description,idTask:id,date:formattedDate,id_user:userID}])
   handleClickAlert()
   fetchWorkTime(idConfig,id)
   if(error){
@@ -122,10 +122,12 @@ const insertService = async()=>{
 }
 
 //download data
-    const fetchWorkTime = async(idConfiguration,id)=>{
-      const{data,error} =  await supabase
-      .from('workTime')
-      .select()
+  const fetchWorkTime = async(idConfiguration,id)=>{
+  const { data, error } = await supabase
+  .from('workTime')
+  .select(`*,
+  profiles:profiles(username) as profiles_username
+        `)
       .eq('idTask', id)
       .eq('id_configuration', idConfiguration);
       if(error){
@@ -135,15 +137,23 @@ const insertService = async()=>{
       }if(data){
         setWorkTime(data)
         setFetchError(null)
+        console.log(data);
       }
   }
-
 
     const columns = [
 
         { field: 'description', headerName: t("Description"), width: 220,},
         { field: 'time', headerName: t("Time"), width: 70 },
         { field: 'date', headerName: t("Date"), width: 140 },
+        {
+            field: 'profiles.username',
+            headerName: t('User'),
+            width: 140,
+            renderCell: (params) => {
+              return <span>{params.row.profiles.username}</span>;
+            },
+          },
         {
             field: "Action",headerName: t("Action"), width: 100 ,
             renderCell: (cellValues) => {
@@ -223,6 +233,7 @@ const insertService = async()=>{
                     style={{ marginRight: '10px' }}
                     type="number" 
                     fullWidth
+                    required
                 />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -231,6 +242,7 @@ const insertService = async()=>{
                  type="datetime-local"
                 value={selectedDateTime}
                 onChange={handleDateTimeChange}
+                required
               />
             </Grid>
             <Grid item xs={12}>
