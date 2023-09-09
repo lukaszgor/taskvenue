@@ -255,6 +255,7 @@ const WorkerBasicDataEdit = () => {
                   onChange={(e) => setStatus(e.target.value)}
                   fullWidth
                   required
+                  disabled={status === 'completed'}
                 >
                   <MenuItem value="open">{t('Open')}</MenuItem>
                   <MenuItem value="inProgress">{t('In progress')}</MenuItem>
@@ -347,6 +348,7 @@ const WorkerBasicDataEdit = () => {
                 type="datetime-local"
                 value={kickoff}
                 onChange={handleKickoffChange}
+                disabled={status === 'completed'}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -355,6 +357,7 @@ const WorkerBasicDataEdit = () => {
                 type="datetime-local"
                 value={deadline}
                 onChange={handleDeadlineChange}
+                disabled={status === 'completed'}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -365,6 +368,7 @@ const WorkerBasicDataEdit = () => {
                 onChange={(e) => setDescription(e.target.value)}
                 fullWidth
                 multiline
+                disabled={status === 'completed'}
               />
             </Grid>
             <Grid item xs={12} sm={6}>

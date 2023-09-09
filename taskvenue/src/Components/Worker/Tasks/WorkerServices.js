@@ -34,7 +34,8 @@ function WorkerServices() {
   const [fetchError,setFetchError] =useState(null)
   const [service,setService] =useState(null)
   const [selectedDateTime, setSelectedDateTime] = useState('');
-  const {id} = useParams()
+  const {id} = useParams();
+  const [status, setStatus] = useState('');
 
   const [userID, setUserID] = useState('');
   const [idConfig, setIdConfiguration] = useState('');
@@ -49,6 +50,23 @@ function WorkerServices() {
           };
           checkSession();
         }, []);
+
+
+        const handleFetchDataStatus = async (idConfig,id) => {
+            const { data, error } = await supabase
+              .from('tasks')
+              .select('status')
+              .eq('id', id)
+              .eq('id_configuration', idConfig)
+              .single();
+            if (error) {
+            }
+            if (data) {
+              setStatus(data.status);
+            }
+          };
+    
+
         
         const fetchData = async (userId) => {
           const { data: profileData, error: profileError } = await supabase
@@ -95,8 +113,9 @@ function WorkerServices() {
           if (idConfig) {
             fetchServices(idConfig,id)
             handleFetchDictionaryServices(idConfig)
+            handleFetchDataStatus(idConfig,id);
           }
-        }, [idConfig]);
+        }, [idConfig,id]);
 
     useEffect(() => {
             const calculatedTotal = cost * quantity;
@@ -345,6 +364,7 @@ const insertService = async()=>{
                 <Button
                 type="submit"
                 variant="contained"
+                disabled={status === 'completed'}
                 color="primary"
                 style={{ minWidth: 'auto' }}
                 >

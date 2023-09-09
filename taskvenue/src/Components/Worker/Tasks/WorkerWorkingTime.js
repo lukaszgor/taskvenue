@@ -31,6 +31,7 @@ const WorkerWorkingTime = () => {
     const [time, setTime] = useState(0);
     const [fullTime, setFullTime] = useState(0);
     const [selectedDateTime, setSelectedDateTime] = useState('');
+    const [status, setStatus] = useState('');
 
 
     const handleDateTimeChange = (event) => {
@@ -38,6 +39,22 @@ const WorkerWorkingTime = () => {
     };
 
     const [formattedDate, setFormattedDate] = useState('');
+
+
+    const handleFetchDataStatus = async (idConfig,id) => {
+        const { data, error } = await supabase
+          .from('tasks')
+          .select('status')
+          .eq('id', id)
+          .eq('id_configuration', idConfig)
+          .single();
+        if (error) {
+        }
+        if (data) {
+          setStatus(data.status);
+        }
+      };
+
 
 useEffect(() => {
   if (selectedDateTime) {
@@ -73,6 +90,7 @@ useEffect(() => {
     useEffect(() => {
         if (idConfig) {
             fetchWorkTime(idConfig,id)
+            handleFetchDataStatus(idConfig,id);
         }
       }, [idConfig]);
 
@@ -248,6 +266,7 @@ const insertWorkTime = async()=>{
               <Box display="flex" justifyContent="flex-end">
                 <Button
                 type="submit"
+                disabled={status === 'completed'}
                 variant="contained"
                 color="primary"
                 style={{ minWidth: 'auto' }}
