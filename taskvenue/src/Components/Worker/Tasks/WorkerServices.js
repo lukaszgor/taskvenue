@@ -1,4 +1,3 @@
-
 import { useState,useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { TextField, Button, Grid, Container, Typography,Box,Select,MenuItem,FormControl,InputLabel,Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
@@ -9,6 +8,18 @@ import Alert from '@mui/material/Alert';
 import { useTranslation } from "react-i18next";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import LocalAtmOutlinedIcon from '@mui/icons-material/LocalAtmOutlined';
+import styled from 'styled-components';
+import { format } from 'date-fns';
+
+
+const DateInput = styled.input`
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+`;
 
 function WorkerServices() {
   const { t, i18n } = useTranslation();
@@ -22,6 +33,7 @@ function WorkerServices() {
   const [dictionaryServices, setDictionaryServices] = useState([]);
   const [fetchError,setFetchError] =useState(null)
   const [service,setService] =useState(null)
+  const [selectedDateTime, setSelectedDateTime] = useState('');
   const {id} = useParams()
 
   const [userID, setUserID] = useState('');
@@ -50,6 +62,22 @@ function WorkerServices() {
               setIdConfiguration(profileData.id_configuration);
           }
       }
+
+
+      const handleDateTimeChange = (event) => {
+        setSelectedDateTime(event.target.value);
+      };
+  
+      const [formattedDate, setFormattedDate] = useState('');
+  
+  useEffect(() => {
+    if (selectedDateTime) {
+      const formattedDate = format(new Date(selectedDateTime), 'dd/MM/yyyy HH:mm');
+      setFormattedDate(formattedDate);
+    }
+  }, [selectedDateTime]);
+
+
       const handleFetchDictionaryServices = async (idConfig) => {
         const { data, error } = await supabase
           .from('service_dictionary')
@@ -106,7 +134,7 @@ function WorkerServices() {
 const insertService = async()=>{
   const{data,error} =  await supabase
   .from('services')
-  .insert([{id_configuration:idConfig,name:name,cost:cost,description:description,unit:unit,quantity:quantity,total:total,idTask:id}])
+  .insert([{id_configuration:idConfig,name:name,cost:cost,description:description,unit:unit,quantity:quantity,total:total,idTask:id,user_id:userID,date: formattedDate}])
   handleClickAlert()
   fetchServices(idConfig,id)
   if(error){
@@ -169,6 +197,7 @@ const insertService = async()=>{
       { field: 'quantity', headerName: t("Quantity"), width: 70 },
       { field: 'unit', headerName: t("Unit"), width: 100 },
       { field: 'total', headerName: t("Total"), width: 70 },
+      { field: 'date', headerName: t("Date"), width: 140 },
       {
           field: "Action",headerName: t("Action"), width: 100 ,
           renderCell: (cellValues) => {
@@ -247,15 +276,6 @@ const insertService = async()=>{
             </Grid>
             <Grid item xs={12} sm={6}>
             <TextField
-                    label={t("Description")}
-                    value={description}
-                    onChange={(event) => setDescription(event.target.value)}
-                    style={{ marginRight: '10px' }}
-                    fullWidth
-                />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-            <TextField
                     label={t("Cost")}
                     value={cost}
                     onChange={(event) => setCost(event.target.value)}
@@ -289,6 +309,25 @@ const insertService = async()=>{
                 style={{ marginRight: '10px' }}
                 fullWidth
                 disabled
+                />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+            <label>{t('Date')}</label>
+            <DateInput
+                 type="datetime-local"
+                value={selectedDateTime}
+                onChange={handleDateTimeChange}
+                required
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+            <TextField
+                    label={t("Description")}
+                    value={description}
+                    onChange={(event) => setDescription(event.target.value)}
+                    style={{ marginRight: '10px' }}
+                    fullWidth
+                    multiline
                 />
             </Grid>
             <Grid item xs={12}>
