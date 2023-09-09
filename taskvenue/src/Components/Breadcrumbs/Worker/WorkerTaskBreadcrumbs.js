@@ -1,5 +1,5 @@
 import React from 'react';
-import MyBreadcrumbs from '../../Config/MyBreadcrumbs';
+import MyBreadcrumbs from '../../../Config/MyBreadcrumbs';
 import { useTranslation } from "react-i18next";
 const WorkerTaskBreadcrumbs = () => {
   const { t, i18n } = useTranslation();
