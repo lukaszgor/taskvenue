@@ -153,7 +153,9 @@ const insertService = async()=>{
     const fetchServices = async(idConfiguration,id)=>{
       const{data,error} =  await supabase
       .from('services')
-      .select()
+      .select(`*,
+      profiles:profiles(username) as profiles_username
+            `)
       .eq('idTask', id)
       .eq('id_configuration', idConfiguration);
       if(error){
@@ -198,6 +200,14 @@ const insertService = async()=>{
       { field: 'unit', headerName: t("Unit"), width: 100 },
       { field: 'total', headerName: t("Total"), width: 70 },
       { field: 'date', headerName: t("Date"), width: 140 },
+      {
+        field: 'profiles.username',
+        headerName: t('User'),
+        width: 140,
+        renderCell: (params) => {
+          return <span>{params.row.profiles.username}</span>;
+        },
+      },
       {
           field: "Action",headerName: t("Action"), width: 100 ,
           renderCell: (cellValues) => {
