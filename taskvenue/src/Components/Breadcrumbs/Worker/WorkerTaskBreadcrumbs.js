@@ -5,7 +5,7 @@ const WorkerTaskBreadcrumbs = () => {
   const { t, i18n } = useTranslation();
   const breadcrumbItems = [
     { text: 'Home', url: '/home' },
-    { text: t("Tasks"), url: '/WorkerTask' },
+    { text: t("Tasks"), url: '/WorkerTasks' },
     { text: t("Task") },
   ];
 
