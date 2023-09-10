@@ -9,7 +9,9 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
-  Switch,} from '@mui/material';
+  Switch,
+  InputLabel
+} from '@mui/material';
 import supabase from '../../../supabaseClient';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -31,6 +33,8 @@ const ManagerOpenTasks = () => {
   const [userID, setUserID] = useState('');
   const [idConfig, setIdConfiguration] = useState('');
   const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
 
   useEffect(() => {
     const checkSession = async () => {
@@ -84,14 +88,24 @@ const ManagerOpenTasks = () => {
     }
     if (searchUser !== '') {
       filteredData = filteredData.filter((task) =>
-      task.profiles?.username
+        task.profiles?.username
           .toLowerCase()
           .includes(searchUser.toLowerCase())
       );
     }
 
+    if (startDate !== '' && endDate !== '') {
+      filteredData = filteredData.filter((task) => {
+        const taskDate = new Date(task.createdDate);
+        const startFilterDate = new Date(startDate);
+        const endFilterDate = new Date(endDate);
+
+        return taskDate >= startFilterDate && taskDate <= endFilterDate;
+      });
+    }
+
     setFilteredTasks(filteredData);
-  }, [tasks, searchName, searchNumber, searchContractor,searchUser]);
+  }, [tasks, searchName, searchNumber, searchContractor, searchUser, startDate, endDate]);
 
   const fetchTasks = async (idConfig) => {
     const statusFilters = [];
@@ -149,10 +163,18 @@ const ManagerOpenTasks = () => {
     }
     if (searchUser !== '') {
       filteredData = filteredData.filter((task) =>
-      task.profiles?.username
-          .toLowerCase()
-          .includes(searchUser.toLowerCase())
+        task.profiles?.username.toLowerCase().includes(searchUser.toLowerCase())
       );
+    }
+
+    if (startDate !== '' && endDate !== '') {
+      filteredData = filteredData.filter((task) => {
+        const taskDate = new Date(task.createdDate);
+        const startFilterDate = new Date(startDate);
+        const endFilterDate = new Date(endDate);
+
+        return taskDate >= startFilterDate && taskDate <= endFilterDate;
+      });
     }
 
     setFilteredTasks(filteredData);
@@ -168,9 +190,9 @@ const ManagerOpenTasks = () => {
   };
 
   const formatDate = (dateStr) => {
-    const formattedDate = moment(dateStr).format('DD.MM.YY HH:mm');
+    const formattedDate = moment(dateStr).format('YYYY-MM-DD');
     return formattedDate;
-  }
+  };
 
   return (
     <div>
@@ -234,10 +256,34 @@ const ManagerOpenTasks = () => {
             />
           </div>
           <div style={{ marginBottom: '16px' }}>
+          <InputLabel id="Start Date-select-select-label">
+                  {t('Start Date')}
+                </InputLabel>
+            <TextField
+              variant="outlined"
+              type="date"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+              style={{ marginBottom: '8px' }}
+            />
+          </div>
+          <div style={{ marginBottom: '16px' }}>
+          <InputLabel id="End Date-select-select-label">
+                  {t('End Date')}
+                </InputLabel>
+            <TextField
+              variant="outlined"
+              type="date"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              style={{ marginBottom: '8px' }}
+            />
+          </div>
+          <div style={{ marginBottom: '16px' }}>
             <div>
               <Typography>{t('Open')}</Typography>
               <Switch
-                color="warning" 
+                color="warning"
                 checked={openFilter}
                 onChange={handleOpenFilterChange}
               />
@@ -273,9 +319,6 @@ const ManagerOpenTasks = () => {
                 <Typography variant="h6" gutterBottom>
                   {t('Name')} : {task.name}
                 </Typography>
-                {/* <Typography variant="body2" color="textSecondary">
-                  {t('Description')} : {task.description}
-                </Typography> */}
                 <Typography variant="body2" color="textSecondary">
                   {t('Status')} :{' '}
                   {task.status === 'open'
@@ -294,7 +337,7 @@ const ManagerOpenTasks = () => {
                   {t('Start of implementation')}: {formatDate(task.kickoffDate)}
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
-                 {t('Deadline')}: {formatDate(task.deadline)}
+                  {t('Deadline')}: {formatDate(task.deadline)}
                 </Typography>
                 <p></p>
                 <Button
