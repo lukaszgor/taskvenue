@@ -68,10 +68,11 @@ const handleCloseAlert = (event, reason) => {
                       label={t("First and last name")} 
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
-                      style={{ marginBottom: '10px', maxWidth: '300px' }}
+                      style={{ marginBottom: '10px',  }}
+                      fullWidth
                     />
         
-        <Button type="submit" variant="contained" color="primary" style={{ maxWidth: '300px'}} onClick={handleFullNameChange}>
+        <Button type="submit" variant="contained" color="primary" fullWidth onClick={handleFullNameChange}>
         {t("Submit")}
         </Button>
         </FormControl>

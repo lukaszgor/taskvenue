@@ -39,7 +39,7 @@ const WaitingRoomForNewUser = () => {
         <AccordionDetails>
           <Typography></Typography>
           <FetchSupabaseData sendData={handleGetData}></FetchSupabaseData>
-            <Container maxWidth="md">
+            <Container maxWidth="sm">
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -58,7 +58,8 @@ const WaitingRoomForNewUser = () => {
                 type="submit"
                 variant="contained"
                 color="primary"
-                style={{ width: '200px' }}
+                // style={{ width: '200px' }}
+                fullWidth
               >
                 {t("Copy")}
               </Button>

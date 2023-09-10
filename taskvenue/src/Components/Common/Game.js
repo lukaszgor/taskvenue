@@ -30,9 +30,9 @@ function Game() {
   };
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" >
 
-      <Grid container spacing={2}>
+      <Grid container spacing={2} >
         {choices.map((choice) => (
           <Grid item key={choice}>
             <Button variant="outlined" onClick={() => handleChoice(choice)}>
