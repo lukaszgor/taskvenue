@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
-import { TextField, Button, Grid, Container, Typography, Select, MenuItem, FormControl,InputLabel,Box } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography, Select, MenuItem, FormControl,InputLabel,Box,Accordion, AccordionSummary, AccordionDetails, } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { useParams } from "react-router-dom";
@@ -8,6 +8,7 @@ import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
 import ManagerVenueBreadcrumbs from '../../Components/Breadcrumbs/ManagerVenueBreadcrumbs';
 import { useNavigate } from "react-router-dom"
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const VenueDetalils = () => {
     const { t, i18n } = useTranslation();
@@ -128,9 +129,15 @@ const VenueDetalils = () => {
         <div>
             <ManagerNavBar></ManagerNavBar>
             <ManagerVenueBreadcrumbs></ManagerVenueBreadcrumbs>
-            <Container maxWidth="md">
+            {/* <Container maxWidth="md"> */}
                     <p></p>
-                <form onSubmit={handleSubmit} >
+                    <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <Typography variant="h6" fontWeight="bold">{t('Venues details')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+          <form onSubmit={handleSubmit} >
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
                             <TextField
@@ -194,12 +201,26 @@ const VenueDetalils = () => {
                         </Grid>
                     </Grid>
                 </form>
+        </AccordionDetails>
+      </Accordion>
+
+
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('History')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+
+        </AccordionDetails>
+      </Accordion>
+  
                 <Snackbar open={open}
                     autoHideDuration={2000}
                     onClose={handleCloseAlert}>
                     <Alert severity="success"> {t("Updated!")}!</Alert>
                 </Snackbar>
-            </Container>
+            {/* </Container> */}
         </div>
     );
 };
