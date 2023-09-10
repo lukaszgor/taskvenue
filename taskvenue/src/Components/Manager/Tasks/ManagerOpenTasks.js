@@ -22,6 +22,7 @@ const ManagerOpenTasks = () => {
   const [searchName, setSearchName] = useState('');
   const [searchNumber, setsearchNumber] = useState('');
   const [searchContractor, setsearchContractor] = useState('');
+  const [searchUser, setsearchUser] = useState('');
   const [openFilter, setOpenFilter] = useState(true);
   const [inProgressFilter, setInProgressFilter] = useState(true);
   const { t, i18n } = useTranslation();
@@ -81,9 +82,16 @@ const ManagerOpenTasks = () => {
           .includes(searchContractor.toLowerCase())
       );
     }
+    if (searchUser !== '') {
+      filteredData = filteredData.filter((task) =>
+      task.profiles?.username
+          .toLowerCase()
+          .includes(searchUser.toLowerCase())
+      );
+    }
 
     setFilteredTasks(filteredData);
-  }, [tasks, searchName, searchNumber, searchContractor]);
+  }, [tasks, searchName, searchNumber, searchContractor,searchUser]);
 
   const fetchTasks = async (idConfig) => {
     const statusFilters = [];
@@ -99,7 +107,7 @@ const ManagerOpenTasks = () => {
       .select(`*,
                 contractor (
                     nameOrCompanyName
-                )
+                ),profiles (username)
             `)
       .eq('id_configuration', idConfig)
       .in('status', statusFilters);
@@ -137,6 +145,13 @@ const ManagerOpenTasks = () => {
         task.contractor?.nameOrCompanyName
           .toLowerCase()
           .includes(searchContractor.toLowerCase())
+      );
+    }
+    if (searchUser !== '') {
+      filteredData = filteredData.filter((task) =>
+      task.profiles?.username
+          .toLowerCase()
+          .includes(searchUser.toLowerCase())
       );
     }
 
@@ -210,6 +225,15 @@ const ManagerOpenTasks = () => {
             />
           </div>
           <div style={{ marginBottom: '16px' }}>
+            <TextField
+              label={t('Search by User')}
+              variant="outlined"
+              value={searchUser}
+              onChange={(e) => setsearchUser(e.target.value)}
+              style={{ marginBottom: '8px' }}
+            />
+          </div>
+          <div style={{ marginBottom: '16px' }}>
             <div>
               <Typography>{t('Open')}</Typography>
               <Switch
@@ -262,6 +286,9 @@ const ManagerOpenTasks = () => {
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
                   {t('Contractor')} : {task.contractor?.nameOrCompanyName}
+                </Typography>
+                <Typography variant="body2" color="textSecondary">
+                  {t('User')} : {task.profiles?.username}
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
                   {t('Start of implementation')}: {formatDate(task.kickoffDate)}

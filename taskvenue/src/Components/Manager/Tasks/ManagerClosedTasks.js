@@ -12,6 +12,7 @@ const ManagerClosedTasks = () => {
     const [searchName, setSearchName] = useState('');
     const [searchNumber, setsearchNumber] = useState('');
     const [searchContractor, setsearchContractor] = useState('');
+    const [searchUser, setsearchUser] = useState('');
     const { t, i18n } = useTranslation();
     const navigate = useNavigate()
 
@@ -61,17 +62,24 @@ const ManagerClosedTasks = () => {
         if (searchContractor !== '') {
             filteredData = filteredData.filter((task) => task.contractor?.nameOrCompanyName.toLowerCase().includes(searchContractor.toLowerCase()));
         }
+        if (searchUser !== '') {
+            filteredData = filteredData.filter((task) =>
+            task.profiles?.username
+                .toLowerCase()
+                .includes(searchUser.toLowerCase())
+            );
+          }
 
         setFilteredTasks(filteredData);
-    }, [tasks, searchName, searchNumber, searchContractor]);
+    }, [tasks, searchName, searchNumber, searchContractor,searchUser]);
 
     const fetchTasks = async (idConfig) => {
         const { data, error } = await supabase
             .from('tasks')
             .select(`*,
-                contractor (
-                    nameOrCompanyName
-                )
+            contractor (
+                nameOrCompanyName
+            ),profiles (username)
             ` )
             .eq('id_configuration', idConfig)
             .eq('status', 'completed')
@@ -103,6 +111,13 @@ const ManagerClosedTasks = () => {
         if (searchContractor !== '') {
             filteredData = filteredData.filter((task) => task.contractor?.nameOrCompanyName.toLowerCase().includes(searchContractor.toLowerCase()));
         }
+        if (searchUser !== '') {
+            filteredData = filteredData.filter((task) =>
+            task.profiles?.username
+                .toLowerCase()
+                .includes(searchUser.toLowerCase())
+            );
+          }
 
         setFilteredTasks(filteredData);
         setIsFilterPopupOpen(false);
@@ -156,6 +171,15 @@ const ManagerClosedTasks = () => {
                             style={{ marginBottom: '8px' }} 
                         />
                     </div>
+                    <div style={{ marginBottom: '16px' }}>
+                        <TextField
+                        label={t('Search by User')}
+                        variant="outlined"
+                        value={searchUser}
+                        onChange={(e) => setsearchUser(e.target.value)}
+                        style={{ marginBottom: '8px' }}
+                        />
+                    </div>
                     <Button
                         variant="contained"
                         color="primary"
@@ -184,6 +208,9 @@ const ManagerClosedTasks = () => {
                                 <Typography variant="body2" color="textSecondary">
                                     {t("Contractor")} : {task.contractor?.nameOrCompanyName}
                                 </Typography>
+                                <Typography variant="body2" color="textSecondary">
+                                    {t('User')} : {task.profiles?.username}
+                                    </Typography>
                                 <Typography variant="body2" color="textSecondary">
                                     {t('Start of implementation')}: {formatDate(task.kickoffDate)}
                                     </Typography>
