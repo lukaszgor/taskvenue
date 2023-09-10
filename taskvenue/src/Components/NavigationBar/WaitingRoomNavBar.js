@@ -56,7 +56,8 @@ function WaitingRoomNavBar() {
    
 
   return (
-    <AppBar position="static">
+    <div>
+    <AppBar position="fixed" >
             <FetchSupabaseData sendData={handleGetData}></FetchSupabaseData>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -87,6 +88,9 @@ function WaitingRoomNavBar() {
         </Toolbar>
       </Container>
     </AppBar>
+    <Box marginTop={10}>
+</Box>
+  </div>
 
   );
 }

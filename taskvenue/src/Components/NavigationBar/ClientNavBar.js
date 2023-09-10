@@ -110,7 +110,8 @@ function ClientNavBar() {
         }
 
   return (
-    <AppBar position="static">
+    <div>
+    <AppBar position="fixed" >
         <IdConfigurationGuard></IdConfigurationGuard>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -215,6 +216,9 @@ function ClientNavBar() {
         </Toolbar>
       </Container>
     </AppBar>
+    <Box marginTop={10}>
+</Box>
+  </div>
   );
 }
 export default ClientNavBar;

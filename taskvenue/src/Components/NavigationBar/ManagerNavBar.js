@@ -126,7 +126,8 @@ function ManagerNavBar() {
         }
 
   return (
-    <AppBar position="static">
+    <div>
+    <AppBar position="fixed" >
         <IdConfigurationGuard></IdConfigurationGuard>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -239,6 +240,9 @@ function ManagerNavBar() {
         </Toolbar>
       </Container>
     </AppBar>
+    <Box marginTop={10}>
+</Box>
+  </div>
   );
 }
 export default ManagerNavBar;
