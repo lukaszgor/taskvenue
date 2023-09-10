@@ -92,22 +92,49 @@ localStorage.setItem('userIdFromLocalStorage', session?.user.id);
   });
  
   const Register = async () => {
-    const {data, error} = await supabase.auth.signUp({
-      email,
-      password,
-    },
-    {
-      data: {
-        username
+    // const {data, error} = await supabase.auth.signUp({
+    //   email,
+    //   password,
+    // },
+    // {
+    //   data: {
+    //     username
+    //   }
+    // })
+    // if(error){
+    //   setRMsg(error.message)
+    // }else{
+    //   setRMsg(t("Successful registration"))
+    //   setUser(data.user)
+    // }
+
+    const { data, error } = await supabase.auth.signUp(
+      {
+        email: email,
+        password: password,
+        options: {
+          data: {
+            full_name: email,
+          }
+        }
       }
-    })
+    )
     if(error){
       setRMsg(error.message)
     }else{
       setRMsg(t("Successful registration"))
       setUser(data.user)
     }
+
   }
+
+
+
+
+
+
+
+
 let errorMessageLogin=t("Enter correct data")
   const Login = async () => {
     const { data, error } = await supabase.auth.signInWithPassword({
