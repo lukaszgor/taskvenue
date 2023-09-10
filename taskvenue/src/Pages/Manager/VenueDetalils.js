@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import ManagerVenueBreadcrumbs from '../../Components/Breadcrumbs/ManagerVenueBreadcrumbs';
 import { useNavigate } from "react-router-dom"
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import VenueHistory from '../../Components/Manager/Venue/VenueHistory';
 
 const VenueDetalils = () => {
     const { t, i18n } = useTranslation();
@@ -129,7 +130,6 @@ const VenueDetalils = () => {
         <div>
             <ManagerNavBar></ManagerNavBar>
             <ManagerVenueBreadcrumbs></ManagerVenueBreadcrumbs>
-            {/* <Container maxWidth="md"> */}
                     <p></p>
                     <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -211,16 +211,14 @@ const VenueDetalils = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
-
+          <VenueHistory></VenueHistory>
         </AccordionDetails>
       </Accordion>
-  
                 <Snackbar open={open}
                     autoHideDuration={2000}
                     onClose={handleCloseAlert}>
                     <Alert severity="success"> {t("Updated!")}!</Alert>
                 </Snackbar>
-            {/* </Container> */}
         </div>
     );
 };
