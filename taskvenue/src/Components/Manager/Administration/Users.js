@@ -106,14 +106,16 @@ const UserDetails=(event, cellValues)=>{
         event.preventDefault();
       updateUser();
       setForeignUserID('');
-       
+         
       };
+      
       const updateUser =async()=>{
         const{data,error}=await supabase
         .from('profiles')
         .update({'profile_type':foreignProfileType,'id_configuration':idConfig})
         .eq('id',foreignUserID)
         handleClickAlert()
+        fetchUsers(idConfig);
     }
       //alert configuration
       const [open,setOpen] =useState(null)
