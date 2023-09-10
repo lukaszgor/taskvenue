@@ -203,9 +203,6 @@ const ManagerClosedTasks = () => {
                                     {t("Name")} : {task.name}
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary">
-                                    {t("Description")} : {task.description}
-                                </Typography>
-                                <Typography variant="body2" color="textSecondary">
                                     {t("Contractor")} : {task.contractor?.nameOrCompanyName}
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary">
