@@ -5,7 +5,7 @@ import YourOpenAndInProgressTasksReport from '../Reports/YourOpenAndInProgressTa
 import { Accordion, AccordionSummary, AccordionDetails, Typography,Grid } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useTranslation } from "react-i18next";
-import ManagerMainSummary from '../Reports/ManagerMainSummary';
+import WorkerMainSummary from '../Reports/WorkerMainSummary';
 import WorkerNavBar from '../NavigationBar/WorkerNavBar';
 
 const WorkerMainView = () => {
@@ -20,7 +20,7 @@ const WorkerMainView = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
-          <ManagerMainSummary></ManagerMainSummary>
+          <WorkerMainSummary></WorkerMainSummary>
         </AccordionDetails>
       </Accordion>
       
