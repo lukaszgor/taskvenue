@@ -8,6 +8,7 @@ import WaitingRoomNavBar from '../../Components/NavigationBar/WaitingRoomNavBar'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import WavingHandOutlinedIcon from '@mui/icons-material/WavingHandOutlined';
 import Game from '../../Components/Common/Game';
+import Username from '../../Components/Common/Username';
 
 const WaitingRoomForNewUser = () => {
     const { t, i18n } = useTranslation();
@@ -73,6 +74,16 @@ const WaitingRoomForNewUser = () => {
     </div>
         </form>
       </Container>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t("First and last name")}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+<Username></Username>
         </AccordionDetails>
       </Accordion>
 
