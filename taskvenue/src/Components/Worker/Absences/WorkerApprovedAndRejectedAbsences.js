@@ -6,6 +6,8 @@ import { useTranslation } from "react-i18next";
 import FilterListIcon from '@mui/icons-material/FilterList'; 
 import moment from 'moment';
 import 'moment/locale/pl'; 
+import EditIcon from '@mui/icons-material/Edit';
+
 
 const WorkerApprovedAndRejectedAbsences = () => {
     const [absences, setAbsences] = useState([]);
@@ -176,6 +178,7 @@ const WorkerApprovedAndRejectedAbsences = () => {
                                     variant="contained"
                                     color="primary"
                                     onClick={() => handleButtonClickAbsenceDetails(absence)}
+                                    startIcon={<EditIcon />}
                                 >
                                     {t("details")}
                                 </Button>

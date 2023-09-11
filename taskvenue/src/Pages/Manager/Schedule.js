@@ -9,6 +9,7 @@ import ScheduleLegend from '../../Components/Common/Legends/ScheduleLegend';
 import { useTranslation } from 'react-i18next';
 import { Button, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import ManagerScheduleBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerScheduleBreadcrumbs';
+import AddIcon from '@mui/icons-material/Add';
 
 const localizer = momentLocalizer(moment);
 
@@ -175,10 +176,10 @@ const Schedule = () => {
       <ManagerScheduleBreadcrumbs />
       <p></p>
       <div>
-        <Button style={{ marginLeft: '20px', marginBottom: '20px' }} type="submit" variant="contained" color="primary" onClick={addNewTask}>
+        <Button style={{ marginLeft: '20px', marginBottom: '20px' }} type="submit" variant="contained" color="primary" onClick={addNewTask} startIcon={<AddIcon />}>
           {t("Add task")}
         </Button>
-        <Button style={{ marginLeft: '20px', marginBottom: '20px' }} type="submit" variant="contained" color="primary" onClick={addNewAbsence}>
+        <Button style={{ marginLeft: '20px', marginBottom: '20px' }} type="submit" variant="contained" color="primary" onClick={addNewAbsence} startIcon={<AddIcon />}>
           {t("Add absence")}
         </Button>
         <FormControl style={{ marginLeft: '20px' }}>

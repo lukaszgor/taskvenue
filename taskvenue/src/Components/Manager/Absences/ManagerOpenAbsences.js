@@ -6,6 +6,8 @@ import { useTranslation } from "react-i18next";
 import FilterListIcon from '@mui/icons-material/FilterList'; 
 import moment from 'moment';
 import 'moment/locale/pl'; 
+import EditIcon from '@mui/icons-material/Edit';
+import AddIcon from '@mui/icons-material/Add';
 
 const ManagerOpenAbsences = () => {
     const [absences, setAbsences] = useState([]);
@@ -109,7 +111,7 @@ const ManagerOpenAbsences = () => {
 
     return (
         <div>
-            <Button  style={{ marginLeft: '20px',marginBottom: '20px' }} type="submit" variant="contained" color="primary"  onClick={addNewAbsence} >
+            <Button  style={{ marginLeft: '20px',marginBottom: '20px' }} type="submit" variant="contained" color="primary"  onClick={addNewAbsence} startIcon={<AddIcon />}>
                 {t("Add")}
               </Button>
             <Button
@@ -183,6 +185,7 @@ const ManagerOpenAbsences = () => {
                                     variant="contained"
                                     color="primary"
                                     onClick={() => handleButtonClickAbsenceDetails(absence)}
+                                    startIcon={<EditIcon />}
                                 >
                                     {t("details")}
                                 </Button>

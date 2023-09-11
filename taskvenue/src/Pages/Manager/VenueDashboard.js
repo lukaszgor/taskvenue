@@ -6,6 +6,8 @@ import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import { useTranslation } from "react-i18next";
 import FilterListIcon from '@mui/icons-material/FilterList'; 
 import ManagerVenuesBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerVenuesBreadcrumbs';
+import EditIcon from '@mui/icons-material/Edit';
+import AddIcon from '@mui/icons-material/Add';
 
 const VenueDashboard = () => {
     const [venues, setVenues] = useState([]);
@@ -113,7 +115,7 @@ const VenueDashboard = () => {
             <ManagerNavBar></ManagerNavBar>
           <ManagerVenuesBreadcrumbs></ManagerVenuesBreadcrumbs>
             <p></p>
-            <Button  style={{ marginLeft: '20px',marginBottom: '20px' }} type="submit" variant="contained" color="primary"  onClick={addNewVenue} >
+            <Button  style={{ marginLeft: '20px',marginBottom: '20px' }} type="submit" variant="contained" color="primary"  onClick={addNewVenue} startIcon={<AddIcon />} >
                 {t("Add")}
               </Button>
             <Button
@@ -189,6 +191,7 @@ const VenueDashboard = () => {
                                     variant="contained"
                                     color="primary"
                                     onClick={() => handleButtonClickVenueDetails(venue)}
+                                    startIcon={<EditIcon />}
                                 >
                                     {t("details")}
                                 </Button>

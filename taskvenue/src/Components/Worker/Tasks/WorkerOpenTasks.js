@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import moment from 'moment';
+import EditIcon from '@mui/icons-material/Edit';
 
 const WorkerOpenTasks = () => {
   const [tasks, setTasks] = useState([]);
@@ -321,6 +322,7 @@ const WorkerOpenTasks = () => {
                   variant="contained"
                   color="primary"
                   onClick={() => handleButtonClickTaskDetails(task)}
+                  startIcon={<EditIcon />}
                 >
                   {t('details')}
                 </Button>
