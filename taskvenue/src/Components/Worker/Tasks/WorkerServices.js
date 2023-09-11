@@ -7,10 +7,9 @@ import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { useTranslation } from "react-i18next";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import LocalAtmOutlinedIcon from '@mui/icons-material/LocalAtmOutlined';
 import styled from 'styled-components';
 import { format } from 'date-fns';
-
+import SellIcon from '@mui/icons-material/Sell';
 
 const DateInput = styled.input`
   width: 100%;
@@ -255,7 +254,7 @@ const insertService = async()=>{
             {/* ... (existing JSX) */}
             <div style={{ textAlign: 'right' }}>
               <Typography variant="h6">
-               {t('Summary')}: {fullTotalTask} <LocalAtmOutlinedIcon fontSize='medium' />
+               {t('Summary')}: {fullTotalTask} <SellIcon fontSize='medium' />
               </Typography>
             </div>
           </div>
