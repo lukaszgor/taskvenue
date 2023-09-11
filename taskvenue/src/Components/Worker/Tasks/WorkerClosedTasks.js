@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent, Typography, Grid, TextField, Button, Dialog, DialogContent, DialogTitle } from '@mui/material';
+import { Card, CardContent, Typography, Grid, TextField, Button, Dialog, DialogContent, DialogTitle,InputLabel } from '@mui/material';
 import supabase from '../../../supabaseClient';
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next";
@@ -18,6 +18,8 @@ const WorkerClosedTasks = () => {
     const [userID, setUserID] = useState('');
     const [idConfig, setIdConfiguration] = useState('');
     const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
     
     useEffect(() => {
         const checkSession = async () => {
@@ -61,9 +63,18 @@ const WorkerClosedTasks = () => {
         if (searchContractor !== '') {
             filteredData = filteredData.filter((task) => task.contractor?.nameOrCompanyName.toLowerCase().includes(searchContractor.toLowerCase()));
         }
+        if (startDate !== '' && endDate !== '') {
+            filteredData = filteredData.filter((task) => {
+              const taskDate = new Date(task.createdDate);
+              const startFilterDate = new Date(startDate);
+              const endFilterDate = new Date(endDate);
+      
+              return taskDate >= startFilterDate && taskDate <= endFilterDate;
+            });
+          }
 
         setFilteredTasks(filteredData);
-    }, [tasks, searchName, searchNumber, searchContractor]);
+    }, [tasks, searchName, searchNumber, searchContractor,startDate,endDate]);
 
     const fetchTasks = async (idConfig,userID) => {
         const { data, error } = await supabase
@@ -100,6 +111,15 @@ const WorkerClosedTasks = () => {
         if (searchContractor !== '') {
             filteredData = filteredData.filter((task) => task.contractor?.nameOrCompanyName.toLowerCase().includes(searchContractor.toLowerCase()));
         }
+        if (startDate !== '' && endDate !== '') {
+            filteredData = filteredData.filter((task) => {
+              const taskDate = new Date(task.createdDate);
+              const startFilterDate = new Date(startDate);
+              const endFilterDate = new Date(endDate);
+      
+              return taskDate >= startFilterDate && taskDate <= endFilterDate;
+            });
+          }
 
         setFilteredTasks(filteredData);
         setIsFilterPopupOpen(false);
@@ -153,6 +173,30 @@ const WorkerClosedTasks = () => {
                             style={{ marginBottom: '8px' }} 
                         />
                     </div>
+                    <div style={{ marginBottom: '16px' }}>
+                        <InputLabel id="Start Date-select-select-label">
+                                {t('Start Date')}
+                                </InputLabel>
+                            <TextField
+                            variant="outlined"
+                            type="date"
+                            value={startDate}
+                            onChange={(e) => setStartDate(e.target.value)}
+                            style={{ marginBottom: '8px' }}
+                            />
+                        </div>
+                        <div style={{ marginBottom: '16px' }}>
+                        <InputLabel id="End Date-select-select-label">
+                                {t('End Date')}
+                                </InputLabel>
+                            <TextField
+                            variant="outlined"
+                            type="date"
+                            value={endDate}
+                            onChange={(e) => setEndDate(e.target.value)}
+                            style={{ marginBottom: '8px' }}
+                            />
+                        </div>
                     <Button
                         variant="contained"
                         color="primary"

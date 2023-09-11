@@ -9,6 +9,7 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
+  InputLabel,
   Switch,} from '@mui/material';
 import supabase from '../../../supabaseClient';
 import { useNavigate } from 'react-router-dom';
@@ -30,6 +31,8 @@ const WorkerOpenTasks = () => {
   const [userID, setUserID] = useState('');
   const [idConfig, setIdConfiguration] = useState('');
   const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
 
   useEffect(() => {
     const checkSession = async () => {
@@ -81,9 +84,18 @@ const WorkerOpenTasks = () => {
           .includes(searchContractor.toLowerCase())
       );
     }
+    if (startDate !== '' && endDate !== '') {
+        filteredData = filteredData.filter((task) => {
+          const taskDate = new Date(task.createdDate);
+          const startFilterDate = new Date(startDate);
+          const endFilterDate = new Date(endDate);
+  
+          return taskDate >= startFilterDate && taskDate <= endFilterDate;
+        });
+      }
 
     setFilteredTasks(filteredData);
-  }, [tasks, searchName, searchNumber, searchContractor]);
+  }, [tasks, searchName, searchNumber, searchContractor,startDate,endDate]);
 
   const fetchTasks = async (idConfig,userID) => {
     const statusFilters = [];
@@ -140,10 +152,20 @@ const WorkerOpenTasks = () => {
           .includes(searchContractor.toLowerCase())
       );
     }
+    if (startDate !== '' && endDate !== '') {
+        filteredData = filteredData.filter((task) => {
+          const taskDate = new Date(task.createdDate);
+          const startFilterDate = new Date(startDate);
+          const endFilterDate = new Date(endDate);
+    
+          return taskDate >= startFilterDate && taskDate <= endFilterDate;
+        });
+      }
 
     setFilteredTasks(filteredData);
     setIsFilterPopupOpen(false);
   };
+
 
   const handleOpenFilterChange = () => {
     setOpenFilter(!openFilter);
@@ -207,6 +229,30 @@ const WorkerOpenTasks = () => {
               variant="outlined"
               value={searchContractor}
               onChange={(e) => setsearchContractor(e.target.value)}
+              style={{ marginBottom: '8px' }}
+            />
+          </div>
+          <div style={{ marginBottom: '16px' }}>
+          <InputLabel id="Start Date-select-select-label">
+                  {t('Start Date')}
+                </InputLabel>
+            <TextField
+              variant="outlined"
+              type="date"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+              style={{ marginBottom: '8px' }}
+            />
+          </div>
+          <div style={{ marginBottom: '16px' }}>
+          <InputLabel id="End Date-select-select-label">
+                  {t('End Date')}
+                </InputLabel>
+            <TextField
+              variant="outlined"
+              type="date"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
               style={{ marginBottom: '8px' }}
             />
           </div>
