@@ -10,13 +10,17 @@ import {
   DialogContent,
   DialogTitle,
   Switch,
-  InputLabel
+  InputLabel,
+  Box
 } from '@mui/material';
 import supabase from '../../../supabaseClient';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import moment from 'moment';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import EditIcon from '@mui/icons-material/Edit';
+import AddIcon from '@mui/icons-material/Add';
 
 const ManagerOpenTasks = () => {
   const [tasks, setTasks] = useState([]);
@@ -136,7 +140,40 @@ const ManagerOpenTasks = () => {
   const handleButtonClickTaskDetails = (task) => {
     navigate('/TaskDetails/' + task.id);
   };
+  const handleCopyButtonClick = async (task) => {
+    try {
+      // Pobierz dane z istniejącego taska
+      const { id, name,kickoffDate, deadline,estimatedTime,id_configuration,description,asigned_user,type,settled,id_contractor,id_venue } = task;
+  
+      // Utwórz nowy task na podstawie danych z istniejącego taska
+      const newTask = {
+        name: name,
+        estimatedTime:estimatedTime,
+        id_configuration:id_configuration,
+        description:description,
+        asigned_user:asigned_user,
+        type:type,
+        settled:settled,
+        id_contractor:id_contractor,
+        id_venue:id_venue,
+        kickoffDate: kickoffDate,
+        deadline: deadline,
+        status: 'open', // Ustaw status na 'open', ponieważ to jest nowy task
+      };
 
+      const { data, error } = await supabase.from('tasks').insert([newTask]);
+  
+      if (error) {
+        console.error(error);
+      } else {
+        // console.log('Kopiowanie taska zakończone sukcesem!', data);
+        fetchTasks(idConfig);
+      }
+    } catch (error) {
+      console.error('Wystąpił błąd podczas kopiowania taska:', error.message);
+    }
+  };
+  
   const addNewTask = () => {
     navigate('/AddNewTask');
   };
@@ -194,6 +231,7 @@ const ManagerOpenTasks = () => {
     return formattedDate;
   };
 
+
   return (
     <div>
       <Button
@@ -202,8 +240,9 @@ const ManagerOpenTasks = () => {
         variant="contained"
         color="primary"
         onClick={addNewTask}
+        startIcon={<AddIcon />}
       >
-        {t('Add')}
+      {t('Add')}
       </Button>
       <Button
         style={{ marginLeft: '20px', marginBottom: '20px' }}
@@ -340,13 +379,24 @@ const ManagerOpenTasks = () => {
                   {t('Deadline')}: {formatDate(task.deadline)}
                 </Typography>
                 <p></p>
+                <Box display="inline-block" marginRight={2}>
                 <Button
                   variant="contained"
                   color="primary"
                   onClick={() => handleButtonClickTaskDetails(task)}
-                >
-                  {t('details')}
+                  startIcon={<EditIcon />}
+                > {t('details')}
                 </Button>
+                </Box>
+                <Box display="inline-block" marginRight={2}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => handleCopyButtonClick(task)}
+                  startIcon={<ContentCopyIcon />}
+                > {t('Copy')} 
+                </Button>
+                </Box>
               </CardContent>
             </Card>
           </Grid>
