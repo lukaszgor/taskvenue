@@ -3,7 +3,7 @@ import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import { useState,useEffect } from 'react';
 import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
-import { TextField, Button, Grid, Container, Typography, Select, MenuItem,FormControl,InputLabel } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography, Select, MenuItem,FormControl,InputLabel,Box } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import ManagerVenueBreadcrumbs from '../../Components/Breadcrumbs/ManagerVenueBreadcrumbs';
@@ -156,14 +156,16 @@ const handleCloseAlert = (event, reason) => {
    
              </Grid>
             <Grid item xs={12}>
+            <Box display="flex" justifyContent="flex-end">
               <Button
                 type="submit"
                 variant="contained"
                 color="primary"
-                fullWidth
+                
               >
                 {t("Submit")}
               </Button>
+              </Box>
             </Grid>
             </Grid>
           <div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import { useState,useEffect } from 'react';
-import { TextField, Button, Grid, Container, Typography, Select, MenuItem } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography, Select, MenuItem,Box } from '@mui/material';
 import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
@@ -9,6 +9,7 @@ import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { useNavigate } from "react-router-dom"
 import ManagerAdministrationContractorBreadcrumbs from '../../Components/Breadcrumbs/ManagerAdministrationContractorBreadcrumbs';
+import { Margin } from '@mui/icons-material';
 
 
 
@@ -207,26 +208,26 @@ const handleSubmit = (event) => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                fullWidth
-              >
-                {t("Submit")}
-              </Button>
-            </Grid>
-            <Grid item xs={12}>
-              <Button
-                type="error"
-                variant="contained"
-                color="error"
-                fullWidth
-                onClick={DeleteContractor} 
-              >
-                {t("Delete")}
-              </Button>
-            </Grid>
+              <Box display="flex" justifyContent="flex-end" marginTop={1}>
+                                <Button
+                                  type="submit"
+                                  variant="contained"
+                                  color="primary"
+                                >
+                                  {t("Submit")}
+                                </Button>
+                          <Box marginLeft={1}> 
+                            <Button
+                                  type="error"
+                                  variant="contained"
+                                  color="error"
+                                  onClick={DeleteContractor} 
+                                >
+                                  {t("Delete")}
+                                </Button>
+                          </Box>
+              </Box>
+</Grid>
           </Grid>
           <div>
     </div>

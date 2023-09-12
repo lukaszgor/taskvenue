@@ -1,7 +1,7 @@
 import React from 'react';
 import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import { useState,useEffect } from 'react';
-import { TextField, Button, Grid, Container, Typography, Select, MenuItem,Checkbox,FormControlLabel,FormControl,InputLabel } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography, Select, MenuItem,Checkbox,FormControlLabel,FormControl,InputLabel,Box } from '@mui/material';
 import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
@@ -229,14 +229,15 @@ const handleCloseAlert = (event, reason) => {
         )}
              </Grid>
             <Grid item xs={12}>
+            <Box display="flex" justifyContent="flex-end">
               <Button
                 type="submit"
                 variant="contained"
                 color="primary"
-                fullWidth
               >
                 {t("Submit")}
               </Button>
+              </Box>
             </Grid>
             </Grid>
           <div>
