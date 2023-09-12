@@ -7,7 +7,7 @@ import { TextField, Button, Grid, Container, Typography, Select, MenuItem,FormCo
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import ManagerVenueBreadcrumbs from '../../Components/Breadcrumbs/ManagerVenueBreadcrumbs';
-
+import { useNavigate } from "react-router-dom";
 
 const AddNewVenue = () => {
     const { t, i18n } = useTranslation();
@@ -17,7 +17,7 @@ const AddNewVenue = () => {
 
         const [contractors, setContractors] = useState([]);
         const [selectedContractorId, setSelectedContractorId] = useState(null);
-
+        const navigate = useNavigate();
         const [userID, setUserID] = useState('');
         const [idConfig, setIdConfiguration] = useState('');
         
@@ -72,6 +72,7 @@ const AddNewVenue = () => {
         .from('venues')
         .insert([{id_configuration:idConfig,name:name,GPS_location:address,description:description,who_created:userID,id_contractor:selectedContractorId}])
         handleClickAlert()
+        navigate('/VenueDashboard');
         if(error){
             console.log(error)
         }if(data){
