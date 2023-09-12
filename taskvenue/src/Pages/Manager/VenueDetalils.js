@@ -131,12 +131,14 @@ const VenueDetalils = () => {
             <ManagerNavBar></ManagerNavBar>
             <ManagerVenueBreadcrumbs></ManagerVenueBreadcrumbs>
                     <p></p>
+                   
                     <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Typography variant="h6" fontWeight="bold">{t('Venues details')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
+          <Container maxWidth="md"> 
           <form onSubmit={handleSubmit} >
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
@@ -201,6 +203,7 @@ const VenueDetalils = () => {
                         </Grid>
                     </Grid>
                 </form>
+                </Container>
         </AccordionDetails>
       </Accordion>
 
@@ -214,6 +217,7 @@ const VenueDetalils = () => {
           <VenueHistory></VenueHistory>
         </AccordionDetails>
       </Accordion>
+    
                 <Snackbar open={open}
                     autoHideDuration={2000}
                     onClose={handleCloseAlert}>
