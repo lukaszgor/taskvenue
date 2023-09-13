@@ -150,7 +150,10 @@
       "Venues details":"Venues details",
       "End Date":"End Date",
       "Start Date":"Start Date",
-      "Active":"Active"
+      "Active":"Active",
+      "Archived":"Archived",
+      "Yes":"Yes",
+      "No":"No"
       
 
 

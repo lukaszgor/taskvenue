@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent, Typography, Grid, TextField, Button, Dialog, DialogContent, DialogTitle } from '@mui/material';
+import {
+    Card,
+    CardContent,
+    Typography,
+    Grid,
+    TextField,
+    Button,
+    Dialog,
+    DialogContent,
+    DialogTitle,
+    Switch, // Importujemy komponent Switch z MUI
+} from '@mui/material';
 import supabase from '../../supabaseClient';
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
 import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
-import { useTranslation } from "react-i18next";
-import FilterListIcon from '@mui/icons-material/FilterList'; 
+import { useTranslation } from 'react-i18next';
+import FilterListIcon from '@mui/icons-material/FilterList';
 import ManagerVenuesBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerVenuesBreadcrumbs';
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
@@ -15,13 +26,14 @@ const VenueDashboard = () => {
     const [searchName, setSearchName] = useState('');
     const [searchNumber, setsearchNumber] = useState('');
     const [searchContractor, setsearchContractor] = useState('');
+    const [showArchived, setArchived] = useState(false); // Domyślnie wyświetlamy wszystkie miejsca
     const { t, i18n } = useTranslation();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const [userID, setUserID] = useState('');
     const [idConfig, setIdConfiguration] = useState('');
     const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
-    
+
     useEffect(() => {
         const checkSession = async () => {
             const { data } = await supabase.auth.getSession();
@@ -44,7 +56,7 @@ const VenueDashboard = () => {
         } else if (profileData) {
             setIdConfiguration(profileData.id_configuration);
         }
-    }
+    };
 
     useEffect(() => {
         if (idConfig) {
@@ -56,17 +68,30 @@ const VenueDashboard = () => {
         let filteredData = venues;
 
         if (searchName !== '') {
-            filteredData = filteredData.filter((venue) => venue.name.toLowerCase().includes(searchName.toLowerCase()));
+            filteredData = filteredData.filter((venue) =>
+                venue.name.toLowerCase().includes(searchName.toLowerCase())
+            );
         }
         if (searchNumber !== '') {
-            filteredData = filteredData.filter((venue) => venue.id.toString().includes(searchNumber));
+            filteredData = filteredData.filter((venue) =>
+                venue.id.toString().includes(searchNumber)
+            );
         }
         if (searchContractor !== '') {
-            filteredData = filteredData.filter((venue) => venue.contractor?.nameOrCompanyName.toLowerCase().includes(searchContractor.toLowerCase()));
+            filteredData = filteredData.filter((venue) =>
+                venue.contractor?.nameOrCompanyName
+                    .toLowerCase()
+                    .includes(searchContractor.toLowerCase())
+            );
+        }
+
+        // Dodaj filtr ineffective
+        if (!showArchived) {
+            filteredData = filteredData.filter((venue) => venue.archived === null);
         }
 
         setFilteredVenues(filteredData);
-    }, [venues, searchName, searchNumber, searchContractor]);
+    }, [venues, searchName, searchNumber, searchContractor, showArchived]);
 
     const fetchVenues = async (idConfiguration) => {
         const { data, error } = await supabase
@@ -75,7 +100,7 @@ const VenueDashboard = () => {
                 contractor (
                     nameOrCompanyName
                 )
-            ` )
+            `)
             .eq('id_configuration', idConfig);
 
         if (error) {
@@ -86,24 +111,42 @@ const VenueDashboard = () => {
     };
 
     const handleButtonClickVenueDetails = (venue) => {
-        navigate('/VenueDetalils/' + venue.id)
+        navigate('/VenueDetalils/' + venue.id);
     };
 
     const addNewVenue = () => {
-        navigate('/AddNewVenue')
+        navigate('/AddNewVenue');
     };
 
     const applyFilters = () => {
+        // Domyślnie ustawiamy showIneffective na true, aby wyświetlić wszystkie miejsca
         let filteredData = venues;
+        if (!showArchived) {
+            // Jeśli suwak jest przesunięty, zmieniamy showIneffective na false
+            setArchived(false);
+            // Filtrujemy tylko te miejsca, które mają null w kolumnie ineffective
+            filteredData = filteredData.filter((venue) => venue.archived === null);
+        } else {
+            // Jeśli suwak nie jest przesunięty, wyświetlamy wszystkie miejsca
+            setArchived(true);
+        }
 
         if (searchName !== '') {
-            filteredData = filteredData.filter((venue) => venue.name.toLowerCase().includes(searchName.toLowerCase()));
+            filteredData = filteredData.filter((venue) =>
+                venue.name.toLowerCase().includes(searchName.toLowerCase())
+            );
         }
         if (searchNumber !== '') {
-            filteredData = filteredData.filter((venue) => venue.id.toString().includes(searchNumber));
+            filteredData = filteredData.filter((venue) =>
+                venue.id.toString().includes(searchNumber)
+            );
         }
         if (searchContractor !== '') {
-            filteredData = filteredData.filter((venue) => venue.contractor?.nameOrCompanyName.toLowerCase().includes(searchContractor.toLowerCase()));
+            filteredData = filteredData.filter((venue) =>
+                venue.contractor?.nameOrCompanyName
+                    .toLowerCase()
+                    .includes(searchContractor.toLowerCase())
+            );
         }
 
         setFilteredVenues(filteredData);
@@ -113,11 +156,18 @@ const VenueDashboard = () => {
     return (
         <div>
             <ManagerNavBar></ManagerNavBar>
-          <ManagerVenuesBreadcrumbs></ManagerVenuesBreadcrumbs>
+            <ManagerVenuesBreadcrumbs></ManagerVenuesBreadcrumbs>
             <p></p>
-            <Button  style={{ marginLeft: '20px',marginBottom: '20px' }} type="submit" variant="contained" color="primary"  onClick={addNewVenue} startIcon={<AddIcon />} >
-                {t("Add")}
-              </Button>
+            <Button
+                style={{ marginLeft: '20px', marginBottom: '20px' }}
+                type="submit"
+                variant="contained"
+                color="primary"
+                onClick={addNewVenue}
+                startIcon={<AddIcon />}
+            >
+                {t('Add')}
+            </Button>
             <Button
                 style={{ marginLeft: '20px', marginBottom: '20px' }}
                 variant="contained"
@@ -125,49 +175,56 @@ const VenueDashboard = () => {
                 onClick={() => setIsFilterPopupOpen(true)}
                 startIcon={<FilterListIcon />}
             >
-                {t("Open Filter")}
+                {t('Open Filter')}
             </Button>
             <Dialog open={isFilterPopupOpen} onClose={() => setIsFilterPopupOpen(false)}>
-    <DialogTitle>{t("Filter Venues")}</DialogTitle>
-    <DialogContent>
-      <p></p>
-        <div style={{ marginBottom: '16px' }}>
-            <TextField
-                label={t("Search by number")}
-                variant="outlined"
-                value={searchNumber}
-                onChange={(e) => setsearchNumber(e.target.value)}
-                style={{ marginBottom: '8px' }} 
-            />
-        </div>
-        <div style={{ marginBottom: '16px' }}>
-            <TextField
-                label={t("Search by name")}
-                variant="outlined"
-                value={searchName}
-                onChange={(e) => setSearchName(e.target.value)}
-                style={{ marginBottom: '8px' }} 
-            />
-        </div>
-        <div style={{ marginBottom: '16px' }}>
-            <TextField
-                label={t("Search by contractor")}
-                variant="outlined"
-                value={searchContractor}
-                onChange={(e) => setsearchContractor(e.target.value)}
-                style={{ marginBottom: '8px' }} 
-            />
-        </div>
-        <Button
-            variant="contained"
-            color="primary"
-            onClick={applyFilters}
-            style={{ marginTop: '16px' }} 
-        >
-            {t("Apply Filters")}
-        </Button>
-    </DialogContent>
-</Dialog>
+                <DialogTitle>{t('Filter Venues')}</DialogTitle>
+                <DialogContent>
+                    <p></p>
+                    <div style={{ marginBottom: '16px' }}>
+                        <TextField
+                            label={t('Search by number')}
+                            variant="outlined"
+                            value={searchNumber}
+                            onChange={(e) => setsearchNumber(e.target.value)}
+                            style={{ marginBottom: '8px' }}
+                        />
+                    </div>
+                    <div style={{ marginBottom: '16px' }}>
+                        <TextField
+                            label={t('Search by name')}
+                            variant="outlined"
+                            value={searchName}
+                            onChange={(e) => setSearchName(e.target.value)}
+                            style={{ marginBottom: '8px' }}
+                        />
+                    </div>
+                    <div style={{ marginBottom: '16px' }}>
+                        <TextField
+                            label={t('Search by contractor')}
+                            variant="outlined"
+                            value={searchContractor}
+                            onChange={(e) => setsearchContractor(e.target.value)}
+                            style={{ marginBottom: '8px' }}
+                        />
+                    </div>
+                    <div style={{ marginBottom: '16px' }}>
+                        <Typography>{t('Archived')}</Typography>
+                        <Switch
+                            checked={showArchived}
+                            onChange={() => setArchived(!showArchived)}
+                        />
+                    </div>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={applyFilters}
+                        style={{ marginTop: '16px' }}
+                    >
+                        {t('Apply Filters')}
+                    </Button>
+                </DialogContent>
+            </Dialog>
 
             <Grid container spacing={3}>
                 {filteredVenues.map((venue) => (
@@ -178,13 +235,16 @@ const VenueDashboard = () => {
                                     ID: {venue.id}
                                 </Typography>
                                 <Typography variant="h6" gutterBottom>
-                                    {t("Name")} : {venue.name}
+                                    {t('Name')} : {venue.name}
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary">
-                                    {t("Description")} : {venue.description}
+                                    {t('Description')} : {venue.description}
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary">
-                                    {t("Contractor")} : {venue.contractor?.nameOrCompanyName}
+                                    {t('Contractor')} : {venue.contractor?.nameOrCompanyName}
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary">
+                                    {t('Archived')} : {venue.archived ? t('Yes') : t('No') }
                                 </Typography>
                                 <p></p>
                                 <Button
@@ -193,7 +253,7 @@ const VenueDashboard = () => {
                                     onClick={() => handleButtonClickVenueDetails(venue)}
                                     startIcon={<EditIcon />}
                                 >
-                                    {t("details")}
+                                    {t('details')}
                                 </Button>
                             </CardContent>
                         </Card>
