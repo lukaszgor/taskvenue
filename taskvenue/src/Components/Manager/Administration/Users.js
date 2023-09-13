@@ -88,8 +88,21 @@ const UserDetails=(event, cellValues)=>{
               }
           },
       },
+      {
+        field: 'isBlocked',
+        headerName: t("Blocked"),
+        width: 100,
+        valueGetter: (params) => {
+          const isBlocked = params.value;
+          if (isBlocked === 1) {
+            return t("Blocked");
+          } else {
+            return t("Active");
+          }
+        },
+      },
         {
-            field: "Akcje",headerName: t("Action"), width: 200 ,
+            field: "Akcje",headerName: t("Action"), width: 600 ,
             renderCell: (cellValues) => {
               return ( 
                 <Button
@@ -108,7 +121,7 @@ const UserDetails=(event, cellValues)=>{
       setForeignUserID('');
          
       };
-      
+
       const updateUser =async()=>{
         const{data,error}=await supabase
         .from('profiles')

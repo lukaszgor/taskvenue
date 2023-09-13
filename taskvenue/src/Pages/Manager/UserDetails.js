@@ -91,9 +91,6 @@ const FetchUserData = async () => {
     }
 
 
-
-
-
     useEffect(() => {
         if (idConfig) {
             handleFetchContractors(idConfig);
@@ -110,7 +107,7 @@ const FetchUserData = async () => {
 const updateUser =async()=>{
     const{data,error}=await supabase
     .from('profiles')
-    .update({'username':name,'full_name':email,'profile_type':profile_type,'description':description,'phone_number':phone_number,'address':address,'id_contractor':selectedContractorId})
+    .update({'username':name,'full_name':email,'profile_type':profile_type,'description':description,'phone_number':phone_number,'address':address,'id_contractor':selectedContractorId,'isBlocked':isBlocked})
     .eq('id',id)
     handleClickAlert()
 }
@@ -212,6 +209,7 @@ const handleCloseAlert = (event, reason) => {
             <Grid item xs={12} sm={6}>
             {profile_type === 'client' && (
           <FormControl fullWidth>
+ <InputLabel id="status-select-select-label">{t("Select Contractor")}</InputLabel>
             <Select
               labelId="contractor-select-label"
               id="contractor-select"

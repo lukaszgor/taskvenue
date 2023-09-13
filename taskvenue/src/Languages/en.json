@@ -58,7 +58,7 @@
     "National Economy Register ID":"National Economy Register ID",
     "Tax ID":"Tax ID",
     "Name or company name":"Name or company name",
-    "Blocked":"Zablokowany",
+    "Blocked":"Blocked",
     "Select Contractor":"Select Contractor",
     "Copy the ID and deliver to your administrator to add you to the appropriate configuration":"Copy the ID and deliver to your administrator to add you to the appropriate configuration",
     "Copy":"Copy",
@@ -149,7 +149,8 @@
       "History":"History",
       "Venues details":"Venues details",
       "End Date":"End Date",
-      "Start Date":"Start Date"
+      "Start Date":"Start Date",
+      "Active":"Active"
       
 
 
