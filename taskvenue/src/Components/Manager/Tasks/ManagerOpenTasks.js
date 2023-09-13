@@ -39,6 +39,7 @@ const ManagerOpenTasks = () => {
   const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+  const [currentDate, setCurrentDate] = useState('');
 
   useEffect(() => {
     const checkSession = async () => {
@@ -98,6 +99,7 @@ const ManagerOpenTasks = () => {
       );
     }
 
+
     if (startDate !== '' && endDate !== '') {
       filteredData = filteredData.filter((task) => {
         const taskDate = new Date(task.createdDate);
@@ -110,6 +112,12 @@ const ManagerOpenTasks = () => {
 
     setFilteredTasks(filteredData);
   }, [tasks, searchName, searchNumber, searchContractor, searchUser, startDate, endDate]);
+
+  useEffect(() => {
+    const formattedDate = moment().format('YYYY-MM-DDTHH:mm');
+    setCurrentDate(formattedDate);
+  }, []); 
+
 
   const fetchTasks = async (idConfig) => {
     const statusFilters = [];
@@ -158,6 +166,7 @@ const ManagerOpenTasks = () => {
         id_venue:id_venue,
         kickoffDate: kickoffDate,
         deadline: deadline,
+        createdDate:currentDate,
         status: 'open', // Ustaw status na 'open', ponieważ to jest nowy task
       };
 
