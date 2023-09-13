@@ -45,7 +45,8 @@ const ManagerVenueEdit = () => {
     const { data, error } = await supabase
       .from('venues')
       .select()
-      .eq('id_configuration', idConfig);
+      .eq('id_configuration', idConfig)
+      .is('archived', null);
     if (error) {
       console.log(error);
     }
@@ -167,17 +168,17 @@ const ManagerVenueEdit = () => {
               {t('Select Venue')}
             </InputLabel>
             <Select
-              labelId="venue-select-label"
-              id="venue-select"
-              value={selectedVenueId}
-              onChange={handleChangeVenue}
-              label={t('Select Venue')}
-            >
-              {venues.map((venue) => (
-                <MenuItem key={venue.id} value={venue.id}>
-                  {venue.name}
-                </MenuItem>
-              ))}
+                labelId="venue-select-label"
+                id="venue-select"
+                value={selectedVenueId}
+                onChange={handleChangeVenue}
+                label={t('Select Venue')}
+              >
+                {venues.map((venue) => (
+                  <MenuItem key={venue.id} value={venue.id}>
+                    {venue.name}
+                  </MenuItem>
+                ))}
             </Select>
           </FormControl>
         </Grid>
