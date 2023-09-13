@@ -184,6 +184,8 @@ const WorkerVenue = () => {
         <p></p>
         {selectedVenue && (
           <Grid item xs={12}>
+            <Typography variant="h11">{t('Name')}</Typography>
+           <Typography variant="h6">{selectedVenue.name}</Typography>
             <Typography variant="h11">{t('Description')}</Typography>
             <Typography variant="h6">{selectedVenue.description}</Typography>
             <Typography variant="h11">{t('Address')}</Typography>
