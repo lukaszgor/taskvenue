@@ -6,6 +6,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import MainView from "../../Components/Manager/MainView";
 import ClientMainView from "../../Components/Client/ClientMainView";
 import WorkerMainView from "../../Components/Worker/WorkerMainView";
+import SuperAdminMainView from "../../Components/SuperAdmin/SuperAdminMainView";
 
 
 import moment from "moment";
@@ -120,6 +121,7 @@ function Home() {
             {isVerified === 'manager' && <MainView />}
             {isVerified === 'worker' && <WorkerMainView />}
             {isVerified === 'client' && <ClientMainView />}
+            {isVerified === 'superadmin' && <SuperAdminMainView />}
             {isVerified === null && (
                 <Box style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <p></p>
