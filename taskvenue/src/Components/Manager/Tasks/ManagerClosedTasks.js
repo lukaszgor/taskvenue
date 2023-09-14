@@ -9,7 +9,8 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
-  InputLabel
+  InputLabel,
+  Switch,
 } from '@mui/material';
 import supabase from '../../../supabaseClient';
 import { useNavigate } from 'react-router-dom';
@@ -22,17 +23,19 @@ const ManagerClosedTasks = () => {
   const [tasks, setTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [searchName, setSearchName] = useState('');
-  const [searchNumber, setsearchNumber] = useState('');
-  const [searchContractor, setsearchContractor] = useState('');
-  const [searchUser, setsearchUser] = useState('');
+  const [searchNumber, setSearchNumber] = useState('');
+  const [searchContractor, setSearchContractor] = useState('');
+  const [searchUser, setSearchUser] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
 
   const [userID, setUserID] = useState('');
   const [idConfig, setIdConfiguration] = useState('');
   const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [showCompleted, setShowCompleted] = useState(true);
+  const [showCancelled, setShowCancelled] = useState(false);
 
   useEffect(() => {
     const checkSession = async () => {
@@ -102,8 +105,16 @@ const ManagerClosedTasks = () => {
       });
     }
 
+    if (!showCompleted) {
+      filteredData = filteredData.filter((task) => task.status !== 'completed');
+    }
+
+    if (!showCancelled) {
+      filteredData = filteredData.filter((task) => task.status !== 'cancelled');
+    }
+
     setFilteredTasks(filteredData);
-  }, [tasks, searchName, searchNumber, searchContractor, searchUser, startDate, endDate]);
+  }, [tasks, searchName, searchNumber, searchContractor, searchUser, startDate, endDate, showCompleted, showCancelled]);
 
   const fetchTasks = async (idConfig) => {
     const { data, error } = await supabase
@@ -114,7 +125,7 @@ const ManagerClosedTasks = () => {
             ),profiles (username)
             `)
       .eq('id_configuration', idConfig)
-      .eq('status', 'completed');
+      .in('status', ['completed', 'cancelled']); // Wybierz tylko statusy 'completed' i 'cancelled'
 
     if (error) {
       console.error(error);
@@ -169,6 +180,14 @@ const ManagerClosedTasks = () => {
       });
     }
 
+    if (!showCompleted) {
+      filteredData = filteredData.filter((task) => task.status !== 'completed');
+    }
+
+    if (!showCancelled) {
+      filteredData = filteredData.filter((task) => task.status !== 'cancelled');
+    }
+
     setFilteredTasks(filteredData);
     setIsFilterPopupOpen(false);
   };
@@ -199,7 +218,7 @@ const ManagerClosedTasks = () => {
               label={t('Search by number')}
               variant="outlined"
               value={searchNumber}
-              onChange={(e) => setsearchNumber(e.target.value)}
+              onChange={(e) => setSearchNumber(e.target.value)}
               style={{ marginBottom: '8px' }}
             />
           </div>
@@ -217,7 +236,7 @@ const ManagerClosedTasks = () => {
               label={t('Search by contractor')}
               variant="outlined"
               value={searchContractor}
-              onChange={(e) => setsearchContractor(e.target.value)}
+              onChange={(e) => setSearchContractor(e.target.value)}
               style={{ marginBottom: '8px' }}
             />
           </div>
@@ -226,14 +245,14 @@ const ManagerClosedTasks = () => {
               label={t('Search by User')}
               variant="outlined"
               value={searchUser}
-              onChange={(e) => setsearchUser(e.target.value)}
+              onChange={(e) => setSearchUser(e.target.value)}
               style={{ marginBottom: '8px' }}
             />
           </div>
           <div style={{ marginBottom: '16px' }}>
-          <InputLabel id="Start Date-select-select-label">
-                  {t('Start Date')}
-                </InputLabel>
+            <InputLabel id="Start Date-select-select-label">
+              {t('Start Date')}
+            </InputLabel>
             <TextField
               variant="outlined"
               type="date"
@@ -243,9 +262,9 @@ const ManagerClosedTasks = () => {
             />
           </div>
           <div style={{ marginBottom: '16px' }}>
-          <InputLabel id="End Date-select-select-label">
-                  {t('End Date')}
-                </InputLabel>
+            <InputLabel id="End Date-select-select-label">
+              {t('End Date')}
+            </InputLabel>
             <TextField
               variant="outlined"
               type="date"
@@ -253,6 +272,29 @@ const ManagerClosedTasks = () => {
               onChange={(e) => setEndDate(e.target.value)}
               style={{ marginBottom: '8px' }}
             />
+          </div>
+          <div style={{ marginBottom: '16px' }}>
+            <InputLabel>{t('Status')}</InputLabel>
+            <div>
+              <Switch
+                checked={showCompleted}
+                onChange={() => setShowCompleted(!showCompleted)}
+                color="primary"
+                name="showCompleted"
+                inputProps={{ 'aria-label': 'Show Completed' }}
+              />
+              <span>{t('Completed')}</span>
+            </div>
+            <div>
+              <Switch
+                checked={showCancelled}
+                onChange={() => setShowCancelled(!showCancelled)}
+                color="primary"
+                name="showCancelled"
+                inputProps={{ 'aria-label': 'Show Cancelled' }}
+              />
+              <span>{t('Cancelled')}</span>
+            </div>
           </div>
           <Button
             variant="contained"
@@ -275,6 +317,14 @@ const ManagerClosedTasks = () => {
                 </Typography>
                 <Typography variant="h6" gutterBottom>
                   {t('Name')} : {task.name}
+                </Typography>
+                <Typography variant="body2" color="textSecondary">
+                  {t('Status')} :{' '}
+                  {task.status === 'completed'
+                    ? t('Completed')
+                    : task.status === 'cancelled'
+                    ? t('Cancelled')
+                    : ''}
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
                   {t('Contractor')} : {task.contractor?.nameOrCompanyName}

@@ -259,6 +259,7 @@ const ManagerBasicDataEdit = () => {
                   <MenuItem value="open">{t('Open')}</MenuItem>
                   <MenuItem value="inProgress">{t('In progress')}</MenuItem>
                   <MenuItem value="completed">{t('Completed')}</MenuItem>
+                  <MenuItem value="cancelled">{t('Cancelled')}</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
