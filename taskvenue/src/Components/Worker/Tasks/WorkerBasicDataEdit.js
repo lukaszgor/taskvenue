@@ -307,7 +307,7 @@ const WorkerBasicDataEdit = () => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            {/* <Grid item xs={12} sm={6}>
               <FormControl fullWidth disabled>
                 <InputLabel id="asigned-select-label">
                   {t('Select Asigned user')}
@@ -326,22 +326,11 @@ const WorkerBasicDataEdit = () => {
                   ))}
                 </Select>
               </FormControl>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                name="Estimated time"
-                label={t('Estimated time')}
-                value={estimatedTime}
-                onChange={(e) => setEstimatedTime(e.target.value)}
-                fullWidth
-                type="number"
-                disabled
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
+            </Grid> */}
+            {/* <Grid item xs={12} sm={6}>
               <label>{t('Creation date')}</label>
               <DateTimeInput type="datetime-local" value={createdDate} disabled />
-            </Grid>
+            </Grid> */}
             <Grid item xs={12} sm={6}>
               <label>{t('Start of implementation')}</label>
               <DateTimeInput
@@ -362,6 +351,17 @@ const WorkerBasicDataEdit = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
+                name="Estimated time"
+                label={t('Estimated time')}
+                value={estimatedTime}
+                onChange={(e) => setEstimatedTime(e.target.value)}
+                fullWidth
+                type="number"
+                disabled
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
                 name="Description"
                 label={t('Description')}
                 value={description}
@@ -371,7 +371,7 @@ const WorkerBasicDataEdit = () => {
                 disabled={status === 'completed'}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            {/* <Grid item xs={12} sm={6}>
               <FormControlLabel disabled
                 control={
                   <Checkbox
@@ -382,7 +382,7 @@ const WorkerBasicDataEdit = () => {
                 }
                 label={t('Settled')}
               />
-            </Grid>
+            </Grid> */}
 
             <Grid item xs={12}>
               <Box display="flex" justifyContent="flex-end">

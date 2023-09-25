@@ -1,20 +1,22 @@
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import WorkerNavBar from '../../Components/NavigationBar/WorkerNavBar';
-import { useTranslation } from "react-i18next";
 import WorkerTaskBreadcrumbs from '../../Components/Breadcrumbs/Worker/WorkerTaskBreadcrumbs';
 import WorkerBasicDataEdit from '../../Components/Worker/Tasks/WorkerBasicDataEdit';
 import WorkerServices from '../../Components/Worker/Tasks/WorkerServices';
 import WorkerVenue from '../../Components/Worker/Tasks/WorkerVenue';
 import WorkerWorkingTime from '../../Components/Worker/Tasks/WorkerWorkingTime';
-
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import IconButton from '@mui/material/IconButton';
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, handleScrollLeft, handleScrollRight } = props;
 
   return (
     <div
@@ -22,13 +24,41 @@ function TabPanel(props) {
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
-      {...other}
+      style={{ position: 'relative' }}
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography component={'span'} variant={'body2'}>
-            {children}
-          </Typography>
+          {value > 0 && (
+            <IconButton
+              onClick={handleScrollLeft}
+              style={{
+                position: 'fixed',
+                left: 0,
+                top: '25%',
+                transform: 'translateY(-50%)',
+                zIndex: 1,
+              }}
+            >
+              <NavigateBeforeIcon />
+            </IconButton>
+          )}
+          {value < 3 && (
+            <IconButton
+              onClick={handleScrollRight}
+              style={{
+                position: 'fixed',
+                right: 0,
+                top: '25%',
+                transform: 'translateY(-50%)',
+                zIndex: 1,
+                // backgroundColor: 'blue', // Kolor niebieski
+                // color: 'white', // Kolor tekstu na przycisku
+              }}
+            >
+              <NavigateNextIcon />
+            </IconButton>
+          )}
+          {children}
         </Box>
       )}
     </div>
@@ -39,6 +69,8 @@ TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
+  handleScrollLeft: PropTypes.func.isRequired,
+  handleScrollRight: PropTypes.func.isRequired,
 };
 
 function a11yProps(index) {
@@ -51,6 +83,7 @@ function a11yProps(index) {
 function WorkerTaskDetails() {
   const { t, i18n } = useTranslation();
   const [value, setValue] = useState(0);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -72,60 +105,26 @@ function WorkerTaskDetails() {
       <WorkerNavBar></WorkerNavBar>
       <WorkerTaskBreadcrumbs></WorkerTaskBreadcrumbs>
       <Box sx={{ width: '100%' }}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider', position: 'relative' }}>
-          {value > 0 && (
-            <button
-              onClick={handleScrollLeft}
-              style={{
-                position: 'absolute',
-                left: 0,
-                top: '50%',
-                transform: 'translateY(-50%)',
-                background: 'transparent',
-                border: 'none',
-                zIndex: 1,
-              }}
-            >
-              &#8592;
-            </button>
-          )}
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            aria-label="basic tabs example"
-          >
-            <Tab label={t("Basic data")} {...a11yProps(0)} />
-            <Tab label={t("Venue")} {...a11yProps(1)} />
-            <Tab label={t("Services")} {...a11yProps(2)} />
-            <Tab label={t("Working time")} {...a11yProps(3)} />
-          </Tabs>
-          {value < 3 && (
-            <button
-              onClick={handleScrollRight}
-              style={{
-                position: 'absolute',
-                right: 0,
-                top: '50%',
-                transform: 'translateY(-50%)',
-                background: 'transparent',
-                border: 'none',
-                zIndex: 1,
-              }}
-            >
-              &#8594; 
-            </button>
-          )}
-        </Box>
-        <TabPanel value={value} index={0}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="basic tabs example"
+        >
+          <Tab label={t('Basic data')} {...a11yProps(0)} />
+          <Tab label={t('Venue')} {...a11yProps(1)} />
+          <Tab label={t('Services')} {...a11yProps(2)} />
+          <Tab label={t('Working time')} {...a11yProps(3)} />
+        </Tabs>
+        <TabPanel value={value} index={0} handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
           <WorkerBasicDataEdit></WorkerBasicDataEdit>
         </TabPanel>
-        <TabPanel value={value} index={1}>
+        <TabPanel value={value} index={1} handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
           <WorkerVenue></WorkerVenue>
         </TabPanel>
-        <TabPanel value={value} index={2}>
+        <TabPanel value={value} index={2} handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
           <WorkerServices></WorkerServices>
         </TabPanel>
-        <TabPanel value={value} index={3}>
+        <TabPanel value={value} index={3} handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
           <WorkerWorkingTime></WorkerWorkingTime>
         </TabPanel>
       </Box>
