@@ -10,7 +10,7 @@ import {
   FormControlLabel,
   Checkbox,
   InputLabel,
-  Box,
+  Box,Accordion,AccordionSummary,AccordionDetails,Typography
 } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
@@ -19,6 +19,8 @@ import supabase from '../../../supabaseClient';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import WorkerVenue from './WorkerVenue';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const DateTimeInput = styled.input`
   width: 100%;
@@ -383,6 +385,16 @@ const WorkerBasicDataEdit = () => {
                 label={t('Settled')}
               />
             </Grid> */}
+             <Grid item xs={12}>
+             <Accordion >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Venue')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+             <WorkerVenue></WorkerVenue>
+             </AccordionDetails>
+      </Accordion>
+             </Grid>
 
             <Grid item xs={12}>
               <Box display="flex" justifyContent="flex-end">

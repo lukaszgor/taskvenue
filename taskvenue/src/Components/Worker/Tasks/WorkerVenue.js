@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import {Grid,Container,Select,MenuItem,FormControl,InputLabel,Typography, Button,Box} from '@mui/material';
+import {Grid,Container,Select,MenuItem,FormControl,InputLabel,Typography, Button,Box,  IconButton,} from '@mui/material';
 import { useParams } from 'react-router-dom';
 import supabase from '../../../supabaseClient';
 import { useTranslation } from 'react-i18next';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import LocationOnIcon from '@mui/icons-material/LocationOn'; // Ikona mapy
 
 const WorkerVenue = () => {
     const [open, setOpen] = useState(false);
@@ -161,7 +162,7 @@ const WorkerVenue = () => {
   return (
     <div>
       <Container maxWidth="md">
-        <Grid item xs={12} sm={6}>
+        {/* <Grid item xs={12} sm={6}>
           <FormControl fullWidth disabled>
             <InputLabel id="venue-select-select-label">
               {t('Select Venue')}
@@ -180,7 +181,7 @@ const WorkerVenue = () => {
               ))}
             </Select>
           </FormControl>
-        </Grid>
+        </Grid> */}
         <p></p>
         {selectedVenue && (
           <Grid item xs={12}>
@@ -192,15 +193,15 @@ const WorkerVenue = () => {
             <Typography variant="h6">{selectedVenue.GPS_location}</Typography>
             <p></p>
 
-            <Box display="flex" justifyContent="flex-end">
+            <Box display="flex" justifyContent="flex-start">
                 <Button
                 type="submit"
                 variant="contained"
                 color="primary"
                 onClick={() => handleButtonClickLocation(selectedVenue)}
                 style={{ minWidth: 'auto' }}
-                >
-            {t('Open in Google Maps')}
+                ><IconButton></IconButton>
+            {t('Open in Google Maps')} 
                 </Button>
             </Box>
           </Grid>

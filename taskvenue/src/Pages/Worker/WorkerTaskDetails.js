@@ -42,7 +42,7 @@ function TabPanel(props) {
               <NavigateBeforeIcon />
             </IconButton>
           )}
-          {value < 3 && (
+          {value < 2 && (
             <IconButton
               onClick={handleScrollRight}
               style={{
@@ -89,7 +89,7 @@ function WorkerTaskDetails() {
   };
 
   const handleScrollRight = () => {
-    if (value < 3) {
+    if (value < 2) {
       setValue(value + 1);
     }
   };
@@ -111,20 +111,16 @@ function WorkerTaskDetails() {
           aria-label="basic tabs example"
         >
           <Tab label={t('Basic data')} {...a11yProps(0)} />
-          <Tab label={t('Venue')} {...a11yProps(1)} />
-          <Tab label={t('Services')} {...a11yProps(2)} />
-          <Tab label={t('Working time')} {...a11yProps(3)} />
+          <Tab label={t('Services')} {...a11yProps(1)} />
+          <Tab label={t('Working time')} {...a11yProps(2)} />
         </Tabs>
         <TabPanel value={value} index={0} handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
           <WorkerBasicDataEdit></WorkerBasicDataEdit>
         </TabPanel>
         <TabPanel value={value} index={1} handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
-          <WorkerVenue></WorkerVenue>
-        </TabPanel>
-        <TabPanel value={value} index={2} handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
           <WorkerServices></WorkerServices>
         </TabPanel>
-        <TabPanel value={value} index={3} handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
+        <TabPanel value={value} index={2} handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
           <WorkerWorkingTime></WorkerWorkingTime>
         </TabPanel>
       </Box>
