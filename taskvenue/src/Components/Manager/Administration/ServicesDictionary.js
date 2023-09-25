@@ -166,7 +166,7 @@ const insertService = async()=>{
       <div>
             <div>
               <p></p>
-              <Accordion defaultExpanded>
+              <Accordion >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">{t('Add')}</Typography>
         </AccordionSummary>
