@@ -10,13 +10,14 @@ import {
   DialogContent,
   DialogTitle,
   InputLabel,
-  Switch,} from '@mui/material';
+  Switch,Box} from '@mui/material';
 import supabase from '../../../supabaseClient';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import moment from 'moment';
 import EditIcon from '@mui/icons-material/Edit';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const WorkerOpenTasks = () => {
   const [tasks, setTasks] = useState([]);
@@ -318,6 +319,7 @@ const WorkerOpenTasks = () => {
                  {t('Deadline')}: {formatDate(task.deadline)}
                 </Typography>
                 <p></p>
+                <Box display="inline-block" marginRight={2}>
                 <Button
                   variant="contained"
                   color="primary"
@@ -326,6 +328,16 @@ const WorkerOpenTasks = () => {
                 >
                   {t('details')}
                 </Button>
+                </Box>
+                <Box display="inline-block" marginRight={2}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                //   onClick={() => handleCopyButtonClick(task)}
+                  startIcon={<LocationOnIcon />}
+                > {t('Map')} 
+                </Button>
+                </Box>
               </CardContent>
             </Card>
           </Grid>
