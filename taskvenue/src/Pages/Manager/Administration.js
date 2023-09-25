@@ -13,9 +13,13 @@ import Users from '../../Components/Manager/Administration/Users';
 import Contractors from '../../Components/Manager/Administration/Contractors';
 import TaskTypeDictionary from '../../Components/Manager/Administration/TaskTypeDictionary';
 import ManagerAdministrationBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerAdministrationBreadcrumbs';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import IconButton from '@mui/material/IconButton';
+
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, handleScrollLeft, handleScrollRight } = props;
 
   return (
     <div
@@ -23,13 +27,41 @@ function TabPanel(props) {
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
-      {...other}
+      style={{ position: 'relative' }}
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography component={'span'} variant={'body2'}>
-            {children}
-          </Typography>
+          {value > 0 && (
+            <IconButton
+              onClick={handleScrollLeft}
+              style={{
+                position: 'fixed',
+                left: 0,
+                top: '35%',
+                transform: 'translateY(-50%)',
+                zIndex: 1,
+              }}
+            >
+              <NavigateBeforeIcon />
+            </IconButton>
+          )}
+          {value < 5 && (
+            <IconButton
+              onClick={handleScrollRight}
+              style={{
+                position: 'fixed',
+                right: 0,
+                top: '35%',
+                transform: 'translateY(-50%)',
+                zIndex: 1,
+                // backgroundColor: 'blue', // Kolor niebieski
+                // color: 'white', // Kolor tekstu na przycisku
+              }}
+            >
+              <NavigateNextIcon />
+            </IconButton>
+          )}
+          {children}
         </Box>
       )}
     </div>
@@ -40,6 +72,8 @@ TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
+  handleScrollLeft: PropTypes.func.isRequired,
+  handleScrollRight: PropTypes.func.isRequired,
 };
 
 function a11yProps(index) {
@@ -48,6 +82,7 @@ function a11yProps(index) {
     'aria-controls': `simple-tabpanel-${index}`,
   };
 }
+
 
 function Administration() {
   const { t, i18n } = useTranslation();
@@ -73,23 +108,6 @@ function Administration() {
       <ManagerNavBar></ManagerNavBar>
       <ManagerAdministrationBreadcrumbs></ManagerAdministrationBreadcrumbs>
       <Box sx={{ width: '100%' }}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider', position: 'relative' }}>
-          {value > 0 && (
-            <button
-              onClick={handleScrollLeft}
-              style={{
-                position: 'absolute',
-                left: 0,
-                top: '50%',
-                transform: 'translateY(-50%)',
-                background: 'transparent',
-                border: 'none',
-                zIndex: 1,
-              }}
-            >
-              &#8592; {/* Strzałka w lewo */}
-            </button>
-          )}
           <Tabs
             value={value}
             onChange={handleChange}
@@ -102,39 +120,22 @@ function Administration() {
             <Tab label={t("Contractors")} {...a11yProps(4)} />
             <Tab label={t("Task type")} {...a11yProps(5)} />
           </Tabs>
-          {value < 5 && (
-            <button
-              onClick={handleScrollRight}
-              style={{
-                position: 'absolute',
-                right: 0,
-                top: '50%',
-                transform: 'translateY(-50%)',
-                background: 'transparent',
-                border: 'none',
-                zIndex: 1,
-              }}
-            >
-              &#8594; {/* Strzałka w prawo */}
-            </button>
-          )}
-        </Box>
-        <TabPanel value={value} index={0}>
+        <TabPanel value={value} index={0}  handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
           <Users></Users>
         </TabPanel>
-        <TabPanel value={value} index={1}>
+        <TabPanel value={value} index={1}  handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
           <License></License>
         </TabPanel>
-        <TabPanel value={value} index={2}>
+        <TabPanel value={value} index={2}  handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
           <Settings></Settings>
         </TabPanel>
-        <TabPanel value={value} index={3}>
+        <TabPanel value={value} index={3}  handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
           <ServicesDictionary></ServicesDictionary>
         </TabPanel>
-        <TabPanel value={value} index={4}>
+        <TabPanel value={value} index={4}  handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
           <Contractors></Contractors>
         </TabPanel>
-        <TabPanel value={value} index={5}>
+        <TabPanel value={value} index={5}  handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
           <TaskTypeDictionary></TaskTypeDictionary>
         </TabPanel>
       </Box>
