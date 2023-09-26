@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { Button } from '@mui/material';
-import supabase from '../../../supabaseClient';
+import supabase from '../../../../supabaseClient';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment'; // Import moment library
 
-const VenueHistory = () => {
+const ManagerContractorTasks = () => {
   const { t, i18n } = useTranslation();
   const { id } = useParams();
   const [userID, setUserID] = useState('');
@@ -61,7 +61,7 @@ const VenueHistory = () => {
     const { data, error } = await supabase
       .from('tasks')
       .select()
-      .eq('id_venue', id)
+      .eq('id_contractor', id)
       .eq('id_configuration', idConfiguration);
     if (error) {
       console.log(error);
@@ -147,4 +147,4 @@ const VenueHistory = () => {
   );
 };
 
-export default VenueHistory;
+export default ManagerContractorTasks;

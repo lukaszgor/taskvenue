@@ -1,7 +1,7 @@
 import React from 'react';
 import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import { useState,useEffect } from 'react';
-import { TextField, Button, Grid, Container, Typography, Select, MenuItem,Box } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography, Select, MenuItem,Box,Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
@@ -10,7 +10,9 @@ import Alert from '@mui/material/Alert';
 import { useNavigate } from "react-router-dom"
 import ManagerAdministrationContractorBreadcrumbs from '../../Components/Breadcrumbs/ManagerAdministrationContractorBreadcrumbs';
 import { Margin } from '@mui/icons-material';
-
+import ManagerContractorTasks from '../../Components/Manager/Administration/Contractors/ManagerContractorTasks';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ManagerContractorVenues from '../../Components/Manager/Administration/Contractors/ManagerContractorVenues';
 
 
 const ContractorsDetails = () => {
@@ -232,6 +234,26 @@ const handleSubmit = (event) => {
           <div>
     </div>
         </form>
+<p></p>
+        <Accordion >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Tasks history')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+        <ManagerContractorTasks></ManagerContractorTasks>
+        </AccordionDetails>
+      </Accordion>
+
+<p></p>
+        <Accordion >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Venues')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+        <ManagerContractorVenues></ManagerContractorVenues>
+        </AccordionDetails>
+      </Accordion>
+
         <Snackbar open={open}
             autoHideDuration={2000}
             onClose={handleCloseAlert}>
