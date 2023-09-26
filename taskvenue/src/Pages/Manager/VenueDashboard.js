@@ -9,6 +9,8 @@ import {
     Dialog,
     DialogContent,
     DialogTitle,
+    DialogActions,
+    DialogContentText,
     Switch,
     Box
 } from '@mui/material';
@@ -35,6 +37,32 @@ const VenueDashboard = () => {
     const [userID, setUserID] = useState('');
     const [idConfig, setIdConfiguration] = useState('');
     const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
+    
+    const [addDialogOpen, setAddDialogOpen] = useState(false);
+    const [copyDialogOpen, setCopyDialogOpen] = useState(false); // Dodajemy stan do kontrolowania widoczności dialogu
+    const [copyVenue, setCopyVenue] = useState(null); // Dodajemy stan do przechowywania miejsca do skopiowania
+
+    const handleCopyButton = (venue) => {
+        setCopyVenue(venue);
+        setCopyDialogOpen(true);
+    };
+
+    const handleCopyConfirm = () => {
+        if (copyVenue) {
+            handleCopyButtonClick(copyVenue)
+        }
+        setCopyVenue(null);
+        setCopyDialogOpen(false);
+    };
+
+    const handleCopyCancel = () => {
+        setCopyVenue(null);
+        setCopyDialogOpen(false);
+    };
+
+
+
+    
 
     useEffect(() => {
         const checkSession = async () => {
@@ -290,7 +318,7 @@ const VenueDashboard = () => {
                                 <Button
                                 variant="contained"
                                 color="primary"
-                                onClick={() => handleCopyButtonClick(venue)}
+                                onClick={() => handleCopyButton(venue)}
                                 startIcon={<ContentCopyIcon />}
                                 > {t('Copy')} 
                                 </Button>
@@ -300,6 +328,27 @@ const VenueDashboard = () => {
                     </Grid>
                 ))}
             </Grid>
+            <Dialog
+                open={copyDialogOpen}
+                onClose={handleCopyCancel}
+                aria-labelledby="copy-dialog-title"
+                aria-describedby="copy-dialog-description"
+            >
+                <DialogTitle id="copy-dialog-title">{t('Copy')}</DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="copy-dialog-description">
+                        {t('Do you want to copy this venue?')}
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCopyCancel} color="primary">
+                        {t('Cancel')}
+                    </Button>
+                    <Button onClick={handleCopyConfirm} color="primary" variant="contained">
+                        {t('Copy')}
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </div>
     );
 };
