@@ -16,6 +16,7 @@ import {
   Card,
   CardContent,
   CardActions,
+  Switch,
 } from '@mui/material';
 import supabase from '../../../supabaseClient';
 import { useParams } from 'react-router-dom';
@@ -156,6 +157,28 @@ function WorkerServices() {
     }
   };
 
+  // Funkcja obsługująca zmianę stanu przełącznika "execution" w karcie usługi
+  const handleExecutionToggle = async (serviceItem) => {
+    const newExecutionValue = serviceItem.execution === 1 ? null : 1;
+    // Update the database with the new execution value
+    const { data, error } = await supabase
+      .from('services')
+      .update({ execution: newExecutionValue })
+      .eq('id', serviceItem.id);
+      fetchServices(idConfig, id);
+    if (error) {
+      console.log(error);
+    }
+    if (data) {
+      // Update the local state
+      const updatedService = service.map((item) =>
+        item.id === serviceItem.id ? { ...item, execution: newExecutionValue } : item
+      );
+      setService(updatedService);
+      
+    }
+  };
+
   const insertService = async () => {
     const { data, error } = await supabase
       .from('services')
@@ -170,7 +193,7 @@ function WorkerServices() {
           total: total,
           idTask: id,
           user_id: userID,
-          date: formattedDate,
+          date: formattedDate
         },
       ]);
     handleClickAlert();
@@ -227,6 +250,10 @@ function WorkerServices() {
       return;
     }
     setOpen(false);
+  };
+
+  const determineSwitchState = (execution) => {
+    return execution === 1 ? true : false;
   };
 
   const columns = [
@@ -405,50 +432,57 @@ function WorkerServices() {
       </Accordion>
       
       <Accordion defaultExpanded>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography variant="h6" fontWeight="bold">{t('Services')}</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Services')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
           <Container maxWidth="md">
-          <div>
-        {fetchError && <p>{fetchError}</p>}
-        {service && (
-          <div>
-            <p> </p>
-            <Grid container spacing={2}>
-              {service.map((serviceItem) => (
-                <Grid item xs={12} sm={6} key={serviceItem.id}>
-                  <Card>
-                    <CardContent>
-                      <Typography variant="h6">{serviceItem.name}</Typography>
-                      <Typography variant="body2">{serviceItem.description}</Typography>
-                      <Typography variant="body2">{t('Cost')}: {serviceItem.cost}</Typography>
-                      <Typography variant="body2">{t('Quantity')}: {serviceItem.quantity}</Typography>
-                      <Typography variant="body2">{t('Unit')}: {serviceItem.unit}</Typography>
-                      <Typography variant="body2">{t('Total')}: {serviceItem.total}</Typography>
-                      <Typography variant="body2">{t('Date')}: {serviceItem.date}</Typography>
-                    </CardContent>
-                    <CardActions>
-                      <Button
-                        color="error"
-                        onClick={(event) => {
-                          DeleteService(event, serviceItem);
-                        }}
-                      >
-                        {t('Delete')}
-                      </Button>
-                    </CardActions>
-                  </Card>
-                </Grid>
-              ))}
-            </Grid>
-          </div>
-        )}
-      </div>
+            <div>
+              {fetchError && <p>{fetchError}</p>}
+              {service && (
+                <div>
+                  <p> </p>
+                  <Grid container spacing={2}>
+                    {service.map((serviceItem) => (
+                      <Grid item xs={12} sm={6} key={serviceItem.id}>
+                        <Card>
+                          <CardContent>
+                            <Grid container alignItems="center" justifyContent="space-between">
+                              <Typography variant="h6">{serviceItem.name}</Typography>
+                              <Switch
+                                checked={determineSwitchState(serviceItem.execution)}
+                                color="primary"
+                                name="execution"
+                                onChange={() => handleExecutionToggle(serviceItem)}
+                              />
+                            </Grid>
+                            <Typography variant="body2">{serviceItem.description}</Typography>
+                            <Typography variant="body2">{t('Cost')}: {serviceItem.cost}</Typography>
+                            <Typography variant="body2">{t('Quantity')}: {serviceItem.quantity}</Typography>
+                            <Typography variant="body2">{t('Unit')}: {serviceItem.unit}</Typography>
+                            <Typography variant="body2">{t('Total')}: {serviceItem.total}</Typography>
+                            <Typography variant="body2">{t('Date')}: {serviceItem.date}</Typography>
+                          </CardContent>
+                          <CardActions>
+                            <Button
+                              color="error"
+                              onClick={(event) => {
+                                DeleteService(event, serviceItem);
+                              }}
+                            >
+                              {t('Delete')}
+                            </Button>
+                          </CardActions>
+                        </Card>
+                      </Grid>
+                    ))}
+                  </Grid>
+                </div>
+              )}
+            </div>
           </Container>
         </AccordionDetails>
-        </Accordion>
- 
+      </Accordion>
     </div>
   );
 }
