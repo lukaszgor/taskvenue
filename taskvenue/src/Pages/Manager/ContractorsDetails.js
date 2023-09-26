@@ -253,7 +253,7 @@ const handleSubmit = (event) => {
         <ManagerContractorVenues></ManagerContractorVenues>
         </AccordionDetails>
       </Accordion>
-
+<p></p>
         <Snackbar open={open}
             autoHideDuration={2000}
             onClose={handleCloseAlert}>
