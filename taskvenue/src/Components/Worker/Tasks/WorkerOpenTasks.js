@@ -129,6 +129,23 @@ const WorkerOpenTasks = () => {
   const handleButtonClickTaskDetails = (task) => {
     navigate('/WorkerTaskDetails/' + task.id);
   };
+  const handleMap = async(task) => {
+    const { data, error } = await supabase
+    .from('venues')
+    .select('GPS_location')
+    .eq('id', task.id_venue)
+     .single()
+  if (error) {
+    console.error(error);
+  } else {
+    // setTasks(data);
+    const locationString = data.GPS_location; 
+    const [latitude, longitude] = locationString.split(',').map((coordinate) => coordinate.trim());
+    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
+    window.open(googleMapsUrl);
+  }
+  };
+
 
 //   const addNewTask = () => {
 //     navigate('/AddNewTask');
@@ -333,7 +350,7 @@ const WorkerOpenTasks = () => {
                 <Button
                   variant="contained"
                   color="success"
-                //   onClick={() => handleCopyButtonClick(task)}
+                  onClick={() => handleMap(task)}
                   startIcon={<LocationOnIcon />}
                 > {t('Map')} 
                 </Button>
