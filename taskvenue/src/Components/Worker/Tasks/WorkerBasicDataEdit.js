@@ -10,7 +10,17 @@ import {
   FormControlLabel,
   Checkbox,
   InputLabel,
-  Box,Accordion,AccordionSummary,AccordionDetails,Typography
+  Box,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Radio,
+  RadioGroup,
 } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
@@ -53,6 +63,24 @@ const WorkerBasicDataEdit = () => {
   const [taskTypes, setTaskTypes] = useState([]);
   const navigate = useNavigate();
   const [errorDate, setErrorDate] = useState(null);
+
+  const [openChangeStatusDialog, setOpenChangeStatusDialog] = useState(false);
+  const [selectedStatus, setSelectedStatus] = useState(status);
+
+  const handleOpenChangeStatusDialog = () => {
+    setSelectedStatus(status);
+    setOpenChangeStatusDialog(true);
+  };
+  const handleCloseChangeStatusDialog = () => {
+    setOpenChangeStatusDialog(false);
+  
+  };
+
+  const handleChangeStatus = () => {
+    setStatus(selectedStatus);
+    handleCloseChangeStatusDialog();
+  
+  };
 
   const handleFetchData = async () => {
     const { data, error } = await supabase
@@ -257,7 +285,8 @@ const WorkerBasicDataEdit = () => {
                   onChange={(e) => setStatus(e.target.value)}
                   fullWidth
                   required
-                  disabled={status === 'completed'}
+                  disabled
+                  // disabled={status === 'completed'}
                 >
                   <MenuItem value="open">{t('Open')}</MenuItem>
                   <MenuItem value="inProgress">{t('In progress')}</MenuItem>
@@ -386,7 +415,7 @@ const WorkerBasicDataEdit = () => {
               />
             </Grid> */}
              <Grid item xs={12}>
-             <Accordion >
+             <Accordion defaultExpanded >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">{t('Venue')}</Typography>
         </AccordionSummary>
@@ -396,18 +425,71 @@ const WorkerBasicDataEdit = () => {
       </Accordion>
              </Grid>
 
-            <Grid item xs={12}>
-              <Box display="flex" justifyContent="flex-end">
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  style={{ minWidth: 'auto' }}
-                >
-                  {t('Submit')}
-                </Button>
-              </Box>
-            </Grid>
+             <Grid item xs={12}>
+  <Box display="flex" justifyContent="flex-end">
+
+  <Button
+      variant="contained"
+      color="primary"
+
+      style={{ minWidth: 'auto', marginRight: '16px' }}
+      onClick={handleOpenChangeStatusDialog}
+    >
+      {t('Change Status')}
+    </Button>
+
+    <Button
+      type="submit"
+      variant="contained"
+      color="primary"
+      style={{ minWidth: 'auto' }}
+    >
+      {t('Submit')}
+    </Button>
+
+  </Box>
+</Grid>
+      <Dialog
+        open={openChangeStatusDialog}
+        onClose={handleCloseChangeStatusDialog}
+      >
+        <DialogTitle>{t('Change Status')}</DialogTitle>
+        <DialogContent>
+        <Typography variant="h6" style={{ fontSize: '14px' }}>{t('Changing the status of the task to complete will not allow you to edit it later.')}</Typography>
+        <RadioGroup
+  aria-label="status"
+  name="status"
+  value={selectedStatus}
+  onChange={(e) => setSelectedStatus(e.target.value)}
+>
+  <FormControlLabel
+    value="open"
+    control={<Radio />}
+    label={t('Open')}
+  />
+  <FormControlLabel
+    value="inProgress"
+    control={<Radio />}
+    label={t('In progress')}
+  />
+  <FormControlLabel
+    value="completed"
+    control={<Radio />}
+    label={t('Completed')}
+  />
+</RadioGroup>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseChangeStatusDialog} color="primary">
+            {t('Cancel')}
+          </Button>
+          <Button onClick={handleChangeStatus} color="primary" >
+            {t('Submit')}
+          </Button>
+      
+        </DialogActions>
+      </Dialog>
+
           </Grid>
         </form>
         <Snackbar

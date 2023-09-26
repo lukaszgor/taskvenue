@@ -157,7 +157,10 @@
       "Cancelled":"Anulowane",
       "Map":"Mapa",
       "Tasks history":"Historia zadań",
-      "Details":"Szczegóły"
+      "Details":"Szczegóły",
+      "Cancel":"Anuluj",
+      "Change Status":"Zmiana statusu",
+      "Changing the status of the task to complete will not allow you to edit it later.":"Zmiana statusu zadania na Zakończone nie pozwoli na jego późniejszą edycję."
     
  
 

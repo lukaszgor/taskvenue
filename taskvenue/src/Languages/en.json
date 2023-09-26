@@ -157,7 +157,10 @@
       "Cancelled":"Cancelled",
       "Map":"Map",
       "Tasks history":"Tasks history",
-      "Details":"Details"
+      "Details":"Details",
+      "Cancel":"Cancel",
+      "Change Status":"Change Status",
+      "Changing the status of the task to complete will not allow you to edit it later.":"Changing the status of the task to complete will not allow you to edit it later."
       
 
 
