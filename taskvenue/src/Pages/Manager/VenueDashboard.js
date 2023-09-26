@@ -9,7 +9,8 @@ import {
     Dialog,
     DialogContent,
     DialogTitle,
-    Switch, // Importujemy komponent Switch z MUI
+    Switch,
+    Box
 } from '@mui/material';
 import supabase from '../../supabaseClient';
 import { useNavigate } from 'react-router-dom';
@@ -19,6 +20,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import ManagerVenuesBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerVenuesBreadcrumbs';
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 const VenueDashboard = () => {
     const [venues, setVenues] = useState([]);
@@ -153,6 +155,33 @@ const VenueDashboard = () => {
         setIsFilterPopupOpen(false);
     };
 
+    const handleCopyButtonClick = async (venue) => {
+        try {
+          // Pobierz dane z istniejącego taska
+          const { id,name,id_configuration,description,id_contractor,GPS_location } = venue;
+      
+          // Utwórz nowy task na podstawie danych z istniejącego taska
+          const newVenue = {
+            name: name,
+            id_configuration:id_configuration,
+            description:description,
+            GPS_location:GPS_location,
+            id_contractor:id_contractor,
+          };
+    
+          const { data, error } = await supabase.from('venues').insert([newVenue]);
+      
+          if (error) {
+            console.error(error);
+          } else {
+            // console.log('Kopiowanie taska zakończone sukcesem!', data);
+            fetchVenues(idConfig);
+          }
+        } catch (error) {
+          console.error('Wystąpił błąd podczas kopiowania taska:', error.message);
+        }
+      };
+
     return (
         <div>
             <ManagerNavBar></ManagerNavBar>
@@ -247,6 +276,7 @@ const VenueDashboard = () => {
                                     {t('Archived')} : {venue.archived ? t('Yes') : t('No') }
                                 </Typography>
                                 <p></p>
+                                <Box display="inline-block" marginRight={2}>
                                 <Button
                                     variant="contained"
                                     color="primary"
@@ -255,6 +285,16 @@ const VenueDashboard = () => {
                                 >
                                     {t('details')}
                                 </Button>
+                                </Box>
+                                <Box display="inline-block" marginRight={2}>
+                                <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={() => handleCopyButtonClick(venue)}
+                                startIcon={<ContentCopyIcon />}
+                                > {t('Copy')} 
+                                </Button>
+                                </Box>
                             </CardContent>
                         </Card>
                     </Grid>
