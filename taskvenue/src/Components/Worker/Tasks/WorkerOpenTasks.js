@@ -332,7 +332,7 @@ const WorkerOpenTasks = () => {
                 <Box display="inline-block" marginRight={2}>
                 <Button
                   variant="contained"
-                  color="primary"
+                  color="success"
                 //   onClick={() => handleCopyButtonClick(task)}
                   startIcon={<LocationOnIcon />}
                 > {t('Map')} 
