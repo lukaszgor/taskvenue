@@ -5,6 +5,7 @@ import supabase from '../../../supabaseClient';
 import { useTranslation } from 'react-i18next';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const ManagerVenueEdit = () => {
     const [open, setOpen] = useState(false);
@@ -197,7 +198,8 @@ const ManagerVenueEdit = () => {
                 <Button
                 type="submit"
                 variant="contained"
-                color="primary"
+                color="success"
+                startIcon={<LocationOnIcon />}
                 onClick={() => handleButtonClickLocation(selectedVenue)}
                 style={{ minWidth: 'auto' }}
                 >

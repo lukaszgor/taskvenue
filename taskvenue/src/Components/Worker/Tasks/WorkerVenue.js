@@ -5,7 +5,7 @@ import supabase from '../../../supabaseClient';
 import { useTranslation } from 'react-i18next';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-import LocationOnIcon from '@mui/icons-material/LocationOn'; // Ikona mapy
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const WorkerVenue = () => {
     const [open, setOpen] = useState(false);
@@ -197,10 +197,11 @@ const WorkerVenue = () => {
                 <Button
                 type="submit"
                 variant="contained"
-                color="primary"
+                color="success"
                 onClick={() => handleButtonClickLocation(selectedVenue)}
                 style={{ minWidth: 'auto' }}
-                ><IconButton></IconButton>
+                startIcon={<LocationOnIcon />}
+                >
             {t('Open in Google Maps')} 
                 </Button>
             </Box>
