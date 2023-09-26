@@ -9,6 +9,8 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
+  DialogActions,
+  DialogContentText,
   Switch,
   InputLabel,
   Box
@@ -40,6 +42,28 @@ const ManagerOpenTasks = () => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [currentDate, setCurrentDate] = useState('');
+
+  const [copyDialogOpen, setCopyDialogOpen] = useState(false); // Dodajemy stan do kontrolowania widoczności dialogu
+  const [copyTask, setCopyTask] = useState(null); // Dodajemy stan do przechowywania miejsca do skopiowania
+
+  const handleCopyButton = (task) => {
+    setCopyTask(task);
+      setCopyDialogOpen(true);
+  };
+
+  const handleCopyConfirm = () => {
+      if (copyTask) {
+           handleCopyButtonClick(copyTask)
+      }
+      setCopyTask(null);
+      setCopyDialogOpen(false);
+  };
+
+  const handleCopyCancel = () => {
+    setCopyTask(null);
+      setCopyDialogOpen(false);
+  };
+
 
   useEffect(() => {
     const checkSession = async () => {
@@ -401,7 +425,7 @@ const ManagerOpenTasks = () => {
                 <Button
                   variant="contained"
                   color="primary"
-                  onClick={() => handleCopyButtonClick(task)}
+                  onClick={() => handleCopyButton(task)}
                   startIcon={<ContentCopyIcon />}
                 > {t('Copy')} 
                 </Button>
@@ -409,8 +433,30 @@ const ManagerOpenTasks = () => {
               </CardContent>
             </Card>
           </Grid>
+          
         ))}
       </Grid>
+      <Dialog
+                open={copyDialogOpen}
+                onClose={handleCopyCancel}
+                aria-labelledby="copy-dialog-title"
+                aria-describedby="copy-dialog-description"
+            >
+                <DialogTitle id="copy-dialog-title">{t('Copy')}</DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="copy-dialog-description">
+                        {t('Do you want to copy this task?')}
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCopyCancel} color="primary">
+                        {t('Cancel')}
+                    </Button>
+                    <Button onClick={handleCopyConfirm} color="primary" variant="contained">
+                        {t('Copy')}
+                    </Button>
+                </DialogActions>
+            </Dialog>
     </div>
   );
 };

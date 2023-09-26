@@ -38,7 +38,7 @@ const VenueDashboard = () => {
     const [idConfig, setIdConfiguration] = useState('');
     const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
     
-    const [addDialogOpen, setAddDialogOpen] = useState(false);
+
     const [copyDialogOpen, setCopyDialogOpen] = useState(false); // Dodajemy stan do kontrolowania widoczności dialogu
     const [copyVenue, setCopyVenue] = useState(null); // Dodajemy stan do przechowywania miejsca do skopiowania
 
@@ -59,10 +59,6 @@ const VenueDashboard = () => {
         setCopyVenue(null);
         setCopyDialogOpen(false);
     };
-
-
-
-    
 
     useEffect(() => {
         const checkSession = async () => {
