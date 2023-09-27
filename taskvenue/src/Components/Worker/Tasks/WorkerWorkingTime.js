@@ -289,28 +289,39 @@ const WorkerWorkingTime = () => {
               <p> </p>
               <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                 {workTime.map((workItem) => (
-                  <Card key={workItem.id} style={{ margin: '10px', maxWidth: '100%' }}>
-                    <CardContent>
-                      <Typography variant="h6">
-                        {workItem.description}
-                      </Typography>
-                      <Typography variant="body2" color="textSecondary">
-                      {t("Time")} {workItem.time} 
-                      </Typography>
-                      <Typography variant="body2" color="textSecondary">
-                      {t("Date")} {workItem.date}
-                      </Typography>
-                      <Typography variant="body2" color="textSecondary">
-                      {t("User")} {workItem.profiles.username}
-                      </Typography>
-                      <Button
-                        color="error"
-                        onClick={(event) => {
-                          DeleteWorktime(event, { row: { id: workItem.id } });
-                        }}
-                      >{t("Delete")}</Button>
-                    </CardContent>
-                  </Card>
+                    <Card
+                key={workItem.id}
+                style={{
+                    margin: '10px',
+                    maxWidth: '100%', 
+                    width: '100%', 
+                    display: 'flex',
+                    justifyContent: 'space-between', 
+                }}
+                >
+  <CardContent>
+    <Typography variant="h6">
+      {workItem.description}
+    </Typography>
+    <Typography variant="body2" color="textSecondary">
+      {t("Time")} {workItem.time}
+    </Typography>
+    <Typography variant="body2" color="textSecondary">
+      {t("Date")} {workItem.date}
+    </Typography>
+    <Typography variant="body2" color="textSecondary">
+      {t("User")} {workItem.profiles.username}
+    </Typography>
+  </CardContent>
+  <Button
+    color="error"
+    onClick={(event) => {
+      DeleteWorktime(event, { row: { id: workItem.id } });
+    }}
+  >
+    {t("Delete")}
+  </Button>
+</Card>
                 ))}
               </div>
             </div>

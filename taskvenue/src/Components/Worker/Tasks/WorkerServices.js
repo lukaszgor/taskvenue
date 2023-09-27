@@ -444,7 +444,7 @@ function WorkerServices() {
                                     <p> </p>
                                     <Grid container spacing={2}>
                                         {service.map((serviceItem) => (
-                                            <Grid item xs={12} sm={6} key={serviceItem.id}>
+                                            <Grid item xs={12} sm={6} md={12} lg={12} key={serviceItem.id}>
                                                 <Card>
                                                     <CardContent>
                                                         <Grid container alignItems="center" justifyContent="space-between">
