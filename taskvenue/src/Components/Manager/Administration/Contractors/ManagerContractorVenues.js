@@ -1,11 +1,18 @@
 import { useState, useEffect } from 'react';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid,GridToolbarContainer, GridToolbarExport } from '@mui/x-data-grid';
 import { Button } from '@mui/material';
 import supabase from '../../../../supabaseClient';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
+function CustomToolbar() {
+    return (
+      <GridToolbarContainer>
+        <GridToolbarExport />
+      </GridToolbarContainer>
+    );
+  }
 
 const ManagerContractorVenues = () => {
   const { t, i18n } = useTranslation();
@@ -108,6 +115,9 @@ const ManagerContractorVenues = () => {
                 columns={columns}
                 pageSize={12}
                 rowsPerPageOptions={[12]}
+                slots={{
+                    toolbar: CustomToolbar,
+                  }}
               />
             </div>
             <div></div>
