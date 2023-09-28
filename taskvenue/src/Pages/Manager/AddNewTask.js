@@ -78,6 +78,7 @@ function AddNewTask() {
   const [taskTypes, setTaskTypes] = useState([]);
   const [currentDate, setCurrentDate] = useState('');
   const [errorDate, setErrorDate] = useState(null);
+  const [author, setAuthor] = useState('');
 
   useEffect(() => {
     const formattedDate = moment().format('YYYY-MM-DDTHH:mm');
@@ -129,7 +130,8 @@ function AddNewTask() {
           estimatedTime: estimatedTime,
           id_configuration:idConfig,
           id_contractor:selectedContractorId,
-          createdDate:currentDate
+          createdDate:currentDate,
+          author:author
         },
       ]).select('id').single();
     if (error) {
@@ -168,7 +170,7 @@ function AddNewTask() {
   const fetchData = async (userId) => {
     const { data: profileData, error: profileError } = await supabase
       .from('profiles')
-      .select('id_configuration')
+      .select('id_configuration,username')
       .eq('id', userId)
       .single();
 
@@ -176,6 +178,7 @@ function AddNewTask() {
       console.log(profileError);
     } else if (profileData) {
       setIdConfiguration(profileData.id_configuration);
+      setAuthor(profileData.username);
     }
   };
 
