@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from "react-i18next";
-import { Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import { Select, MenuItem, FormControl, InputLabel,Box } from '@mui/material';
 
   const languageOptions = [
     { value: 'en', label: '🇬🇧 English' },
@@ -18,9 +18,10 @@ function Language() {
 	};
 
 return (
-
+<Box display="flex" justifyContent="center">
 <FormControl variant="outlined" style={{ marginRight: '16px', width: 'auto' }}>
-      <InputLabel id="language-select-label">Select Language</InputLabel>
+
+<InputLabel id="language-select-label">{t('Select Language')}</InputLabel>
       <Select
         labelId="language-select-label"
         value={selectedLanguage}
@@ -29,7 +30,7 @@ return (
           handleChangeLng(selectedLng);
           setSelectedLanguage(selectedLng);
         }}
-        label="Select Language"
+        label={t('Select Language')}
       >
         {languageOptions.map((option) => (
           <MenuItem key={option.value} value={option.value}>
@@ -37,7 +38,10 @@ return (
           </MenuItem>
         ))}
       </Select>
+
+
     </FormControl>
+    </Box>
   );
       }
 export default Language;
