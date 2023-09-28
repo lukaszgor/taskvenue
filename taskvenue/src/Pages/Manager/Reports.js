@@ -8,6 +8,8 @@ import StatusOfImplementation30Report from '../../Components/Reports/StatusOfImp
 import YourOpenAndInProgressTasksReport from '../../Components/Reports/YourOpenAndInProgressTasksReport';
 import ManagerReportsBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerReportsBreadcrumbs';
 import ReportRealizationOfIssuesForTheCustomers from '../../Components/Reports/ReportRealizationOfIssuesForTheCustomers';
+import ManagerAllService from '../../Components/Reports/ManagerAllService';
+import ManagerAllTasks from '../../Components/Reports/ManagerAllTasks';
 function Reports() {
     const { t, i18n } = useTranslation();
 
@@ -44,6 +46,26 @@ function Reports() {
         <AccordionDetails>
           <Typography></Typography>
           <ReportRealizationOfIssuesForTheCustomers></ReportRealizationOfIssuesForTheCustomers>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('All Tasks')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+  <ManagerAllTasks></ManagerAllTasks>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('All services')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+  <ManagerAllService></ManagerAllService>
         </AccordionDetails>
       </Accordion>
     </div>
