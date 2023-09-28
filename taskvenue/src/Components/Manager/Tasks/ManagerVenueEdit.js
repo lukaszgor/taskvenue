@@ -16,6 +16,7 @@ const ManagerVenueEdit = () => {
   const [userID, setUserID] = useState('');
   const [venues, setVenues] = useState([]);
   const [selectedVenue, setSelectedVenue] = useState(null);
+  
 
   useEffect(() => {
     const checkSession = async () => {
@@ -42,11 +43,14 @@ const ManagerVenueEdit = () => {
     }
   };
 
-  const handleFetchVenues = async (idConfig) => {
+
+
+  const handleFetchVenues = async (idConfig,contractor) => {
     const { data, error } = await supabase
       .from('venues')
       .select()
       .eq('id_configuration', idConfig)
+      .eq('id_contractor', contractor)
       .is('archived', null);
     if (error) {
       console.log(error);
@@ -67,6 +71,7 @@ const ManagerVenueEdit = () => {
     }
     if (data && data.id_venue !== undefined) {
       setSelectedVenueId(data.id_venue);
+   
     }
   };
 
@@ -87,7 +92,7 @@ const ManagerVenueEdit = () => {
   const handleFetchTask = async () => {
     const { data, error } = await supabase
       .from('tasks')
-      .select('id_venue')
+      .select('id_venue,id_contractor')
       .eq('id', id)
       .eq('id_configuration', idConfig) 
       .single();
@@ -96,6 +101,7 @@ const ManagerVenueEdit = () => {
     }
     if (data) {
         setSelectedVenueId(data.id_venue);
+        handleFetchVenues(idConfig,data.id_contractor);
     }
   };
 
