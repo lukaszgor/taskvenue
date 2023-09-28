@@ -120,6 +120,7 @@ const ManagerAllTasks = () => {
     { field: 'kickoffDate', headerName: t("Start of implementation"), width: 140 },
     { field: 'deadline', headerName: t("Deadline"), width: 140 },
     { field: 'id_venue', headerName: t("Venue ID"), width: 100 },
+    { field: 'author', headerName: t("Author"), width: 100 },
     {
         field: "Action",headerName: t("Action"), width: 100 ,
         renderCell: (cellValues) => {
