@@ -48,6 +48,7 @@ const ManagerBasicDataEdit = () => {
   const [estimatedTime, setEstimatedTime] = useState(0);
   const [kickoff, setKickoff] = useState('');
   const [createdDate, setCreatedDate] = useState('');
+  const [author, setAuthor] = useState('');
   const [taskTypes, setTaskTypes] = useState([]);
   const navigate = useNavigate();
   const [errorDate, setErrorDate] = useState(null);
@@ -76,6 +77,7 @@ const ManagerBasicDataEdit = () => {
       setSettled(data.settled);
       setStatus(data.status);
       setType(data.type);
+      setAuthor(data.author);
     }
   };
 
@@ -339,6 +341,15 @@ const ManagerBasicDataEdit = () => {
             <Grid item xs={12} sm={6}>
               <label>{t('Creation date')}</label>
               <DateTimeInput type="datetime-local" value={createdDate} disabled />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="Author"
+                label={t('Author')}
+                value={author}
+                fullWidth
+                disabled
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
               <label>{t('Start of implementation')}</label>
