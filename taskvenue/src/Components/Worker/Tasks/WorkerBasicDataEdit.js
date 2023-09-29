@@ -31,7 +31,8 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import WorkerVenue from './WorkerVenue';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
+import EditIcon from '@mui/icons-material/Edit';
+import SaveIcon from '@mui/icons-material/Save';
 
 const DateTimeInput = styled.input`
   width: 100%;
@@ -431,10 +432,11 @@ const WorkerBasicDataEdit = () => {
 
   <Button
       variant="contained"
-      color="primary"
+      color="secondary"
 
       style={{ minWidth: 'auto', marginRight: '16px' }}
       onClick={handleOpenChangeStatusDialog}
+      startIcon={<EditIcon />}
     >
       {t('Change Status')}
     </Button>
@@ -444,6 +446,7 @@ const WorkerBasicDataEdit = () => {
       variant="contained"
       color="primary"
       style={{ minWidth: 'auto' }}
+      startIcon={<SaveIcon />}
     >
       {t('Submit')}
     </Button>
