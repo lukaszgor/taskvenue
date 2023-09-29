@@ -16,7 +16,7 @@ import ManagerAdministrationBreadcrumbs from '../../Components/Breadcrumbs/mainB
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import IconButton from '@mui/material/IconButton';
-
+import TaskNameDictionary from '../../Components/Manager/Administration/TaskNameDictionary';
 
 function TabPanel(props) {
   const { children, value, index, handleScrollLeft, handleScrollRight } = props;
@@ -118,7 +118,7 @@ function Administration() {
             <Tab label={t("Settings")} {...a11yProps(2)} />
             <Tab label={t("Services")} {...a11yProps(3)} />
             <Tab label={t("Contractors")} {...a11yProps(4)} />
-            <Tab label={t("Task type")} {...a11yProps(5)} />
+            <Tab label={t("Dictionaries")} {...a11yProps(5)} />
           </Tabs>
         <TabPanel value={value} index={0}  handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
           <Users></Users>
@@ -137,6 +137,7 @@ function Administration() {
         </TabPanel>
         <TabPanel value={value} index={5}  handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
           <TaskTypeDictionary></TaskTypeDictionary>
+          <TaskNameDictionary></TaskNameDictionary>
         </TabPanel>
       </Box>
     </div>

@@ -9,7 +9,7 @@ import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { useTranslation } from "react-i18next";
 
-function TaskTypeDictionary() {
+function TaskNameDictionary() {
   const { t, i18n } = useTranslation();
   const [name, setName] = useState('');
   const [fetchError,setFetchError] =useState(null)
@@ -58,7 +58,7 @@ function TaskTypeDictionary() {
   //Delete
   const DeleteSerice = async(event, cellValues)=>{
       const{data,error} =  await supabase
-  .from('task_type_dictionary')
+  .from('task_name_dictionary')
   .delete().eq('id', cellValues.row.id);
   handleClickAlert();
   fetchServices(idConfig);
@@ -71,7 +71,7 @@ function TaskTypeDictionary() {
     //insert
 const insertService = async()=>{
   const{data,error} =  await supabase
-  .from('task_type_dictionary')
+  .from('task_name_dictionary')
   .insert([{id_configuration:idConfig,name:name}])
   handleClickAlert()
   fetchServices(idConfig)
@@ -85,7 +85,7 @@ const insertService = async()=>{
 //download data
     const fetchServices = async(idConfiguration)=>{
       const{data,error} =  await supabase
-      .from('task_type_dictionary')
+      .from('task_name_dictionary')
       .select()
       .eq('id_configuration', idConfiguration);
       if(error){
@@ -128,7 +128,6 @@ const insertService = async()=>{
             );
           }
         },
-     
     ];
     return (
       <div>
@@ -137,7 +136,7 @@ const insertService = async()=>{
 
               <Accordion >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t('Task type')}</Typography>
+          <Typography variant="h6" fontWeight="bold">{t('Task names')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
@@ -235,5 +234,5 @@ const insertService = async()=>{
     );
   }
   
-  export default TaskTypeDictionary;
+  export default TaskNameDictionary;
   
