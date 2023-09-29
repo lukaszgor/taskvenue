@@ -170,7 +170,7 @@ const WorkerBasicDataEdit = () => {
           createdDate: createdDate,
           kickoffDate: kickoff,
           deadline: deadline,
-          // status: status,
+          // status: status, // status aktualnie zmieniany jest w innej funkcji
           type: type,
           estimatedTime: estimatedTime,
         },
@@ -448,7 +448,7 @@ const WorkerBasicDataEdit = () => {
 
              <Grid item xs={12}>
   <Box display="flex" justifyContent="flex-end">
-
+{/* //stare przciki na rozdzielnie zmiany statusu i zapisu */}
   {/* <Button
       variant="contained"
       color="secondary"
