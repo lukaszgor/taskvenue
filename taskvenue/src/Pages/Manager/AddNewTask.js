@@ -76,6 +76,7 @@ function AddNewTask() {
   const [kickoff, setKickoff] = useState('');
   const [createdDate, setCreatedDate] = useState('');
   const [taskTypes, setTaskTypes] = useState([]);
+  const [taskName, setTaskName] = useState([]);
   const [currentDate, setCurrentDate] = useState('');
   const [errorDate, setErrorDate] = useState(null);
   const [author, setAuthor] = useState('');
@@ -196,11 +197,27 @@ function AddNewTask() {
     }
   };
 
+
+  const handleFetchTaskName = async (idConfig) => {
+    const { data, error } = await supabase
+      .from('task_name_dictionary')
+      .select('name')
+      .eq('id_configuration', idConfig);
+
+    if (error) {
+      console.log(error);
+    }
+    if (data) {
+      setTaskName(data);
+    }
+  };
+
   useEffect(() => {
     if (idConfig) {
       handleFetchContractors(idConfig);
       handleFetchUsers(idConfig);
       handleFetchTaskTypes(idConfig);
+      handleFetchTaskName(idConfig);
     }
   }, [idConfig]);
 
@@ -250,7 +267,7 @@ function AddNewTask() {
       <Container maxWidth="md">
       <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            {/* <Grid item xs={12} sm={6}>
               <TextField
                 name="Name"
                 label={t('Name')}
@@ -259,6 +276,28 @@ function AddNewTask() {
                 fullWidth
                 required
               />
+            </Grid> */}
+               <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <InputLabel id="type-select-label">
+                    {t('Name')}
+                    </InputLabel>
+                <Select
+                   name="name"
+                  label={t('Name')}
+                  labelId="name-select-label"
+                  id="name-select"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  fullWidth
+                >
+                  {taskName.map((taskName) => (
+                    <MenuItem key={taskName.name} value={taskName.name}>
+                      {taskName.name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
