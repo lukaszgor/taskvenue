@@ -314,6 +314,7 @@ const WorkerWorkingTime = () => {
     </Typography>
   </CardContent>
   <Button
+  disabled={status === 'completed'}
     color="error"
     onClick={(event) => {
       DeleteWorktime(event, { row: { id: workItem.id } });

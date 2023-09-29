@@ -81,7 +81,26 @@ const WorkerBasicDataEdit = () => {
   const handleChangeStatus = () => {
     setStatus(selectedStatus);
     handleCloseChangeStatusDialog();
+    handleUpdateStatus(selectedStatus);
+    handleUpdateTask();
   
+  };
+
+  const handleUpdateStatus = async (selectedStatus) => {
+    const { data, error } = await supabase
+      .from('tasks')
+      .update([
+        {
+          status: selectedStatus,
+        },
+      ])
+      .eq('id', id);
+    if (error) {
+      console.log(error);
+    }
+    if (data) {
+      handleClickAlert();
+    }
   };
 
   const handleFetchData = async () => {
@@ -151,7 +170,7 @@ const WorkerBasicDataEdit = () => {
           createdDate: createdDate,
           kickoffDate: kickoff,
           deadline: deadline,
-          status: status,
+          // status: status,
           type: type,
           estimatedTime: estimatedTime,
         },
@@ -430,7 +449,7 @@ const WorkerBasicDataEdit = () => {
              <Grid item xs={12}>
   <Box display="flex" justifyContent="flex-end">
 
-  <Button
+  {/* <Button
       variant="contained"
       color="secondary"
 
@@ -447,6 +466,16 @@ const WorkerBasicDataEdit = () => {
       color="primary"
       style={{ minWidth: 'auto' }}
       startIcon={<SaveIcon />}
+    >
+      {t('Submit')}
+    </Button> */}
+   <Button
+      variant="contained"
+      color="primary"
+      style={{ minWidth: 'auto', marginRight: '16px' }}
+      onClick={handleOpenChangeStatusDialog}
+      startIcon={<SaveIcon />}
+      disabled={status === 'completed'}
     >
       {t('Submit')}
     </Button>
