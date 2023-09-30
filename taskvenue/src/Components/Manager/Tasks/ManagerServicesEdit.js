@@ -199,6 +199,16 @@ const insertService = async()=>{
       { field: 'unit', headerName: t("Unit"), width: 100 },
       { field: 'total', headerName: t("Total"), width: 70 },
       { field: 'date', headerName: t("Date"), width: 140 },
+      { field: 'execution', headerName: t("Completed"), width: 70, valueGetter: (params) => {
+        const taskSettled = params.value;
+        if (taskSettled === 1) {
+            return t('Yes');
+        } else if (taskSettled === null) {
+            return t('No');
+        } else {
+            return taskSettled;
+        }
+    }, },
       {
         field: 'profiles.username',
         headerName: t('User'),
