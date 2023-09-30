@@ -13,8 +13,10 @@ import { useState,useEffect } from 'react';
 import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
 import IdConfigurationGuard from '../../Config/IdConfigurationGuard';
+import AddNewTask from '../../Pages/Manager/AddNewTask';
+import ClientReports from '../../Pages/Client/ClientReports';
 
-const pages = ['Tasks','Absences','Schedule','Reports','Profile'];
+const pages = ['ClientTasks','ClientTasks','ClientNewTask','ClientVenue','ClientContact','ClientReports'];
 
 
 function ClientNavBar() {
@@ -93,15 +95,27 @@ function ClientNavBar() {
         }
       }
        //go to Profile 
-    const Profile =  () => {
+    const ClientProfile =  () => {
         navigate('/ClientProfile')
       }
         //go to Tasks 
     const Tasks =  () => {
         navigate('/ClientTasks')
         }
+       //go to newTask  
+    const ClientNewTask =  () => {
+        navigate('/ClientNewTask')
+        }
+        //go to ClientVenue  
+    const ClientVenue =  () => {
+        navigate('/ClientVenues')
+        }
+          //go to ClientContact  
+    const ClientContact =  () => {
+        navigate('/ClientContact')
+        }
         //go to Reports 
-    const Reports =  () => {
+    const ClientReports =  () => {
         navigate('/ClientReports')
                 }
          //go to home 
@@ -172,8 +186,11 @@ function ClientNavBar() {
               }}
             >
  <Button onClick={Home}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Home")}</Button>
+ <Button onClick={ClientNewTask}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("New Task")}</Button>
 <Button onClick={Tasks}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Tasks")}</Button>
-<Button onClick={Reports}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Reports")}</Button>
+<Button onClick={ClientVenue}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Venues")}</Button>
+<Button onClick={ClientReports}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Reports")}</Button>
+<Button onClick={ClientContact}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Contact")}</Button>
             </Menu>
           </Box>
           <Typography
@@ -194,8 +211,11 @@ function ClientNavBar() {
           >
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+<Button onClick={ClientNewTask}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("New Task")}</Button>
 <Button onClick={Tasks}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Tasks")}</Button>
-<Button onClick={Reports}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Reports")}</Button>
+<Button onClick={ClientVenue}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Venues")}</Button>
+<Button onClick={ClientReports}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Reports")}</Button>
+<Button onClick={ClientContact}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Contact")}</Button>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

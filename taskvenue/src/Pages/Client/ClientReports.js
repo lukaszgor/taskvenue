@@ -4,9 +4,6 @@ import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ClientNavBar from '../../Components/NavigationBar/ClientNavBar';
 import { useTranslation } from "react-i18next";
-import StatusOfImplementation30Report from '../../Components/Reports/StatusOfImplementation30Report';
-import YourOpenAndInProgressTasksReport from '../../Components/Reports/YourOpenAndInProgressTasksReport';
-import ReportRealizationOfIssuesForTheCustomers from '../../Components/Reports/ReportRealizationOfIssuesForTheCustomers';
 import ClientReportsBreadcrumbs from '../../Components/Breadcrumbs/Client/ClientReportsBreadcrumbs';
 function ClientReports() {
     const { t, i18n } = useTranslation();
@@ -18,32 +15,32 @@ function ClientReports() {
         <p></p>
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        <Typography variant="h6" fontWeight="bold">{t('Status of the implementation of issues in the last 30 days')}</Typography>
+        <Typography variant="h6" fontWeight="bold">{t('Rport1')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
-          <StatusOfImplementation30Report></StatusOfImplementation30Report>
+          Raport 1
         </AccordionDetails>
       </Accordion>
 
 
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t('Your open and in progress tasks')}</Typography>
+          <Typography variant="h6" fontWeight="bold">{t('Rapor 2')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
-          <YourOpenAndInProgressTasksReport></YourOpenAndInProgressTasksReport>
+          Raport 2
         </AccordionDetails>
       </Accordion>
 
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t('Report realization of issues for the customers [only completed]')}</Typography>
+          <Typography variant="h6" fontWeight="bold">{t('Raport 3')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
-          <ReportRealizationOfIssuesForTheCustomers></ReportRealizationOfIssuesForTheCustomers>
+          Raport 3
         </AccordionDetails>
       </Accordion>
     </div>

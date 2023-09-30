@@ -6,8 +6,8 @@ import ClientProfileBreadcrumbs from '../../Components/Breadcrumbs/Client/Client
 const ClientProfile = () => {
     return (
         <div>
-            <ClientProfileBreadcrumbs></ClientProfileBreadcrumbs>
              <ClientNavBar></ClientNavBar>
+             <ClientProfileBreadcrumbs></ClientProfileBreadcrumbs>
          <PasswordChange></PasswordChange>
       </div>
       );

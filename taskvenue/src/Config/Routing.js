@@ -33,6 +33,9 @@ import ClientTasks from "../Pages/Client/ClientTasks";
 import AddNewWorkerAbsence from "../Pages/Worker/AddNewWorkerAbsence";
 import WorkerAbsenceDetails from "../Pages/Worker/WorkerAbsenceDetails";
 import WorkerTaskDetails from "../Pages/Worker/WorkerTaskDetails";
+import AddNewClientTask from "../Pages/Client/AddNewClientTask";
+import ClientVenue from "../Pages/Client/ClientVenue";
+import ClientContact from "../Pages/Client/ClientContact";
 
 function Routing() {
   return (
@@ -71,6 +74,9 @@ function Routing() {
         <Route path="/ClientReports" element={<ClientReports />} />
         <Route path="/ClientProfile" element={<ClientProfile />} />
         <Route path="/ClientTasks" element={<ClientTasks />} />
+        <Route path="/ClientNewTask" element={<AddNewClientTask />} />
+        <Route path="/ClientVenues" element={<ClientVenue />} />
+        <Route path="/ClientContact" element={<ClientContact />} />
       </Routes>
     </BrowserRouter>
   );

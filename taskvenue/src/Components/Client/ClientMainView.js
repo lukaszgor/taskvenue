@@ -1,7 +1,5 @@
 import React from 'react';
 import ClientNavBar from '../NavigationBar/ClientNavBar';
-import StatusOfImplementation30Report from '../Reports/StatusOfImplementation30Report';
-import YourOpenAndInProgressTasksReport from '../Reports/YourOpenAndInProgressTasksReport';
 import { Accordion, AccordionSummary, AccordionDetails, Typography,Grid } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useTranslation } from "react-i18next";
@@ -28,11 +26,11 @@ const ClientMainView = () => {
       <Grid item xs={12} sm={8}>
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t('Status of the implementation of issues in the last 30 days')}</Typography>
+          <Typography variant="h6" fontWeight="bold">{t('Rapor2')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
-          <StatusOfImplementation30Report></StatusOfImplementation30Report>
+          raport
         </AccordionDetails>
       </Accordion>
       </Grid>
@@ -40,11 +38,11 @@ const ClientMainView = () => {
       <Grid item xs={12} sm={4}>
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t('Your open and in progress tasks')}</Typography>
+          <Typography variant="h6" fontWeight="bold">{t('Raport 1')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
-          <YourOpenAndInProgressTasksReport></YourOpenAndInProgressTasksReport>
+        raport
         </AccordionDetails>
       </Accordion>
       </Grid>
