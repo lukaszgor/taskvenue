@@ -6,9 +6,9 @@ import Box from '@mui/material/Box';
 import { useState } from 'react';
 import ClientNavBar from '../../Components/NavigationBar/ClientNavBar';
 import { useTranslation } from "react-i18next";
-import ManagerClosedTasks from '../../Components/Manager/Tasks/ManagerClosedTasks';
-import ManagerOpenTasks from '../../Components/Manager/Tasks/ManagerOpenTasks';
 import ClientTasksBreadcrumbs from '../../Components/Breadcrumbs/Client/ClientTasksBreadcrumbs';
+import ClientClosedTasks from '../../Components/Client/Tasks/ClientClosedTasks';
+import ClientOpenTasks from '../../Components/Client/Tasks/ClientOpenTasks';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -61,10 +61,10 @@ function ClientTasks() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <ManagerOpenTasks></ManagerOpenTasks>
+        <ClientOpenTasks></ClientOpenTasks>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <ManagerClosedTasks></ManagerClosedTasks>
+        <ClientClosedTasks></ClientClosedTasks>
       </TabPanel>
     </Box>
       </div>   
