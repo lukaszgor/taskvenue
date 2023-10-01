@@ -142,7 +142,7 @@ const ClientVenue = () => {
     };
 
     const handleButtonClickVenueDetails = (venue) => {
-        navigate('/VenueDetalils/' + venue.id);
+        navigate('/ClientVenueDetalils/' + venue.id);
     };
 
     const addNewVenue = () => {

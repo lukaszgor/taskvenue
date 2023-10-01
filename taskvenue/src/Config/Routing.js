@@ -36,6 +36,7 @@ import WorkerTaskDetails from "../Pages/Worker/WorkerTaskDetails";
 import AddNewClientTask from "../Pages/Client/AddNewClientTask";
 import ClientVenue from "../Pages/Client/ClientVenue";
 import ClientContact from "../Pages/Client/ClientContact";
+import ClientVenueDetalils from "../Pages/Client/ClientVenueDetalils";
 
 function Routing() {
   return (
@@ -77,6 +78,7 @@ function Routing() {
         <Route path="/ClientNewTask" element={<AddNewClientTask />} />
         <Route path="/ClientVenues" element={<ClientVenue />} />
         <Route path="/ClientContact" element={<ClientContact />} />
+        <Route path="/ClientVenueDetalils/:id" element={<ClientVenueDetalils />} />
       </Routes>
     </BrowserRouter>
   );
