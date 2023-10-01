@@ -10,7 +10,7 @@ import { Select, MenuItem, FormControl, InputLabel,Box } from '@mui/material';
 
 function Language() {
 	const { t, i18n } = useTranslation();
-    const [selectedLanguage, setSelectedLanguage] = useState(localStorage.getItem("lng") || "en");
+    const [selectedLanguage, setSelectedLanguage] = useState(localStorage.getItem("lng") || "pl");
 
 	const handleChangeLng = (lng) => {
 		i18n.changeLanguage(lng);
