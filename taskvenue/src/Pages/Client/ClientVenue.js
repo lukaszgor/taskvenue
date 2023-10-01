@@ -316,13 +316,13 @@ const ClientVenue = () => {
                                 </Button>
                                 </Box>
                                 <Box display="inline-block" marginRight={2}>
-                                <Button
+                                {/* <Button
                                 variant="contained"
                                 color="primary"
                                 onClick={() => handleCopyButton(venue)}
                                 startIcon={<ContentCopyIcon />}
                                 > {t('Copy')} 
-                                </Button>
+                                </Button> */}
                                 </Box>
                             </CardContent>
                         </Card>
