@@ -3,7 +3,7 @@ import ClientNavBar from '../NavigationBar/ClientNavBar';
 import { Accordion, AccordionSummary, AccordionDetails, Typography,Grid } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useTranslation } from "react-i18next";
-import ManagerMainSummary from '../Reports/ManagerMainSummary';
+import ClientMainSummary from '../Reports/ClientMainSummary';
 
 
 const ClientMainView = () => {
@@ -18,7 +18,7 @@ const ClientMainView = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
-          <ManagerMainSummary></ManagerMainSummary>
+          <ClientMainSummary></ClientMainSummary>
         </AccordionDetails>
       </Accordion>
       
