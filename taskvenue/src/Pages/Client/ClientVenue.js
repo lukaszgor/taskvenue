@@ -36,6 +36,7 @@ const ClientVenue = () => {
 
     const [userID, setUserID] = useState('');
     const [idConfig, setIdConfiguration] = useState('');
+    const [idContractor, setIdContractor] = useState();
     const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
     
 
@@ -74,21 +75,24 @@ const ClientVenue = () => {
     const fetchData = async (userId) => {
         const { data: profileData, error: profileError } = await supabase
             .from('profiles')
-            .select('id_configuration')
+            .select('id_configuration,id_contractor')
             .eq('id', userId)
             .single();
         if (profileError) {
             console.log(profileError);
         } else if (profileData) {
             setIdConfiguration(profileData.id_configuration);
+            setIdContractor(profileData.id_contractor);
         }
     };
 
     useEffect(() => {
         if (idConfig) {
-            fetchVenues(idConfig);
+            if(idContractor){
+                fetchVenues(idConfig,idContractor);
+            }
         }
-    }, [idConfig]);
+    }, [idConfig,idContractor]);
 
     useEffect(() => {
         let filteredData = venues;
@@ -119,7 +123,7 @@ const ClientVenue = () => {
         setFilteredVenues(filteredData);
     }, [venues, searchName, searchNumber, searchContractor, showArchived]);
 
-    const fetchVenues = async (idConfiguration) => {
+    const fetchVenues = async (idConfig,idContractor) => {
         const { data, error } = await supabase
             .from('venues')
             .select(`*,
@@ -127,7 +131,8 @@ const ClientVenue = () => {
                     nameOrCompanyName
                 )
             `)
-            .eq('id_configuration', idConfig);
+            .eq('id_configuration', idConfig)
+            .eq('id_contractor', idContractor);
 
         if (error) {
             console.error(error);
@@ -211,7 +216,7 @@ const ClientVenue = () => {
             <ClientNavBar></ClientNavBar>
             <ClientVenuesBreadcrumbs></ClientVenuesBreadcrumbs>
             <p></p>
-            <Button
+            {/* <Button
                 style={{ marginLeft: '20px', marginBottom: '20px' }}
                 type="submit"
                 variant="contained"
@@ -220,7 +225,7 @@ const ClientVenue = () => {
                 startIcon={<AddIcon />}
             >
                 {t('Add')}
-            </Button>
+            </Button> */}
             <Button
                 style={{ marginLeft: '20px', marginBottom: '20px' }}
                 variant="contained"
@@ -252,7 +257,7 @@ const ClientVenue = () => {
                             style={{ marginBottom: '8px' }}
                         />
                     </div>
-                    <div style={{ marginBottom: '16px' }}>
+                    {/* <div style={{ marginBottom: '16px' }}>
                         <TextField
                             label={t('Search by contractor')}
                             variant="outlined"
@@ -260,7 +265,7 @@ const ClientVenue = () => {
                             onChange={(e) => setsearchContractor(e.target.value)}
                             style={{ marginBottom: '8px' }}
                         />
-                    </div>
+                    </div> */}
                     <div style={{ marginBottom: '16px' }}>
                         <Typography>{t('Archived')}</Typography>
                         <Switch
