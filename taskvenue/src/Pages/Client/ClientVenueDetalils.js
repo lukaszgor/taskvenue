@@ -181,6 +181,7 @@ const ClientVenueDetalils = () => {
                     onChange={(e) => setName(e.target.value)}
                     fullWidth
                     required
+                    disabled
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -190,6 +191,7 @@ const ClientVenueDetalils = () => {
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     fullWidth
+                    disabled
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -200,6 +202,7 @@ const ClientVenueDetalils = () => {
                     onChange={(e) => setDescription(e.target.value)}
                     fullWidth
                     multiline
+                    disabled
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -212,6 +215,7 @@ const ClientVenueDetalils = () => {
                       id="contractor-select"
                       value={selectedContractorId}
                       onChange={handleChange}
+                      disabled
                       label={t('Select Contractor')}
                     >
                       {contractors.map((contractor) => (
@@ -229,6 +233,7 @@ const ClientVenueDetalils = () => {
                       <Checkbox
                         checked={isChecked}
                         onChange={handleCheckboxChange} // Obsługa zmiany stanu Checkboxa
+                        disabled
                       />
                     }
                     label= {t('Archived')}
@@ -236,14 +241,14 @@ const ClientVenueDetalils = () => {
                 </Grid>
                 <Grid item xs={12}>
                   <Box display="flex" justifyContent="flex-end">
-                    <Button
+                    {/* <Button
                       type="submit"
                       variant="contained"
                       color="primary"
                       style={{ minWidth: 'auto' }}
                     >
                       {t('Submit')}
-                    </Button>
+                    </Button> */}
                   </Box>
                 </Grid>
               </Grid>
@@ -260,7 +265,7 @@ const ClientVenueDetalils = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
-          <VenueHistory></VenueHistory>
+          {/* <VenueHistory></VenueHistory> */}
         </AccordionDetails>
       </Accordion>
 
