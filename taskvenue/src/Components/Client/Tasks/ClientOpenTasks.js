@@ -178,7 +178,7 @@ const ClientOpenTasks = () => {
   };
 
   const handleButtonClickTaskDetails = (task) => {
-    navigate('/TaskDetails/' + task.id);
+    navigate('/ClientTaskDetails/' + task.id);
   };
   const handleCopyButtonClick = async (task) => {
     try {

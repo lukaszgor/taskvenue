@@ -142,7 +142,7 @@ const ClientClosedTasks = () => {
   };
 
   const handleButtonClickTaskDetails = (task) => {
-    navigate('/TaskDetails/' + task.id);
+    navigate('/ClientTaskDetails/' + task.id);
   };
 
   const addNewTask = () => {
