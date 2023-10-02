@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Card,
-  CardContent,
-  Typography,
-  Grid,
-  TextField,
-  Button,
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  InputLabel,
-  Switch,
+    Card,
+    CardContent,
+    Typography,
+    Grid,
+    TextField,
+    Button,
+    Dialog,
+    DialogContent,
+    DialogTitle,
+    DialogActions,
+    DialogContentText,
+    Switch,
+    InputLabel,
+    Box
 } from '@mui/material';
 import supabase from '../../../supabaseClient';
 import { useNavigate } from 'react-router-dom';
@@ -18,6 +21,7 @@ import { useTranslation } from 'react-i18next';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import moment from 'moment';
 import EditIcon from '@mui/icons-material/Edit';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 const ManagerClosedTasks = () => {
   const [tasks, setTasks] = useState([]);
@@ -36,6 +40,72 @@ const ManagerClosedTasks = () => {
   const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
   const [showCompleted, setShowCompleted] = useState(true);
   const [showCancelled, setShowCancelled] = useState(false);
+  const [currentDate, setCurrentDate] = useState('');
+  const [author, setAuthor] = useState('');
+
+  const [copyDialogOpen, setCopyDialogOpen] = useState(false); // Dodajemy stan do kontrolowania widoczności dialogu
+  const [copyTask, setCopyTask] = useState(null); // Dodajemy stan do przechowywania miejsca do skopiowania
+
+  const handleCopyButton = (task) => {
+    setCopyTask(task);
+      setCopyDialogOpen(true);
+  };
+
+  const handleCopyConfirm = () => {
+      if (copyTask) {
+           handleCopyButtonClick(copyTask)
+      }
+      setCopyTask(null);
+      setCopyDialogOpen(false);
+  };
+
+  const handleCopyCancel = () => {
+    setCopyTask(null);
+      setCopyDialogOpen(false);
+  };
+
+  const handleCopyButtonClick = async (task) => {
+    try {
+      // Pobierz dane z istniejącego taska
+      const { id, name,kickoffDate, deadline,estimatedTime,id_configuration,description,asigned_user,type,settled,id_contractor,id_venue } = task;
+  
+      // Utwórz nowy task na podstawie danych z istniejącego taska
+      const newTask = {
+        name: name,
+        estimatedTime:estimatedTime,
+        id_configuration:id_configuration,
+        description:description,
+        asigned_user:asigned_user,
+        type:type,
+        settled:settled,
+        id_contractor:id_contractor,
+        id_venue:id_venue,
+        kickoffDate: kickoffDate,
+        deadline: deadline,
+        createdDate:currentDate,
+        status: 'open', // Ustaw status na 'open', ponieważ to jest nowy task
+        author:author
+      };
+
+      const { data, error } = await supabase.from('tasks').insert([newTask]);
+  
+      if (error) {
+        console.error(error);
+      } else {
+        // console.log('Kopiowanie taska zakończone sukcesem!', data);
+        fetchTasks(idConfig);
+      }
+    } catch (error) {
+      console.error('Wystąpił błąd podczas kopiowania taska:', error.message);
+    }
+  };
+
+
+  useEffect(() => {
+    const formattedDate = moment().format('YYYY-MM-DDTHH:mm');
+    setCurrentDate(formattedDate);
+  }, []); 
+
 
   useEffect(() => {
     const checkSession = async () => {
@@ -51,13 +121,14 @@ const ManagerClosedTasks = () => {
   const fetchData = async (userId) => {
     const { data: profileData, error: profileError } = await supabase
       .from('profiles')
-      .select('id_configuration')
+      .select('id_configuration,username')
       .eq('id', userId)
       .single();
     if (profileError) {
       console.log(profileError);
     } else if (profileData) {
       setIdConfiguration(profileData.id_configuration);
+      setAuthor(profileData.username);
     }
   };
 
@@ -339,19 +410,50 @@ const ManagerClosedTasks = () => {
                   {t('Deadline')}: {formatDate(task.deadline)}
                 </Typography>
                 <p></p>
+                <Box display="inline-block" marginRight={2}>
                 <Button
                   variant="contained"
                   color="primary"
                   onClick={() => handleButtonClickTaskDetails(task)}
                   startIcon={<EditIcon />}
-                >
-                  {t('details')}
+                > {t('details')}
                 </Button>
+                </Box>
+                <Box display="inline-block" marginRight={2}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => handleCopyButton(task)}
+                  startIcon={<ContentCopyIcon />}
+                > {t('Copy')} 
+                </Button>
+                </Box>
               </CardContent>
             </Card>
           </Grid>
         ))}
       </Grid>
+      <Dialog
+                open={copyDialogOpen}
+                onClose={handleCopyCancel}
+                aria-labelledby="copy-dialog-title"
+                aria-describedby="copy-dialog-description"
+            >
+                <DialogTitle id="copy-dialog-title">{t('Copy')}</DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="copy-dialog-description">
+                        {t('Do you want to copy this task?')}
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCopyCancel} color="primary">
+                        {t('Cancel')}
+                    </Button>
+                    <Button onClick={handleCopyConfirm} color="primary" variant="contained">
+                        {t('Copy')}
+                    </Button>
+                </DialogActions>
+            </Dialog>
     </div>
   );
 };
