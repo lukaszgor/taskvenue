@@ -159,7 +159,7 @@ const WorkerOpenAbsences = () => {
             </Dialog>
 
             <Grid container spacing={3}>
-                {filtredAbsences.map((absence) => (
+                {filtredAbsences.sort((a, b) => b.id - a.id).map((absence) => (
                     <Grid key={absence.id} item xs={12} sm={6} md={4} lg={3}>
                         <Card>
                             <CardContent>

@@ -443,7 +443,7 @@ function WorkerServices() {
                                 <div>
                                     <p> </p>
                                     <Grid container spacing={2}>
-                                        {service.map((serviceItem) => (
+                                        {service.sort((a, b) => b.id - a.id).map((serviceItem) => (
                                             <Grid item xs={12} sm={6} md={12} lg={12} key={serviceItem.id}>
                                                 <Card>
                                                     <CardContent>

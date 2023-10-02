@@ -210,7 +210,7 @@ const WorkerClosedTasks = () => {
             </Dialog>
 
             <Grid container spacing={3}>
-                {filteredTasks.map((task) => (
+                {filteredTasks.sort((a, b) => b.id - a.id).map((task) => (
                     <Grid key={task.id} item xs={12} sm={6} md={4} lg={3}>
                         <Card>
                             <CardContent>

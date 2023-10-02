@@ -280,7 +280,7 @@ const VenueDashboard = () => {
             </Dialog>
 
             <Grid container spacing={3}>
-                {filteredVenues.map((venue) => (
+                {filteredVenues.sort((a, b) => b.id - a.id).map((venue) => (
                     <Grid key={venue.id} item xs={12} sm={6} md={4} lg={3}>
                         <Card>
                             <CardContent>
