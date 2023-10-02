@@ -5,15 +5,15 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useState } from 'react';
 import { useTranslation } from "react-i18next";
-import ManagerBasicDataEdit from '../../Components/Manager/Tasks/ManagerBasicDataEdit';
-import ManagerServicesEdit from '../../Components/Manager/Tasks/ManagerServicesEdit';
-import ManagerVenueEdit from '../../Components/Manager/Tasks/ManagerVenueEdit';
-import ManagerWorkingTimeEdit from '../../Components/Manager/Tasks/ManagerWorkingTimeEdit';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import IconButton from '@mui/material/IconButton';
 import ClientNavBar from '../../Components/NavigationBar/ClientNavBar'
 import ClientTaskBreadcrumbs from '../../Components/Breadcrumbs/Client/ClientTaskBreadcrumbs';
+import ClientBasicDataEdit from '../../Components/Client/Tasks/ClientBasicDataEdit';
+import ClientTaskServices from '../../Components/Client/Tasks/ClientTaskServices';
+import ClientTaskVenue from '../../Components/Client/Tasks/ClientTaskVenue';
+
 
 function TabPanel(props) {
   const { children, value, index, handleScrollLeft, handleScrollRight } = props;
@@ -42,7 +42,7 @@ function TabPanel(props) {
               <NavigateBeforeIcon />
             </IconButton>
           )}
-          {value < 3 && (
+          {value < 1 && (
             <IconButton
               onClick={handleScrollRight}
               style={{
@@ -90,7 +90,7 @@ function ClientTaskDetails() {
   };
 
   const handleScrollRight = () => {
-    if (value < 3) {
+    if (value < 1) {
       setValue(value + 1);
     }
   };
@@ -111,21 +111,13 @@ function ClientTaskDetails() {
           aria-label="basic tabs example"
         >
           <Tab label={t('Basic data')} {...a11yProps(0)} />
-          <Tab label={t('Venue')} {...a11yProps(1)} />
-          <Tab label={t('Services')} {...a11yProps(2)} />
-          <Tab label={t('Working time')} {...a11yProps(3)} />
+          <Tab label={t('Services')} {...a11yProps(1)} />
         </Tabs>
         <TabPanel value={value} index={0} handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
-          <ManagerBasicDataEdit></ManagerBasicDataEdit>
+          <ClientBasicDataEdit></ClientBasicDataEdit>
         </TabPanel>
         <TabPanel value={value} index={1} handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
-          <ManagerVenueEdit></ManagerVenueEdit>
-        </TabPanel>
-        <TabPanel value={value} index={2} handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
-          <ManagerServicesEdit></ManagerServicesEdit>
-        </TabPanel>
-        <TabPanel value={value} index={3} handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
-          <ManagerWorkingTimeEdit></ManagerWorkingTimeEdit>
+          <ClientTaskServices></ClientTaskServices>
         </TabPanel>
       </Box>
     </div>
