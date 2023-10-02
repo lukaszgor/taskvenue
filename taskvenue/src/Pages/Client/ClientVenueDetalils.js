@@ -25,7 +25,7 @@ import { useTranslation } from 'react-i18next';
 import ClientVenueBreadcrumbs from '../../Components/Breadcrumbs/Client/ClientVenueBreadcrumbs';
 import { useNavigate } from 'react-router-dom';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import VenueHistory from '../../Components/Manager/Venue/VenueHistory';
+import ClientVenueHistory from '../../Components/Client/ClientVenueHistory';
 
 const ClientVenueDetalils = () => {
   const { t, i18n } = useTranslation();
@@ -265,7 +265,7 @@ const ClientVenueDetalils = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
-          {/* <VenueHistory></VenueHistory> */}
+          <ClientVenueHistory></ClientVenueHistory>
         </AccordionDetails>
       </Accordion>
 
