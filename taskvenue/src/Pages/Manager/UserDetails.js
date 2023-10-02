@@ -140,8 +140,8 @@ const handleCloseAlert = (event, reason) => {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                name="email"
-                label="Adres email"
+                name="Email"
+                label={t("Email")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 fullWidth
@@ -160,7 +160,7 @@ const handleCloseAlert = (event, reason) => {
             <Grid item xs={12} sm={6}>
               <TextField
                 name="address"
-                label={t("address")}
+                label={t("Address")}
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 fullWidth
@@ -169,7 +169,7 @@ const handleCloseAlert = (event, reason) => {
             <Grid item xs={12} sm={6}>
               <TextField
                 name="phone_number"
-                label={t("phone number")}
+                label={t("Phone number")}
                 value={phone_number}
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 fullWidth
@@ -185,18 +185,23 @@ const handleCloseAlert = (event, reason) => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+                <InputLabel id="profile_type-select-select-label">
+                  {t('Profile type')}
+                </InputLabel>
               <Select
                 name="profile_type"
-                label={t("profile type")}
+                label={t("Profile type")}
                 value={profile_type}
                 onChange={(e) => setProfileType(e.target.value)}
                 fullWidth
                 required
               >
-                <MenuItem value="manager">Manager</MenuItem>
-                <MenuItem value="worker">Worker</MenuItem>
-                <MenuItem value="client">Client</MenuItem>
+                <MenuItem value="manager">{t('Manager')}</MenuItem>
+                <MenuItem value="worker">{t('Worker')}</MenuItem>
+                <MenuItem value="client">{t('Client')}</MenuItem>
               </Select>
+              </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
             
