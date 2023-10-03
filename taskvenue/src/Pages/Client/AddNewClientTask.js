@@ -64,7 +64,7 @@ function AddNewClientTask() {
   const [description, setDescription] = useState('');
   const [contractors, setContractors] = useState([]);
   const [profiles, setProfiles] = useState([]);
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState('open');
   const [type, setType] = useState('');
   const [isSettled, setSettled] = useState(null);
   const [selectedContractorId, setSelectedContractorId] = useState('');
@@ -123,12 +123,12 @@ function AddNewClientTask() {
         {
           name: name,
           description: description,
-          asigned_user: selectedAsignedId,
-          kickoffDate: kickoff,
-          deadline: deadline,
+        //   asigned_user: selectedAsignedId,
+        //   kickoffDate: kickoff,
+        //   deadline: deadline,
           status: status,
-          type: type,
-          estimatedTime: estimatedTime,
+        //   type: type,
+        //   estimatedTime: estimatedTime,
           id_configuration:idConfig,
           id_contractor:selectedContractorId,
           createdDate:currentDate,
@@ -140,21 +140,16 @@ function AddNewClientTask() {
     }
     if (data) {
       const insertedRecordId = data.id; 
-      navigate('/TaskDetails/' + insertedRecordId);
+      navigate('/ClientTaskDetails/' + insertedRecordId);
     }
   };
 
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (new Date(deadline) < new Date(kickoff)) {
-        // Ustaw błąd w stanie
-        setErrorDate(t('Incorrect dates'));
-    } else {
-        // Jeśli dane są poprawne, zresetuj stan błędu i wykonaj aktualizację absencji
         setErrorDate(null);
         handleInsertTask();
-    }
+    
 };
 
   useEffect(() => {
@@ -171,7 +166,7 @@ function AddNewClientTask() {
   const fetchData = async (userId) => {
     const { data: profileData, error: profileError } = await supabase
       .from('profiles')
-      .select('id_configuration,username')
+      .select('id_configuration,username,id_contractor')
       .eq('id', userId)
       .single();
 
@@ -180,6 +175,7 @@ function AddNewClientTask() {
     } else if (profileData) {
       setIdConfiguration(profileData.id_configuration);
       setAuthor(profileData.username);
+      setSelectedContractorId(profileData.id_contractor);
     }
   };
 
@@ -258,9 +254,7 @@ function AddNewClientTask() {
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label={t("Basic data")} {...a11yProps(0)} />
-          <Tab label={t("Venue")} {...a11yProps(1)} disabled />
-          <Tab label={t("Services")} {...a11yProps(2)} disabled />
-          <Tab label={t("Working time")} {...a11yProps(3)} disabled />
+          <Tab label={t("Services")} {...a11yProps(1)} disabled />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
@@ -310,7 +304,8 @@ function AddNewClientTask() {
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}
                   fullWidth
-                  required
+                  disabled
+
                 >
                   <MenuItem value="open">{t('Open')}</MenuItem>
                   <MenuItem value="inProgress">{t('In progress')}</MenuItem>
@@ -318,7 +313,7 @@ function AddNewClientTask() {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            {/* <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
                 <InputLabel id="type-select-label">
                     {t('Type')}
@@ -339,7 +334,7 @@ function AddNewClientTask() {
                   ))}
                 </Select>
               </FormControl>
-            </Grid>
+            </Grid> */}
             <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
                 <InputLabel id="contractor-select-select-label">
@@ -351,6 +346,7 @@ function AddNewClientTask() {
                   value={selectedContractorId}
                   onChange={handleChangeContractor}
                   label={t('Select Contractor')}
+                  disabled
                 >
                   {contractors.map((contractor) => (
                     <MenuItem key={contractor.id} value={contractor.id}>
@@ -360,7 +356,7 @@ function AddNewClientTask() {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            {/* <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
                 <InputLabel id="asigned-select-label">
                   {t('Select Asigned user')}
@@ -379,8 +375,8 @@ function AddNewClientTask() {
                   ))}
                 </Select>
               </FormControl>
-            </Grid>
-            <Grid item xs={12} sm={6}>
+            </Grid> */}
+            {/* <Grid item xs={12} sm={6}>
               <TextField
                 name="Estimated time"
                 label={t('Estimated time')}
@@ -389,16 +385,16 @@ function AddNewClientTask() {
                 fullWidth
                 type="number" 
               />
-            </Grid>
-            <Grid item xs={12} sm={6}>
+            </Grid> */}
+            {/* <Grid item xs={12} sm={6}>
             <label>{t('Creation date')}</label>
             <DateTimeInput
             value={createdDate} 
                 type="datetime-local"
                 disabled
               />
-            </Grid>
-            <Grid item xs={12} sm={6}>
+            </Grid> */}
+            {/* <Grid item xs={12} sm={6}>
               <label>{t('Start of implementation')}</label>
               <DateTimeInput
                 type="datetime-local"
@@ -413,7 +409,7 @@ function AddNewClientTask() {
                 value={deadline}
                 onChange={handleDeadlineChange}
               />
-            </Grid>
+            </Grid> */}
             <Grid item xs={12} sm={6}>
               <TextField
                 name="Description"
@@ -424,7 +420,7 @@ function AddNewClientTask() {
                 multiline
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            {/* <Grid item xs={12} sm={6}>
               <FormControlLabel
                 control={
                   <Checkbox
@@ -435,7 +431,7 @@ function AddNewClientTask() {
                 }
                 label={t('Settled')}
               />
-            </Grid>
+            </Grid> */}
 
             <Grid item xs={12}>
             <Box display="flex" justifyContent="flex-end">
@@ -459,13 +455,7 @@ function AddNewClientTask() {
         </Container>
       </TabPanel>
       <TabPanel value={value} index={1} >
-      <p>Venue</p>
-      </TabPanel>
-      <TabPanel value={value} index={2} >
       <p>Services</p>
-      </TabPanel>
-      <TabPanel value={value} index={3} >
-      <p>Working time</p>
       </TabPanel>
     </Box>
 
