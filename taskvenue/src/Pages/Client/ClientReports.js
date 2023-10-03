@@ -8,6 +8,7 @@ import ClientReportsBreadcrumbs from '../../Components/Breadcrumbs/Client/Client
 import ClientAllTasks from '../../Components/Reports/ClientAllTasks';
 import ClientAllVenues from '../../Components/Reports/ClientAllVenues';
 import ClientStatusOfImplementation30Report from '../../Components/Reports/ClientStatusOfImplementation30Report';
+import ClientOpenAndInProgressTasksReport from '../../Components/Reports/ClientOpenAndInProgressTasksReport';
 
 function ClientReports() {
     const { t, i18n } = useTranslation();
@@ -24,6 +25,16 @@ function ClientReports() {
         <AccordionDetails>
           <Typography></Typography>
          <ClientStatusOfImplementation30Report></ClientStatusOfImplementation30Report>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Open tasks')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+        <ClientOpenAndInProgressTasksReport></ClientOpenAndInProgressTasksReport>
         </AccordionDetails>
       </Accordion>
 
