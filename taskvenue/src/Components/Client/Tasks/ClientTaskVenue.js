@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Grid,Container,Select,MenuItem,FormControl,InputLabel,Typography, Button,Box,  IconButton,} from '@mui/material';
+import {Grid,Container,Select,MenuItem,FormControl,InputLabel,Typography, Button,Box} from '@mui/material';
 import { useParams } from 'react-router-dom';
 import supabase from '../../../supabaseClient';
 import { useTranslation } from 'react-i18next';
@@ -16,6 +16,7 @@ const ClientTaskVenue = () => {
   const [userID, setUserID] = useState('');
   const [venues, setVenues] = useState([]);
   const [selectedVenue, setSelectedVenue] = useState(null);
+  const [status, setStatus] = useState('');
 
   useEffect(() => {
     const checkSession = async () => {
@@ -27,6 +28,23 @@ const ClientTaskVenue = () => {
     };
     checkSession();
   }, []);
+
+
+  const handleFetchDataStatus = async (idConfig, id) => {
+    const { data, error } = await supabase
+        .from('tasks')
+        .select('status')
+        .eq('id', id)
+        .eq('id_configuration', idConfig)
+        .single();
+    if (error) {
+        console.log(error);
+    }
+    if (data) {
+        setStatus(data.status);
+    }
+};
+
 
   const fetchData = async (userId) => {
     const { data: profileData, error: profileError } = await supabase
@@ -42,11 +60,15 @@ const ClientTaskVenue = () => {
     }
   };
 
-  const handleFetchVenues = async (idConfig) => {
+
+
+  const handleFetchVenues = async (idConfig,contractor) => {
     const { data, error } = await supabase
       .from('venues')
       .select()
-      .eq('id_configuration', idConfig);
+      .eq('id_configuration', idConfig)
+      .eq('id_contractor', contractor)
+      .is('archived', null);
     if (error) {
       console.log(error);
     }
@@ -66,6 +88,7 @@ const ClientTaskVenue = () => {
     }
     if (data && data.id_venue !== undefined) {
       setSelectedVenueId(data.id_venue);
+   
     }
   };
 
@@ -86,7 +109,7 @@ const ClientTaskVenue = () => {
   const handleFetchTask = async () => {
     const { data, error } = await supabase
       .from('tasks')
-      .select('id_venue')
+      .select('id_venue,id_contractor')
       .eq('id', id)
       .eq('id_configuration', idConfig) 
       .single();
@@ -95,6 +118,7 @@ const ClientTaskVenue = () => {
     }
     if (data) {
         setSelectedVenueId(data.id_venue);
+        handleFetchVenues(idConfig,data.id_contractor);
     }
   };
 
@@ -103,6 +127,7 @@ const ClientTaskVenue = () => {
       handleFetchVenueID(idConfig);
       handleFetchVenues(idConfig);
       handleFetchTask();
+      handleFetchDataStatus(idConfig, id);
     }
   }, [idConfig]);
 
@@ -162,30 +187,31 @@ const ClientTaskVenue = () => {
   return (
     <div>
       <Container maxWidth="md">
-        {/* <Grid item xs={12} sm={6}>
-          <FormControl fullWidth disabled>
+        <Grid item xs={12} sm={6}>
+          <FormControl fullWidth>
             <InputLabel id="venue-select-select-label">
               {t('Select Venue')}
             </InputLabel>
             <Select
-              labelId="venue-select-label"
-              id="venue-select"
-              value={selectedVenueId}
-              onChange={handleChangeVenue}
-              label={t('Select Venue')}
-            >
-              {venues.map((venue) => (
-                <MenuItem key={venue.id} value={venue.id}>
-                  {venue.name}
-                </MenuItem>
-              ))}
+                labelId="venue-select-label"
+                id="venue-select"
+                value={selectedVenueId}
+                onChange={handleChangeVenue}
+                label={t('Select Venue')}
+                disabled={status === 'completed' || status === 'inProgress' || status === 'cancelled'}
+              >
+                {venues.map((venue) => (
+                  <MenuItem key={venue.id} value={venue.id}>
+                    {venue.name}
+                  </MenuItem>
+                ))}
             </Select>
           </FormControl>
-        </Grid> */}
+        </Grid>
         <p></p>
         {selectedVenue && (
-          <Grid item xs={12}>
-            <Typography variant="h11">{t('Name')}</Typography>
+          <Grid item xs={12}>           
+           <Typography variant="h11">{t('Name')}</Typography>
            <Typography variant="h6">{selectedVenue.name}</Typography>
             <Typography variant="h11">{t('Description')}</Typography>
             <Typography variant="h6">{selectedVenue.description}</Typography>
@@ -193,16 +219,16 @@ const ClientTaskVenue = () => {
             <Typography variant="h6">{selectedVenue.GPS_location}</Typography>
             <p></p>
 
-            <Box display="flex" justifyContent="flex-start">
+            <Box display="flex" justifyContent="flex-end">
                 <Button
                 type="submit"
                 variant="contained"
                 color="success"
+                startIcon={<LocationOnIcon />}
                 onClick={() => handleButtonClickLocation(selectedVenue)}
                 style={{ minWidth: 'auto' }}
-                startIcon={<LocationOnIcon />}
                 >
-            {t('Open in Google Maps')} 
+            {t('Open in Google Maps')}
                 </Button>
             </Box>
           </Grid>
