@@ -5,6 +5,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ClientNavBar from '../../Components/NavigationBar/ClientNavBar';
 import { useTranslation } from "react-i18next";
 import ClientReportsBreadcrumbs from '../../Components/Breadcrumbs/Client/ClientReportsBreadcrumbs';
+import ClientAllTasks from '../../Components/Reports/ClientAllTasks';
+import ClientAllVenues from '../../Components/Reports/ClientAllVenues';
+
 function ClientReports() {
     const { t, i18n } = useTranslation();
 
@@ -15,22 +18,22 @@ function ClientReports() {
         <p></p>
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        <Typography variant="h6" fontWeight="bold">{t('Rport1')}</Typography>
+        <Typography variant="h6" fontWeight="bold">{t('All Tasks')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
-          Raport 1
+          <ClientAllTasks></ClientAllTasks>
         </AccordionDetails>
       </Accordion>
 
 
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t('Rapor 2')}</Typography>
+          <Typography variant="h6" fontWeight="bold">{t('Venues')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
-          Raport 2
+          <ClientAllVenues></ClientAllVenues>
         </AccordionDetails>
       </Accordion>
 
