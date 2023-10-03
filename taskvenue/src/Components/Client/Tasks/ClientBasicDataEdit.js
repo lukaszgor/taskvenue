@@ -262,7 +262,7 @@ const ClientBasicDataEdit = () => {
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}
                   fullWidth
-                  required
+                  disabled
                 >
                   <MenuItem value="open">{t('Open')}</MenuItem>
                   <MenuItem value="inProgress">{t('In progress')}</MenuItem>
@@ -284,6 +284,7 @@ const ClientBasicDataEdit = () => {
                   value={type}
                   onChange={(e) => setType(e.target.value)}
                   fullWidth
+                  disabled
                 >
                   {taskTypes.map((taskType) => (
                     <MenuItem key={taskType.name} value={taskType.name}>
@@ -314,7 +315,7 @@ const ClientBasicDataEdit = () => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            {/* <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
                 <InputLabel id="asigned-select-label">
                   {t('Select Asigned user')}
@@ -333,8 +334,8 @@ const ClientBasicDataEdit = () => {
                   ))}
                 </Select>
               </FormControl>
-            </Grid>
-            <Grid item xs={12} sm={6}>
+            </Grid> */}
+            {/* <Grid item xs={12} sm={6}>
               <TextField
                 name="Estimated time"
                 label={t('Estimated time')}
@@ -343,7 +344,7 @@ const ClientBasicDataEdit = () => {
                 fullWidth
                 type="number"
               />
-            </Grid>
+            </Grid> */}
             <Grid item xs={12} sm={6}>
               <label>{t('Creation date')}</label>
               <DateTimeInput type="datetime-local" value={createdDate} disabled />
@@ -363,6 +364,7 @@ const ClientBasicDataEdit = () => {
                 type="datetime-local"
                 value={kickoff}
                 onChange={handleKickoffChange}
+                disabled
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -371,6 +373,7 @@ const ClientBasicDataEdit = () => {
                 type="datetime-local"
                 value={deadline}
                 onChange={handleDeadlineChange}
+                disabled
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -390,6 +393,7 @@ const ClientBasicDataEdit = () => {
                     checked={isSettled !== null}
                     onChange={handleCheckboxChange}
                     color="primary"
+                    disabled
                   />
                 }
                 label={t('Settled')}
@@ -403,6 +407,7 @@ const ClientBasicDataEdit = () => {
                   variant="contained"
                   color="primary"
                   style={{ minWidth: 'auto' }}
+                  disabled={status === 'completed' || status === 'inProgress' || status === 'cancelled'}
                 >
                   {t('Submit')}
                 </Button>
