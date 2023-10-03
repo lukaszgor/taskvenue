@@ -430,13 +430,13 @@ const ClientOpenTasks = () => {
                 </Button>
                 </Box>
                 <Box display="inline-block" marginRight={2}>
-                <Button
+                {/* <Button
                   variant="contained"
                   color="primary"
                   onClick={() => handleCopyButton(task)}
                   startIcon={<ContentCopyIcon />}
                 > {t('Copy')} 
-                </Button>
+                </Button> */}
                 </Box>
               </CardContent>
             </Card>
