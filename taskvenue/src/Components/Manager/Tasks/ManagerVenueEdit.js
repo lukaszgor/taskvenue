@@ -16,7 +16,8 @@ const ManagerVenueEdit = () => {
   const [userID, setUserID] = useState('');
   const [venues, setVenues] = useState([]);
   const [selectedVenue, setSelectedVenue] = useState(null);
-  
+  const [status, setStatus] = useState('');
+  const [idContractor, setIdContractor] = useState('');
 
   useEffect(() => {
     const checkSession = async () => {
@@ -29,10 +30,27 @@ const ManagerVenueEdit = () => {
     checkSession();
   }, []);
 
+
+  const handleFetchDataStatus = async (idConfig, id) => {
+    const { data, error } = await supabase
+        .from('tasks')
+        .select('status')
+        .eq('id', id)
+        .eq('id_configuration', idConfig)
+        .single();
+    if (error) {
+        console.log(error);
+    }
+    if (data) {
+        setStatus(data.status);
+    }
+};
+
+
   const fetchData = async (userId) => {
     const { data: profileData, error: profileError } = await supabase
       .from('profiles')
-      .select('id_configuration')
+      .select('id_configuration,id_contractor')
       .eq('id', userId)
       .single();
 
@@ -40,17 +58,18 @@ const ManagerVenueEdit = () => {
       console.log(profileError);
     } else if (profileData) {
       setIdConfiguration(profileData.id_configuration);
+      setIdContractor(profileData.id_contractor);
     }
   };
 
 
 
-  const handleFetchVenues = async (idConfig,contractor) => {
+  const handleFetchVenues = async (idConfig,idContractor) => {
     const { data, error } = await supabase
       .from('venues')
       .select()
       .eq('id_configuration', idConfig)
-      .eq('id_contractor', contractor)
+      .eq('id_contractor', idContractor)
       .is('archived', null);
     if (error) {
       console.log(error);
@@ -108,10 +127,11 @@ const ManagerVenueEdit = () => {
   useEffect(() => {
     if (idConfig) {
       handleFetchVenueID(idConfig);
-      handleFetchVenues(idConfig);
+      handleFetchVenues(idConfig,idContractor);
       handleFetchTask();
+      handleFetchDataStatus(idConfig, id);
     }
-  }, [idConfig]);
+  }, [idConfig,id,idContractor]);
 
   useEffect(() => {
     if (selectedVenueId) {
@@ -180,6 +200,7 @@ const ManagerVenueEdit = () => {
                 value={selectedVenueId}
                 onChange={handleChangeVenue}
                 label={t('Select Venue')}
+                disabled={status === 'completed' || status === 'inProgress' || status === 'cancelled'}
               >
                 {venues.map((venue) => (
                   <MenuItem key={venue.id} value={venue.id}>
