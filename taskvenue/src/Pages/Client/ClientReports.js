@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import ClientReportsBreadcrumbs from '../../Components/Breadcrumbs/Client/ClientReportsBreadcrumbs';
 import ClientAllTasks from '../../Components/Reports/ClientAllTasks';
 import ClientAllVenues from '../../Components/Reports/ClientAllVenues';
+import ClientStatusOfImplementation30Report from '../../Components/Reports/ClientStatusOfImplementation30Report';
 
 function ClientReports() {
     const { t, i18n } = useTranslation();
@@ -16,6 +17,16 @@ function ClientReports() {
              <ClientNavBar></ClientNavBar>
         <ClientReportsBreadcrumbs></ClientReportsBreadcrumbs>
         <p></p>
+        <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Status of the implementation of issues in the last 30 days')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+         <ClientStatusOfImplementation30Report></ClientStatusOfImplementation30Report>
+        </AccordionDetails>
+      </Accordion>
+
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Typography variant="h6" fontWeight="bold">{t('All Tasks')}</Typography>
@@ -37,15 +48,7 @@ function ClientReports() {
         </AccordionDetails>
       </Accordion>
 
-      <Accordion>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t('Raport 3')}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography></Typography>
-          Raport 3
-        </AccordionDetails>
-      </Accordion>
+
     </div>
   );
 }

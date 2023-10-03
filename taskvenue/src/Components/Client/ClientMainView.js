@@ -4,6 +4,7 @@ import { Accordion, AccordionSummary, AccordionDetails, Typography,Grid } from '
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useTranslation } from "react-i18next";
 import ClientMainSummary from '../Reports/ClientMainSummary';
+import ClientStatusOfImplementation30Report from '../Reports/ClientStatusOfImplementation30Report';
 
 
 const ClientMainView = () => {
@@ -26,11 +27,11 @@ const ClientMainView = () => {
       <Grid item xs={12} sm={8}>
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t('Rapor2')}</Typography>
+          <Typography variant="h6" fontWeight="bold">{t('Status of the implementation of issues in the last 30 days')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
-          raport
+          <ClientStatusOfImplementation30Report></ClientStatusOfImplementation30Report>
         </AccordionDetails>
       </Accordion>
       </Grid>
