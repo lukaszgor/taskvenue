@@ -80,10 +80,25 @@ function AddNewClientTask() {
   const [currentDate, setCurrentDate] = useState('');
   const [errorDate, setErrorDate] = useState(null);
   const [author, setAuthor] = useState('');
+  const [nextWeekDate,setNewxWeekDate ] = useState('');
+
 
   useEffect(() => {
     const formattedDate = moment().format('YYYY-MM-DDTHH:mm');
     setCurrentDate(formattedDate);
+
+////////// dodanie 7 dni
+    const currentDateWeek = moment();
+    
+    // Dodaj 7 dni do bieżącej daty
+    currentDateWeek.add(7, 'days');
+    
+    // Sformatuj nową datę
+    const newxtWeek = currentDateWeek.format('YYYY-MM-DDTHH:mm');
+    
+    // Ustaw sformatowaną datę w stanie komponentu
+    setNewxWeekDate(newxtWeek);
+    
   }, []); 
 
 
@@ -124,8 +139,8 @@ function AddNewClientTask() {
           name: name,
           description: description,
         //   asigned_user: selectedAsignedId,
-        //   kickoffDate: kickoff,
-        //   deadline: deadline,
+          kickoffDate: currentDate,
+          deadline: nextWeekDate,
           status: status,
         //   type: type,
         //   estimatedTime: estimatedTime,
