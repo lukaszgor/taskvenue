@@ -129,8 +129,9 @@ const ReportRealizationOfIssuesForTheCustomers = () => {
           <input
             type="datetime-local" // Użyj typu "datetime-local" dla inputa
             id="currentDate"
-            value={currentDate}
-            onChange={(e) => setCurrentDate(e.target.value)}
+
+            value={daysAgo}
+            onChange={(e) => setDaysAgo(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={2} className="right-input">
@@ -138,8 +139,8 @@ const ReportRealizationOfIssuesForTheCustomers = () => {
           <input
             type="datetime-local" // Użyj typu "datetime-local" dla inputa
             id="daysAgo"
-            value={daysAgo}
-            onChange={(e) => setDaysAgo(e.target.value)}
+            value={currentDate}
+            onChange={(e) => setCurrentDate(e.target.value)}
           />
         </Grid>
       </Grid>
