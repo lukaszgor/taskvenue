@@ -104,6 +104,10 @@ const ManagerClosedTasks = () => {
   useEffect(() => {
     const formattedDate = moment().format('YYYY-MM-DDTHH:mm');
     setCurrentDate(formattedDate);
+    const defaultEndDate = moment().subtract(2, 'months').format('YYYY-MM-DD');
+    setStartDate(defaultEndDate);
+    setEndDate(moment().format('YYYY-MM-DD'));
+    
   }, []); 
 
 
