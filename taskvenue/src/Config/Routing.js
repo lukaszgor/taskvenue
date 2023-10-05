@@ -38,6 +38,7 @@ import ClientVenue from "../Pages/Client/ClientVenue";
 import ClientContact from "../Pages/Client/ClientContact";
 import ClientVenueDetalils from "../Pages/Client/ClientVenueDetalils";
 import ClientTaskDetails from "../Pages/Client/ClientTaskDetails";
+import Info from "../Pages/Common/Info/Info";
 
 function Routing() {
   return (
@@ -81,6 +82,11 @@ function Routing() {
         <Route path="/ClientContact" element={<ClientContact />} />
         <Route path="/ClientVenueDetalils/:id" element={<ClientVenueDetalils />} />
         <Route path="/ClientTaskDetails/:id" element={<ClientTaskDetails />} />
+
+        <Route path="/info" element={<Info />} />
+
+
+
       </Routes>
     </BrowserRouter>
   );
