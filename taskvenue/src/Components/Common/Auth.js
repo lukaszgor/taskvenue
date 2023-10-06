@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import { useTranslation } from "react-i18next";
 import { Box, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import Language from "./Language";
+import InfoNavBar from "../NavigationBar/InfoNavBar";
 
 export let userEmail
 export let userId
@@ -166,7 +167,7 @@ return (
     <div className="App">
 <div>
 
-<Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
+{/* <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
   <div>
   <Typography
             variant="h6"
@@ -191,7 +192,9 @@ return (
 <div>&nbsp;</div>
 <Language></Language>
 
-</Box>
+</Box> */}
+
+<InfoNavBar></InfoNavBar>
 
 </div>
       <Box sx={{ width: '100%' }}>
