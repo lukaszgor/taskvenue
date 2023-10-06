@@ -9,7 +9,8 @@ const HeaderInfo = () => {
   const { t, i18n } = useTranslation();
   return (
 <div>
-<div style={{ background: 'white', minHeight: '80vh' }}>
+<div style={{ background: 'white', minHeight: '70vh' }}>
+
       <Container maxWidth="lg">
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>

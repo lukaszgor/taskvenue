@@ -43,6 +43,7 @@ import AboutUs from "../Pages/Common/Info/AboutUs";
 import CaseStudy from "../Pages/Common/Info/CaseStudy";
 import InfoContact from "../Pages/Common/Info/InfoContact";
 import Knowledge from "../Pages/Common/Info/Knowledge";
+import Technology from "../Pages/Common/Info/Technology";
 
 function Routing() {
   return (
@@ -92,6 +93,7 @@ function Routing() {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/infocontact" element={<InfoContact />} />
         <Route path="/knowledge" element={<Knowledge />} />
+        <Route path="/technology" element={<Technology />} />
 
 
 
