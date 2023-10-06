@@ -6,6 +6,12 @@
     "send magic link": "wyślij magic link",
     "enter your email": "wprowadź email",
     "enter your password": "wprowadź hasło",
+    "Sign in": "Zaloguj się",
+    "Sign up": "Zarejestruj się",
+    "Sign in via magic link": "Zaloguj się przez magic link", 
+    "Send magic link": "Wyślij magic link",
+    "Enter your email": "Wprowadź email",
+    "Enter your password": "Wprowadź hasło",
     "Successful registration": "Prawidłowe logowanie",
     "Enter correct data": "Wprowadź poprawne dane",
     "Logged successfully": "Prawidłowe zalogowanie",
@@ -183,7 +189,8 @@
       "About us":"O nas",
       "App":"Aplikacja",
       "Knowledge":"Wiedza",
-      "Technology":"Technologia"  
+      "Technology":"Technologia",
+      "I can't remember my password":"Nie pamiętam hasła"
       
     
  

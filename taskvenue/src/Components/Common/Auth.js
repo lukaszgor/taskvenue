@@ -7,15 +7,14 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
+import Link from "@mui/material/Link";
 import { useTranslation } from "react-i18next";
-import { Box, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import { Box, Select, MenuItem, FormControl, InputLabel, Accordion, AccordionSummary } from '@mui/material';
 import Language from "./Language";
 import InfoNavBar from "../NavigationBar/InfoNavBar";
 
 export let userEmail
 export let userId
-
-
 
 
 //navigate menu section
@@ -207,41 +206,41 @@ return (
       </Box>
 
       <TabPanel value={value} index={0}>
-      <h1>{t("sign in")}</h1>
-      <TextField style={{ width: "250px" }} id="standard-basic" label={t("enter your email")} placeholder={t("enter your email")} type="email" onChange={(e) => setEmail(e.target.value)} variant="standard" />
+      <h1>{t("Sign in")}</h1>
+      <TextField style={{ width: "250px" }} id="standard-basic" label={t("Enter your email")} placeholder={t("Enter your email")} type="email" onChange={(e) => setEmail(e.target.value)} variant="standard" />
       <br/>      
-      <TextField   style={{ width: "250px" }} id="standard-password-input" label={t("enter your password")} type="password" placeholder={t("enter your password")} autoComplete="current-password" variant="standard" onChange={(e) =>
+      <TextField   style={{ width: "250px" }} id="standard-password-input" label={t("Enter your password")} type="password" placeholder={t("Enter your password")} autoComplete="current-password" variant="standard" onChange={(e) =>
          setPassword(e.target.value)} />
       <br/>
       <br/>
-      <Button size="small" variant="contained" onClick={Login}>{t("sign in")}</Button>
+      <Button size="small" variant="contained" style={{ minWidth: '250px'}} onClick={Login}>{t("sign in")}</Button>
       <p>{Lmsg}</p>
-     
+      <br />
+      <Link onClick={() => handleChange(null, 2)}>{t("I can't remember my password")}</Link>
       <br/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-      <h1>{t("sign up")}</h1>
-         <TextField style={{ width: "250px" }} id="standard-basic" label={t("enter your email")}variant="standard" onChange={(e) => 
+      <h1>{t("Sign up")}</h1>
+         <TextField style={{ width: "250px" }} id="standard-basic" label={t("Enter your email")}variant="standard" onChange={(e) => 
         setEmail(e.target.value)} />
       <br/>
-         <TextField style={{ width: "250px" }} id="standard-password-input" label={t("enter your password")} type="password" autoComplete="current-password" variant="standard" onChange={(e) =>
+         <TextField style={{ width: "250px" }} id="standard-password-input" label={t("Enter your password")} type="password" autoComplete="current-password" variant="standard" onChange={(e) =>
          setPassword(e.target.value)} />
            <br/>
         {/* <TextField id="standard-basic" label="Imie" variant="standard" onChange={(e) => 
         setUsername(e.target.value)} /> */}
           <br/>
-          <br/>
-      <Button size="small" variant="contained" onClick={Register}>{t("sign up")}</Button>
+      <Button size="small" variant="contained" style={{ minWidth: '250px'}} onClick={Register}>{t("sign up")}</Button>
       <p>{Rmsg}</p>
       </TabPanel>
       <TabPanel value={value} index={2}>
-      <h1>{t("sign in via magic link")}</h1>
+      <h1>{t("Sign in via magic link")}</h1>
       <br/>
       <br/>
-      <TextField style={{ width: "250px" }} id="standard-basic" label={t("enter your email")} placeholder={t("enter your email")}  type="email" onChange={(e) => setEmail(e.target.value)} variant="standard" />
+      <TextField style={{ width: "250px" }} id="standard-basic" label={t("Enter your email")} placeholder={t("Enter your email")}  type="email" onChange={(e) => setEmail(e.target.value)} variant="standard" />
       <br/> 
       <br/> 
-      <Button size="small" variant="contained" onClick={SendMagicLink}>{t("send magic link")}</Button>
+      <Button size="small" variant="contained" style={{ minWidth: '250px'}} onClick={SendMagicLink}>{t("send magic link")}</Button>
       <p>{LmsgL}</p>
       </TabPanel>
     </Box>

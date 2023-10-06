@@ -6,6 +6,12 @@
     "send magic link": "send magic link",
     "enter your email": "enter your email",
     "enter your password": "enter your password",
+    "Sign in": "Sign in",
+    "Sign up": "Sign up",
+    "Sign in via magic link": "Sign in via magic link",
+    "Send magic link": "Send magic link",
+    "Enter your email": "Enter your email",
+    "Enter your password": "Enter your password",
     "Successful registration": "Successful registration",
     "Enter correct data": "Enter correct data",
     "Logged successfully": "Logged successfully",
@@ -183,7 +189,8 @@
       "About us":"About us",
       "App":"Aplikacja",
       "Knowledge":"Knowledge",
-      "Technology":"Technology"  
+      "Technology":"Technology",
+      "I can't remember my password":"I can't remember my password"
     
   
 
