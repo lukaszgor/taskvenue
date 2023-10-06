@@ -15,7 +15,9 @@ const AboutUs = () => {
 <div>
     <InfoNavBar></InfoNavBar>
     <HeaderAboutUs></HeaderAboutUs>
+    <p></p>
     <TryAboutus></TryAboutus>
+    <p></p>
     <ScoresAboutUs></ScoresAboutUs>
     <p></p>
     <OurValuesAboutUs></OurValuesAboutUs>
