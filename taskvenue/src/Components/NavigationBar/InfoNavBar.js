@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom"
 import { useState,useEffect } from 'react';
 import { useTranslation } from "react-i18next";
-import Language from '../Common/Language';
+import LanguageForInfo from '../Common/LanguageForInfo';
 
 
 function InfoNavBar() {
@@ -153,7 +153,7 @@ function InfoNavBar() {
 <Button onClick={GoToApp}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Aplikacja")}</Button>
           </Box>
           <Box sx={{ flexGrow: 0}} margin={1}>
-          <Language></Language>
+          <LanguageForInfo></LanguageForInfo>
           </Box>
         </Toolbar>
       </Container>
