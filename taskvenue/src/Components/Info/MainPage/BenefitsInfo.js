@@ -32,9 +32,7 @@ const BenefitsInfo = () => {
         {/* 2 kontener */}
 
         {/* Obrazek dla drugiego kontenera */}
-        <Grid item xs={12} sm={6}>
-          <img src="/logo192.png" alt="Obrazek" />
-        </Grid>
+
         <Grid item xs={12} sm={6}>
           <Card>
             <CardContent>
@@ -44,6 +42,9 @@ const BenefitsInfo = () => {
               </Typography>
             </CardContent>
           </Card>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <img src="/logo192.png" alt="Obrazek" />
         </Grid>
 
           {/* 3 kontener */}
@@ -65,9 +66,7 @@ const BenefitsInfo = () => {
               {/* 4 kontener */}
 
         {/* Obrazek dla drugiego kontenera */}
-        <Grid item xs={12} sm={6}>
-          <img src="/logo192.png" alt="Obrazek" />
-        </Grid>
+
         <Grid item xs={12} sm={6}>
           <Card>
             <CardContent>
@@ -77,6 +76,9 @@ const BenefitsInfo = () => {
               </Typography>
             </CardContent>
           </Card>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <img src="/logo192.png" alt="Obrazek" />
         </Grid>
 
       </Grid>
