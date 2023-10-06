@@ -122,7 +122,7 @@ function InfoNavBar() {
 {/* <Button onClick={CaseStudy}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Case study")}</Button> */}
 <Button onClick={AboutUs}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("About us")}</Button>
 <Button onClick={InfoContact}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Contact")}</Button>
-<Button onClick={GoToApp}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Aplikacja")}</Button>
+<Button onClick={GoToApp}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("App")}</Button>
 <Button onClick={Knowledge}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Knowledge")}</Button>
 <Button onClick={Technology}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Technology")}</Button>
             </Menu>
@@ -148,7 +148,7 @@ function InfoNavBar() {
 {/* <Button onClick={CaseStudy}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Case study")}</Button> */}
 <Button onClick={AboutUs}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("About us")}</Button>
 <Button onClick={InfoContact}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Contact")}</Button>
-<Button onClick={GoToApp}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Aplikacja")}</Button>
+<Button onClick={GoToApp}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("App")}</Button>
 <Button onClick={Knowledge}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Knowledge")}</Button>
 <Button onClick={Technology}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Technology")}</Button>
           </Box>
