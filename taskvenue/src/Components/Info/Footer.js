@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Typography, Link } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-
+import { useTranslation } from 'react-i18next';
 const footerStyles = {
   backgroundColor: '#2196F3', // Niebieskie tło
   color: '#fff', // Biały tekst
@@ -18,6 +18,7 @@ const linkStyles = {
 };
 
 function Footer() {
+    const { t, i18n } = useTranslation();
   const navigate = useNavigate();
 
   const handleContactClick = () => {
@@ -36,7 +37,7 @@ function Footer() {
     <footer style={footerStyles}>
       <Container maxWidth="lg">
         <Typography variant="body2" align="center">
-        Copyright © 2023 Task Venue - wszystkie prawa zastrzeżone
+        {t("Copyright © 2023 Task Venue - all rights reserved.")}
         </Typography>
         <Typography variant="body2" align="center">
           <Link style={linkStyles} onClick={handleContactClick}>
