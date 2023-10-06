@@ -36,7 +36,7 @@ function Footer() {
     <footer style={footerStyles}>
       <Container maxWidth="lg">
         <Typography variant="body2" align="center">
-          © 2023. Rentsyst Ltd. All rights reserved. Patented.
+        Copyright © 2023 Task Venue - wszystkie prawa zastrzeżone
         </Typography>
         <Typography variant="body2" align="center">
           <Link style={linkStyles} onClick={handleContactClick}>
