@@ -124,7 +124,7 @@ function InfoNavBar() {
 <Button onClick={InfoContact}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Contact")}</Button>
 <Button onClick={GoToApp}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("App")}</Button>
 <Button onClick={Knowledge}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Knowledge")}</Button>
-<Button onClick={Technology}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Technology")}</Button>
+{/* <Button onClick={Technology}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Technology")}</Button> */}
             </Menu>
           </Box>
           <Typography
@@ -150,7 +150,7 @@ function InfoNavBar() {
 <Button onClick={InfoContact}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Contact")}</Button>
 <Button onClick={GoToApp}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("App")}</Button>
 <Button onClick={Knowledge}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Knowledge")}</Button>
-<Button onClick={Technology}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Technology")}</Button>
+{/* <Button onClick={Technology}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Technology")}</Button> */}
           </Box>
           <Box sx={{ flexGrow: 0}}>
           <LanguageForInfo></LanguageForInfo>
