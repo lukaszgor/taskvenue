@@ -152,7 +152,7 @@ function InfoNavBar() {
 <Button onClick={InfoContact}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Contact")}</Button>
 <Button onClick={GoToApp}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Aplikacja")}</Button>
           </Box>
-          <Box sx={{ flexGrow: 0}} margin={1}>
+          <Box sx={{ flexGrow: 0}}>
           <LanguageForInfo></LanguageForInfo>
           </Box>
         </Toolbar>
