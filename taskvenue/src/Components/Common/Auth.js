@@ -10,8 +10,8 @@ import Typography from '@mui/material/Typography';
 import Link from "@mui/material/Link";
 import { useTranslation } from "react-i18next";
 import { Box, Select, MenuItem, FormControl, InputLabel, Accordion, AccordionSummary } from '@mui/material';
-import Language from "./Language";
 import InfoNavBar from "../NavigationBar/InfoNavBar";
+import Footer from "../Info/Footer";
 
 export let userEmail
 export let userId
@@ -163,7 +163,7 @@ let ErrorMessageMagicLink=t("Enter a valid email address")
   }
 
 return (
-    <div className="App">
+    <div className="App" >
 <div>
 
 {/* <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
@@ -196,8 +196,8 @@ return (
 <InfoNavBar></InfoNavBar>
 
 </div>
-      <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+      <Box sx={{ width: '100%' }} style={{ background: 'white', minHeight: '80vh' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }} >
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label={t("sign in")} {...a11yProps(0)} />
           <Tab label={t("sign up")} {...a11yProps(1)} />
@@ -244,6 +244,7 @@ return (
       <p>{LmsgL}</p>
       </TabPanel>
     </Box>
+    <Footer></Footer>
     </div>
   );
       }
