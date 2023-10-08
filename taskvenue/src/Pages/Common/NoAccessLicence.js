@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
 import supabase from '../../supabaseClient';
+import InfoNavBar from '../../Components/NavigationBar/InfoNavBar';
 const RootContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -42,6 +43,8 @@ const NoAccessLicence = () => {
         }
 
   return (
+    <div>
+      <InfoNavBar></InfoNavBar>
     <MuiThemeProvider theme={theme}>  {/* Używamy tematu MUI */}
       <ThemeProvider theme={theme}>  {/* Używamy tematu dla styled-components */}
         <RootContainer>
@@ -58,6 +61,7 @@ const NoAccessLicence = () => {
         </RootContainer>
       </ThemeProvider>
     </MuiThemeProvider>
+    </div>
   );
 };
 
