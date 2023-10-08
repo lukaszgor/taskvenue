@@ -22,15 +22,15 @@ function Footer() {
   const navigate = useNavigate();
 
   const handleContactClick = () => {
-    navigate('/Contact');
+    navigate('/infocontact');
   };
 
-  const handlePrivacyPolicyClick = () => {
-    navigate('/Polityka');
+  const handleAboutUs = () => {
+    navigate('/aboutus');
   };
 
-  const handleTermsOfServiceClick = () => {
-    navigate('/Regulamin');
+  const handleKnowledge = () => {
+    navigate('/knowledge');
   };
 
   return (
@@ -41,13 +41,13 @@ function Footer() {
         </Typography>
         <Typography variant="body2" align="center">
           <Link style={linkStyles} onClick={handleContactClick}>
-            Kontakt
+          {t("Contact")}
           </Link>
-          <Link style={linkStyles} onClick={handlePrivacyPolicyClick}>
-            Polityka prywatności
+          <Link style={linkStyles} onClick={handleAboutUs}>
+          {t("About us")}
           </Link>
-          <Link style={linkStyles} onClick={handleTermsOfServiceClick}>
-            Regulamin
+          <Link style={linkStyles} onClick={handleKnowledge}>
+          {t("Knowledge")}
           </Link>
         </Typography>
       </Container>
