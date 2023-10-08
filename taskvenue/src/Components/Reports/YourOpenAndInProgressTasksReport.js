@@ -89,7 +89,7 @@ const YourOpenAndInProgressTasksReport = () => {
     return transformedData;
   }
 
-  const COLORS = ['#EF8354', '#B2E8A6'];
+  const COLORS = ['#B2E8A6', '#EF8354'];
 
   const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
     const RADIAN = Math.PI / 180;
