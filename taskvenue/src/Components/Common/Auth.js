@@ -218,6 +218,7 @@ return (
       <br />
       <Link onClick={() => handleChange(null, 2)}>{t("I can't remember my password")}</Link>
       <br/>
+      {t("Don’t have an account?")} <Link onClick={() => handleChange(null, 1)}>{t("Get started")}</Link>
       </TabPanel>
       <TabPanel value={value} index={1}>
       <h1>{t("Sign up")}</h1>
