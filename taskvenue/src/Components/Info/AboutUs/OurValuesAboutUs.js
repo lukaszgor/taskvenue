@@ -4,8 +4,10 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import { useTranslation } from 'react-i18next';
 
 const OurValuesAboutUs = () => {
+  const { t, i18n } = useTranslation();
   return (
     <Container >
       <Grid container spacing={2}>
@@ -14,11 +16,11 @@ const OurValuesAboutUs = () => {
           <Card>
             <CardContent>
             <Typography variant="h6" gutterBottom>
-            Nasza wizja            
+            {t("Our vision")}          
             </Typography>
               <Typography variant="body2" color="text.secondary">
                 {/* Tekst dla pierwszego kontenera */}
-                Dzisiejsze oprogramowanie do zarządzania działalnością sprzatania itp  nie rozwija się bardzo szybko, oferując ograniczoną funkcjonalność. Tworząc i rozwijając Task Venue chcemy przysłuchać się potrzebą naszych klientów na runku. Chcemu dostarczać  dokładnie te narzędzia, których potrzebujesz do efektywnego zarządzania biznesem. Ponadto staramy się, aby korzystanie z Task Venue było jak najprostsze i nieskomplikowane.
+                {t("In creating and developing Task Venue, we want to listen to the needs of our customers in the marketplace. We want to provide exactly the tools you need for effective business management. In addition, we strive to make using Task Venue as simple and straightforward as possible.")}
               </Typography>
             </CardContent>
           </Card>
@@ -37,11 +39,11 @@ const OurValuesAboutUs = () => {
           <Card>
             <CardContent>
             <Typography variant="h6" gutterBottom>
-            Nasza misja         
+            {t("Our mission")}         
             </Typography>
               <Typography variant="body2" color="text.secondary">
                 {/* Tekst dla drugiego kontenera */}
-                Misją jest dostarczanie naszym klientom maksymalnej wartości poprzez projektowanie, rozwój i wdrażanie odpowiedniej i efektywnej funkcjonalności, która przyniesie korzyści biznesowi usługowemu. Ponadto wszystko to jest dostępne i możliwe nawet na Twoim smartfonie! „Kieszonkowy” system pozwala łatwo zalogować się do swojego konta za pomocą smartfona, gdziekolwiek jesteś: w każdej chwili możesz monitorować całą pracę swojej ekipy pracowników, przeglądać zamówienia i analizy bez przerywania innych ważnych spraw.
+                {t("The mission is to deliver maximum value to our customers by designing, developing and implementing relevant and effective functionality that will benefit the service business. In addition, all of this is accessible and possible even on your smartphone! Pocket system allows you to easily log in to your account using your smartphone wherever you are: at any time you can monitor all the work of your team of employees, review orders and analysis without interrupting other important matters.")}
               </Typography>
             </CardContent>
           </Card>
