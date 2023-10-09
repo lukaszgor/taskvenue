@@ -15,10 +15,10 @@ const HeaderAboutUs = () => {
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
             <Typography variant="h4" align="left" sx={{ mt: 10 }}>
-              Task Venue prostota i wydajność w każdym szczególe
+              {t("Task Venue simplicity and efficiency in every detail")}
             </Typography>
             <Typography variant="h5" align="left" sx={{ mt: 2 }}>
-            Wykorzystanie systemu Task Venue wpływa pozytywnie wpływa na budowanie relacji z klientami, co z kolei zwiększa dynamikę końcowego zysku.
+            {t("The use of the Task Venue system has a positive impact on building customer relationships, which in turn increases the dynamics of the final profit.")}
             </Typography>
           </Grid>
           <Grid item xs={12} md={6}>

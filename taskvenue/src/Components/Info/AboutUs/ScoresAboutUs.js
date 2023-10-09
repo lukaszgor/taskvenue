@@ -5,37 +5,39 @@ import CardHeader from '@mui/material/CardHeader';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import HomeIcon from '@mui/icons-material/Home';
-import WorkIcon from '@mui/icons-material/Work';
-import SchoolIcon from '@mui/icons-material/School';
+import AltRouteIcon from '@mui/icons-material/AltRoute';
+import CallMadeIcon from '@mui/icons-material/CallMade';
+import FollowTheSignsIcon from '@mui/icons-material/FollowTheSigns';
+import CardMembershipIcon from '@mui/icons-material/CardMembership';
 import Container from '@mui/material/Container';
+import { useTranslation } from 'react-i18next';
 
 const ScoresAboutUs = () => {
+  const { t, i18n } = useTranslation();
   const cards = [
     {
-      icon: <AccountCircleIcon />,
-      title: 'Kontrola i Przezroczystość',
+      icon: <FollowTheSignsIcon />,
+      title: t("Inspection"),// Kontrola
       // subtitle: 'Podtytuł 1',
-      text1: 'Elektroniczne raportowanie upraszcza kontrolę wszystkich procesów biznesowych',
+      text1: t("Electronic reporting simplifies control of all business processes")//'Elektroniczne raportowanie upraszcza kontrolę wszystkich procesów biznesowych',
     },
     {
-      icon: <HomeIcon />,
-      title: 'Lojalność klientów',
+      icon: <CardMembershipIcon />,
+      title:  t('Customer loyalty'), //Lojalność klientów
       // subtitle: 'Podtytuł 2',
-      text1: 'Udoskonalony serwis wydłuża cykl życia klienta',
+      text1: t("Improved service extends customer life cycle") //'Udoskonalony serwis wydłuża cykl życia klienta',
     },
     {
-      icon: <WorkIcon />,
-      title: 'Wzrost dochodu',
+      icon: <CallMadeIcon />,
+      title:  t("Income growth") , //Wzrost dochodu
       // subtitle: 'Podtytuł 3',
-      text1: 'Zmniejszają się koszty operacyjne, zwiększając dochód',
+      text1: t("Operating costs decrease, increasing income") //'Zmniejszają się koszty operacyjne, zwiększając dochód',
     },
     {
-      icon: <SchoolIcon />,
-      title: 'Optymalizacja',
+      icon: <AltRouteIcon />,
+      title: t("Optimization"), //Optymalizacja
       // subtitle: 'Podtytuł 4',
-      text1: 'Szczegółowa analiza zysku firmy i rentowności każdego obsłuonego miejsca',
+      text1: t("Detailed analysis of the company's profit and the profitability of each place served") //'Szczegółowa analiza zysku firmy i rentowności każdego obsłuonego miejsca',
     },
   ];
 
@@ -43,7 +45,7 @@ const ScoresAboutUs = () => {
     <Container maxWidth={false} style={{ backgroundColor: '#2196F3', padding: '30px' }}>
       {/* Dodaj nagłówek */}
       <Typography variant="h4" align="center" style={{ color: 'white', marginBottom: '20px' }}>
-      Wyniki po wdrożeniu oprogramowania Task Venue:
+      {t("Results after implementing Task Venue software:")}
       </Typography>
       
       <Container maxWidth="md">

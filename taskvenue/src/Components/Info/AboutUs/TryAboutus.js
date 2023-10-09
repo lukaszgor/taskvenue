@@ -2,6 +2,8 @@ import React from 'react';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom'; 
 
 const centerStyles = {
   display: 'flex',
@@ -17,6 +19,7 @@ const contentStyles = {
 };
 
 const TryAboutus = () => {
+    const { t, i18n } = useTranslation();
   return (
     <div style={centerStyles}>
       <Container maxWidth="md">
@@ -24,13 +27,15 @@ const TryAboutus = () => {
           Nagłówek
         </Typography> */}
         <Typography variant="body1" paragraph style={contentStyles}>
-        Ciężko pracowaliśmy, aby włączyć najlepszą kombinację elementów biznesowych do aplikacji dla biznesów usługowych, a także aby maksymalnie uprościć pracę ze złożonymi narzędziami programowymi. Zawsze szukamy innowacyjnych i wydajnych podejść tak aby system był jak najbardziej użyteczny.
+        {t("We have worked hard to incorporate the best combination of business elements into applications for service businesses, and to make working with complex software tools as simple as possible. We are always looking for innovative and efficient approaches so that the system is as useful as possible.")}
         </Typography>
 
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <Button variant="contained" color="primary">
-            Przycisk
-          </Button>
+        <Link to="/knowledge">
+            <Button variant="contained" color="primary">
+              {t("Learn more")}
+            </Button>
+          </Link>
         </div>
       </Container>
     </div>

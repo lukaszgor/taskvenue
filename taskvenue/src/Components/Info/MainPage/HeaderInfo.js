@@ -15,10 +15,11 @@ const HeaderInfo = () => {
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
             <Typography variant="h4" align="left" sx={{ mt: 10 }}>
+                
               Task Venue
             </Typography>
             <Typography variant="h5" align="left" sx={{ mt: 2 }}>
-              Miejsce dla Twojego biznesu
+              {t("A place for your business")}
             </Typography>
           </Grid>
           <Grid item xs={12} md={6}>
