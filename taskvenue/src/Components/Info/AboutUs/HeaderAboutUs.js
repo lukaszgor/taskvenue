@@ -17,13 +17,14 @@ const HeaderAboutUs = () => {
             <Typography variant="h4" align="left" sx={{ mt: 10 }}>
               {t("Task Venue simplicity and efficiency in every detail")}
             </Typography>
-            <Typography variant="h5" align="left" sx={{ mt: 2 }}>
+            <p></p>
+            <Typography variant="h6" align="left" sx={{ mt: 2 }}>
             {t("The use of the Task Venue system has a positive impact on building customer relationships, which in turn increases the dynamics of the final profit.")}
             </Typography>
           </Grid>
           <Grid item xs={12} md={6}>
             <img
-               src="/faviconnew.png"
+               src="/mainbackground.jpeg"
               alt="Your Business"
               style={{ width: '100%', height: 'auto' }}
             />

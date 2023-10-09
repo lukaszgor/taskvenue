@@ -26,7 +26,7 @@ const TryAboutus = () => {
         {/* <Typography variant="h4" gutterBottom style={contentStyles}>
           Nagłówek
         </Typography> */}
-        <Typography variant="body1" paragraph style={contentStyles}>
+        <Typography variant="h6" paragraph style={contentStyles}>
         {t("We have worked hard to incorporate the best combination of business elements into applications for service businesses, and to make working with complex software tools as simple as possible. We are always looking for innovative and efficient approaches so that the system is as useful as possible.")}
         </Typography>
 
