@@ -202,7 +202,7 @@ return (
 <InfoNavBar></InfoNavBar>
 
 </div>
-      <Box sx={{ width: '100%' }} style={{ background: 'white', minHeight: '80vh' }}>
+      <Box sx={{ width: '100%' }} style={{ background: 'white', minHeight: '90vh' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }} >
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label={t("sign in")} {...a11yProps(0)} />

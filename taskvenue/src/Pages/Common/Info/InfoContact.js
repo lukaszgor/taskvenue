@@ -24,7 +24,7 @@ const InfoContact = () => {
     <div>
       <InfoNavBar></InfoNavBar>
       <p></p>
-      <div style={{ background: 'white', minHeight: '75vh' }}>
+      <div style={{ background: 'white', minHeight: '85vh' }}>
         <p></p>
         <Container maxWidth="md" style={{ marginTop: '8rem' }}>
           <Typography variant="h4" align="center">
