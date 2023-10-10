@@ -245,7 +245,7 @@ return (
       <p>{LmsgL}</p>
       </TabPanel>
     </Box>
-    <Footer></Footer>
+    <Footer style={{ position: 'fixed', bottom: 0, width: '100%' }}></Footer>
     </div>
   );
       }
