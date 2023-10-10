@@ -13,6 +13,11 @@ import { Box, Select, MenuItem, FormControl, InputLabel, Accordion, AccordionSum
 import InfoNavBar from "../NavigationBar/InfoNavBar";
 import Footer from "../Info/Footer";
 
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+
 export let userEmail
 export let userId
 
@@ -52,6 +57,7 @@ function a11yProps(index) {
 function Auth() {
 //set translate
 	const { t, i18n } = useTranslation();
+  const [showPassword, setShowPassword] = useState(false);
 
 //menu tabs
 const [value, setValue] = useState(0);
@@ -209,8 +215,27 @@ return (
       <h1>{t("Sign in")}</h1>
       <TextField style={{ width: "250px" }} id="standard-basic" label={t("Enter your email")} placeholder={t("Enter your email")} type="email" onChange={(e) => setEmail(e.target.value)} variant="standard" />
       <br/>      
-      <TextField   style={{ width: "250px" }} id="standard-password-input" label={t("Enter your password")} type="password" placeholder={t("Enter your password")} autoComplete="current-password" variant="standard" onChange={(e) =>
-         setPassword(e.target.value)} />
+              <TextField
+          style={{ width: "250px" }}
+          id="standard-password-input"
+          label={t("Enter your password")}
+          type={showPassword ? "text" : "password"}
+          autoComplete="current-password"
+          variant="standard"
+          onChange={(e) => setPassword(e.target.value)}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  onClick={() => setShowPassword(!showPassword)}
+                  edge="end"
+                >
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+        />
       <br/>
       <br/>
       <Button size="small" variant="contained" style={{ minWidth: '250px'}} onClick={Login}>{t("sign in")}</Button>
@@ -225,8 +250,27 @@ return (
          <TextField style={{ width: "250px" }} id="standard-basic" label={t("Enter your email")}variant="standard" onChange={(e) => 
         setEmail(e.target.value)} />
       <br/>
-         <TextField style={{ width: "250px" }} id="standard-password-input" label={t("Enter your password")} type="password" autoComplete="current-password" variant="standard" onChange={(e) =>
-         setPassword(e.target.value)} />
+      <TextField
+          style={{ width: "250px" }}
+          id="standard-password-input"
+          label={t("Enter your password")}
+          type={showPassword ? "text" : "password"}
+          autoComplete="current-password"
+          variant="standard"
+          onChange={(e) => setPassword(e.target.value)}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  onClick={() => setShowPassword(!showPassword)}
+                  edge="end"
+                >
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+        />
            <br/>
         {/* <TextField id="standard-basic" label="Imie" variant="standard" onChange={(e) => 
         setUsername(e.target.value)} /> */}
