@@ -3,7 +3,7 @@ import { Accordion, AccordionSummary, AccordionDetails, Typography, Box, Contain
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useTranslation } from 'react-i18next';
 import InfoNavBar from '../../../Components/NavigationBar/InfoNavBar';
-import Footer from '../../../Components/Info/Footer';
+
 
 function Knowledge() {
   const { t, i18n } = useTranslation();
@@ -13,10 +13,10 @@ function Knowledge() {
       <InfoNavBar></InfoNavBar>
       <Container maxWidth="md">
 
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', minHeight: '80vh' }}>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={12}>
-              <Box p={2} style={{ maxWidth: '900px' }}>
+              <Box p={2} >
                 <Accordion defaultExpanded>
                   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                     <Typography variant="h6" fontWeight="bold">
@@ -36,7 +36,7 @@ function Knowledge() {
             </Grid>
 
             <Grid item xs={12} sm={12}>
-              <Box p={2} style={{ maxWidth: '900px' }}>
+              <Box p={2} >
                 <Accordion defaultExpanded>
                   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                     <Typography variant="h6" fontWeight="bold">
@@ -58,7 +58,6 @@ function Knowledge() {
         </div>
 
       </Container>
-      <Footer></Footer>
     </div>
   );
 }
