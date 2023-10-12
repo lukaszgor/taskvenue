@@ -10,6 +10,7 @@ import ManagerReportsBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcru
 import ReportRealizationOfIssuesForTheCustomers from '../../Components/Reports/ReportRealizationOfIssuesForTheCustomers';
 import ManagerAllService from '../../Components/Reports/ManagerAllService';
 import ManagerAllTasks from '../../Components/Reports/ManagerAllTasks';
+import ManagerWorkTime from '../../Components/Reports/ManagerWorkTime';
 function Reports() {
     const { t, i18n } = useTranslation();
 
@@ -66,6 +67,16 @@ function Reports() {
         <AccordionDetails>
           <Typography></Typography>
   <ManagerAllService></ManagerAllService>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Employee time report')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+  <ManagerWorkTime></ManagerWorkTime>
         </AccordionDetails>
       </Accordion>
     </div>
