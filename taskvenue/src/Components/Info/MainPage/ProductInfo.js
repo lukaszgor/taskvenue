@@ -5,49 +5,37 @@ import CardHeader from '@mui/material/CardHeader';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import HomeIcon from '@mui/icons-material/Home';
-import WorkIcon from '@mui/icons-material/Work';
-import SchoolIcon from '@mui/icons-material/School';
+import ScheduleIcon from '@mui/icons-material/Schedule';
+import BeachAccessIcon from '@mui/icons-material/BeachAccess';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Container from '@mui/material/Container';
 
 const ProductInfo = () => {
   const cards = [
     {
-      icon: <AccountCircleIcon />,
-      title: 'Karta 1',
-      subtitle: 'Podtytuł 1',
-      text1: 'Tekst 1',
-      text2: 'Tekst 2',
-      text3: 'Tekst 3',
-      text4: 'Tekst 4',
+      icon: <ScheduleIcon />,
+      title: 'Planowanie pracy',
+      subtitle: 'Efektywne zarządzanie czasem',
+      text1: 'Optymalizuj swoją pracę dzięki planowaniu i organizacji zadań.',
     },
     {
-      icon: <HomeIcon />,
-      title: 'Karta 2',
-      subtitle: 'Podtytuł 2',
-      text1: 'Tekst 5',
-      text2: 'Tekst 6',
-      text3: 'Tekst 7',
-      text4: 'Tekst 8',
+      icon: <BeachAccessIcon />,
+      title: 'Zarządzanie absencjami',
+      subtitle: 'Śledzenie urlopów i nieobecności',
+      text1: 'Skutecznie zarządzaj absencjami pracowników i śledź ich dostępność.',
     },
     {
-      icon: <WorkIcon />,
-      title: 'Karta 3',
-      subtitle: 'Podtytuł 3',
-      text1: 'Tekst 9',
-      text2: 'Tekst 10',
-      text3: 'Tekst 11',
-      text4: 'Tekst 12',
+      icon: <AssignmentIcon />,
+      title: 'Zarządzanie zadaniami',
+      subtitle: 'Efektywna kontrola projektów',
+      text1: 'Śledź postęp projektów i przydzielaj zadania w jednym miejscu.',
     },
     {
-      icon: <SchoolIcon />,
-      title: 'Karta 4',
-      subtitle: 'Podtytuł 4',
-      text1: 'Tekst 13',
-      text2: 'Tekst 14',
-      text3: 'Tekst 15',
-      text4: 'Tekst 16',
+      icon: <LocationOnIcon />,
+      title: 'Zarządzanie miejscami',
+      subtitle: 'Planowanie przestrzeni',
+      text1: 'Optymalizuj wykorzystanie przestrzeni i zarządzaj miejscami.',
     },
   ];
 
@@ -69,15 +57,6 @@ const ProductInfo = () => {
               <CardContent>
                 <Typography variant="body2" color="textSecondary">
                   {card.text1}
-                </Typography>
-                <Typography variant="body2" color="textSecondary">
-                  {card.text2}
-                </Typography>
-                <Typography variant="body2" color="textSecondary">
-                  {card.text3}
-                </Typography>
-                <Typography variant="body2" color="textSecondary">
-                  {card.text4}
                 </Typography>
               </CardContent>
             </Card>
