@@ -4,7 +4,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useTranslation } from 'react-i18next';
 import InfoNavBar from '../../../Components/NavigationBar/InfoNavBar';
 
-
 function Knowledge() {
   const { t, i18n } = useTranslation();
 
@@ -12,51 +11,89 @@ function Knowledge() {
     <div>
       <InfoNavBar></InfoNavBar>
       <Container maxWidth="md">
-
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={12}>
-              <Box p={2} >
+              <Box p={2}>
                 <Accordion defaultExpanded>
                   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                     <Typography variant="h6" fontWeight="bold">
-                      React
+                      Widok Managera
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
                     <Typography>
-                      React to popularna biblioteka JavaScript do tworzenia interaktywnych aplikacji internetowych. Jest stosunkowo łatwy w nauce i wykorzystuje koncepcję komponentów, które są samodzielnie działającymi jednostkami interfejsu użytkownika. Główną zaletą React jest efektywne zarządzanie aktualizacjami interfejsu, dzięki wirtualnemu drzewu DOM, które minimalizuje manipulacje na rzeczywistym drzewie DOM i poprawia wydajność aplikacji. React promuje także jednokierunkowy przepływ danych, ułatwiając zarządzanie danymi w aplikacji. Można tworzyć komponenty do wielokrotnego użytku, co przyspiesza rozwijanie aplikacji, a także korzystać z narzędzi deweloperskich do debugowania i analizowania aplikacji.
+                      <strong>Zarządzanie Pracownikami:</strong> Administrator lub manager może dodawać, edytować i usuwać informacje o pracownikach, w tym ich dane osobowe, umiejętności i inne istotne informacje.
+                      <br /><br />
+                      <strong>Zarządzanie Kontrahentami:</strong> Ta funkcja pozwala na zarządzanie danymi dotyczącymi partnerów biznesowych, klientów lub dostawców.
+                      <br /><br />
+                      <strong>Zarządzanie Słownikami:</strong> Administrator może definiować i modyfikować terminologię oraz dane używane w aplikacji.
+                      <br /><br />
+                      <strong>Planowanie w Kalendarzu:</strong> Widok managera umożliwia tworzenie i zarządzanie zadaniami i wydarzeniami w kalendarzu pracowników. To pozwala na efektywne rozplanowanie pracy.
+                      <br /><br />
+                      <strong>Podgląd Statusu Realizacji:</strong> Manager może śledzić postęp w realizacji zadań przez pracowników, co pozwala na monitorowanie efektywności.
+                      <br /><br />
+                      <strong>Definiowanie Miejsc:</strong> Manager może określać lokalizacje lub miejsca, które są istotne dla działalności firmy.
+                      <br /><br />
+                      <strong>Generowanie Raportów:</strong> Aplikacja oferuje różne narzędzia do tworzenia raportów i analizy danych biznesowych.
                     </Typography>
                     <br />
                     {/* Tutaj możesz dodać obraz */}
-                    <img src="logo512.png" alt="React" style={{ maxWidth: '100%' }} />
+                    <img src="faviconnew.png" alt="Widok Administratora/Managera" style={{ maxWidth: '100%' }} />
                   </AccordionDetails>
                 </Accordion>
               </Box>
             </Grid>
-
             <Grid item xs={12} sm={12}>
-              <Box p={2} >
+              <Box p={2}>
                 <Accordion defaultExpanded>
                   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                     <Typography variant="h6" fontWeight="bold">
-                      Supabase
+                      Widok Pracownika
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
                     <Typography>
-                      Supabase to platforma, która ułatwia tworzenie aplikacji internetowych opartych na bazie danych. Opiera się na bazie danych PostgreSQL i dostarcza szereg narzędzi i funkcji do budowania i zarządzania aplikacjami. Możesz używać Supabase do przechowywania danych, zarządzania użytkownikami, tworzenia autentykacji, obsługi komunikacji w czasie rzeczywistym i wiele więcej. Jest to elastyczne rozwiązanie, które oferuje prosty dostęp do danych poprzez REST API i obsługuje przechowywanie plików. Supabase jest przyjazne dla użytkownika, skalowalne i dostępne jako projekt open source, co czyni je atrakcyjnym narzędziem zarówno dla początkujących, jak i doświadczonych programistów, którzy chcą szybko tworzyć nowoczesne aplikacje webowe.
+                      <strong>Podgląd Harmonogramu Pracy:</strong> Pracownik ma dostęp do swojego harmonogramu pracy, dzięki czemu może sprawdzać daty, godziny i miejsca swoich zadań.
+                      <br /><br />
+                      <strong>Rozliczanie Czasu Pracy:</strong> Możliwość śledzenia czasu pracy, co jest kluczowe dla płacenia pracownikom i śledzenia efektywności.
+                      <br /><br />
+                      <strong>Definiowanie Usług:</strong> Pracownik może określać rodzaje usług, które oferuje lub wykonywać.
+                      <br /><br />
+                      <strong>Definiowanie Absencji:</strong> Pracownik może zgłaszać swoją nieobecność, na przykład urlop lub zwolnienie lekarskie.
                     </Typography>
                     <br />
                     {/* Tutaj możesz dodać obraz */}
-                    <img src="logo512.png" alt="Supabase" style={{ maxWidth: '100%' }} />
+                    <img src="faviconnew.png" alt="Widok Pracownika" style={{ maxWidth: '100%' }} />
+                  </AccordionDetails>
+                </Accordion>
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <Box p={2}>
+                <Accordion defaultExpanded>
+                  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                    <Typography variant="h6" fontWeight="bold">
+                      Widok Klienta
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography>
+                      <strong>Dostęp do Raportów:</strong> Klient ma możliwość przeglądania raportów i danych związanych z usługami lub zleceniami wykonanymi przez firmę.
+                      <br /><br />
+                      <strong>Zgłaszanie Zagadnień:</strong> Klient może składać zapytania, zgłaszać problemy lub wnioski w aplikacji.
+                      <br /><br />
+                      <strong>Podgląd Zestawień i Miejsc:</strong> Klient ma dostęp do zestawień i informacji na temat usług, a także do informacji na temat lokalizacji lub miejsc związanych z działalnością firmy.
+                    </Typography>
+                    <br />
+                    {/* Tutaj możesz dodać obraz */}
+                    <img src="faviconnew.png" alt="Widok Klienta" style={{ maxWidth: '100%' }} />
                   </AccordionDetails>
                 </Accordion>
               </Box>
             </Grid>
           </Grid>
         </div>
-
       </Container>
     </div>
   );
