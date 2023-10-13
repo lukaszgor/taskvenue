@@ -3,7 +3,7 @@ import { Container, Typography, Link } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 const footerStyles = {
-  backgroundColor: '#2196F3', // Niebieskie tło
+  backgroundColor: '#338ede', // Niebieskie tło
   color: '#fff', // Biały tekst
   padding: '16px', // Odstępy między elementami
 };

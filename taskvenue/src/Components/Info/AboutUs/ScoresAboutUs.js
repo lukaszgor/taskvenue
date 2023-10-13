@@ -42,7 +42,7 @@ const ScoresAboutUs = () => {
   ];
 
   return (
-    <Container maxWidth={false} style={{ backgroundColor: '#2196F3', padding: '30px' }}>
+    <Container maxWidth={false} style={{ backgroundColor: '#338ede', padding: '30px' }}>
       {/* Dodaj nagłówek */}
       <Typography variant="h4" align="center" style={{ color: 'white', marginBottom: '20px' }}>
       {t("Results after implementing Task Venue software:")}

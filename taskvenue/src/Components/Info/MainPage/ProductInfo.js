@@ -40,7 +40,7 @@ const ProductInfo = () => {
   ];
 
   return (
-    <Container maxWidth={false} style={{ backgroundColor: '#2196F3', padding: '30px' }}>
+    <Container maxWidth={false} style={{ backgroundColor: '#338ede', padding: '30px' }}>
       <Grid container spacing={3}>
         {cards.map((card, index) => (
           <Grid item xs={12} sm={6} md={3} key={index}>
@@ -68,3 +68,5 @@ const ProductInfo = () => {
 };
 
 export default ProductInfo;
+//3491e3
+//3490e0
