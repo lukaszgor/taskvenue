@@ -26,17 +26,15 @@ const stepContentStyle = {
 };
 
 const steps = [
-  'Poznajmy się',
   'Darmowa prezentacja standardowego rozwiązania',
-  'Konfiguracja środowiska, dostosowania do Twoich potrzeb',
-  'Optymalizacja twojej firmy',
+  'Konfiguracja środowiska, dostosowanie do Twoich potrzeb',
+  'Optymalizacja Twojej firmy',
 ];
 
 const stepDescriptions = [
-  'Opis kroku 1: Poznajmy się + Dodać linki',
-  'Opis kroku 2: Darmowa prezentacja standardowego rozwiązania',
-  'Opis kroku 3: Konfiguracja środowiska, dostosowania do Twoich potrzeb',
-  'Opis kroku 4: Optymalizacja twojej firmy',
+  'Nasz proces rozpoczyna się od bezpłatnej prezentacji standardowego rozwiązania. Po skontaktowaniu się z nami, umówimy się na spotkanie lub wideokonferencję, aby omówić Twoje potrzeby i cele biznesowe. W trakcie tego spotkania przedstawimy Ci nasze standardowe rozwiązanie, które może stanowić podstawę dla dalszych działań. Dowiesz się, jakie korzyści może przynieść Twojej firmie.',
+  'Po zapoznaniu się z naszym standardowym rozwiązaniem, przechodzimy do kroku konfiguracji. Nasz zespół specjalistów będzie pracował nad dostosowaniem i dostarczeniem spersonalizowanej wersji naszego rozwiązania, tak aby idealnie pasowało do Twoich potrzeb. Możemy dostosować funkcje, interfejs użytkownika, a także inne elementy, aby zapewnić maksymalną użyteczność dla Twojej firmy. Naszym celem jest stworzenie rozwiązania, które spełni Twoje oczekiwania i przyniesie korzyści.',
+  'Ostatni etap to optymalizacja Twojej firmy. Po wdrożeniu spersonalizowanego rozwiązania, nasz zespół będzie nadal współpracować z Tobą, aby zapewnić, że wszystko działa sprawnie i efektywnie. Monitorujemy wyniki, zbieramy opinie i proponujemy ewentualne udoskonalenia. Naszym celem jest ciągłe doskonalenie Twojej firmy i wspieranie Cię w osiągnięciu sukcesu.',
 ];
 
 const StepperInfo = () => {
