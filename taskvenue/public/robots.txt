@@ -1,3 +1,4 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
+Sitemap: https://taskvenue.netlify.app/info/sitemap.xml
 Disallow:
