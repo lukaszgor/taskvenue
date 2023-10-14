@@ -38,8 +38,11 @@ function Knowledge() {
                       <strong>Generowanie Raportów:</strong> Aplikacja oferuje różne narzędzia do tworzenia raportów i analizy danych biznesowych.
                     </Typography>
                     <br />
-                    {/* Tutaj możesz dodać obraz */}
-                    <img src="faviconnew.png" alt="Widok Administratora/Managera" style={{ maxWidth: '100%' }} />
+                    <h5><u>{t("Reports")}</u></h5>
+                    <img src="managerBoard.png" alt="Widok Administratora/Managera" style={{ maxWidth: '100%' }} />
+                    <p></p>
+                    <h5><u>{t("Schedule")}</u></h5>
+                    <img src="managerplanowanie.png" alt="Widok Administratora/Managera" style={{ maxWidth: '100%' }} />
                   </AccordionDetails>
                 </Accordion>
               </Box>
@@ -63,8 +66,16 @@ function Knowledge() {
                       <strong>Definiowanie Absencji:</strong> Pracownik może zgłaszać swoją nieobecność, na przykład urlop lub zwolnienie lekarskie.
                     </Typography>
                     <br />
-                    {/* Tutaj możesz dodać obraz */}
-                    <img src="faviconnew.png" alt="Widok Pracownika" style={{ maxWidth: '100%' }} />
+                    <h5><u>{t("Tasks")}</u></h5>
+                    <Grid container spacing={2}>
+                    <Grid item xs={12} sm={6}>
+                    <img src="WorkerTasks.png" alt="Widok Administratora/Managera" style={{ maxWidth: '100%' }} />
+                    </Grid>
+                    <p></p>
+                    <Grid item xs={12} sm={6}>
+                    <img src="WorkerSchedule.png" alt="Widok Administratora/Managera" style={{ maxWidth: '100%' }} />
+                    </Grid>
+                    </Grid>
                   </AccordionDetails>
                 </Accordion>
               </Box>
@@ -86,8 +97,12 @@ function Knowledge() {
                       <strong>Podgląd Zestawień i Miejsc:</strong> Klient ma dostęp do zestawień i informacji na temat usług, a także do informacji na temat lokalizacji lub miejsc związanych z działalnością firmy.
                     </Typography>
                     <br />
-                    {/* Tutaj możesz dodać obraz */}
-                    <img src="faviconnew.png" alt="Widok Klienta" style={{ maxWidth: '100%' }} />
+                    <h5><u>{t("Venue")}</u></h5>
+
+                    <img src="ClientVenueDetails.png" alt="Widok Administratora/Managera" style={{ maxWidth: '100%' }} />
+                    <p></p>
+                    <h5><u>{t("Services")}</u></h5>
+                    <img src="ClientServices.png" alt="Widok Administratora/Managera" style={{ maxWidth: '100%' }} />
                   </AccordionDetails>
                 </Accordion>
               </Box>
