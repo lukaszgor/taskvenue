@@ -24,7 +24,7 @@ const HeaderAboutUs = () => {
           </Grid>
           <Grid item xs={12} md={6}>
             <img
-               src="/mainbackground.jpeg"
+               src="/man2.png"
               alt="Your Business"
               style={{ width: '100%', height: 'auto' }}
             />

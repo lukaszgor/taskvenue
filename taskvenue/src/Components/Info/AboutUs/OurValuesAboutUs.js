@@ -26,9 +26,9 @@ const OurValuesAboutUs = () => {
           </Card>
         </Grid>
         {/* Obrazek dla pierwszego kontenera */}
-        <Grid item xs={12} sm={6}>
+        {/* <Grid item xs={12} sm={6}>
           <img src="/logo192.png" alt="Obrazek" />
-        </Grid>
+        </Grid> */}
 
 
         {/* 2 kontener */}
@@ -48,9 +48,9 @@ const OurValuesAboutUs = () => {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        {/* <Grid item xs={12} sm={6}>
           <img src="/logo192.png" alt="Obrazek" />
-        </Grid>
+        </Grid> */}
 
       </Grid>
     </Container>

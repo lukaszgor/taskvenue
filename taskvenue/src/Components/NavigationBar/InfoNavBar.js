@@ -158,7 +158,7 @@ function InfoNavBar() {
         </Toolbar>
       </Container>
     </AppBar>
-    <Box marginTop={10}>
+    <Box marginTop={8}>
 </Box>
   </div>
   );
