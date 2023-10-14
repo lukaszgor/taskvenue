@@ -5,6 +5,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
+import RoomIcon from '@mui/icons-material/Room'; // Import the RoomIcon for the location
 import Grid from '@mui/material/Grid';
 import Footer from '../../../Components/Info/Footer';
 import InfoNavBar from '../../../Components/NavigationBar/InfoNavBar';
@@ -34,7 +35,7 @@ const InfoContact = () => {
             {t("Have questions or suggestions about our software? Contact the Task Venue team in any convenient way.")}
           </Typography>
           <Grid container spacing={2} justifyContent="space-between" style={{ marginTop: '2rem' }}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={4}>
               <Card style={{ textAlign: 'center' }}>
                 <CardContent>
                   <Typography variant="h5">{t("Phone number")}</Typography>
@@ -43,12 +44,21 @@ const InfoContact = () => {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={4}>
               <Card style={{ textAlign: 'center' }}>
                 <CardContent>
                   <Typography variant="h5">Email</Typography>
                   <EmailIcon style={iconStyle} />
                   <Typography variant="body1">kontakt@taskvenue.com</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Card style={{ textAlign: 'center' }}>
+                <CardContent>
+                  <RoomIcon style={iconStyle} /> {/* Use the RoomIcon for the location */}
+                  <Typography variant="h5">{t("Based in Cracow")}</Typography>
+                  <Typography variant="body1">{t("Poland")}</Typography>
                 </CardContent>
               </Card>
             </Grid>
