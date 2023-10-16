@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { useTranslation } from "react-i18next";
 import { Select, MenuItem, FormControl, InputLabel,Box } from '@mui/material';
 
-  const languageOptions = [
-    { value: 'en', label: '🇬🇧 English' },
-    { value: 'pl', label: '🇵🇱 Polish' },
-    { value: 'de', label: '🇩🇪 German' },
-  ];
+const languageOptions = [
+  { value: 'en', label: '🇬🇧 English' },
+  { value: 'pl', label: '🇵🇱 Polish' },
+  { value: 'de', label: '🇩🇪 German' },
+  { value: 'ua', label: '🇺🇦 Ukrainian' }, 
+];
 
 function Language() {
 	const { t, i18n } = useTranslation();

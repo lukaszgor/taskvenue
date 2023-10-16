@@ -3,10 +3,11 @@ import { useTranslation } from "react-i18next";
 import { Select, MenuItem, FormControl, InputLabel, Box } from '@mui/material';
 
 const languageOptions = [
-  { value: 'en', label: '🇬🇧 English' },
-  { value: 'pl', label: '🇵🇱 Polish' },
-  { value: 'de', label: '🇩🇪 German' },
-];
+    { value: 'en', label: '🇬🇧 English' },
+    { value: 'pl', label: '🇵🇱 Polish' },
+    { value: 'de', label: '🇩🇪 German' },
+    { value: 'ua', label: '🇺🇦 Ukrainian' }, 
+  ];
 
 function LanguageForInfo() {
   const { t, i18n } = useTranslation();
