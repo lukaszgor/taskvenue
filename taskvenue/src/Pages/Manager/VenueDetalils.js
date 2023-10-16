@@ -26,6 +26,7 @@ import ManagerVenueBreadcrumbs from '../../Components/Breadcrumbs/ManagerVenueBr
 import { useNavigate } from 'react-router-dom';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import VenueHistory from '../../Components/Manager/Venue/VenueHistory';
+import ManagerVenueAttachments from '../../Components/Manager/Attachments/ManagerVenueAttachments';
 
 const VenueDetalils = () => {
   const { t, i18n } = useTranslation();
@@ -161,7 +162,7 @@ const VenueDetalils = () => {
       <ManagerNavBar></ManagerNavBar>
       <ManagerVenueBreadcrumbs></ManagerVenueBreadcrumbs>
       <p></p>
-
+      <Container maxWidth="md">
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">
@@ -251,7 +252,19 @@ const VenueDetalils = () => {
           </Container>
         </AccordionDetails>
       </Accordion>
-
+      
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">
+            {t('Attachments')}
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+          <ManagerVenueAttachments></ManagerVenueAttachments>
+        </AccordionDetails>
+      </Accordion>
+<p></p>
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">
@@ -263,7 +276,7 @@ const VenueDetalils = () => {
           <VenueHistory></VenueHistory>
         </AccordionDetails>
       </Accordion>
-
+      </Container>
       <Snackbar
         open={open}
         autoHideDuration={2000}
