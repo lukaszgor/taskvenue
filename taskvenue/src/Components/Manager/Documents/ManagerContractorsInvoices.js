@@ -2,8 +2,22 @@ import React, { useEffect, useState } from 'react';
 import supabase from '../../../supabaseClient';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Button,
+  Input,
+  FormControl,
+  InputLabel,
+  Box,
+} from '@mui/material';
 
-const ManagerContractsInvoices = () => {
+const ManagerContractorsInvoices = () => {
   const [files, setFiles] = useState([]);
   const [filteredFiles, setFilteredFiles] = useState([]);
   const [fileToUpload, setFileToUpload] = useState(null);
@@ -12,6 +26,7 @@ const ManagerContractsInvoices = () => {
   const { id } = useParams();
   const [userID, setUserID] = useState('');
   const { t, i18n } = useTranslation();
+
   useEffect(() => {
     if (idConfig) {
       fetchInvoices();
@@ -45,9 +60,7 @@ const ManagerContractsInvoices = () => {
 
   const fetchInvoices = async () => {
     try {
-      // Dodaj parametr "path" aby pobrać tylko pliki z folderu "1" w "invoices"
-      // const { data, error } = await supabase.storage.from('invoices').list('2'+'/');
-      const { data, error } = await supabase.storage.from('invoices').list(idConfig+'/'+id+'/');
+      const { data, error } = await supabase.storage.from('invoices').list(idConfig + '/' + id + '/');
       if (error) {
         console.error('Błąd podczas pobierania plików z Supabase:', error);
       } else {
@@ -69,12 +82,12 @@ const ManagerContractsInvoices = () => {
       try {
         const { data: fileData, error: fileError } = await supabase.storage
           .from('invoices')
-          .upload(idConfig+"/"+id+"/"+fileToUpload.name, fileToUpload);
+          .upload(idConfig + '/' + id + '/' + fileToUpload.name, fileToUpload);
         if (fileError) {
           console.error('Błąd podczas przesyłania pliku:', fileError);
         } else {
-          // co zrobik
-        
+          // Handle success
+          fetchInvoices(); // Refresh the file list
         }
       } catch (error) {
         console.error('Błąd podczas przesyłania pliku:', error);
@@ -82,21 +95,54 @@ const ManagerContractsInvoices = () => {
     }
   };
 
+  const deleteFile = async (file) => {
+    try {
+      const { error } = await supabase.storage
+        .from('invoices')
+        .remove([idConfig + '/' + id + '/' + file.name]);
+      if (error) {
+        console.error('Błąd podczas usuwania pliku:', error);
+      } else {
+        fetchInvoices(); // Refresh the file list
+      }
+    } catch (error) {
+      console.error('Błąd podczas usuwania pliku:', error);
+    }
+  };
+
   return (
     <div>
       <h2>{t('Invoices')}</h2>
-      <ul>
-        {filteredFiles.map((file, index) => (
-          <li key={index}>
-            {file.name} {' '}
-            <button onClick={() => displayFile(file)}>{t('Display')}</button>
-          </li>
-        ))}
-      </ul>
-      <input type="file" onChange={(e) => setFileToUpload(e.target.files[0])} />
-      <button onClick={uploadAndProcessFile}>{t('Send')}</button>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>{t('File Name')}</TableCell>
+              <TableCell>{t('Actions')}</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {filteredFiles.map((file, index) => (
+              <TableRow key={index}>
+                <TableCell>{file.name}</TableCell>
+                <TableCell>
+                  <Button onClick={() => displayFile(file)}>{t('Display')}</Button>
+                  <Button color="error" onClick={() => deleteFile(file)}>{t('Delete')}</Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <p></p>
+      <Box display="flex" justifyContent="space-between">
+        <FormControl fullWidth style={{ width: '50%' }}>
+          <input type="file" onChange={(e) => setFileToUpload(e.target.files[0])} />
+        </FormControl>
+        <Button onClick={uploadAndProcessFile}>{t('Send')}</Button>
+      </Box>
     </div>
   );
 };
 
-export default ManagerContractsInvoices;
+export default ManagerContractorsInvoices;

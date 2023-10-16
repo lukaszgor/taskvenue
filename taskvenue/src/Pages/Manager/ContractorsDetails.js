@@ -235,6 +235,15 @@ const handleSubmit = (event) => {
     </div>
         </form>
 <p></p>
+<Accordion >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Documents')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+        <ManagerContractorsDocuments></ManagerContractorsDocuments>
+        </AccordionDetails>
+      </Accordion>
+<p></p>
         <Accordion >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">{t('Tasks history')}</Typography>
@@ -254,15 +263,7 @@ const handleSubmit = (event) => {
         </AccordionDetails>
       </Accordion>
 <p></p>
-<Accordion >
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t('Documents')}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-        <ManagerContractorsDocuments></ManagerContractorsDocuments>
-        </AccordionDetails>
-      </Accordion>
-<p></p>
+
 
         <Snackbar open={open}
             autoHideDuration={2000}
