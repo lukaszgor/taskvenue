@@ -13,7 +13,7 @@ import { Margin } from '@mui/icons-material';
 import ManagerContractorTasks from '../../Components/Manager/Administration/Contractors/ManagerContractorTasks';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ManagerContractorVenues from '../../Components/Manager/Administration/Contractors/ManagerContractorVenues';
-
+import ManagerContractorsDocuments from '../../Components/Manager/Documents/ManagerContractorsDocuments';
 
 const ContractorsDetails = () => {
     const navigate = useNavigate()
@@ -254,6 +254,16 @@ const handleSubmit = (event) => {
         </AccordionDetails>
       </Accordion>
 <p></p>
+<Accordion >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Documents')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+        <ManagerContractorsDocuments></ManagerContractorsDocuments>
+        </AccordionDetails>
+      </Accordion>
+<p></p>
+
         <Snackbar open={open}
             autoHideDuration={2000}
             onClose={handleCloseAlert}>
