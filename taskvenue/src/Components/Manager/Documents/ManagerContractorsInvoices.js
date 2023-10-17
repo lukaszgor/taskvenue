@@ -15,6 +15,11 @@ import {
   FormControl,
   InputLabel,
   Box,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Typography,
 } from '@mui/material';
 
 const ManagerContractorsInvoices = () => {
@@ -29,7 +34,7 @@ const ManagerContractorsInvoices = () => {
 
   useEffect(() => {
     if (idConfig) {
-      fetchInvoices();
+      fetchDocuments();
     }
   }, [idConfig]);
 
@@ -44,6 +49,37 @@ const ManagerContractorsInvoices = () => {
     checkSession();
   }, []);
 
+  const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
+  const [fileToDelete, setFileToDelete] = useState(null);
+
+  const showDeleteConfirmation = (file) => {
+    setFileToDelete(file);
+    setDeleteConfirmationOpen(true);
+  };
+
+  const hideDeleteConfirmation = () => {
+    setDeleteConfirmationOpen(false);
+  };
+
+  const deleteFile = async () => {
+    hideDeleteConfirmation();
+
+    if (fileToDelete) {
+      try {
+        const { error } = await supabase.storage
+          .from('invoices')
+          .remove([idConfig + '/' + id + '/' + fileToDelete.name]);
+        if (error) {
+          console.error('Błąd podczas usuwania pliku:', error);
+        } else {
+          fetchDocuments(); // Refresh the file list
+        }
+      } catch (error) {
+        console.error('Błąd podczas usuwania pliku:', error);
+      }
+    }
+  };
+
   const fetchData = async (userId) => {
     const { data: profileData, error: profileError } = await supabase
       .from('profiles')
@@ -52,13 +88,13 @@ const ManagerContractorsInvoices = () => {
       .single();
 
     if (profileError) {
-      console.log(profileError);
+      console.error(profileError);
     } else if (profileData) {
       setIdConfiguration(profileData.id_configuration);
     }
   };
 
-  const fetchInvoices = async () => {
+  const fetchDocuments = async () => {
     try {
       const { data, error } = await supabase.storage.from('invoices').list(idConfig + '/' + id + '/');
       if (error) {
@@ -87,7 +123,7 @@ const ManagerContractorsInvoices = () => {
           console.error('Błąd podczas przesyłania pliku:', fileError);
         } else {
           // Handle success
-          fetchInvoices(); // Refresh the file list
+          fetchDocuments(); // Refresh the file list
         }
       } catch (error) {
         console.error('Błąd podczas przesyłania pliku:', error);
@@ -95,24 +131,8 @@ const ManagerContractorsInvoices = () => {
     }
   };
 
-  const deleteFile = async (file) => {
-    try {
-      const { error } = await supabase.storage
-        .from('invoices')
-        .remove([idConfig + '/' + id + '/' + file.name]);
-      if (error) {
-        console.error('Błąd podczas usuwania pliku:', error);
-      } else {
-        fetchInvoices(); // Refresh the file list
-      }
-    } catch (error) {
-      console.error('Błąd podczas usuwania pliku:', error);
-    }
-  };
-
   return (
     <div>
-      <h2>{t('Invoices')}</h2>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -127,7 +147,7 @@ const ManagerContractorsInvoices = () => {
                 <TableCell>{file.name}</TableCell>
                 <TableCell>
                   <Button onClick={() => displayFile(file)}>{t('Display')}</Button>
-                  <Button color="error" onClick={() => deleteFile(file)}>{t('Delete')}</Button>
+                  <Button color="error" onClick={() => showDeleteConfirmation(file)}>{t('Delete')}</Button>
                 </TableCell>
               </TableRow>
             ))}
@@ -139,8 +159,27 @@ const ManagerContractorsInvoices = () => {
         <FormControl fullWidth style={{ width: '50%' }}>
           <input type="file" onChange={(e) => setFileToUpload(e.target.files[0])} />
         </FormControl>
-        <Button onClick={uploadAndProcessFile}>{t('Send')}</Button>
+        <Button onClick={uploadAndProcessFile}>{t('Add')}</Button>
       </Box>
+
+      {/* Delete Confirmation Dialog */}
+      <Dialog
+        open={deleteConfirmationOpen}
+        onClose={hideDeleteConfirmation}
+      >
+        <DialogTitle>{t('Delete File')}</DialogTitle>
+        <DialogContent>
+          <Typography>{t('Are you sure you want to delete this file?')}</Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={hideDeleteConfirmation} color="primary">
+            {t('Cancel')}
+          </Button>
+          <Button onClick={deleteFile} color="error">
+            {t('Delete')}
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 };

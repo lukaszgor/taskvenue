@@ -22,7 +22,7 @@ import {
   Typography,
 } from '@mui/material';
 
-const ManagerContractorsContracts = () => {
+const ManagerTaskAttachments = () => {
   const [files, setFiles] = useState([]);
   const [filteredFiles, setFilteredFiles] = useState([]);
   const [fileToUpload, setFileToUpload] = useState(null);
@@ -67,7 +67,7 @@ const ManagerContractorsContracts = () => {
     if (fileToDelete) {
       try {
         const { error } = await supabase.storage
-          .from('contracts')
+          .from('task')
           .remove([idConfig + '/' + id + '/' + fileToDelete.name]);
         if (error) {
           console.error('Błąd podczas usuwania pliku:', error);
@@ -96,7 +96,7 @@ const ManagerContractorsContracts = () => {
 
   const fetchDocuments = async () => {
     try {
-      const { data, error } = await supabase.storage.from('contracts').list(idConfig + '/' + id + '/');
+      const { data, error } = await supabase.storage.from('task').list(idConfig + '/' + id + '/');
       if (error) {
         console.error('Błąd podczas pobierania plików z Supabase:', error);
       } else {
@@ -109,7 +109,7 @@ const ManagerContractorsContracts = () => {
   };
 
   const displayFile = async (file) => {
-    const fileUrl = `${supabaseUrl}/storage/v1/object/public/contracts/${idConfig}/${id}/${file.name}`;
+    const fileUrl = `${supabaseUrl}/storage/v1/object/public/task/${idConfig}/${id}/${file.name}`;
     window.open(fileUrl);
   };
 
@@ -117,7 +117,7 @@ const ManagerContractorsContracts = () => {
     if (fileToUpload) {
       try {
         const { data: fileData, error: fileError } = await supabase.storage
-          .from('contracts')
+          .from('task')
           .upload(idConfig + '/' + id + '/' + fileToUpload.name, fileToUpload);
         if (fileError) {
           console.error('Błąd podczas przesyłania pliku:', fileError);
@@ -184,4 +184,4 @@ const ManagerContractorsContracts = () => {
   );
 };
 
-export default ManagerContractorsContracts;
+export default ManagerTaskAttachments;

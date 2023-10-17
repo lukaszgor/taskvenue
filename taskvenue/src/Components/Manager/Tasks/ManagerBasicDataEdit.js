@@ -19,6 +19,7 @@ import supabase from '../../../supabaseClient';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import ManagerTaskAttachments from '../Attachments/ManagerTaskAttachments';
 
 const DateTimeInput = styled.input`
   width: 100%;
@@ -389,6 +390,10 @@ const ManagerBasicDataEdit = () => {
                 label={t('Settled')}
               />
             </Grid>
+            <Grid item xs={12} sm={12}>
+       <ManagerTaskAttachments></ManagerTaskAttachments>
+            </Grid>
+
 
             <Grid item xs={12}>
               <Box display="flex" justifyContent="flex-end">

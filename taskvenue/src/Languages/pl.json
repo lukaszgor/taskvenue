@@ -222,7 +222,9 @@
       "Others":"Inne",
       "File Name":"Nazwa pliku",
       "Actions":"Akcje",
-      "Attachments":"Załączniki"
+      "Attachments":"Załączniki",
+      "Delete File":"Usuwanie pliku",
+      "Are you sure you want to delete this file?":"Na pewno chcesz usunać plik?"
     
  
 
