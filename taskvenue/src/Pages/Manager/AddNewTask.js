@@ -91,8 +91,9 @@ function AddNewTask() {
     const { data, error } = await supabase
       .from('contractor')
       .select()
-      .eq('id_configuration', idConfig);
-
+      .eq('id_configuration', idConfig)
+      .is('isDeleted', null);
+  
     if (error) {
       console.log(error);
     }
