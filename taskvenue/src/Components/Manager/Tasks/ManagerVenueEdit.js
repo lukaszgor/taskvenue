@@ -6,6 +6,8 @@ import { useTranslation } from 'react-i18next';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { Margin } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 const ManagerVenueEdit = () => {
     const [open, setOpen] = useState(false);
@@ -18,6 +20,7 @@ const ManagerVenueEdit = () => {
   const [selectedVenue, setSelectedVenue] = useState(null);
   const [status, setStatus] = useState('');
   const [idContractor, setIdContractor] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const checkSession = async () => {
@@ -145,6 +148,12 @@ const ManagerVenueEdit = () => {
     handleUpdateTask(value);
   };
 
+
+  const handleButtonClickVenueDetails = (selectedVenueId) => {
+    navigate('/VenueDetalils/' + selectedVenueId);
+  };
+
+
   const handleUpdateTask = async (selectedVenueId) => {
     const { data, error } = await supabase
       .from('tasks')
@@ -222,17 +231,26 @@ const ManagerVenueEdit = () => {
             <p></p>
 
             <Box display="flex" justifyContent="flex-end">
+            <Button
+                type="submit"
+                color="primary"
+                onClick={() => handleButtonClickVenueDetails(selectedVenueId)}
+                style={{ minWidth: 'auto',margin:'1px'}}
+                >
+            {t('Details')}
+                </Button>
                 <Button
                 type="submit"
                 variant="contained"
                 color="success"
                 startIcon={<LocationOnIcon />}
                 onClick={() => handleButtonClickLocation(selectedVenue)}
-                style={{ minWidth: 'auto' }}
+                style={{ minWidth: 'auto',margin:'1px'}}
                 >
             {t('Open in Google Maps')}
                 </Button>
             </Box>
+  
           </Grid>
         )}
                 <Snackbar
