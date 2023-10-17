@@ -11,6 +11,10 @@ import {
   Checkbox,
   InputLabel,
   Box,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
 } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
@@ -20,6 +24,7 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import ManagerTaskAttachments from '../Attachments/ManagerTaskAttachments';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const DateTimeInput = styled.input`
   width: 100%;
@@ -391,7 +396,15 @@ const ManagerBasicDataEdit = () => {
               />
             </Grid>
             <Grid item xs={12} sm={12}>
-       <ManagerTaskAttachments></ManagerTaskAttachments>
+       
+       <Accordion defaultExpanded >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Attachments')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+        <ManagerTaskAttachments></ManagerTaskAttachments>
+             </AccordionDetails>
+      </Accordion>
             </Grid>
 
 
