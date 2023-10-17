@@ -33,6 +33,7 @@ import WorkerVenue from './WorkerVenue';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
+import ManagerTaskAttachments from '../../Manager/Attachments/ManagerTaskAttachments';
 
 const DateTimeInput = styled.input`
   width: 100%;
@@ -445,6 +446,17 @@ const WorkerBasicDataEdit = () => {
              </AccordionDetails>
       </Accordion>
              </Grid>
+             <Grid item xs={12} sm={12}>
+       
+       <Accordion defaultExpanded >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Attachments')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+        <ManagerTaskAttachments></ManagerTaskAttachments>
+             </AccordionDetails>
+      </Accordion>
+            </Grid>
 
              <Grid item xs={12}>
   <Box display="flex" justifyContent="flex-end">
