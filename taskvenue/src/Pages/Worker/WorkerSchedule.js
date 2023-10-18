@@ -22,6 +22,27 @@ const WorkerSchedule = () => {
   const [selectedUser, setSelectedUser] = useState('');
   const [profiles, setProfiles] = useState([]);
 
+  var defaultMessages = {
+    date: t("Date"),
+    time: t("Time"),
+    event: t("Event"),
+    allDay: t("All Day"),
+    week: t("Week"),
+    work_week: t("Work Week"),
+    day: t("Day"),
+    month: t("Month"),
+    previous: t("Back"),
+    next: t("Next"),
+    yesterday: t("Yesterday"),
+    tomorrow: t("Tomorrow"),
+    today: t("Today"),
+    agenda: t("Agenda"),
+    noEventsInRange: t("There are no events in this range."),
+    showMore: function showMore(total) {
+      return "+" + total +" "+t("More");
+    }
+  };
+
   useEffect(() => {
     const checkSession = async () => {
       const { data } = await supabase.auth.getSession();
@@ -206,6 +227,7 @@ const WorkerSchedule = () => {
           onSelectEvent={handleEventClick}
           min={minTime}
           max={maxTime}
+          messages={defaultMessages}
         />
       </div>
       <p></p>

@@ -224,7 +224,21 @@
       "Actions":"Actions",
       "Attachments":"Attachments",
       "Delete File":"Delete File",
-      "Are you sure you want to delete this file?":"Are you sure you want to delete this file?"
+      "Are you sure you want to delete this file?":"Are you sure you want to delete this file?",
+      "Event": "Event",
+      "All Day": "All Day",
+      "Week": "Week",
+      "Work Week": "Work Week",
+      "Day": "Day",
+      "Month": "Month",
+      "Back": "Back",
+      "Next": "Next",
+      "Yesterday": "Yesterday",
+      "Tomorrow": "Tomorrow",
+      "Today": "Today",
+      "Agenda": "Agenda",
+      "There are no events in this range.": "There are no events in this range.",
+      "More":"More"
     
     
   

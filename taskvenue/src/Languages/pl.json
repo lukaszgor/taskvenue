@@ -224,7 +224,28 @@
       "Actions":"Akcje",
       "Attachments":"Załączniki",
       "Delete File":"Usuwanie pliku",
-      "Are you sure you want to delete this file?":"Na pewno chcesz usunać plik?"
+      "Are you sure you want to delete this file?":"Na pewno chcesz usunać plik?",
+      "Event": "Wydarzenie",
+      "All Day": "Cały dzień",
+      "Week": "Tydzień",
+      "Work Week": "Tydzień roboczy",
+      "Day": "Dzień",
+      "Month": "Miesiąc",
+      "Back": "Wstecz",
+      "Next": "Następny",
+      "Yesterday": "Wczoraj",
+      "Tomorrow": "Jutro",
+      "Today": "Dziś",
+      "Agenda": "Agenda",
+      "There are no events in this range.": "Brak wydarzeń w tym zakresie.",
+      "More": "Więcej"
+      
+
+
+
+
+
+
     
  
 
