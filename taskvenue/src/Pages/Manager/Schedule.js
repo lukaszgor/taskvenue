@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import supabase from '../../supabaseClient';
-import { Calendar, momentLocalizer } from 'react-big-calendar';
+import { Calendar, momentLocalizer,Views } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { useNavigate } from 'react-router-dom';
@@ -10,8 +10,12 @@ import { useTranslation } from 'react-i18next';
 import { Button, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import ManagerScheduleBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerScheduleBreadcrumbs';
 import AddIcon from '@mui/icons-material/Add';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
+import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 
 const localizer = momentLocalizer(moment);
+const DnDCalendar = withDragAndDrop(Calendar);
 
 const Schedule = () => {
   const [userID, setUserID] = useState('');
@@ -21,6 +25,8 @@ const Schedule = () => {
   const { t, i18n } = useTranslation();
   const [selectedUser, setSelectedUser] = useState('');
   const [profiles, setProfiles] = useState([]);
+  const [deadline, setDeadline] = useState('');
+  const [kickoff, setKickoff] = useState('');
 
   var defaultMessages = {
     date: t("Date"),
@@ -191,6 +197,45 @@ const Schedule = () => {
   const maxTime = new Date();
   maxTime.setHours(23, 0, 0); // Ustawia godzinę na 23:00 wieczorem
 
+  const handleUpdateTask = async (start,end,id) => {
+    const { data, error } = await supabase
+      .from('tasks')
+      .update([
+        {
+          kickoffDate: start,
+          deadline: end,
+        },
+      ])
+      .eq('id', id);
+    if (error) {
+      console.log(error);
+    }
+    if (data) {
+     
+    }
+  };
+  // Handle event resize
+const handleEventResize = ({ event, start, end }) => {
+  const formattedStart = moment(start).format("YYYY-MM-DDTHH:mm");
+  const formattedEnd = moment(end).format("YYYY-MM-DDTHH:mm");
+  
+  const id = event.id; // Get the event's ID
+  handleUpdateTask(formattedStart, formattedEnd, id);
+  fetchEvents(idConfig, selectedUser);
+
+};
+
+// Handle event drop
+const handleEventDrop = ({ event, start, end }) => {
+  const formattedStart = moment(start).format("YYYY-MM-DDTHH:mm");
+  const formattedEnd = moment(end).format("YYYY-MM-DDTHH:mm");
+  
+  const id = event.id; // Get the event's ID
+  handleUpdateTask(formattedStart, formattedEnd, id);
+  fetchEvents(idConfig, selectedUser);
+};
+
+
   return (
     <div>
       <ManagerNavBar />
@@ -222,7 +267,7 @@ const Schedule = () => {
         </FormControl>
         <p></p>
       </div>
-      <div style={{ height: '500px' }}>
+      {/* <div style={{ height: '500px' }}>
         <Calendar
           localizer={localizer}
           events={events}
@@ -232,11 +277,27 @@ const Schedule = () => {
           onSelectEvent={handleEventClick}
           min={minTime}
           max={maxTime}
-          // messages={{next:"Następny",previous:"Wstecz",today:"Dziś",more:"Więcej"}} 
           messages={defaultMessages}
         />
-      </div>
+      </div> */}
       <p></p>
+      <div style={{ height: '500px' }}>
+      <DnDCalendar
+          localizer={localizer}
+          events={events}
+          startAccessor="start"
+          endAccessor="end"
+          eventPropGetter={eventStyleGetter}
+          onSelectEvent={handleEventClick}
+          min={minTime}
+          max={maxTime}
+          messages={defaultMessages}
+          resizable
+          onEventResize={handleEventResize}
+          onEventDrop={handleEventDrop}
+
+/>
+      </div>
       <ScheduleLegend />
     </div>
   );
