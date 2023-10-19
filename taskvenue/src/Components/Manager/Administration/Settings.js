@@ -17,15 +17,7 @@ const Settings = () => {
         </AccordionDetails>
       </Accordion>
 
-      <Accordion defaultExpanded>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t('exaple1')}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography></Typography>
-Example 2
-        </AccordionDetails>
-      </Accordion>
+
   </div>
   );
 };
