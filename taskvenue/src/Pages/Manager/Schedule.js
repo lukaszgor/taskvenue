@@ -293,6 +293,7 @@ const handleEventDrop = ({ event, start, end }) => {
           max={maxTime}
           messages={defaultMessages}
           resizable
+          defaultView="week"
           onEventResize={handleEventResize}
           onEventDrop={handleEventDrop}
 

@@ -106,18 +106,18 @@ const StatusOfImplementation30Report = () => {
           <label htmlFor="currentDate">{t("Date from : ")}</label>
           <input
             type="datetime-local" // Użyj typu "datetime-local" dla inputa
-            id="currentDate"
-            value={currentDate}
-            onChange={(e) => setCurrentDate(e.target.value)}
+            id="daysAgo"
+            value={daysAgo}
+            onChange={(e) => setDaysAgo(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={2} className="right-input">
           <label htmlFor="daysAgo">{t("Date to : ")}</label>
           <input
             type="datetime-local" // Użyj typu "datetime-local" dla inputa
-            id="daysAgo"
-            value={daysAgo}
-            onChange={(e) => setDaysAgo(e.target.value)}
+            id="currentDate"
+            value={currentDate}
+            onChange={(e) => setCurrentDate(e.target.value)}
           />
         </Grid>
       </Grid>
