@@ -217,7 +217,7 @@ const WorkerSchedule = () => {
         </FormControl> */}
         <p></p>
       </div>
-      <div style={{ height: '500px' }}>
+      <div style={{height: '1000px' }}>
         <Calendar
           localizer={localizer}
           events={events}

@@ -281,7 +281,7 @@ const handleEventDrop = ({ event, start, end }) => {
         />
       </div> */}
       <p></p>
-      <div style={{ height: '500px' }}>
+      <div style={{ height: '1000px' }}>
       <DnDCalendar
           localizer={localizer}
           events={events}
