@@ -133,7 +133,7 @@
     "Rejected":"Odrzucony",
     "About configuration":"Informacje o konfiguracji",
     "Add absence":"Dodaj absencje",
-    "Add task":"Dodaj task",
+    "Add task":"Dodaj zadanie",
     "Are you waiting? let's play a game":"Czekasz? zagraj w gre",
     "game": {
         "rock": "Kamień",
@@ -238,8 +238,10 @@
       "Today": "Dziś",
       "Agenda": "Agenda",
       "There are no events in this range.": "Brak wydarzeń w tym zakresie.",
-      "More": "Więcej"
-      
+      "More": "Więcej",
+      "That is, a system that improves management and communication between management, the customer, and those doing the work in the field.":"Czyli system usprawniający zarządzanie oraz komunikację między kierownictwem, klientem, a osobami wykonującymi pracę w terenie.",
+      "Order a consultation":"Zamów a konsultacje"
+
 
 
 
