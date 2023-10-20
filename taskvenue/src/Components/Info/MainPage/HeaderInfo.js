@@ -14,7 +14,7 @@ const HeaderInfo = () => {
       <Container maxWidth="lg">
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
-            <Typography variant="h2" align="left" 
+            <Typography variant="h3" align="left" 
                       sx={{
                         mr: 2,
                         mt: 10,

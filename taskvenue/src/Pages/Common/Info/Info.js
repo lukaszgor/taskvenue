@@ -18,12 +18,12 @@ const Info = () => {
 <InfoNavBar></InfoNavBar>
 <HeaderInfo></HeaderInfo>
 <ProductInfo></ProductInfo>
-<TryInfo></TryInfo>
 <p></p>
 <TargetCompany></TargetCompany>
 <p></p>
 <StepperInfo></StepperInfo>
 <p></p>
+<TryInfo></TryInfo>
 <Footer></Footer>
 
 </div>

@@ -22,13 +22,9 @@ const TryInfo = () => {
   return (
     <div style={centerStyles}>
       <Container maxWidth="md">
-        <Typography variant="h4" gutterBottom style={contentStyles}>
-          Oprogramowanie dla firm usługowych
-        </Typography>
         <Typography variant="h6" paragraph style={contentStyles}>
         Prowadź swoją firmę tak wydajnie, jak to możliwe. Zoptymalizuj swój czas i zwiększ przychody swojej firmy dzięki Task Venue. Wypróbuj wersję demo, aby już teraz ocenić wszystkie zalety naszego oprogramowania.
         </Typography>
-
         <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Link to="/infocontact">
             <Button variant="contained" color="primary">
