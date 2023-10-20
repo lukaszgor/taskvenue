@@ -10,7 +10,7 @@ import {
   DialogContent,
   DialogTitle,
   InputLabel,
-  Switch,
+  Switch,Divider
 } from '@mui/material';
 import supabase from '../../../supabaseClient';
 import { useNavigate } from 'react-router-dom';
@@ -319,9 +319,10 @@ const ClientClosedTasks = () => {
           <Grid key={task.id} item xs={12} sm={6} md={4} lg={3}>
             <Card>
               <CardContent>
-                <Typography variant="h6" gutterBottom>
+                {/* <Typography variant="h6" gutterBottom>
                   ID: {task.id}
-                </Typography>
+                </Typography> */}
+                <Divider textAlign='left'>{t('ID')} {task.id} </Divider>
                 <Typography variant="h6" gutterBottom>
                   {t('Name')} : {task.name}
                 </Typography>

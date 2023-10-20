@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent, Typography, Grid, TextField, Button, Dialog, DialogContent, DialogTitle } from '@mui/material';
+import { Card, CardContent, Typography, Grid, TextField, Button, Dialog, DialogContent, DialogTitle,Divider } from '@mui/material';
 import supabase from '../../../supabaseClient';
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next";
@@ -155,9 +155,10 @@ const WorkerApprovedAndRejectedAbsences = () => {
                     <Grid key={absence.id} item xs={12} sm={6} md={4} lg={3}>
                         <Card>
                             <CardContent>
-                                <Typography variant="h6" gutterBottom>
+                                {/* <Typography variant="h6" gutterBottom>
                                     ID: {absence.id}
-                                </Typography>
+                                </Typography> */}
+                                <Divider textAlign='left'>{t('ID')} {absence.id} </Divider>
                                 <Typography variant="body2" color="textSecondary" >
                                     {t("Absence")} : {{ vacation: t("Vacation"),sickleave: t("Sick leave")}[absence.typeOfAbsence]}
                                 </Typography>

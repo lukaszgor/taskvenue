@@ -13,7 +13,7 @@ import {
   DialogContentText,
   Switch,
   InputLabel,
-  Box
+  Box,Divider
 } from '@mui/material';
 import supabase from '../../../supabaseClient';
 import { useNavigate } from 'react-router-dom';
@@ -389,9 +389,11 @@ const ManagerOpenTasks = () => {
           <Grid key={task.id} item xs={12} sm={6} md={4} lg={3}>
             <Card>
               <CardContent>
-                <Typography variant="h6" gutterBottom>
+                {/* <Typography variant="h6" gutterBottom>
                   ID: {task.id}
-                </Typography>
+                </Typography> */}
+                {/* <Divider variant="middle"/> */}
+                <Divider textAlign='left'>{t('ID')} {task.id} </Divider>
                 <Typography variant="h6" gutterBottom>
                   {t('Name')} : {task.name}
                 </Typography>
@@ -416,6 +418,7 @@ const ManagerOpenTasks = () => {
                   {t('Deadline')}: {formatDate(task.deadline)}
                 </Typography>
                 <p></p>
+           
                 <Box display="inline-block" marginRight={2}>
                 <Button
                   variant="contained"
