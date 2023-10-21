@@ -4,7 +4,7 @@ import { Grid, Typography, Paper, Container } from '@mui/material';
 const sections = [
   {
     title: 'Multiplatformowość',
-    description: 'Nasza aplikacja jest responsywna, co oznacza, że działa płynnie na każdym urządzeniu, umożliwiając użytkownikom swobodne korzystanie z niej bez względu na rodzaj urządzenia.',
+    description: 'Nasza aplikacja jest multiplatformowa, co oznacza, że działa płynnie na każdym urządzeniu, umożliwiając użytkownikom swobodne korzystanie z niej bez względu na rodzaj urządzenia.',
     imageSrc: 'planning.png',
   },
   {
@@ -32,6 +32,7 @@ const DescriptionOfTheMainFunction = () => {
                 <Typography variant="body1">{section.description}</Typography>
               </Grid>
               <Grid item xs={6}>
+                <p></p>
                 <img src={section.imageSrc} alt={section.title} style={{ width: '100%' }} />
               </Grid>
             </Grid>
