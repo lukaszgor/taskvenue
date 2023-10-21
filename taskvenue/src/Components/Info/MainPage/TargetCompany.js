@@ -25,7 +25,7 @@ const TargetCompany = () => {
     <div style={centerStyles}>
       <Container maxWidth="md">
       <Typography variant="h4" gutterBottom style={contentStyles}>
-          Dla kogo Task Venue?
+          Dla kogo jest Task Venue?
         </Typography>
         <Accordion >
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
