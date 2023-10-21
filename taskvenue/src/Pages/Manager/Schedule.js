@@ -214,6 +214,23 @@ const Schedule = () => {
      
     }
   };
+  const handleUpdateAbsences = async (start,end,id) => {
+    const { data, error } = await supabase
+      .from('absences')
+      .update([
+        {
+          kickoffDate: start,
+          finishDate: end,
+        },
+      ])
+      .eq('id', id);
+    if (error) {
+      console.log(error);
+    }
+    if (data) {
+     
+    }
+  };
   // Handle event resize
 const handleEventResize = ({ event, start, end }) => {
   const formattedStart = moment(start).format("YYYY-MM-DDTHH:mm");
@@ -221,6 +238,7 @@ const handleEventResize = ({ event, start, end }) => {
   
   const id = event.id; // Get the event's ID
   handleUpdateTask(formattedStart, formattedEnd, id);
+  handleUpdateAbsences(formattedStart, formattedEnd, id);
   fetchEvents(idConfig, selectedUser);
 
 };
@@ -232,6 +250,7 @@ const handleEventDrop = ({ event, start, end }) => {
   
   const id = event.id; // Get the event's ID
   handleUpdateTask(formattedStart, formattedEnd, id);
+  handleUpdateAbsences(formattedStart, formattedEnd, id);
   fetchEvents(idConfig, selectedUser);
 };
 
