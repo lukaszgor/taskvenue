@@ -61,6 +61,7 @@ const Difficulties = () => {
           <Typography variant="h6" align="center" sx={{ mt: 2 }}>
             {t('Korzystając z naszego narzędzia, rozwiążesz wszystkie te problemy sprawnie i skutecznie.')}
           </Typography>
+          <p></p>
         </Container>
       </div>
     </div>

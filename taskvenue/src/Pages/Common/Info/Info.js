@@ -29,6 +29,7 @@ const Info = () => {
 <p></p>
 <StepperInfo></StepperInfo>
 <TryInfo></TryInfo>
+<p></p>
 <Footer></Footer>
 
 </div>
