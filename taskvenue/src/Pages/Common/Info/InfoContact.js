@@ -31,6 +31,7 @@ const InfoContact = () => {
           <Typography variant="h4" align="center">
             {t("Contact")}
           </Typography>
+          <p></p>
           <Typography variant="h6" align="center">
             {t("Have questions or suggestions about our software? Contact the Task Venue team in any convenient way.")}
           </Typography>

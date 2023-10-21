@@ -27,12 +27,13 @@ const DescriptionOfTheMainFunction = () => {
         <Grid item xs={12} md={12} key={index}>
           <Paper elevation={3} style={{ padding: '20px' }}>
             <Grid container spacing={2}>
-              <Grid item xs={6}>
+              <Grid item xs={12} md={5}>
+                <p></p>
                 <Typography variant="h5">{section.title}</Typography>
+                <p></p>
                 <Typography variant="body1">{section.description}</Typography>
               </Grid>
-              <Grid item xs={6}>
-                <p></p>
+              <Grid item xs={12} md={7}>
                 <img src={section.imageSrc} alt={section.title} style={{ width: '100%' }} />
               </Grid>
             </Grid>
