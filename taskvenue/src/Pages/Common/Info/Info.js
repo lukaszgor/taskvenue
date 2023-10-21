@@ -6,6 +6,7 @@ import Footer from '../../../Components/Info/Footer';
 import StepperInfo from '../../../Components/Info/MainPage/StepperInfo';
 import InfoNavBar from '../../../Components/NavigationBar/InfoNavBar';
 import TargetCompany from '../../../Components/Info/MainPage/TargetCompany';
+import Difficulties from '../../../Components/Info/MainPage/Difficulties';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -17,9 +18,11 @@ const Info = () => {
 <div>
 <InfoNavBar></InfoNavBar>
 <HeaderInfo></HeaderInfo>
-<ProductInfo></ProductInfo>
+<Difficulties></Difficulties>
 <p></p>
 <TargetCompany></TargetCompany>
+<p></p>
+<ProductInfo></ProductInfo>
 <p></p>
 <StepperInfo></StepperInfo>
 <p></p>

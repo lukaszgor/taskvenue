@@ -44,7 +44,7 @@ const HeaderInfo = () => {
           </Grid>
           <Grid item xs={12} md={6}>
             <img
-               src="/mobile.png"
+               src="/headerImage.png"
               alt="Your Business"
               style={{ width: '100%', height: 'auto' }}
             />
