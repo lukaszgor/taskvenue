@@ -40,10 +40,11 @@ const ProductInfo = () => {
   ];
 
   return (
-    <Container maxWidth={false} style={{ backgroundColor: '#338ede', padding: '30px' }}>
+    <Container maxWidth={false} style={{ backgroundColor: '#338ede', padding: '30px' }} >
+            <Container style={{ backgroundColor: '#338ede', padding: '30px' }} maxWidth="md">
       <Grid container spacing={3}>
         {cards.map((card, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index}>
+          <Grid item xs={12} sm={6} md={6} key={index}>
             <Card>
               <CardHeader
                 avatar={
@@ -63,6 +64,7 @@ const ProductInfo = () => {
           </Grid>
         ))}
       </Grid>
+      </Container>
     </Container>
   );
 };

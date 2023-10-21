@@ -15,7 +15,7 @@ const AboutUs = () => {
 <div>
     <InfoNavBar></InfoNavBar>
     <HeaderAboutUs></HeaderAboutUs>
-    <TryAboutus></TryAboutus>
+    {/* <TryAboutus></TryAboutus> */}
     <p></p>
     <ScoresAboutUs></ScoresAboutUs>
     <p></p>

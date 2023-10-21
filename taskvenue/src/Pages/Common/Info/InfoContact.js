@@ -40,7 +40,7 @@ const InfoContact = () => {
                 <CardContent>
                   <Typography variant="h5">{t("Phone number")}</Typography>
                   <PhoneIcon style={iconStyle} />
-                  <Typography variant="body1">+48 123 456 789</Typography>
+                  <Typography variant="body1">+48 789 256 591</Typography>
                 </CardContent>
               </Card>
             </Grid>
@@ -49,7 +49,7 @@ const InfoContact = () => {
                 <CardContent>
                   <Typography variant="h5">Email</Typography>
                   <EmailIcon style={iconStyle} />
-                  <Typography variant="body1">kontakt@taskvenue.com</Typography>
+                  <Typography variant="body1">lgorski.taskvenue@gmail.com</Typography>
                 </CardContent>
               </Card>
             </Grid>
