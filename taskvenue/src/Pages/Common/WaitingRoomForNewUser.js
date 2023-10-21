@@ -83,11 +83,17 @@ const WaitingRoomForNewUser = () => {
           <Typography variant="h6" fontWeight="bold">{t("First and last name")}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography></Typography>
+        <Container maxWidth="sm">
+        <Grid container spacing={2}>
+        <Grid item xs={12}>
+            <p> {t("Give your name for easy identification")}</p>
+            </Grid>
+            </Grid>
+            </Container>
 <Username></Username>
         </AccordionDetails>
       </Accordion>
-
+{/* 
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">{t("Are you waiting? let's play a game")}</Typography>
@@ -96,7 +102,7 @@ const WaitingRoomForNewUser = () => {
           <Typography></Typography>
 <Game></Game>
         </AccordionDetails>
-      </Accordion>
+      </Accordion> */}
 
 
  
