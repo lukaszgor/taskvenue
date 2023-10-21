@@ -91,6 +91,13 @@ const WaitingRoomForNewUser = () => {
             </Grid>
             </Container>
 <Username></Username>
+<Container maxWidth="sm">
+        <Grid container spacing={2}>
+        <Grid item xs={12}>
+            <p> {t("After adding your account to the configuration, log in again")}</p>
+            </Grid>
+            </Grid>
+            </Container>
         </AccordionDetails>
       </Accordion>
 {/* 
