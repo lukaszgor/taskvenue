@@ -1,7 +1,7 @@
 import React from 'react';
 import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import { useState,useEffect } from 'react';
-import { TextField, Button, Grid, Container, Typography, Select, MenuItem,Checkbox,FormControlLabel,FormControl,InputLabel,Box } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography, Select, MenuItem,Checkbox,FormControlLabel,FormControl,InputLabel,Box,Divider } from '@mui/material';
 import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
@@ -9,6 +9,7 @@ import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import ManagerAdministrationUserBreadcrumbs from '../../Components/Breadcrumbs/ManagerAdministrationUserBreadcrumbs';
 import { useNavigate } from "react-router-dom"
+import ManagerEmployeeDocuments from '../../Components/Manager/Documents/ManagerEmployeeDocuments';
 
 const UserDetails = () => {
     const {id} = useParams()
@@ -133,6 +134,7 @@ const handleCloseAlert = (event, reason) => {
          <ManagerNavBar></ManagerNavBar>
          <ManagerAdministrationUserBreadcrumbs></ManagerAdministrationUserBreadcrumbs>
 <Container maxWidth="md">
+<Divider textAlign="left">{t("Basic data")}</Divider>
         <Typography variant="h4" align="center" gutterBottom>
        <p></p>
         </Typography>
@@ -231,6 +233,17 @@ const handleCloseAlert = (event, reason) => {
           </FormControl>
         )}
              </Grid>
+            <Grid item xs={12}>
+            <Box display="flex" justifyContent="flex-end">
+            {profile_type !== 'client' && (
+          <FormControl fullWidth>
+            <Divider textAlign="left">{t("Documents")}</Divider>
+            <p></p>
+<ManagerEmployeeDocuments></ManagerEmployeeDocuments>
+          </FormControl>
+        )}
+              </Box>
+            </Grid>
             <Grid item xs={12}>
             <Box display="flex" justifyContent="flex-end">
               <Button
