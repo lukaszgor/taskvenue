@@ -7,7 +7,10 @@ import {
   Container,
   Paper,
   Grid,
+  Button,
 } from '@mui/material';
+import { useTranslation } from 'react-i18next';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const containerStyle = {
   maxWidth: 'md',
@@ -18,11 +21,17 @@ const paperStyle = {
 };
 
 const stepContainerStyle = {
-  marginBottom: '2em', // Dodaj margines na widoku mobilnym
+  marginBottom: '2em',
 };
 
 const stepContentStyle = {
-  marginTop: '2em', // Dodaj margines dla treści kroku
+  marginTop: '2em',
+};
+
+const buttonContainerStyle = {
+  display: 'flex',
+  justifyContent: 'flex-end', // Aby przycisk był na prawym krańcu
+  marginTop: '1em', // Dodaj odstęp między opisem kroku a przyciskiem
 };
 
 const steps = [
@@ -44,6 +53,10 @@ const StepperInfo = () => {
     setActiveStep(stepIndex);
   };
 
+  const handleNextClick = () => {
+    setActiveStep(activeStep + 1);
+  };
+  const { t, i18n } = useTranslation();
   return (
     <Container maxWidth="md" style={containerStyle}>
       <Paper elevation={3} style={paperStyle}>
@@ -68,6 +81,16 @@ const StepperInfo = () => {
               <Typography variant="body1">
                 {stepDescriptions[activeStep]}
               </Typography>
+            </div>
+            <div style={buttonContainerStyle}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleNextClick}
+                disabled={activeStep === steps.length - 1}
+              >
+                <ArrowForwardIosIcon></ArrowForwardIosIcon>
+              </Button>
             </div>
           </Grid>
         </Grid>
