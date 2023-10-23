@@ -19,11 +19,11 @@ const Info = () => {
 <div>
 <InfoNavBar></InfoNavBar>
 <HeaderInfo></HeaderInfo>
-<Difficulties></Difficulties>
-<p></p>
-<TargetCompany></TargetCompany>
+{/* <Difficulties></Difficulties> */}
 <p></p>
 <DescriptionOfTheMainFunction></DescriptionOfTheMainFunction>
+<p></p>
+<TargetCompany></TargetCompany>
 <p></p>
 <ProductInfo></ProductInfo>
 <p></p>
