@@ -7,7 +7,7 @@ import MainView from "../../Components/Manager/MainView";
 import ClientMainView from "../../Components/Client/ClientMainView";
 import WorkerMainView from "../../Components/Worker/WorkerMainView";
 import SuperAdminMainView from "../../Components/SuperAdmin/SuperAdminMainView";
-
+import LinearProgress from '@mui/material/LinearProgress';
 
 import moment from "moment";
 
@@ -125,7 +125,10 @@ function Home() {
             {isVerified === null && (
                 <Box style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <p></p>
-                    <CircularProgress />
+                    {/* <CircularProgress /> */}
+                    <Box sx={{ width: '100%' }}>
+                    <LinearProgress />
+                    </Box>
                 </Box>
             )}
         </div>
