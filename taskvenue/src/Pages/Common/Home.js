@@ -7,8 +7,6 @@ import MainView from "../../Components/Manager/MainView";
 import ClientMainView from "../../Components/Client/ClientMainView";
 import WorkerMainView from "../../Components/Worker/WorkerMainView";
 import SuperAdminMainView from "../../Components/SuperAdmin/SuperAdminMainView";
-import LinearProgress from '@mui/material/LinearProgress';
-import Skeleton from '@mui/material/Skeleton';
 
 import moment from "moment";
 
@@ -124,35 +122,10 @@ function Home() {
             {isVerified === 'client' && <ClientMainView />}
             {isVerified === 'superadmin' && <SuperAdminMainView />}
             {isVerified === null && (
-                <Box style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <p></p>
-                    {/* <CircularProgress /> */}
-                    <Box sx={{ width: '100%' }}>
-                    <LinearProgress />
-                    </Box>
-                    <Box
-                        sx={{
-                            width: '100%',
-                            height: '100vh', 
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                        }}
-                        >
-                        <Skeleton
-                            variant="text"
-                            width={1} 
-                            height={1}
-                            animation="wave" 
-                        />
-                         <Skeleton
-                            variant="text"
-                            width={1} 
-                            height={1}
-                            animation="wave" 
-                        />
-                    </Box>
-                </Box>
+                <Box style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+                <p></p>
+                <CircularProgress size={80} /> {/* Ustaw rozmiar na większy */}
+            </Box>
             )}
         </div>
     );
