@@ -91,6 +91,51 @@ W rolnictwie aplikacja ta może być wykorzystywana do zarządzania pracami na f
 Niezależnie od branży, aplikacja ta może być używana do zarządzania projektami, w których istnieje potrzeba monitorowania lokalizacji, zadań i postępów prac.
 </AccordionDetails>
 </Accordion>
+
+<Accordion >
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+<Divider>Logistyka i transport</Divider>
+</AccordionSummary>
+<AccordionDetails>
+Firmy transportowe i logistyczne mogą korzystać z systemu do śledzenia tras, przypisywania zadań kierowcom, monitorowania dostaw i zbierania danych dotyczących czasu dostawy.
+</AccordionDetails>
+</Accordion>
+
+<Accordion >
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+<Divider>Opieka zdrowotna</Divider>
+</AccordionSummary>
+<AccordionDetails>
+Szpitale, kliniki i agencje opieki zdrowotnej mogą korzystać z takiego systemu do zarządzania zadaniami pielęgniarek i personelu medycznego w różnych częściach placówki, a także do monitorowania stanu pacjentów.
+</AccordionDetails>
+</Accordion>
+
+<Accordion >
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+<Divider>Obszar publiczny</Divider>
+</AccordionSummary>
+<AccordionDetails>
+Organizacje rządowe i lokalne samorządy mogą korzystać z takiego systemu do monitorowania prac publicznych, zarządzania zadaniami konserwacyjnymi w parkach i ulicach oraz zbierania danych dotyczących infrastruktury.
+</AccordionDetails>
+</Accordion>
+
+<Accordion >
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+<Divider>Restauracje i usługi gastronomiczne</Divider>
+</AccordionSummary>
+<AccordionDetails>
+Restauracje mogą używać aplikacji do zarządzania zadaniami obsługi, monitorowania dostaw i zbierania danych dotyczących zapasów i sprzedaży w różnych lokalizacjach.
+</AccordionDetails>
+</Accordion>
+
+<Accordion >
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+<Divider>Edukacja</Divider>
+</AccordionSummary>
+<AccordionDetails>
+Szkoły i uczelnie mogą korzystać z systemu do zarządzania zadaniami związanymi z utrzymaniem kampusu, organizacją wydarzeń i monitorowaniem wykorzystania przestrzeni edukacyjnych.
+</AccordionDetails>
+</Accordion>
 <p></p>
       </Container>
     </div>
