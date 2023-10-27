@@ -4,7 +4,7 @@ import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import { useTranslation } from "react-i18next";
-import ManagerMapVenue from '../../Components/Manager/Map/ManagerMapVenue';
+import ManagerMapVenues from '../../Components/Manager/Map/ManagerMapVenues';
 import ManagerMapBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerMapBreadcrumbs';
 function Map() {
     const { t, i18n } = useTranslation();
@@ -20,7 +20,7 @@ function Map() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
-         <ManagerMapVenue></ManagerMapVenue>
+         <ManagerMapVenues></ManagerMapVenues>
         </AccordionDetails>
       </Accordion>
 

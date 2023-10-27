@@ -28,7 +28,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import VenueHistory from '../../Components/Manager/Venue/VenueHistory';
 import ManagerVenueAttachments from '../../Components/Manager/Attachments/ManagerVenueAttachments';
 import Tooltip from '@mui/material/Tooltip';
-
+import ManagerMapVenue from '../../Components/Manager/Map/ManagerMapVenue';
 
 const VenueDetalils = () => {
   const { t, i18n } = useTranslation();
@@ -278,6 +278,17 @@ const VenueDetalils = () => {
         <AccordionDetails>
           <Typography></Typography>
           <VenueHistory></VenueHistory>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">
+            {t('Map')}
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+          <ManagerMapVenue></ManagerMapVenue>
         </AccordionDetails>
       </Accordion>
       </Container>
