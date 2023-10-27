@@ -1,243 +1,326 @@
-import { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import supabase from '../../../supabaseClient';
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next";
-import { TextField, Button, Grid, Container, Typography,Accordion, AccordionSummary, AccordionDetails, Select, MenuItem,Checkbox,FormControlLabel,FormControl,InputLabel,Box } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography, Accordion, AccordionSummary, AccordionDetails, Select, MenuItem, FormControlLabel, FormControl, InputLabel, Box, Card, CardContent, CardActions, Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogActions,Divider,
+  DialogContentText, } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import FilterListIcon from '@mui/icons-material/FilterList';
+
 function Users() {
     const { t, i18n } = useTranslation();
-    const [fetchError,setFetchError] =useState(null)
-    const [user,setUser] =useState(null)
-    const navigate = useNavigate()
+    const [fetchError, setFetchError] = useState(null);
+    const [user, setUser] = useState([]);
+    const navigate = useNavigate();
     const [userID, setUserID] = useState('');
     const [idConfig, setIdConfiguration] = useState('');
     const [foreignUserID, setForeignUserID] = useState('');
     const [foreignProfileType, setProfileForeignType] = useState('worker');
-  
-        useEffect(() => {
-            const checkSession = async () => {
-              const { data } = await supabase.auth.getSession();
-              if (data.session) {
+
+    const [filteredUsers, setFilteredUsers] = useState([]);
+    const [searchName, setSearchName] = useState('');
+    const [searchEmail, setSearchEmail] = useState('');
+    const [searchID, setsearchID] = useState('');
+    const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
+    const [openFilter, setOpenFilter] = useState(true);
+
+    useEffect(() => {
+        const checkSession = async () => {
+            const { data } = await supabase.auth.getSession();
+            if (data.session) {
                 setUserID(data.session.user.id);
                 fetchData(data.session.user.id);
-              }
-            };
-            checkSession();
-          }, []);
-          
-          const fetchData = async (userId) => {
-            const { data: profileData, error: profileError } = await supabase
-                .from('profiles')
-                .select('id_configuration')
-                .eq('id', userId)
-                .single();
-            if (profileError) {
-                console.log(profileError);
-            } else if (profileData) {
-                setIdConfiguration(profileData.id_configuration);
             }
+        };
+        checkSession();
+    }, []);
+
+    useEffect(() => {
+        if (idConfig) {
+            fetchUsers(idConfig);
         }
-     useEffect(() => {
-            if (idConfig) {
-                fetchUsers(idConfig)
-            }
-          }, [idConfig]);
+    }, [idConfig,openFilter]);
 
 
-    const fetchUsers = async(idConfig)=>{
-        const{data,error} =  await supabase
-        .from('profiles')
-        .select()
-        .eq('id_configuration',idConfig);
-        if(error){
+  
+    useEffect(() => {
+      let filteredData = user;
+  
+      if (searchName !== '') {
+        filteredData = filteredData.filter((user) =>
+          user.username.toLowerCase().includes(searchName.toLowerCase())
+        );
+      }
+      if (searchID !== '') {
+        filteredData = filteredData.filter((user) =>
+          user.id.toLowerCase().includes(searchID.toLowerCase())
+        );
+      }
+      if (searchEmail !== '') {
+        filteredData = filteredData.filter((user) =>
+          user.full_name.toLowerCase().includes(searchEmail.toLowerCase())
+        );
+      }
+    
+      setFilteredUsers(filteredData);
+    }, [user, searchName, searchID,searchEmail]);
+
+    const fetchData = async (userId) => {
+        const { data: profileData, error: profileError } = await supabase
+            .from('profiles')
+            .select('id_configuration')
+            .eq('id', userId)
+            .single();
+        if (profileError) {
+            console.log(profileError);
+        } else if (profileData) {
+            setIdConfiguration(profileData.id_configuration);
+        }
+    }
+
+    const fetchUsers = async (idConfig) => {
+        const { data, error } = await supabase
+            .from('profiles')
+            .select()
+            .eq('id_configuration', idConfig);
+        if (error) {
             console.log(error)
             setUser(null)
             setFetchError(t("No users"))
-        }if(data){
-          setUser(data)
-          setFetchError(null)
+        } if (data) {
+            setUser(data)
+            setFetchError(null)
         }
     }
-const UserDetails=(event, cellValues)=>{
-    // console.log(cellValues.row);
-    navigate('/UserDetails/'+cellValues.row.id)
-}
 
-    const columns = [
-        { field: 'id', headerName: 'ID', type: 'number', width: 300 },
-        { field: 'username', headerName: t("First and last name"), type: 'number',width: 250 },
-        { field: 'full_name', headerName: t("Email"), type: 'number',width: 250 },
-        {
-          field: 'profile_type',
-          headerName: t("Type"),
-          width: 130,
-          valueGetter: (params) => {
-              const profileType = params.value;
-              if (profileType === 'manager') {
-                  return t('Manager');
-              } else if (profileType === 'client') {
-                  return t('Client');
-              } else if (profileType === 'worker') {
-                  return t('Worker');
-              } else {
-                  return profileType;
-              }
-          },
-      },
-      {
-        field: 'isBlocked',
-        headerName: t("Blocked"),
-        width: 100,
-        valueGetter: (params) => {
-          const isBlocked = params.value;
-          if (isBlocked === 1) {
-            return t("Blocked");
-          } else {
-            return t("Active");
-          }
-        },
-      },
-        {
-            field: "Akcje",headerName: t("Action"), width: 600 ,
-            renderCell: (cellValues) => {
-              return ( 
-                <Button
-                color="primary"
-                onClick={(event) => {
-                    UserDetails(event, cellValues);
-                }}
-                >{t("details")}</Button>
-              );
-            }
-          },
-      ];
-      const handleSubmit = (event) => {
+    const UserDetails = (event, cellValues) => {
+        navigate('/UserDetails/' + cellValues.row.id);
+    }
+
+    const handleSubmit = (event) => {
         event.preventDefault();
-      updateUser();
-      setForeignUserID('');
-         
-      };
+        updateUser();
+        setForeignUserID('');
+    };
 
-      const updateUser =async()=>{
-        const{data,error}=await supabase
-        .from('profiles')
-        .update({'profile_type':foreignProfileType,'id_configuration':idConfig})
-        .eq('id',foreignUserID)
-        handleClickAlert()
+    const updateUser = async () => {
+        const { data, error } = await supabase
+            .from('profiles')
+            .update({ 'profile_type': foreignProfileType, 'id_configuration': idConfig })
+            .eq('id', foreignUserID);
+        handleClickAlert();
         fetchUsers(idConfig);
     }
-      //alert configuration
-      const [open,setOpen] =useState(null)
 
-      const handleClickAlert = () => {
+    // Alert configuration
+    const [open, setOpen] = useState(null);
+
+    const handleClickAlert = () => {
         setOpen(true);
-      };
-      
-      const handleCloseAlert = (event, reason) => {
+    };
+
+    const handleCloseAlert = (event, reason) => {
         if (reason === 'clickaway') {
-          return;
+            return;
         }
         setOpen(false);
-      };
-    return (
+    };
 
-      <div>
-      <Accordion >
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t('Add new user')}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography></Typography>
-          <form onSubmit={handleSubmit} >
-   <Container maxWidth="md">
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                name="User ID"
-                label={t("User ID")}
-                onChange={(e) => setForeignUserID(e.target.value)}
-                fullWidth
-                required
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-            <FormControl fullWidth>
-            <InputLabel id="status-select-select-label">{t("profile type")}</InputLabel>
-              <Select
-                name="profile_type"
-                label={t("profile type")}
-                value={foreignProfileType}
-                onChange={(e) => setProfileForeignType(e.target.value)}
-                fullWidth
-                required
-              >
-                <MenuItem value="manager">{t('Manager')}</MenuItem>
-                <MenuItem value="worker">{t('Worker')}</MenuItem>
-                <MenuItem value="client">{t('Client')}</MenuItem>
-              </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={12}>
-            <Box display="flex" justifyContent="flex-end">
-                                <Button
-                                type="submit"
-                                variant="contained"
-                                color="primary"
-                                style={{ minWidth: 'auto' }}
-                                disabled={!foreignUserID} 
-                                >
-                                {t('Submit')}
-                                </Button>
-                            </Box>
-            <Snackbar open={open}
-            autoHideDuration={2000}
-            onClose={handleCloseAlert}>
-          <Alert severity="success"> {t("Updated!")}!</Alert>
-          </Snackbar>
-    
-            </Grid>
-            </Grid>
-            </Container>
-          <div>
-    </div>
-        </form>
-        </AccordionDetails>
-      </Accordion>
+function formatProfileType(profileType) {
+  switch (profileType) {
+    case 'client':
+      return t('Client');
+    case 'worker':
+      return t('Worker');
+    case 'manager':
+      return t('Manager');
+    default:
+      return profileType;
+  }
+}
+const applyFilters = () => {
+  let filteredData = user;
 
-      <Accordion defaultExpanded>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t('Users')}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography></Typography>
-          {fetchError &&(<p>{fetchError}</p>)}
-        {user &&(
-        <div>
-      <p> </p>
-      <div style={{ height: 400, width: '100%' }}>
-            <DataGrid
-              rows={user}
-              columns={columns}
-              pageSize={12}
-              rowsPerPageOptions={[12]}
-            />
-          </div>
-      <div>
-      </div>
-        </div>
-        )}
-    
-        </AccordionDetails>
-      </Accordion>
-  </div>
-
-
-    
+  if (searchName !== '') {
+    filteredData = filteredData.filter((user) =>
+      user.username.toLowerCase().includes(searchName.toLowerCase())
     );
   }
-  export default Users;
-  
+  if (searchID !== '') {
+    filteredData = filteredData.filter((user) =>
+      user.id.toString().includes(searchID)
+    );
+  }
+  if (searchEmail !== '') {
+    filteredData = filteredData.filter((user) =>
+      user.full_name.toString().includes(searchEmail)
+    );
+  }
+
+  setFilteredUsers(filteredData);
+  setIsFilterPopupOpen(false);
+};
+
+const handleOpenFilterChange = () => {
+  setOpenFilter(!openFilter);
+};
+
+
+    return (
+        <div>
+            <Accordion>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                    <Typography variant="h6" fontWeight="bold">{t('Add new user')}</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Typography></Typography>
+                    <form onSubmit={handleSubmit} >
+                        <Container maxWidth="md">
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={6}>
+                                    <TextField
+                                        name="User ID"
+                                        label={t("User ID")}
+                                        onChange={(e) => setForeignUserID(e.target.value)}
+                                        fullWidth
+                                        required
+                                    />
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                    <FormControl fullWidth>
+                                        <InputLabel id="status-select-select-label">{t("profile type")}</InputLabel>
+                                        <Select
+                                            name="profile_type"
+                                            label={t("profile type")}
+                                            value={foreignProfileType}
+                                            onChange={(e) => setProfileForeignType(e.target.value)}
+                                            fullWidth
+                                            required
+                                        >
+                                            <MenuItem value="manager">{t('Manager')}</MenuItem>
+                                            <MenuItem value="worker">{t('Worker')}</MenuItem>
+                                            <MenuItem value="client">{t('Client')}</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <Box display="flex" justifyContent="flex-end">
+                                        <Button
+                                            type="submit"
+                                            variant="contained"
+                                            color="primary"
+                                            style={{ minWidth: 'auto' }}
+                                            disabled={!foreignUserID}
+                                        >
+                                            {t('Submit')}
+                                        </Button>
+                                    </Box>
+                                    <Snackbar open={open}
+                                        autoHideDuration={2000}
+                                        onClose={handleCloseAlert}>
+                                        <Alert severity="success"> {t("Updated!")}!</Alert>
+                                    </Snackbar>
+                                </Grid>
+                            </Grid>
+                        </Container>
+                    </form>
+                </AccordionDetails>
+            </Accordion>
+
+            <Accordion defaultExpanded>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                    <Typography variant="h6" fontWeight="bold">{t('Users')}</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                <Button
+        style={{ marginLeft: '20px', marginBottom: '20px' }}
+        variant="contained"
+        color="primary"
+        onClick={() => setIsFilterPopupOpen(true)}
+        startIcon={<FilterListIcon />}
+      >
+        {t('Open Filter')}
+      </Button>
+      <Dialog open={isFilterPopupOpen} onClose={() => setIsFilterPopupOpen(false)}>
+        <DialogTitle>{t('Filter Tasks')}</DialogTitle>
+        <p></p>
+        <DialogContent>
+          <div style={{ marginBottom: '16px' }}>
+            <TextField
+              label={t('ID')}
+              variant="outlined"
+              value={searchID}
+              onChange={(e) => setsearchID(e.target.value)}
+              style={{ marginBottom: '8px' }}
+            />
+          </div>
+          <div style={{ marginBottom: '16px' }}>
+            <TextField
+              label={t('Search by User')}
+              variant="outlined"
+              value={searchName}
+              onChange={(e) => setSearchName(e.target.value)}
+              style={{ marginBottom: '8px' }}
+            />
+          </div>
+          <div style={{ marginBottom: '16px' }}>
+            <TextField
+              label={t('Search by Email')}
+              variant="outlined"
+              value={searchEmail}
+              onChange={(e) => setSearchEmail(e.target.value)}
+              style={{ marginBottom: '8px' }}
+            />
+          </div>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={applyFilters}
+            style={{ marginTop: '16px' }}
+          >
+            {t('Apply Filters')}
+          </Button>
+        </DialogContent>
+      </Dialog>
+                    <Typography></Typography>
+                   
+                    {fetchError && (<p>{fetchError}</p>)}
+                    {user && (
+                        <div>
+                            <p> </p>
+                            <div>
+                            {filteredUsers.sort((a, b) => b.id - a.id).map((user) => (
+                                    <Card key={user.id} variant="outlined">
+                                        <CardContent>
+                                        <Divider textAlign="right">{t("Status")}: {user.isBlocked === 1 ? t("Blocked") : t("Active")}</Divider>
+                                        {/* <Typography variant="h6">{user.id}</Typography> */}
+                                            <Typography variant="h6">{user.username}</Typography>
+                                            <Typography>{t("Email")}: {user.full_name}</Typography>
+                                            <Typography>{t("Type")}: {formatProfileType(user.profile_type)}</Typography>
+                                        </CardContent>
+                                        <CardActions>
+                                            <Button
+                                                color="primary"
+                                                onClick={(event) => UserDetails(event, { row: user })}
+                                            >
+                                                {t("details")}
+                                            </Button>
+                                        </CardActions>
+                                    </Card>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </AccordionDetails>
+            </Accordion>
+        </div>
+    );
+}
+
+export default Users;
