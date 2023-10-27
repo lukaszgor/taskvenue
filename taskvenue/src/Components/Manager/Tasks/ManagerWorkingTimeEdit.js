@@ -105,7 +105,15 @@ const ManagerWorkingTimeEdit = () => {
   const insertWorkTime = async () => {
     const { data, error } = await supabase
       .from('workTime')
-      .insert([{ id_configuration: idConfig, time: time, description: description, idTask: id, date: formattedDate, id_user: userID }]);
+      .insert([{ 
+        id_configuration: idConfig, 
+        time: time, 
+        description: description, 
+        idTask: id, 
+        date: formattedDate, 
+        id_user: userID,
+        geoLocation: userLocation, // Dodaj geolokalizację
+      }]);
     handleClickAlert();
     fetchWorkTime(idConfig, id);
     if (error) {
@@ -139,6 +147,7 @@ const ManagerWorkingTimeEdit = () => {
   const columns = [
     { field: 'description', headerName: t("Description"), width: 220, },
     { field: 'time', headerName: t("Time"), width: 70 },
+    { field: 'geoLocation', headerName: t("Location"), width: 220, },
     { field: 'date', headerName: t("Date"), width: 140 },
     {
       field: 'profiles.username',
@@ -180,7 +189,7 @@ const ManagerWorkingTimeEdit = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         const { latitude, longitude } = position.coords;
-        setUserLocation(`Latitude: ${latitude}, Longitude: ${longitude}`);
+        setUserLocation(`${latitude},${longitude}`);
       }, (error) => {
         console.error(error);
         setUserLocation('Unable to retrieve location');
@@ -242,6 +251,14 @@ const ManagerWorkingTimeEdit = () => {
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
+                  <label>{t('Location')}</label>
+                  <TextField
+                    value={userLocation}
+                    disabled
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
                   <label>{t('Date')}</label>
                   <DateInput
                     type="datetime-local"
@@ -251,21 +268,13 @@ const ManagerWorkingTimeEdit = () => {
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                  <label>{t('Geolocation')}</label>
-                  <TextField
-                    value={userLocation}
-                    disabled
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
                   {/* Add the "Get Geolocation" button here */}
                   <Button
                     variant="contained"
                     color="primary"
                     onClick={getUserLocation}
                   >
-                    Get Geolocation
+                    {t('Get Location')}
                   </Button>
                 </Grid>
                 <Grid item xs={12}>
