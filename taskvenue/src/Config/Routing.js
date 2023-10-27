@@ -44,6 +44,7 @@ import CaseStudy from "../Pages/Common/Info/CaseStudy";
 import InfoContact from "../Pages/Common/Info/InfoContact";
 import Knowledge from "../Pages/Common/Info/Knowledge";
 import Technology from "../Pages/Common/Info/Technology";
+import Map from "../Pages/Manager/Map";
 
 function Routing() {
   return (
@@ -69,6 +70,8 @@ function Routing() {
         <Route path="/VenueDetalils/:id" element={<VenueDetalils />} />
         <Route path="/TaskDetails/:id" element={<TaskDetails />} />
         <Route path="/AbsenceDetails/:id" element={<AbsenceDetails />} />
+        <Route path="/Map" element={<Map />} />
+
 
         <Route path="/WorkerAbsences" element={<WorkerAbsences />} />
         <Route path="/WorkerProfile" element={<WorkerProfile />} />

@@ -21,6 +21,7 @@
     "dayjs": "^1.11.9",
     "i18next": "^23.2.7",
     "moment": "^2.29.4",
+    "pigeon-maps": "^0.21.3",
     "react": "^18.2.0",
     "react-big-calendar": "^1.8.4",
     "react-dnd": "^16.0.1",

@@ -13,8 +13,9 @@ import { useState,useEffect } from 'react';
 import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
 import IdConfigurationGuard from '../../Config/IdConfigurationGuard';
+import Map from '../../Pages/Manager/Map';
 
-const pages = ['Administration','Locations','Tasks','Absences','Schedule','Reports','Profile'];
+const pages = ['Administration','Locations','Tasks','Absences','Schedule','Reports','Profile','Map'];
 
 
 function ManagerNavBar() {
@@ -120,6 +121,10 @@ function ManagerNavBar() {
     const Reports =  () => {
         navigate('/Reports')
                 }
+        //go to Map 
+    const Map =  () => {
+      navigate('/Map')
+              }
          //go to home 
     const Home =  () => {
         navigate('/home')
@@ -193,6 +198,7 @@ function ManagerNavBar() {
 <Button onClick={Tasks}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Tasks")}</Button>
 <Button onClick={Absences}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Absences")}</Button>
 <Button onClick={Schedule}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Schedule")}</Button>
+<Button onClick={Map}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Map")}</Button>
 <Button onClick={Reports}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Reports")}</Button>
             </Menu>
           </Box>
@@ -219,6 +225,7 @@ function ManagerNavBar() {
 <Button onClick={Tasks}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Tasks")}</Button>
 <Button onClick={Absences}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Absences")}</Button>
 <Button onClick={Schedule}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Schedule")}</Button>
+<Button onClick={Map}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Map")}</Button>
 <Button onClick={Reports}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Reports")}</Button>
           </Box>
 
