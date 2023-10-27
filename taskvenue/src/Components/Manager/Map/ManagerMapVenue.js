@@ -4,7 +4,7 @@ import supabase from '../../../supabaseClient';
 import { useParams } from 'react-router-dom';
 
 const ManagerMapVenue = () => {
-  const [center, setCenter] = useState([51.4045, 19.7030]);
+  const [center, setCenter] = useState([50.06503192508109, 19.943415777331357]);
   const [zoom, setZoom] = useState(15);
   const { id } = useParams();
   const [userID, setUserID] = useState('');
