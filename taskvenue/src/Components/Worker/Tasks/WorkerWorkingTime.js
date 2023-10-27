@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent, Typography, Button, Grid, Container, Box, Snackbar, Alert, Accordion, AccordionSummary, AccordionDetails, TextField } from '@mui/material'; // Dodaj import TextField
+import { Card, CardContent,CardActions, Typography, Button, Grid, Container, Box, Snackbar, Alert, Accordion, AccordionSummary, AccordionDetails, TextField } from '@mui/material'; // Dodaj import TextField
 import styled from 'styled-components';
 import supabase from '../../../supabaseClient';
 import { useParams } from "react-router-dom";
@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { format } from 'date-fns';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const DateInput = styled.input`
   width: 100%;
@@ -29,6 +30,7 @@ const WorkerWorkingTime = () => {
   const [fullTime, setFullTime] = useState(0);
   const [selectedDateTime, setSelectedDateTime] = useState('');
   const [status, setStatus] = useState('');
+  const [userLocation, setUserLocation] = useState('');
 
   const handleDateTimeChange = (event) => {
     setSelectedDateTime(event.target.value);
@@ -117,19 +119,25 @@ const WorkerWorkingTime = () => {
   const insertWorkTime = async () => {
     const { data, error } = await supabase
       .from('workTime')
-      .insert([{ id_configuration: idConfig, time: time, description: description, idTask: id, date: formattedDate, id_user: userID }])
-    handleClickAlert()
-    fetchWorkTime(idConfig, id)
+      .insert([{ 
+        id_configuration: idConfig, 
+        time: time, 
+        description: description, 
+        idTask: id, 
+        date: formattedDate, 
+        id_user: userID,
+        geoLocation: userLocation, // Dodaj geolokalizację
+      }]);
+    handleClickAlert();
+    fetchWorkTime(idConfig, id);
     if (error) {
-      console.log(error)
+      console.log(error);
     }
     if (data) {
       setDescription("");
       setTime(0);
-
     }
-  }
-
+  };
   const fetchWorkTime = async (idConfiguration, id) => {
     const { data, error } = await supabase
       .from('workTime')
@@ -149,34 +157,6 @@ const WorkerWorkingTime = () => {
     }
   }
 
-  const columns = [
-    { field: 'id', headerName: 'ID', width: 70 }, // Dodaj ID lub inny unikalny identyfikator
-    { field: 'description', headerName: t("Description"), width: 220, },
-    { field: 'time', headerName: t("Time"), width: 70 },
-    { field: 'date', headerName: t("Date"), width: 140 },
-    {
-      field: 'profiles.username',
-      headerName: t('User'),
-      width: 140,
-      renderCell: (params) => {
-        return <span>{params.row.profiles.username}</span>;
-      },
-    },
-    {
-      field: "Action", headerName: t("Action"), width: 100,
-      renderCell: (cellValues) => {
-        return (
-          <Button
-            color="error"
-            onClick={(event) => {
-              DeleteWorktime(event, cellValues);
-            }}
-          >{t("Delete")}</Button>
-        );
-      }
-    },
-  ];
-
   const [open, setOpen] = useState(null)
 
   const handleClickAlert = () => {
@@ -189,6 +169,28 @@ const WorkerWorkingTime = () => {
     }
     setOpen(false);
   };
+
+  const getUserLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const { latitude, longitude } = position.coords;
+        setUserLocation(`${latitude},${longitude}`);
+      }, (error) => {
+        console.error(error);
+        setUserLocation('Unable to retrieve location');
+      });
+    } else {
+      setUserLocation('Geolocation is not supported by your browser');
+    }
+  };
+
+   //redirection to googlemaps
+   const handleButtonClickLocation = (selectedVenue) => {
+    const [latitude, longitude] = selectedVenue.split(',').map((coordinate) => coordinate.trim());
+    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
+    window.open(googleMapsUrl);
+  };
+
 
   return (
     <div>
@@ -242,14 +244,32 @@ const WorkerWorkingTime = () => {
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
-                    <label>{t('Date')}</label>
-                    <DateInput
-                      type="datetime-local"
-                      value={selectedDateTime}
-                      onChange={handleDateTimeChange}
-                      required
-                    />
-                  </Grid>
+                  <label>{t('Location')}</label>
+                  <TextField
+                    value={userLocation}
+                    disabled
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <label>{t('Date')}</label>
+                  <DateInput
+                    type="datetime-local"
+                    value={selectedDateTime}
+                    onChange={handleDateTimeChange}
+                    required
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  {/* Add the "Get Geolocation" button here */}
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={getUserLocation}
+                  >
+                    {t('Get Location')}
+                  </Button>
+                </Grid>
                   <Grid item xs={12}>
                     <Box display="flex" justifyContent="flex-end">
                       <Button
@@ -312,16 +332,33 @@ const WorkerWorkingTime = () => {
     <Typography variant="body2" color="textSecondary">
       {t("User")} {workItem.profiles.username}
     </Typography>
+    <Typography variant="body2" color="textSecondary">
+      {t("Location")} {workItem.geoLocation}
+    </Typography>
   </CardContent>
+
+  <CardActions style={{ display: 'flex', justifyContent: 'space-between' }}>
   <Button
-  disabled={status === 'completed'}
+    type="submit"
+    variant="contained"
+    color="success"
+    startIcon={<LocationOnIcon />}
+    onClick={() => handleButtonClickLocation(workItem.geoLocation)}
+    style={{ minWidth: 'auto' }}
+  >
+    {t('Open in Google Maps')}
+  </Button>
+  <Button
+    disabled={status === 'completed'}
     color="error"
+    variant="contained"
     onClick={(event) => {
       DeleteWorktime(event, { row: { id: workItem.id } });
     }}
   >
     {t("Delete")}
   </Button>
+  </CardActions>
 </Card>
                 ))}
               </div>
