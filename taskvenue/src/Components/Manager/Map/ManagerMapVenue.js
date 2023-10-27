@@ -129,7 +129,7 @@ const ManagerMapVenue = () => {
   }}
   color="primary"
 >
-  {t("More details about venue")}
+  {t("More details")}
 </Button>
         <Button onClick={closeDialog} color="primary">
         {t("Back")}
