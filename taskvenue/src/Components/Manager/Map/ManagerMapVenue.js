@@ -5,6 +5,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import Button from '@mui/material/Button';
+import { Divider } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import supabase from '../../../supabaseClient';
@@ -113,7 +114,13 @@ const ManagerMapVenue = () => {
         <DialogTitle> {selectedMarker ? selectedMarker.name : ''}</DialogTitle>
         <DialogContent>
           <DialogContentText>
+          <Divider textAlign='center'>{t('Description')} </Divider>
+          <p></p>
             {selectedMarker ? selectedMarker.description : ''} {/* Wyświetlanie wartości z pola "name" wybranego markera */}
+            <p></p>
+            <Divider textAlign='center'>{t('Contractor')}</Divider>
+            <p></p>
+            {selectedMarker ? selectedMarker.contractor?.nameOrCompanyName :''}
           </DialogContentText>
         </DialogContent>
         <Button
