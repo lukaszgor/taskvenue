@@ -27,6 +27,8 @@ import { useNavigate } from 'react-router-dom';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import VenueHistory from '../../Components/Manager/Venue/VenueHistory';
 import ManagerVenueAttachments from '../../Components/Manager/Attachments/ManagerVenueAttachments';
+import Tooltip from '@mui/material/Tooltip';
+
 
 const VenueDetalils = () => {
   const { t, i18n } = useTranslation();
@@ -185,6 +187,7 @@ const VenueDetalils = () => {
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
+                <Tooltip title={t('Enter an address in the geolocation data form and add text information about the address in the description field.')} arrow>
                   <TextField
                     name="address"
                     label={t('address')}
@@ -192,6 +195,7 @@ const VenueDetalils = () => {
                     onChange={(e) => setAddress(e.target.value)}
                     fullWidth
                   />
+                  </Tooltip>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
