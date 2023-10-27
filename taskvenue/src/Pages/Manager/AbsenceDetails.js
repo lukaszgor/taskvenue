@@ -8,7 +8,7 @@ import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
 import styled from 'styled-components';
 import ManagerAbsenceBreadcrumbs from '../../Components/Breadcrumbs/ManagerAbsenceBreadcrumbs';
-
+import Divider from '@mui/material/Divider';
 
 const DateTimeInput = styled.input`
   width: 100%;
@@ -153,6 +153,7 @@ const AbsenceDetails = () => {
             <ManagerNavBar></ManagerNavBar>
  <ManagerAbsenceBreadcrumbs></ManagerAbsenceBreadcrumbs>
             <Container maxWidth="md">
+            <Divider textAlign="left">{t('Absence')}</Divider>
                     <p></p>
                 <form onSubmit={handleSubmit} >
                     <Grid container spacing={2}>

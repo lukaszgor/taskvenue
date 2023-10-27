@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import styled from 'styled-components';
 import WorkerAbsenceBreadcrumbs from '../../Components/Breadcrumbs/Worker/WorkerAbsenceBreadcrumbs';
 import WorkerNavBar from '../../Components/NavigationBar/WorkerNavBar';
+import Divider from '@mui/material/Divider';
 
 
 const DateTimeInput = styled.input`
@@ -152,6 +153,7 @@ const WorkerAbsenceDetails = () => {
             <WorkerNavBar></WorkerNavBar>
  <WorkerAbsenceBreadcrumbs></WorkerAbsenceBreadcrumbs>
             <Container maxWidth="md">
+            <Divider textAlign="left">{t('Absence')}</Divider>
                     <p></p>
                 <form onSubmit={handleSubmit} >
                     <Grid container spacing={2}>
