@@ -95,7 +95,7 @@ const ManagerMapVenue = () => {
   };
 
   return (
-    <div style={{ width: '100%', height: '80vh' }}>
+    <div style={{ width: '100%', height: '75vh' }}>
       <Map center={center} zoom={zoom}>
         <ZoomControl />
         {validVenues.map((venue, index) => (

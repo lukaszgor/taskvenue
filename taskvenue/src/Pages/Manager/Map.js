@@ -5,14 +5,14 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import { useTranslation } from "react-i18next";
 import ManagerMapVenue from '../../Components/Manager/Map/ManagerMapVenue';
-
+import ManagerMapBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerMapBreadcrumbs';
 function Map() {
     const { t, i18n } = useTranslation();
 
   return (
     <div>
         <ManagerNavBar></ManagerNavBar>
-        {/* <ManagerReportsBreadcrumbs></ManagerReportsBreadcrumbs> */}
+        <ManagerMapBreadcrumbs></ManagerMapBreadcrumbs>
         <p></p>
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
