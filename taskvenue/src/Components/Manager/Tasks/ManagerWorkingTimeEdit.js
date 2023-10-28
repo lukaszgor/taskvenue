@@ -301,68 +301,66 @@ const ManagerWorkingTimeEdit = () => {
           </AccordionSummary>
           <AccordionDetails>
           <Container maxWidth="md">
-        <div>
-          {fetchError && (<p>{fetchError}</p>)}
-          {workTime && (
-            <div>
-              <p> </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-                {workTime.map((workItem) => (
-                    <Card
-                key={workItem.id}
-                style={{
-                    margin: '10px',
-                    maxWidth: '100%', 
-                    width: '100%', 
-                    display: 'flex',
-                    justifyContent: 'space-between', 
+          <div>
+  {fetchError && (<p>{fetchError}</p>)}
+  {workTime && (
+    <div>
+      <p> </p>
+      <div style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column' }}>
+        {workTime.map((workItem) => (
+          <div key={workItem.id} style={{ width: '100%' }}>
+            <Card key={workItem.id} style={{
+              margin: '10px',
+              maxWidth: '100%',
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}>
+              <CardContent>
+                <Typography variant="h6">
+                  {workItem.description}
+                </Typography>
+                <Typography variant="body2" color="textSecondary">
+                  {t("Time")} {workItem.time}
+                </Typography>
+                <Typography variant="body2" color="textSecondary">
+                  {t("Date")} {workItem.date}
+                </Typography>
+                <Typography variant="body2" color="textSecondary">
+                  {t("User")} {workItem.profiles.username}
+                </Typography>
+                <Typography variant="body2" color="textSecondary">
+                  {t("Location")} {workItem.geoLocation}
+                </Typography>
+              </CardContent>
+            </Card>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="success"
+                startIcon={<LocationOnIcon />}
+                onClick={() => handleButtonClickLocation(workItem.geoLocation)}
+                style={{ minWidth: 'auto' }}
+              >
+                {t('Open in Google Maps')}
+              </Button>
+              <Button
+                color="error"
+                variant="contained"
+                onClick={(event) => {
+                  DeleteWorktime(event, { row: { id: workItem.id } });
                 }}
-                >
-  <CardContent>
-    <Typography variant="h6">
-      {workItem.description}
-    </Typography>
-    <Typography variant="body2" color="textSecondary">
-      {t("Time")} {workItem.time}
-    </Typography>
-    <Typography variant="body2" color="textSecondary">
-      {t("Date")} {workItem.date}
-    </Typography>
-    <Typography variant="body2" color="textSecondary">
-      {t("User")} {workItem.profiles.username}
-    </Typography>
-    <Typography variant="body2" color="textSecondary">
-      {t("Location")} {workItem.geoLocation}
-    </Typography>
-  </CardContent>
-
-  <CardActions style={{ display: 'flex', justifyContent: 'space-between' }}>
-  <Button
-    type="submit"
-    variant="contained"
-    color="success"
-    startIcon={<LocationOnIcon />}
-    onClick={() => handleButtonClickLocation(workItem.geoLocation)}
-    style={{ minWidth: 'auto' }}
-  >
-    {t('Open in Google Maps')}
-  </Button>
-  <Button
-    color="error"
-    variant="contained"
-    onClick={(event) => {
-      DeleteWorktime(event, { row: { id: workItem.id } });
-    }}
-  >
-    {t("Delete")}
-  </Button>
-  </CardActions>
-</Card>
-                ))}
-              </div>
+              >
+                {t("Delete")}
+              </Button>
             </div>
-          )}
-        </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+</div>
         </Container>
         </AccordionDetails>
         </Accordion>
