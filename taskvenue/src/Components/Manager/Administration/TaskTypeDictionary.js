@@ -134,7 +134,7 @@ const insertService = async()=>{
       <div>
             <div>
               <p></p>
-
+              <Container maxWidth="md">
               <Accordion >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">{t('Task type')}</Typography>
@@ -219,7 +219,7 @@ const insertService = async()=>{
 
           </AccordionDetails>
       </Accordion>
-
+      </Container>
 
    
    {/* <Snackbar open={open}
