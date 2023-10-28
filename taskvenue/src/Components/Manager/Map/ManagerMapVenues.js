@@ -95,9 +95,17 @@ const ManagerMapVenues = () => {
     setIsDialogOpen(false);
   };
 
+  const handleMapClick = (e) => {
+    // Jeśli użytkownik dwukrotnie kliknie na mapę, zmniejsz zoom
+    if (zoom > 5) {
+      setZoom(zoom - 1);
+    }
+  };
+
+
   return (
     <div style={{ width: '100%', height: '75vh' }}>
-      <Map center={center} zoom={zoom}>
+      <Map center={center} zoom={zoom} onClick={handleMapClick}>
         <ZoomControl />
         {validVenues.map((venue, index) => (
           <Marker
