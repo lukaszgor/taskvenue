@@ -105,7 +105,7 @@ const ManagerMapVenues = () => {
 
   return (
     <div style={{ width: '100%', height: '75vh' }}>
-      <Map center={center} zoom={zoom} onClick={handleMapClick}>
+      <Map center={center} zoom={zoom} onClick={handleMapClick} touchEvents={true} metaWheelZoom={true}>
         <ZoomControl />
         {validVenues.map((venue, index) => (
           <Marker
