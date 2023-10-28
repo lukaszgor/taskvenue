@@ -12,7 +12,7 @@ import {
     DialogActions,
     DialogContentText,
     Switch,
-    Box
+    Box,Divider
 } from '@mui/material';
 import supabase from '../../supabaseClient';
 import { useNavigate } from 'react-router-dom';
@@ -289,9 +289,10 @@ const ClientVenue = () => {
                     <Grid key={venue.id} item xs={12} sm={6} md={4} lg={3}>
                         <Card>
                             <CardContent>
-                                <Typography variant="h6" gutterBottom>
+                            <Divider textAlign='left'>{t('ID')} {venue.id} </Divider>
+                                {/* <Typography variant="h6" gutterBottom>
                                     ID: {venue.id}
-                                </Typography>
+                                </Typography> */}
                                 <Typography variant="h6" gutterBottom>
                                     {t('Name')} : {venue.name}
                                 </Typography>
