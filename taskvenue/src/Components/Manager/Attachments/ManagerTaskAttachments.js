@@ -23,10 +23,10 @@ import {
 } from '@mui/material';
 
 const ManagerTaskAttachments = () => {
+  const [fileData, setFileData] = useState(null)
   const [files, setFiles] = useState([]);
   const [filteredFiles, setFilteredFiles] = useState([]);
   const [fileToUpload, setFileToUpload] = useState(null);
-  const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
   const [idConfig, setIdConfiguration] = useState('');
   const { id } = useParams();
   const [userID, setUserID] = useState('');
@@ -108,10 +108,35 @@ const ManagerTaskAttachments = () => {
     }
   };
 
-  const displayFile = async (file) => {
-    const fileUrl = `${supabaseUrl}/storage/v1/object/public/task/${idConfig}/${id}/${file.name}`;
-    window.open(fileUrl);
+
+
+  const downloadFile = async (file) => {
+    try {
+      const { data, error } = await supabase.storage
+        .from('task')
+        .download(idConfig + '/' + id + '/' + file.name);
+      if (error) {
+        console.error('Błąd podczas pobierania pliku z Supabase:', error);
+      } else {
+        // Create a blob from the downloaded data and generate a URL
+        const blob = new Blob([data]);
+        const blobUrl = URL.createObjectURL(blob);
+        
+        // Create an anchor element and trigger a click to download the file
+        const a = document.createElement('a');
+        a.href = blobUrl;
+        a.download = file.name;
+        a.click();
+  
+        // Clean up the URL and release the blob
+        URL.revokeObjectURL(blobUrl);
+      }
+    } catch (error) {
+      console.error('Błąd podczas pobierania pliku z Supabase:', error);
+    }
   };
+  
+
 
   const uploadAndProcessFile = async () => {
     if (fileToUpload) {
@@ -146,7 +171,7 @@ const ManagerTaskAttachments = () => {
               <TableRow key={index}>
                 <TableCell>{file.name}</TableCell>
                 <TableCell>
-                  <Button onClick={() => displayFile(file)}>{t('Display')}</Button>
+                <Button onClick={() => downloadFile(file)}>{t('Download')}</Button>
                   <Button color="error" onClick={() => showDeleteConfirmation(file)}>{t('Delete')}</Button>
                 </TableCell>
               </TableRow>
@@ -161,7 +186,6 @@ const ManagerTaskAttachments = () => {
         </FormControl>
         <Button onClick={uploadAndProcessFile}>{t('Add')}</Button>
       </Box>
-
       {/* Delete Confirmation Dialog */}
       <Dialog
         open={deleteConfirmationOpen}
