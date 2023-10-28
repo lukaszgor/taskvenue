@@ -17,6 +17,7 @@ const UserDetails = () => {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
+    const [uuid, setUuid] = useState('');
     const [phone_number, setPhoneNumber] = useState('');
     const [description, setDescription] = useState('');
     const [profile_type, setProfileType] = useState('');
@@ -49,6 +50,7 @@ const FetchUserData = async () => {
         setProfileType(data.profile_type)
         setIsBlocked(data.isBlocked)
         setSelectedContractorId(data.id_contractor)
+        setUuid(data.id)
     }
     }
 
@@ -204,6 +206,16 @@ const handleCloseAlert = (event, reason) => {
                 <MenuItem value="client">{t('Client')}</MenuItem>
               </Select>
               </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="ID"
+                label={t("ID")}
+                value={uuid}
+                onChange={(e) => setUuid(e.target.value)}
+                fullWidth
+                disabled
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
             
