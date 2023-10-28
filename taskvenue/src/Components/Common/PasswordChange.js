@@ -74,13 +74,15 @@ const handleCloseAlert = (event, reason) => {
       <div >
         <p></p>
         <Language></Language>
+        <p></p>
+        <Container maxWidth="md">
         <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">{t('Password change')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
-          <Container maxWidth="md">
+          <Container maxWidth="md"  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
         <Grid item xs={12} sm={6}>
           <FormControl fullWidth>
       <TextField
@@ -108,7 +110,7 @@ const handleCloseAlert = (event, reason) => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
-          <Container maxWidth="md">
+          <Container maxWidth="md" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
         <Grid item xs={12} sm={6}>
           <FormControl fullWidth>
         <TextField
@@ -131,6 +133,7 @@ const handleCloseAlert = (event, reason) => {
         </Snackbar>
         </AccordionDetails>
       </Accordion>
+      </Container>
         </div>
      
       
