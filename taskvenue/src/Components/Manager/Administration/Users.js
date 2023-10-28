@@ -232,7 +232,7 @@ const handleOpenFilterChange = () => {
                     </form>
                 </AccordionDetails>
             </Accordion>
-
+            
             <Accordion defaultExpanded>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                     <Typography variant="h6" fontWeight="bold">{t('Users')}</Typography>
@@ -288,6 +288,7 @@ const handleOpenFilterChange = () => {
           </Button>
         </DialogContent>
       </Dialog>
+      <Container maxWidth="md">
                     <Typography></Typography>
                    
                     {fetchError && (<p>{fetchError}</p>)}
@@ -317,6 +318,7 @@ const handleOpenFilterChange = () => {
                             </div>
                         </div>
                     )}
+                    </Container>
                 </AccordionDetails>
             </Accordion>
         </div>
