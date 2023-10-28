@@ -6,8 +6,6 @@ import { useTranslation } from "react-i18next";
 import clipboardCopy from 'clipboard-copy';
 import WaitingRoomNavBar from '../../Components/NavigationBar/WaitingRoomNavBar';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import WavingHandOutlinedIcon from '@mui/icons-material/WavingHandOutlined';
-import Game from '../../Components/Common/Game';
 import Username from '../../Components/Common/Username';
 
 const WaitingRoomForNewUser = () => {
@@ -31,10 +29,10 @@ const WaitingRoomForNewUser = () => {
 <WaitingRoomNavBar></WaitingRoomNavBar>
 <p></p>
 
-
+<Container maxWidth="md">
 <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t('Hi, your ID can be found below')} <WavingHandOutlinedIcon /></Typography>
+          <Typography variant="h6" fontWeight="bold">{t('Hi, your ID can be found below')} </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
@@ -91,7 +89,7 @@ const WaitingRoomForNewUser = () => {
             </Grid>
             </Container>
 <Username></Username>
-<Container maxWidth="sm">
+<Container maxWidth="md">
         <Grid container spacing={2}>
         <Grid item xs={12}>
             <p> {t("After adding your account to the configuration, log in again")}</p>
@@ -100,6 +98,7 @@ const WaitingRoomForNewUser = () => {
             </Container>
         </AccordionDetails>
       </Accordion>
+      </Container>
 {/* 
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
