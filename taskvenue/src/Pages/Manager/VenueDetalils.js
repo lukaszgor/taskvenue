@@ -268,7 +268,6 @@ const VenueDetalils = () => {
           <ManagerVenueAttachments></ManagerVenueAttachments>
         </AccordionDetails>
       </Accordion>
-<p></p>
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">
@@ -280,7 +279,7 @@ const VenueDetalils = () => {
           <VenueHistory></VenueHistory>
         </AccordionDetails>
       </Accordion>
-      <Accordion defaultExpanded>
+      <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">
             {t('Map')}
