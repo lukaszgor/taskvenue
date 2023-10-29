@@ -5,6 +5,7 @@ import supabase from '../../supabaseClient';
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from 'react-router-dom';
+import moment from 'moment';
 
 function CustomToolbar() {
     return (
@@ -29,6 +30,9 @@ const ManagerAllTasks = () => {
     sort: 'desc', // 'desc' oznacza sortowanie malejące
   },
 ]);
+const formatDate = (date) => {
+  return moment(date).format('DD.MM.YYYY, HH:mm'); // Parsuj datę do żądanego formatu
+};
 
   
       useEffect(() => {
@@ -123,9 +127,9 @@ const ManagerAllTasks = () => {
             return taskSettled;
         }
     }, },
-    { field: 'createdDate', headerName: t("Estimated time"), width: 150 },
-    { field: 'kickoffDate', headerName: t("Start of implementation"), width: 140 },
-    { field: 'deadline', headerName: t("Deadline"), width: 140 },
+    { field: 'createdDate', headerName: t("Creation date"), width: 150, valueFormatter: (params) => formatDate(params.value) },
+    { field: 'kickoffDate', headerName: t("Start of implementation"), width: 140, valueFormatter: (params) => formatDate(params.value) },
+    { field: 'deadline', headerName: t("Deadline"), width: 140, valueFormatter: (params) => formatDate(params.value) },
     { field: 'id_venue', headerName: t("Venue ID"), width: 100 },
     { field: 'author', headerName: t("Author"), width: 100 },
     {
