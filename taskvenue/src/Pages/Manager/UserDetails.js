@@ -1,7 +1,7 @@
 import React from 'react';
 import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import { useState,useEffect } from 'react';
-import { TextField, Button, Grid, Container, Typography, Select, MenuItem,Checkbox,FormControlLabel,FormControl,InputLabel,Box,Divider } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography, Select, MenuItem,Checkbox,FormControlLabel,FormControl,InputLabel,Box,Divider,Accordion,AccordionSummary,AccordionDetails, } from '@mui/material';
 import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
@@ -10,6 +10,8 @@ import Alert from '@mui/material/Alert';
 import ManagerAdministrationUserBreadcrumbs from '../../Components/Breadcrumbs/ManagerAdministrationUserBreadcrumbs';
 import { useNavigate } from "react-router-dom"
 import ManagerEmployeeDocuments from '../../Components/Manager/Documents/ManagerEmployeeDocuments';
+import UserWorkTimeHistory from '../../Components/Manager/Administration/UserWorkTimeHistory';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const UserDetails = () => {
     const {id} = useParams()
@@ -252,6 +254,17 @@ const handleCloseAlert = (event, reason) => {
             <Divider textAlign="left">{t("Documents")}</Divider>
             <p></p>
 <ManagerEmployeeDocuments></ManagerEmployeeDocuments>
+<Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">
+            {t('Working time history')}
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+          <UserWorkTimeHistory></UserWorkTimeHistory>
+        </AccordionDetails>
+      </Accordion>
           </FormControl>
         )}
               </Box>
