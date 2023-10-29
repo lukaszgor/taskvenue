@@ -89,6 +89,8 @@ const ManagerWorkTime = () => {
         headerName: t('User'),
         sortable: false, 
         filterable: false,
+        disableColumnMenu: true,
+        disableColumnReorder: true,
         width: 140,
         renderCell: (params) => {
           return <span>{params.row.profiles.username}</span>;

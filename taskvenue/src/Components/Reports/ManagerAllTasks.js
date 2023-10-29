@@ -94,6 +94,10 @@ const formatDate = (date) => {
         field: 'contractor.nameOrCompanyName',
         headerName: t('Contractor'),
         width: 140,
+        sortable: false, 
+        filterable: false,
+        disableColumnMenu: true,
+        disableColumnReorder: true,
         renderCell: (params) => {
           return <span>{params.row.contractor.nameOrCompanyName}</span>;
         },
