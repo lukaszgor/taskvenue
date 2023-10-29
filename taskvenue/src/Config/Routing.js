@@ -40,10 +40,8 @@ import ClientVenueDetalils from "../Pages/Client/ClientVenueDetalils";
 import ClientTaskDetails from "../Pages/Client/ClientTaskDetails";
 import Info from "../Pages/Common/Info/Info";
 import AboutUs from "../Pages/Common/Info/AboutUs";
-import CaseStudy from "../Pages/Common/Info/CaseStudy";
 import InfoContact from "../Pages/Common/Info/InfoContact";
 import Knowledge from "../Pages/Common/Info/Knowledge";
-import Technology from "../Pages/Common/Info/Technology";
 import Map from "../Pages/Manager/Map";
 
 function Routing() {
@@ -92,11 +90,9 @@ function Routing() {
         <Route path="/ClientTaskDetails/:id" element={<ClientTaskDetails />} />
 
         <Route path="/info" element={<Info />} />
-        <Route path="/casestudy" element={<CaseStudy />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/infocontact" element={<InfoContact />} />
         <Route path="/knowledge" element={<Knowledge />} />
-        <Route path="/technology" element={<Technology />} />
 
 
 
