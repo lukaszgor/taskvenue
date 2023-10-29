@@ -11,7 +11,6 @@ import Schedule from "../Pages/Manager/Schedule";
 import Reports from "../Pages/Manager/Reports";
 import Tasks from "../Pages/Manager/Tasks";
 import Profile from "../Pages/Manager/Profile";
-import Register from "../Pages/Manager/Register";
 import UserDetails from "../Pages/Manager/UserDetails";
 import ContractorsDetails from "../Pages/Manager/ContractorsDetails";
 import WaitingRoomForNewUser from "../Pages/Common/WaitingRoomForNewUser";
@@ -59,7 +58,6 @@ function Routing() {
         <Route path="/Tasks" element={<Tasks />} />
         <Route path="/Absences" element={<Absences />} />
         <Route path="/Profile" element={<Profile />} />
-        <Route path="/Register" element={<Register />} />
         <Route path="/AddNewVenue" element={<AddNewVenue />} />
         <Route path="/AddNewTask" element={<AddNewTask />} />
         <Route path="/AddNewAbsence" element={<AddNewAbsence />} />
