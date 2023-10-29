@@ -1,11 +1,20 @@
 import { useState, useEffect } from 'react';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid,GridToolbarContainer, GridToolbarExport } from '@mui/x-data-grid';
 import { Button } from '@mui/material';
 import supabase from '../../../supabaseClient';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment'; // Import moment library
+
+
+function CustomToolbar() {
+  return (
+    <GridToolbarContainer>
+      <GridToolbarExport />
+    </GridToolbarContainer>
+  );
+}
 
 const VenueHistory = () => {
   const { t, i18n } = useTranslation();
@@ -15,6 +24,7 @@ const VenueHistory = () => {
   const [fetchError, setFetchError] = useState(null);
   const [tasks, setTasks] = useState(null);
   const navigate = useNavigate();
+
 
   useEffect(() => {
     const checkSession = async () => {
@@ -137,6 +147,9 @@ const VenueHistory = () => {
                 columns={columns}
                 pageSize={12}
                 rowsPerPageOptions={[12]}
+                slots={{
+                  toolbar: CustomToolbar,
+                }}
               />
             </div>
             <div></div>

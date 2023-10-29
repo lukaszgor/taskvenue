@@ -1,11 +1,18 @@
 import { useState, useEffect } from 'react';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid,GridToolbarContainer, GridToolbarExport } from '@mui/x-data-grid';
 import { Button } from '@mui/material';
 import supabase from '../../../supabaseClient';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
+function CustomToolbar() {
+    return (
+      <GridToolbarContainer>
+        <GridToolbarExport />
+      </GridToolbarContainer>
+    );
+  }
 
 const UserWorkTimeHistory = () => {
   const { t, i18n } = useTranslation();
@@ -73,8 +80,8 @@ const UserWorkTimeHistory = () => {
 
   const columns = [
     { field: 'idTask', headerName: t('ID'), width: 50 },
-    { field: 'name', headerName: t('Name'), width: 200 },
-    { field: 'time', headerName: t('Time'), width: 200 },
+    { field: 'time', headerName: t('Time'), width: 50 },
+    { field: 'description', headerName: t('Description'), width: 200 },
     {
       field: 'date',
       headerName: t('Creation date'),
@@ -113,6 +120,9 @@ const UserWorkTimeHistory = () => {
                 columns={columns}
                 pageSize={12}
                 rowsPerPageOptions={[12]}
+                slots={{
+                    toolbar: CustomToolbar,
+                  }}
               />
             </div>
             <div></div>
