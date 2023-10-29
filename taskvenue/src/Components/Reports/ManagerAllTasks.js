@@ -23,6 +23,13 @@ const ManagerAllTasks = () => {
   const {id} = useParams()
   const [userID, setUserID] = useState('');
   const [idConfig, setIdConfiguration] = useState('');
+  const [sortModel, setSortModel] = useState([ 
+  {
+    field: 'id',
+    sort: 'desc', // 'desc' oznacza sortowanie malejące
+  },
+]);
+
   
       useEffect(() => {
           const checkSession = async () => {
@@ -149,6 +156,7 @@ const ManagerAllTasks = () => {
            rows={service}
            columns={columns}
            pageSize={25}
+           sortModel={sortModel} 
            rowsPerPageOptions={[12]}
            slots={{
             toolbar: CustomToolbar,

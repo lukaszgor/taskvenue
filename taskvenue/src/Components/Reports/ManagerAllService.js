@@ -23,6 +23,12 @@ const ManagerAllService = () => {
   const {id} = useParams()
   const [userID, setUserID] = useState('');
   const [idConfig, setIdConfiguration] = useState('');
+  const [sortModel, setSortModel] = useState([ 
+    {
+      field: 'idTask',
+      sort: 'desc', // 'desc' oznacza sortowanie malejące
+    },
+  ]);
   
       useEffect(() => {
           const checkSession = async () => {
@@ -80,7 +86,7 @@ const ManagerAllService = () => {
 
 
   const columns = [
-    { field: 'idTask', headerName: t("Task ID"), width: 60 },
+    { field: 'idTask', headerName: t("ID"), width: 60 },
     { field: 'name', headerName: t("Name"), width: 250 },
     { field: 'description', headerName: t("Description"), width: 350},
     { field: 'cost', headerName: t("Cost"), width: 70 },
@@ -133,6 +139,7 @@ const ManagerAllService = () => {
          <DataGrid
            rows={service}
            columns={columns}
+           sortModel={sortModel} 
            pageSize={12}
            rowsPerPageOptions={[12]}
            slots={{

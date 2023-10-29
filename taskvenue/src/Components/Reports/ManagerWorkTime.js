@@ -23,6 +23,12 @@ const ManagerWorkTime = () => {
   const {id} = useParams()
   const [userID, setUserID] = useState('');
   const [idConfig, setIdConfiguration] = useState('');
+  const [sortModel, setSortModel] = useState([ 
+    {
+      field: 'idTask',
+      sort: 'desc', // 'desc' oznacza sortowanie malejące
+    },
+  ]);
   
       useEffect(() => {
           const checkSession = async () => {
@@ -77,7 +83,7 @@ const ManagerWorkTime = () => {
 
 
   const columns = [
-    { field: 'idTask', headerName: t("ID"), width: 60 },
+    { field: 'idTask', headerName: t("ID"), width: 90 },
     {
         field: 'profiles.username',
         headerName: t('User'),
@@ -120,6 +126,7 @@ const ManagerWorkTime = () => {
            rows={workTime}
            columns={columns}
            pageSize={25}
+           sortModel={sortModel} 
            rowsPerPageOptions={[12]}
            slots={{
             toolbar: CustomToolbar,

@@ -26,6 +26,12 @@ const ClientAllTasks = () => {
   const [fetchError, setFetchError] = useState(null);
   const [tasks, setTasks] = useState(null);
   const navigate = useNavigate();
+  const [sortModel, setSortModel] = useState([ 
+    {
+      field: 'id',
+      sort: 'desc', // 'desc' oznacza sortowanie malejące
+    },
+  ]);
 
   useEffect(() => {
     const checkSession = async () => {
@@ -148,6 +154,7 @@ const ClientAllTasks = () => {
                 rows={tasks}
                 columns={columns}
                 pageSize={12}
+                sortModel={sortModel} 
                 rowsPerPageOptions={[12]}
                 slots={{
                     toolbar: CustomToolbar,
