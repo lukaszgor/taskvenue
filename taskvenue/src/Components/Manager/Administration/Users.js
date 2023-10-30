@@ -174,6 +174,7 @@ const handleOpenFilterChange = () => {
 
     return (
         <div>
+            <Container maxWidth="md">
             <Accordion>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                     <Typography variant="h6" fontWeight="bold">{t('Add new user')}</Typography>
@@ -321,6 +322,7 @@ const handleOpenFilterChange = () => {
                     </Container>
                 </AccordionDetails>
             </Accordion>
+            </Container>
         </div>
     );
 }

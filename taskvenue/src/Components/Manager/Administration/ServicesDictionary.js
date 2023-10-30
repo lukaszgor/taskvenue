@@ -166,6 +166,7 @@ const insertService = async()=>{
       <div>
             <div>
               <p></p>
+              <Container maxWidth="md">
               <Accordion >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">{t('Add')}</Typography>
@@ -241,7 +242,7 @@ const insertService = async()=>{
 </form>
         </AccordionDetails>
       </Accordion>
-       
+      </Container>
  <div>
      {fetchError &&(<p>{fetchError}</p>)}
      {service &&(
@@ -266,6 +267,7 @@ const insertService = async()=>{
    <Alert severity="success">{t("Updated!")}</Alert>
    </Snackbar> */}
    </div>
+   
       </div>
     );
   }

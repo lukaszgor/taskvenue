@@ -67,6 +67,7 @@ const fetchValidityDate = async () => {
 }
   return (
     <div>
+      <Container maxWidth="md">
     <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">{t('License')}</Typography>
@@ -91,7 +92,7 @@ const fetchValidityDate = async () => {
           <Typography>{name}</Typography>
         </AccordionDetails>
       </Accordion>
-
+      </Container>
     </div>
   );
 };
