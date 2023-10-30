@@ -180,16 +180,17 @@ const ManagerMapTasks = () => {
       </Map>
 
       <Dialog open={isDialogOpen} onClose={closeDialog}>
-      <Divider textAlign='left'>{t('ID')} {selectedMarker ? selectedMarker.id : ''}  </Divider>
+        <p></p>
+      <Divider textAlign='right'>{t('ID')} {selectedMarker ? selectedMarker.id : ''}  </Divider>
         <DialogTitle> {selectedMarker ? selectedMarker.name : ''}</DialogTitle>
         <DialogContent>
           <DialogContentText>
-          <Divider textAlign='center'>{t('Date')}  </Divider>
+          <Divider textAlign='left'>{t('Date')}  </Divider>
           {selectedMarker ? formatDate(selectedMarker.kickoffDate) : ''}
           <p></p>
           {selectedMarker ? formatDate(selectedMarker.deadline) : ''} 
           <p></p>
-          <Divider textAlign='center'>{t('Description')} </Divider>
+          <Divider textAlign='left'>{t('Description')} </Divider>
           <p></p>
             {selectedMarker ? selectedMarker.description : ''} {/* Wyświetlanie wartości z pola "name" wybranego markera */}
             <p></p>
