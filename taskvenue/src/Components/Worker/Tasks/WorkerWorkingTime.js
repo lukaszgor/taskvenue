@@ -194,6 +194,7 @@ const WorkerWorkingTime = () => {
 
   return (
     <div>
+      <Container maxWidth="md">
       <div>
         <p></p>
         <div>
@@ -367,6 +368,7 @@ const WorkerWorkingTime = () => {
         </AccordionDetails>
         </Accordion>
       </div>
+      </Container>
     </div>
   );
 };

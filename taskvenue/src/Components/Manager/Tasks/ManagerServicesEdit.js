@@ -293,6 +293,7 @@ function ManagerServicesEdit() {
 
     return (
         <div>
+            <Container maxWidth="md">
             <div>
                 <p></p>
                 <div>
@@ -490,6 +491,7 @@ function ManagerServicesEdit() {
                     </Container>
                 </AccordionDetails>
             </Accordion>
+            </Container>
         </div>
     );
 }

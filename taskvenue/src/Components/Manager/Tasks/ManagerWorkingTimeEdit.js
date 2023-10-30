@@ -194,6 +194,7 @@ const ManagerWorkingTimeEdit = () => {
 
   return (
     <div>
+      <Container maxWidth="md">
       <div>
         <p></p>
         <div>
@@ -365,6 +366,7 @@ const ManagerWorkingTimeEdit = () => {
         </AccordionDetails>
         </Accordion>
       </div>
+      </Container>
     </div>
   );
 };

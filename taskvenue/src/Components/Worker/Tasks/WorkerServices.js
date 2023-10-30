@@ -293,6 +293,7 @@ function WorkerServices() {
 
     return (
         <div>
+            <Container maxWidth="md">
             <div>
                 <p></p>
                 <div>
@@ -490,6 +491,7 @@ function WorkerServices() {
                     </Container>
                 </AccordionDetails>
             </Accordion>
+            </Container>
         </div>
     );
 }

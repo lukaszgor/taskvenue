@@ -293,6 +293,7 @@ function ClientTaskServices() {
 
     return (
         <div>
+            <Container maxWidth="md">
             <div>
                 <p></p>
                 <div>
@@ -493,6 +494,7 @@ function ClientTaskServices() {
                     </Container>
                 </AccordionDetails>
             </Accordion>
+            </Container>
         </div>
     );
 }
