@@ -28,6 +28,7 @@ import styled from 'styled-components';
 import { format } from 'date-fns';
 import SellIcon from '@mui/icons-material/Sell';
 
+
 const DateInput = styled.input`
   width: 100%;
   padding: 8px;
@@ -55,6 +56,7 @@ function ManagerServicesEdit() {
 
     const [userID, setUserID] = useState('');
     const [idConfig, setIdConfiguration] = useState('');
+
 
     useEffect(() => {
         const checkSession = async () => {
@@ -256,41 +258,6 @@ function ManagerServicesEdit() {
         return execution === 1 ? true : false;
     };
 
-    const columns = [
-        { field: 'name', headerName: t('Name'), width: 250 },
-        { field: 'description', headerName: t('Description'), width: 400 },
-        { field: 'cost', headerName: t('Cost'), width: 70 },
-        { field: 'quantity', headerName: t('Quantity'), width: 70 },
-        { field: 'unit', headerName: t('Unit'), width: 100 },
-        { field: 'total', headerName: t('Total'), width: 70 },
-        { field: 'date', headerName: t('Date'), width: 140 },
-        {
-            field: 'profiles.username',
-            headerName: t('User'),
-            width: 140,
-            renderCell: (params) => {
-                return <span>{params.row.profiles.username}</span>;
-            },
-        },
-        {
-            field: 'Action',
-            headerName: t('Action'),
-            width: 100,
-            renderCell: (cellValues) => {
-                return (
-                    <Button
-                        color="error"
-                        onClick={(event) => {
-                            DeleteService(event, cellValues);
-                        }}
-                    >
-                        {t('Delete')}
-                    </Button>
-                );
-            },
-        },
-    ];
-
     return (
         <div>
             <Container maxWidth="md">
@@ -391,13 +358,17 @@ function ManagerServicesEdit() {
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
-                                    <label>{t('Date')}</label>
-                                    <DateInput
+                                <TextField
                                         type="datetime-local"
+                                        id="Date"
                                         value={selectedDateTime}
                                         onChange={handleDateTimeChange}
                                         required
-                                    />
+                                        fullWidth
+                                        margin="normal"
+                                        label={t('Date')}
+                                        focused
+                                        />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
                                     <TextField
