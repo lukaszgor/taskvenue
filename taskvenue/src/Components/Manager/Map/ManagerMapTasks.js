@@ -119,7 +119,6 @@ const ManagerMapTasks = () => {
 
 <Grid container spacing={2} maxWidth="md">
       <Grid item xs={6}>
-        <label htmlFor="startDate">{t('Start of implementation')}</label>
         <TextField
           type="datetime-local"
           id="startDate"
@@ -127,10 +126,11 @@ const ManagerMapTasks = () => {
           onChange={(e) => setStartDate(e.target.value)}
           fullWidth
           margin="normal"
+          label={t('Date from : ')}
+          focused
         />
       </Grid>
       <Grid item xs={6}>
-        <label htmlFor="endDate">{t('Deadline')}</label>
         <TextField
           type="datetime-local"
           id="endDate"
@@ -138,6 +138,8 @@ const ManagerMapTasks = () => {
           onChange={(e) => setEndDate(e.target.value)}
           fullWidth
           margin="normal"
+          label={t('Date to : ')}
+          focused
         />
       </Grid>
     </Grid>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { Grid, Container, Typography } from '@mui/material';
+import { Grid, Container, Typography,TextField } from '@mui/material';
 import supabase from '../../supabaseClient';
 import { useTranslation } from 'react-i18next';
 
@@ -102,24 +102,28 @@ const StatusOfImplementation30Report = () => {
   return (
     <div>
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={2} className="left-input">
-          <label htmlFor="currentDate">{t("Date from : ")}</label>
-          <input
-            type="datetime-local" // Użyj typu "datetime-local" dla inputa
-            id="daysAgo"
-            value={daysAgo}
-            onChange={(e) => setDaysAgo(e.target.value)}
-          />
-        </Grid>
-        <Grid item xs={12} sm={2} className="right-input">
-          <label htmlFor="daysAgo">{t("Date to : ")}</label>
-          <input
-            type="datetime-local" // Użyj typu "datetime-local" dla inputa
-            id="currentDate"
-            value={currentDate}
-            onChange={(e) => setCurrentDate(e.target.value)}
-          />
-        </Grid>
+        <Grid item xs={12} sm={2}>
+        <TextField
+          type="datetime-local"
+          id="daysAgo"
+          value={daysAgo}
+          onChange={(e) => setDaysAgo(e.target.value)}
+          fullWidth
+          margin="normal"
+          label={t('Date from : ')}
+        />
+      </Grid>
+      <Grid item xs={12} sm={2}>
+        <TextField
+          type="datetime-local"
+          id="currentDate"
+          value={currentDate}
+          onChange={(e) => setCurrentDate(e.target.value)}
+          fullWidth
+          margin="normal"
+          label={t('Date to : ')}
+        />
+      </Grid>
       </Grid>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={mockedData}>
