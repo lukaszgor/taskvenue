@@ -285,7 +285,36 @@ const WorkerBasicDataEdit = () => {
     <div>
       <Container maxWidth="md">
         <form onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
+
+        <Grid item xs={12}>
+             <Accordion defaultExpanded >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Start Stop')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+             <WorkerStartAndStop></WorkerStartAndStop>
+             </AccordionDetails>
+      </Accordion>
+             </Grid>
+<p></p>
+             <Grid item xs={12}>
+             <Accordion defaultExpanded >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Venue')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+             <WorkerVenue></WorkerVenue>
+             </AccordionDetails>
+      </Accordion>
+             </Grid>
+<p></p>
+        <Grid item xs={12} sm={12}>
+          <Accordion >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Basic data')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+        <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
                 name="Name"
@@ -450,31 +479,13 @@ const WorkerBasicDataEdit = () => {
                 label={t('Settled')}
               />
             </Grid> */}
-             <Grid item xs={12}>
-             <Accordion defaultExpanded >
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t('Venue')}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-             <WorkerVenue></WorkerVenue>
+            </Grid>
              </AccordionDetails>
       </Accordion>
-             </Grid>
-
-             <Grid item xs={12}>
-             <Accordion defaultExpanded >
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t('Start Stop')}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-             <WorkerStartAndStop></WorkerStartAndStop>
-             </AccordionDetails>
-      </Accordion>
-             </Grid>
-             
+      </Grid>
+   <p></p>          
              <Grid item xs={12} sm={12}>
-       
-       <Accordion defaultExpanded >
+       <Accordion >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">{t('Attachments')}</Typography>
         </AccordionSummary>
@@ -483,30 +494,10 @@ const WorkerBasicDataEdit = () => {
              </AccordionDetails>
       </Accordion>
             </Grid>
+            <p></p>
 
              <Grid item xs={12}>
   <Box display="flex" justifyContent="flex-end">
-{/* //stare przciki na rozdzielnie zmiany statusu i zapisu */}
-  {/* <Button
-      variant="contained"
-      color="secondary"
-
-      style={{ minWidth: 'auto', marginRight: '16px' }}
-      onClick={handleOpenChangeStatusDialog}
-      startIcon={<EditIcon />}
-    >
-      {t('Change Status')}
-    </Button>
-
-    <Button
-      type="submit"
-      variant="contained"
-      color="primary"
-      style={{ minWidth: 'auto' }}
-      startIcon={<SaveIcon />}
-    >
-      {t('Submit')}
-    </Button> */}
    <Button
       variant="contained"
       color="primary"
@@ -560,8 +551,6 @@ const WorkerBasicDataEdit = () => {
       
         </DialogActions>
       </Dialog>
-
-          </Grid>
         </form>
         <Snackbar
           open={open}
