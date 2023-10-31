@@ -310,18 +310,12 @@ const WorkerWorkingTime = () => {
       <p> </p>
       <div style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column' }}>
         {workTime.map((workItem) => (
-          <div key={workItem.id} style={{ width: '100%' }}>
-            <Card key={workItem.id} style={{
-              margin: '10px',
-              maxWidth: '100%',
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'space-between',
-            }}>
+            <Grid item xs={12} sm={6} md={12} lg={12} key={workItem.id}>
+            <Card>
               <CardContent>
-                <Typography variant="h6">
-                  {workItem.description}
-                </Typography>
+              <Grid container alignItems="center" justifyContent="space-between">
+              <Typography variant="h6">{workItem.description}</Typography>
+            </Grid>
                 <Typography variant="body2" color="textSecondary">
                   {t("Time")} {workItem.time}
                 </Typography>
@@ -335,8 +329,7 @@ const WorkerWorkingTime = () => {
                   {t("Location")} {workItem.geoLocation}
                 </Typography>
               </CardContent>
-            </Card>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <CardActions style={{ display: 'flex', justifyContent: 'space-between' }}>
               <Button
                 type="submit"
                 variant="contained"
@@ -357,8 +350,9 @@ const WorkerWorkingTime = () => {
               >
                 {t("Delete")}
               </Button>
-            </div>
-          </div>
+              </CardActions>
+            </Card>
+            </Grid>
         ))}
       </div>
     </div>
@@ -374,3 +368,4 @@ const WorkerWorkingTime = () => {
 };
 
 export default WorkerWorkingTime;
+
