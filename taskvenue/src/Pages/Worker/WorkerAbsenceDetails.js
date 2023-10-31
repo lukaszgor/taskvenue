@@ -157,24 +157,30 @@ const WorkerAbsenceDetails = () => {
                     <p></p>
                 <form onSubmit={handleSubmit} >
                     <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6}>
-                            <label>{t('Start date')}</label>
-                            <DateTimeInput
-                                type="datetime-local"
-                                value={kickoffDate}
-                                onChange={(e) => setKickoffDate(e.target.value)}
-                                disabled={status === 'rejected' || status === 'approved'}
-                            />
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                            <label>{t('End date')}</label>
-                            <DateTimeInput
-                                type="datetime-local"
-                                value={finishDate}
-                                onChange={(e) => setFinishDate(e.target.value)}
-                                disabled={status === 'rejected' || status === 'approved'}
-                            />
-                            </Grid>
+                    <Grid item xs={12}>
+                        <TextField
+                        type="datetime-local"
+                        id="startDate"
+                        value={kickoffDate}
+                        onChange={(e) => setKickoffDate(e.target.value)}
+                        fullWidth
+                        margin="normal"
+                        label={t('Start date')}
+                        focused
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField
+                        type="datetime-local"
+                        id="startDate"
+                        value={finishDate}
+                        onChange={(e) => setFinishDate(e.target.value)}
+                        fullWidth
+                        margin="normal"
+                        label={t('End date')}
+                        focused
+                        />
+                    </Grid>
                             <Grid item xs={12} sm={6}>
                             <FormControl fullWidth>
                                 <InputLabel id="status-select-select-label">
