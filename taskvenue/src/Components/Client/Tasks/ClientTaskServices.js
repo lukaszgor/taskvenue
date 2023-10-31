@@ -366,9 +366,9 @@ function ClientTaskServices() {
                                         onChange={handleDateTimeChange}
                                         required
                                         fullWidth
-                                        margin="normal"
                                         label={t('Date')}
                                         focused
+                                        style={{ marginRight: '10px' }}
                                         />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>

@@ -345,9 +345,14 @@ const ClientBasicDataEdit = () => {
                 type="number"
               />
             </Grid> */}
-            <Grid item xs={12} sm={6}>
-              <label>{t('Creation date')}</label>
-              <DateTimeInput type="datetime-local" value={createdDate} disabled />
+                        <Grid item xs={12} sm={6}>
+                <TextField
+                  type="datetime-local"
+                  id="Date"
+                  value={createdDate} disabled 
+                  fullWidth
+                  label={t('Creation date')}
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -358,24 +363,30 @@ const ClientBasicDataEdit = () => {
                 disabled
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <label>{t('Start of implementation')}</label>
-              <DateTimeInput
-                type="datetime-local"
-                value={kickoff}
-                onChange={handleKickoffChange}
-                disabled
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <label>{t('Deadline')}</label>
-              <DateTimeInput
-                type="datetime-local"
-                value={deadline}
-                onChange={handleDeadlineChange}
-                disabled
-              />
-            </Grid>
+                        <Grid item xs={12} sm={6}>
+                        <TextField
+                        type="datetime-local"
+                        id="startDate"
+                        value={kickoff}
+                        onChange={handleKickoffChange}
+                        fullWidth
+                        margin="normal"
+                        label={t('Start date')}
+                        disabled
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <TextField
+                        type="datetime-local"
+                        id="startDate"
+                        value={deadline}
+                        onChange={handleDeadlineChange}
+                        fullWidth
+                        margin="normal"
+                        label={t('Deadline')}
+                        disabled
+                        />
+                    </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 name="Description"

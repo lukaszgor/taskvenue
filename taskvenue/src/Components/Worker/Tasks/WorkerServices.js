@@ -363,8 +363,8 @@ function WorkerServices() {
                                         onChange={handleDateTimeChange}
                                         required
                                         fullWidth
-                                        margin="normal"
                                         label={t('Date')}
+                                        style={{ marginRight: '10px' }}
                                         focused
                                         />
                                 </Grid>

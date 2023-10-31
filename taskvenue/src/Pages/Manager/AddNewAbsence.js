@@ -136,7 +136,7 @@ const AddNewAbsence = () => {
                     <p></p>
                 <form onSubmit={handleSubmit} >
                     <Grid container spacing={2}>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} sm={6}>
                         <TextField
                         type="datetime-local"
                         id="startDate"
@@ -148,7 +148,7 @@ const AddNewAbsence = () => {
                         focused
                         />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} sm={6}>
                         <TextField
                         type="datetime-local"
                         id="startDate"
