@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
 import Link from "@mui/material/Link";
 import { useTranslation } from "react-i18next";
-import { Box, Select, MenuItem, FormControl, InputLabel, Accordion, AccordionSummary } from '@mui/material';
+import { Box, Select, MenuItem, FormControl, InputLabel, Accordion, AccordionSummary,CardContent,Card,Container } from '@mui/material';
 import InfoNavBar from "../NavigationBar/InfoNavBar";
 import Footer from "../Info/Footer";
 
@@ -202,7 +202,7 @@ return (
 <InfoNavBar></InfoNavBar>
 
 </div>
-      <Box sx={{ width: '100%' }} style={{ background: 'white', minHeight: '90vh' }}>
+      <Box sx={{ width: '100%' }} style={{ background: 'white', minHeight: '90vh',paddingTop: '16px' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }} >
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label={t("sign in")} {...a11yProps(0)} />
@@ -212,10 +212,21 @@ return (
       </Box>
 
       <TabPanel value={value} index={0}>
-      <h1>{t("Sign in")}</h1>
-      <TextField style={{ width: "250px" }} id="standard-basic" label={t("Enter your email")} placeholder={t("Enter your email")} type="email" onChange={(e) => setEmail(e.target.value)} variant="standard" />
-      <br/>      
-              <TextField
+      <Container maxWidth="md" style={{ padding: '16px' }}>
+      <Card>
+      <CardContent>
+        <h1>{t("Sign in")}</h1>
+        <TextField
+          style={{ width: "250px" }}
+          id="standard-basic"
+          label={t("Enter your email")}
+          placeholder={t("Enter your email")}
+          type="email"
+          onChange={(e) => setEmail(e.target.value)}
+          variant="standard"
+        />
+        <br />
+        <TextField
           style={{ width: "250px" }}
           id="standard-password-input"
           label={t("Enter your password")}
@@ -226,26 +237,32 @@ return (
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton
-                  onClick={() => setShowPassword(!showPassword)}
-                  edge="end"
-                >
+                <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
                   {showPassword ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
               </InputAdornment>
             ),
           }}
         />
-      <br/>
-      <br/>
-      <Button size="small" variant="contained" style={{ minWidth: '250px'}} onClick={Login}>{t("sign in")}</Button>
-      <p>{Lmsg}</p>
-      <br />
-      <Link onClick={() => handleChange(null, 2)}>{t("I can't remember my password")}</Link>
-      <br/>
-      {t("Don’t have an account?")} <Link onClick={() => handleChange(null, 1)}>{t("Get started")}</Link>
+        <br />
+        <br />
+        <Button size="small" variant="contained" style={{ minWidth: '250px' }} onClick={Login}>
+          {t("sign in")}
+        </Button>
+        <p>{Lmsg}</p>
+        <br />
+        <Link onClick={() => handleChange(null, 2)}>{t("I can't remember my password")}</Link>
+        <br />
+        {t("Don’t have an account?")} <Link onClick={() => handleChange(null, 1)}>{t("Get started")}</Link>
+      </CardContent>
+    </Card>
+    </Container>
       </TabPanel>
+
       <TabPanel value={value} index={1}>
+      <Container maxWidth="md" style={{ padding: '16px' }}>
+      <Card>
+      <CardContent>
       <h1>{t("Sign up")}</h1>
          <TextField style={{ width: "250px" }} id="standard-basic" label={t("Enter your email")}variant="standard" onChange={(e) => 
         setEmail(e.target.value)} />
@@ -277,8 +294,15 @@ return (
           <br/>
       <Button size="small" variant="contained" style={{ minWidth: '250px'}} onClick={Register}>{t("sign up")}</Button>
       <p>{Rmsg}</p>
+      </CardContent>
+    </Card>
+    </Container>
       </TabPanel>
+
       <TabPanel value={value} index={2}>
+      <Container maxWidth="md" style={{ padding: '16px' }}>
+      <Card>
+      <CardContent>
       <h1>{t("Sign in via magic link")}</h1>
       <br/>
       <br/>
@@ -287,6 +311,9 @@ return (
       <br/> 
       <Button size="small" variant="contained" style={{ minWidth: '250px'}} onClick={SendMagicLink}>{t("send magic link")}</Button>
       <p>{LmsgL}</p>
+      </CardContent>
+    </Card>
+    </Container>
       </TabPanel>
     </Box>
     <Footer style={{ position: 'fixed', bottom: 0, width: '100%' }}></Footer>
