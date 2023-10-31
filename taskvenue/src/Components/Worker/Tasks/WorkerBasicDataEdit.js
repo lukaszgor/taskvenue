@@ -60,7 +60,7 @@ const WorkerBasicDataEdit = () => {
   const [idConfig, setIdConfiguration] = useState('');
   const [open, setOpen] = useState(false);
   const [deadline, setDeadline] = useState('');
-  const [estimatedTime, setEstimatedTime] = useState(0);
+  const [estimatedTime, setEstimatedTime] = useState('');
   const [kickoff, setKickoff] = useState('');
   const [createdDate, setCreatedDate] = useState('');
   const [taskTypes, setTaskTypes] = useState([]);

@@ -72,7 +72,7 @@ function AddNewTask() {
   const [userID, setUserID] = useState('');
   const [idConfig, setIdConfiguration] = useState('');
   const [deadline, setDeadline] = useState('');
-  const [estimatedTime, setEstimatedTime] = useState(0);
+  const [estimatedTime, setEstimatedTime] = useState('');
   const [kickoff, setKickoff] = useState('');
   const [createdDate, setCreatedDate] = useState('');
   const [taskTypes, setTaskTypes] = useState([]);

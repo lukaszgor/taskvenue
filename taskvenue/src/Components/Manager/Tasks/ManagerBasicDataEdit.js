@@ -51,7 +51,7 @@ const ManagerBasicDataEdit = () => {
   const [idConfig, setIdConfiguration] = useState('');
   const [open, setOpen] = useState(false);
   const [deadline, setDeadline] = useState('');
-  const [estimatedTime, setEstimatedTime] = useState(0);
+  const [estimatedTime, setEstimatedTime] = useState('');
   const [kickoff, setKickoff] = useState('');
   const [createdDate, setCreatedDate] = useState('');
   const [author, setAuthor] = useState('');
@@ -342,7 +342,6 @@ const ManagerBasicDataEdit = () => {
                 onChange={(e) => setEstimatedTime(e.target.value)}
                 fullWidth
                 type="number"
-                focused
               />
             </Grid>
             <Grid item xs={12} sm={6}>
