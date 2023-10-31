@@ -75,7 +75,7 @@ const ManagerMapTasks = () => {
     } else {
       // Filtruj tylko poprawne venues i przekształć wartości GPS_location na liczby
       const filteredVenues = data.filter((venue) => {
-        if (venue.venues.GPS_location) {
+        if (venue.venues && venue.venues.GPS_location) {
           const [latitude, longitude] = venue.venues.GPS_location.split(',').map(parseFloat);
           venue.venues.GPS_location = { latitude, longitude };
           return !isNaN(latitude) && !isNaN(longitude);
