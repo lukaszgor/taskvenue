@@ -294,7 +294,7 @@ const WorkerBasicDataEdit = () => {
       style={{ minWidth: 'auto', marginRight: '16px' }}
       onClick={handleOpenChangeStatusDialog}
       startIcon={<SaveIcon />}
-      disabled={status === 'completed'}
+      disabled={status === 'completed' ||  status === 'cancelled'}
     >
       {t('Submit')}
     </Button>
@@ -446,7 +446,7 @@ const WorkerBasicDataEdit = () => {
                         fullWidth
                         margin="normal"
                         label={t('Start date')}
-                        disabled={status === 'completed'}
+                        disabled={status === 'completed' ||  status === 'cancelled'}
                         focused
                         />
                     </Grid>
@@ -460,7 +460,7 @@ const WorkerBasicDataEdit = () => {
                         margin="normal"
                         label={t('Deadline')}
                         focused
-                        disabled={status === 'completed'}
+                        disabled={status === 'completed' ||  status === 'cancelled'}
                         />
                     </Grid>
             <Grid item xs={12} sm={6}>
@@ -482,7 +482,7 @@ const WorkerBasicDataEdit = () => {
                 onChange={(e) => setDescription(e.target.value)}
                 fullWidth
                 multiline
-                disabled={status === 'completed'}
+                disabled={status === 'completed' ||  status === 'cancelled'}
               />
             </Grid>
             {/* <Grid item xs={12} sm={6}>

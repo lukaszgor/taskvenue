@@ -383,7 +383,7 @@ function WorkerServices() {
                                         <Button
                                             type="submit"
                                             variant="contained"
-                                            disabled={status === 'completed'}
+                                            disabled={status === 'completed' ||  status === 'cancelled'}
                                             color="primary"
                                             style={{ minWidth: 'auto' }}
                                         >
@@ -430,7 +430,7 @@ function WorkerServices() {
                                                     <CardActions style={{ display: 'flex', justifyContent: 'space-between' }}>
                                                         <Button
                                                             color="error"
-                                                            disabled={status === 'completed'}
+                                                            disabled={status === 'completed' ||  status === 'cancelled'}
                                                             onClick={(event) => {
                                                                 DeleteService(event, serviceItem);
                                                             }}
@@ -443,7 +443,7 @@ function WorkerServices() {
                                                             labelPlacement="start"
                                                             control={<Switch
                                                                 checked={determineSwitchState(serviceItem.execution)}
-                                                                disabled={status === 'completed'}
+                                                                disabled={status === 'completed' ||  status === 'cancelled'}
                                                                 color="primary"
                                                                 name="execution"
                                                                 onChange={() => handleExecutionToggle(serviceItem)}
