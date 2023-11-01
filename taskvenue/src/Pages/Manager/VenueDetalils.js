@@ -104,7 +104,13 @@ const VenueDetalils = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    handleUpdateVenue();
+   
+    const geolocationPattern = /^[0-9.-]+\s*,\s*[0-9.-]+$/;
+    if (!geolocationPattern.test(address)) {
+      window.alert(t("Invalid geolocation data"));
+    } else {
+      handleUpdateVenue();
+    }
   };
 
   useEffect(() => {

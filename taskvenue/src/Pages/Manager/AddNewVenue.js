@@ -3,7 +3,7 @@ import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import { useState,useEffect } from 'react';
 import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
-import { TextField, Button, Grid, Container, Typography, Select, MenuItem,FormControl,InputLabel,Box } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography, Select, MenuItem,FormControl,InputLabel,Box,Tooltip } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import ManagerVenueBreadcrumbs from '../../Components/Breadcrumbs/ManagerVenueBreadcrumbs';
@@ -81,10 +81,15 @@ const AddNewVenue = () => {
       }
       const handleSubmit = (event) => {
         event.preventDefault();
-        insertVenue();
+      
+        const geolocationPattern = /^[0-9.-]+\s*,\s*[0-9.-]+$/;
+        if (!geolocationPattern.test(address)) {
+          window.alert(t("Invalid geolocation data"));
+        } else {
+          insertVenue();
+        }
       };
- 
-
+      
 //alert configuration
 const [open,setOpen] =useState(null)
 
@@ -117,6 +122,7 @@ const handleCloseAlert = (event, reason) => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
+            <Tooltip title={t('Enter an address in the geolocation data form and add text information about the address in the description field.')} arrow>
               <TextField
                 name="address"
                 label={t("address")}
@@ -124,6 +130,7 @@ const handleCloseAlert = (event, reason) => {
                 onChange={(e) => setAddress(e.target.value)}
                 fullWidth
               />
+              </Tooltip>
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
