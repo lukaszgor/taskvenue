@@ -3,7 +3,7 @@ import {
     Button,
     Grid,
     Container,
-    Typography,Snackbar,Alert
+    Typography,Snackbar,Alert,DialogContent,DialogActions,Dialog,DialogTitle,DialogContentText
 } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import StopIcon from '@mui/icons-material/Stop';
@@ -34,6 +34,8 @@ const stop='Stop'
         setDescription("Start");
         getUserLocation(start,currentDateTime);
         setIsRunning(true);
+        handleUpdateStatus('inProgress');
+        handleClickAlert();
     };
 
     const handleStopClick = () => {
@@ -41,6 +43,7 @@ const stop='Stop'
         setDescription("Stop");
         getUserLocation(stop,currentDateTime);
         setIsRunning(false);
+        handleButton();
     };
 
     useEffect(() => {
@@ -102,7 +105,6 @@ const stop='Stop'
             id_user: userID,
             geoLocation: userLocation, // Dodaj geolokalizację
           }]);
-        handleClickAlert();
         if (error) {
           console.log(error);
         }
@@ -138,6 +140,40 @@ const stop='Stop'
         }
       };
 
+      const handleUpdateStatus = async (status) => {
+        const { data, error } = await supabase
+          .from('tasks')
+          .update([
+            {
+              status: status,
+            },
+          ])
+          .eq('id', id);
+        if (error) {
+          console.log(error);
+        }
+        if (data) {
+          handleClickAlert();
+        }
+      };
+
+
+      const [DialogOpen, setDialogOpen] = useState(false); // Dodajemy stan do kontrolowania widoczności dialogu
+  
+      const handleButton = () => {
+          setDialogOpen(true);
+      };
+  
+      const handleConfirm = () => {
+   //zmiena statusu
+          setDialogOpen(false);
+          handleUpdateStatus('completed');
+          handleClickAlert();
+      };
+  
+      const handleCancel = () => {
+          setDialogOpen(false);
+      };
 
     return (
         <div>
@@ -178,6 +214,27 @@ const stop='Stop'
                   <Alert severity="success"> {t("Updated!")}</Alert>
                 </Snackbar>
             </Container>
+            <Dialog
+                open={DialogOpen}
+                onClose={handleCancel}
+                aria-labelledby="copy-dialog-title"
+                aria-describedby="copy-dialog-description"
+            >
+                <DialogTitle id="copy-dialog-title">{t('Change Status')}</DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="copy-dialog-description">
+                        {t('Do you want to change the status of the task to closed?')}
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCancel} color="primary">
+                        {t('Cancel')}
+                    </Button>
+                    <Button onClick={handleConfirm} color="primary" variant="contained">
+                        {t('Yes')}
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </div>
     );
 };

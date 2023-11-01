@@ -236,7 +236,8 @@
       "Working time history":"Working time history",
       "Note, when you click the Start and Stop buttons, geolocation data and the current date and time will be downloaded.":      "Note, when you click the Start and Stop buttons, geolocation data and the current date and time will be downloaded.",
       "Start":"Start",
-      "Stop":"Stop"
+      "Stop":"Stop",
+      "Do you want to change the status of the task to closed?":"Do you want to change the status of the task to closed?"
    
     
     

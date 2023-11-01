@@ -236,7 +236,8 @@
       "Working time history":"Historia czasu pracy",
       "Note, when you click the Start and Stop buttons, geolocation data and the current date and time will be downloaded.":"Uwaga, po kliknięciu przycisków Start i Stop zostaną pobrane dane geolokalizacyjne oraz aktualna data i godzina.",
       "Start":"Start",
-      "Stop":"Stop"
+      "Stop":"Stop",
+      "Do you want to change the status of the task to closed?":"Czy chcez zmienić status zadania na zamknięty?"
 
 
 
