@@ -237,7 +237,9 @@
       "Note, when you click the Start and Stop buttons, geolocation data and the current date and time will be downloaded.":"Uwaga, po kliknięciu przycisków Start i Stop zostaną pobrane dane geolokalizacyjne oraz aktualna data i godzina.",
       "Start":"Start",
       "Stop":"Stop",
-      "Do you want to change the status of the task to closed?":"Czy chcez zmienić status zadania na zamknięty?"
+      "Do you want to change the status of the task to closed?":"Czy chcez zmienić status zadania na zamknięty?",
+      "The functionality works correctly only with geolocation enabled in your browser. If you want to make use of the full features, please turn on your location services.":"Funkcja działa poprawnie tylko z włączoną geolokalizacją w przeglądarce. Jeśli chcesz w pełni korzystać z funkcji, włącz usługi lokalizacyjne.",
+      "Geolocation is not supported by your browser":"Twoja przeglądarka nie obsługuje geolokalizacji"
 
 
 

@@ -124,19 +124,29 @@ const stop='Stop'
         setOpen(false);
       };
 
-
-      const getUserLocation = (description,currentDateTime) => {
+      const getUserLocation = (description, currentDateTime) => {
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition((position) => {
-            const { latitude, longitude } = position.coords;
-            setUserLocation(`${latitude},${longitude}`);
-            insertWorkTime(description,(`${latitude},${longitude}`),currentDateTime);
-          }, (error) => {
-            console.error(error);
-            setUserLocation('Unable to retrieve location');
-          });
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const { latitude, longitude } = position.coords;
+              const userLocation = `${latitude},${longitude}`;
+              insertWorkTime(description, userLocation, currentDateTime);
+            },
+            (error) => {
+              console.error(error);
+              setUserLocation('Unable to retrieve location');
+              
+              // Wyświetl komunikat o błędzie lokalizacji jako przeglądarkowy alert
+              const errorMessage = t('The functionality works correctly only with geolocation enabled in your browser. If you want to make use of the full features, please turn on your location services.') ;
+              window.alert(errorMessage);
+            }
+          );
         } else {
           setUserLocation('Geolocation is not supported by your browser');
+          
+          // Wyświetl komunikat o braku wsparcia dla geolokalizacji jako przeglądarkowy alert
+          const errorMessage = t('Geolocation is not supported by your browser');
+          window.alert(errorMessage);
         }
       };
 

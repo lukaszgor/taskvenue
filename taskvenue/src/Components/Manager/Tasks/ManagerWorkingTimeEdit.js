@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-
+import GeoLocationMap from '../../Common/GeoLocationMap';
 
 
 const ManagerWorkingTimeEdit = () => {
@@ -154,7 +154,10 @@ const ManagerWorkingTimeEdit = () => {
               <Typography variant="body2" color="textSecondary">
                 {t("Location")} {workItem.geoLocation}
               </Typography>
+              <p></p>
+              <GeoLocationMap geoLocation={workItem.geoLocation} />
             </CardContent>
+            <p></p>
             <CardActions style={{ display: 'flex', justifyContent: 'space-between' }}>
             <Button
               type="submit"

@@ -234,10 +234,13 @@
       "Download":"Download",
       "Tasks on the map":"Tasks on the map",
       "Working time history":"Working time history",
-      "Note, when you click the Start and Stop buttons, geolocation data and the current date and time will be downloaded.":      "Note, when you click the Start and Stop buttons, geolocation data and the current date and time will be downloaded.",
+      "Note, when you click the Start and Stop buttons, geolocation data and the current date and time will be downloaded.":"Note, when you click the Start and Stop buttons, geolocation data and the current date and time will be downloaded.",
       "Start":"Start",
       "Stop":"Stop",
-      "Do you want to change the status of the task to closed?":"Do you want to change the status of the task to closed?"
+      "Do you want to change the status of the task to closed?":"Do you want to change the status of the task to closed?",
+      "The functionality works correctly only with geolocation enabled in your browser. If you want to make use of the full features, please turn on your location services.":      "The functionality works correctly only with geolocation enabled in your browser. If you want to make use of the full features, please turn on your location services.",
+      "Geolocation is not supported by your browser":"Geolocation is not supported by your browser"
+
    
     
     
