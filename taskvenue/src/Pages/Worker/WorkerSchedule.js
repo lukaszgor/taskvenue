@@ -228,6 +228,7 @@ const WorkerSchedule = () => {
           min={minTime}
           max={maxTime}
           messages={defaultMessages}
+          defaultView="week" 
         />
       </div>
       <p></p>
