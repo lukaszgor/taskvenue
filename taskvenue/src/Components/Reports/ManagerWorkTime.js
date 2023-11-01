@@ -98,7 +98,6 @@ const ManagerWorkTime = () => {
       },
     { field: 'date', headerName: t("Date"), width: 150 },
     { field: 'description', headerName: t("Description"), width: 100},
-    { field: 'time', headerName: t("Time"), width: 60 },
 
     {
         field: "Action",headerName: t("Action"), width: 100 ,
