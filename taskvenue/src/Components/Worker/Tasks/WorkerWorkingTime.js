@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent,CardActions, Typography, Button, Grid, Container, Box, Snackbar, Alert, Accordion, AccordionSummary, AccordionDetails, TextField } from '@mui/material'; // Dodaj import TextField
+import { Card, CardContent,CardActions, Typography, Button, Grid, Container, Accordion, AccordionSummary, AccordionDetails } from '@mui/material'; // Dodaj import TextField
 import supabase from '../../../supabaseClient';
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 
@@ -65,7 +64,7 @@ const WorkerWorkingTime = () => {
       fetchWorkTime(idConfig, id)
       handleFetchDataStatus(idConfig, id);
     }
-  }, [idConfig]);
+  }, [idConfig,id]);
 
   useEffect(() => {
     if (workTime) {
@@ -127,20 +126,6 @@ const WorkerWorkingTime = () => {
     <div>
       <Container maxWidth="md">
         <p></p>
-        <div>
-          <div>
-            {fetchError && <p>{fetchError}</p>}
-            {workTime && (
-              <div>
-                <div style={{ textAlign: 'right' }}>
-                  <Typography variant="h6">
-                    {t('Summary')}: {fullTime} <AccessTimeOutlinedIcon fontSize='medium' />
-                  </Typography>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
         <Accordion defaultExpanded>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography variant="h6" fontWeight="bold">{t('Working time')}</Typography>
