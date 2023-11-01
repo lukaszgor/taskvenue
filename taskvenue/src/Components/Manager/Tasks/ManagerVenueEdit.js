@@ -8,6 +8,7 @@ import Alert from '@mui/material/Alert';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { Margin } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+import GeoLocationMap from '../../Common/GeoLocationMap';
 
 const ManagerVenueEdit = () => {
     const [open, setOpen] = useState(false);
@@ -228,6 +229,8 @@ const ManagerVenueEdit = () => {
             <Typography variant="h6">{selectedVenue.description}</Typography>
             <Typography variant="h11">{t('Address')}</Typography>
             <Typography variant="h6">{selectedVenue.GPS_location}</Typography>
+            <p></p>
+            <GeoLocationMap geoLocation={selectedVenue.GPS_location} />
             <p></p>
 
             <Box display="flex" justifyContent="flex-end">

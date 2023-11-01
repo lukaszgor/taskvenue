@@ -26,6 +26,7 @@ import ClientVenueBreadcrumbs from '../../Components/Breadcrumbs/Client/ClientVe
 import { useNavigate } from 'react-router-dom';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ClientVenueHistory from '../../Components/Client/ClientVenueHistory';
+import ManagerMapVenue from '../../Components/Manager/Map/ManagerMapVenue';
 
 const ClientVenueDetalils = () => {
   const { t, i18n } = useTranslation();
@@ -161,7 +162,7 @@ const ClientVenueDetalils = () => {
       <ClientNavBar></ClientNavBar>
       <ClientVenueBreadcrumbs></ClientVenueBreadcrumbs>
       <p></p>
-
+      <Container maxWidth="md">
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">
@@ -260,6 +261,18 @@ const ClientVenueDetalils = () => {
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">
+            {t('Map')}
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+          <ManagerMapVenue></ManagerMapVenue>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">
             {t('Tasks history')}
           </Typography>
         </AccordionSummary>
@@ -276,6 +289,7 @@ const ClientVenueDetalils = () => {
       >
         <Alert severity="success"> {t('Updated!')}!</Alert>
       </Snackbar>
+      </Container>
     </div>
   );
 };

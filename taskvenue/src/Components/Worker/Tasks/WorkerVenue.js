@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import GeoLocationMap from '../../Common/GeoLocationMap';
 
 const WorkerVenue = () => {
     const [open, setOpen] = useState(false);
@@ -192,7 +193,8 @@ const WorkerVenue = () => {
             {/* <Typography variant="h11">{t('Address')}</Typography>
             <Typography variant="h6">{selectedVenue.GPS_location}</Typography> */}
             <p></p>
-
+            <GeoLocationMap geoLocation={selectedVenue.GPS_location} />
+            <p></p>
             <Box display="flex" justifyContent="flex-start">
                 <Button
                 type="submit"
