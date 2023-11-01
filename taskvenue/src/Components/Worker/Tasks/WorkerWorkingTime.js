@@ -195,7 +195,6 @@ const WorkerWorkingTime = () => {
   return (
     <div>
       <Container maxWidth="md">
-      <div>
         <p></p>
         <div>
           <div>
@@ -211,92 +210,6 @@ const WorkerWorkingTime = () => {
             )}
           </div>
         </div>
-
-        <Accordion>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography variant="h6" fontWeight="bold">{t('Add')}</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography></Typography>
-            <form onSubmit={handleSubmit} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <Container maxWidth="md">
-                <Typography variant="h4" align="center" gutterBottom>
-                  <p></p>
-                </Typography>
-                <Grid container spacing={2}>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      label={t("Description")}
-                      value={description}
-                      onChange={(event) => setDescription(event.target.value)}
-                      style={{ marginRight: '10px' }}
-                      fullWidth
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      label={t("Time")}
-                      value={time}
-                      onChange={(event) => setTime(event.target.value)}
-                      style={{ marginRight: '10px' }}
-                      type="number"
-                      fullWidth
-                      required
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                  <label>{t('Location')}</label>
-                  <TextField
-                    value={userLocation}
-                    disabled
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <label>{t('Date')}</label>
-                  <DateInput
-                    type="datetime-local"
-                    value={selectedDateTime}
-                    onChange={handleDateTimeChange}
-                    required
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  {/* Add the "Get Geolocation" button here */}
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={getUserLocation}
-                  >
-                    {t('Get Location')}
-                  </Button>
-                </Grid>
-                  <Grid item xs={12}>
-                    <Box display="flex" justifyContent="flex-end">
-                      <Button
-                        type="submit"
-                        disabled={status === 'completed'}
-                        variant="contained"
-                        color="primary"
-                        style={{ minWidth: 'auto' }}
-                      >
-                        {t('Submit')}
-                      </Button>
-                    </Box>
-                  </Grid>
-                </Grid>
-                <div>
-                </div>
-                <Snackbar open={open}
-                  autoHideDuration={2000}
-                  onClose={handleCloseAlert}>
-                  <Alert severity="success"> {t("Updated!")}</Alert>
-                </Snackbar>
-              </Container>
-            </form>
-          </AccordionDetails>
-        </Accordion>
-
         <Accordion defaultExpanded>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography variant="h6" fontWeight="bold">{t('Working time')}</Typography>
@@ -310,49 +223,49 @@ const WorkerWorkingTime = () => {
       <p> </p>
       <div style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column' }}>
         {workTime.map((workItem) => (
-            <Grid item xs={12} sm={6} md={12} lg={12} key={workItem.id}>
-            <Card>
-              <CardContent>
-              <Grid container alignItems="center" justifyContent="space-between">
-              <Typography variant="h6">{workItem.description}</Typography>
-            </Grid>
-                <Typography variant="body2" color="textSecondary">
-                  {t("Time")} {workItem.time}
-                </Typography>
-                <Typography variant="body2" color="textSecondary">
-                  {t("Date")} {workItem.date}
-                </Typography>
-                <Typography variant="body2" color="textSecondary">
-                  {t("User")} {workItem.profiles.username}
-                </Typography>
-                <Typography variant="body2" color="textSecondary">
-                  {t("Location")} {workItem.geoLocation}
-                </Typography>
-              </CardContent>
-              <CardActions style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Button
-                type="submit"
-                variant="contained"
-                color="success"
-                startIcon={<LocationOnIcon />}
-                onClick={() => handleButtonClickLocation(workItem.geoLocation)}
-                style={{ minWidth: 'auto' }}
-              >
-                {t('Open in Google Maps')}
-              </Button>
-              <Button
-                color="error"
-                variant="contained"
-                disabled={status === 'completed'}
-                onClick={(event) => {
-                  DeleteWorktime(event, { row: { id: workItem.id } });
-                }}
-              >
-                {t("Delete")}
-              </Button>
-              </CardActions>
-            </Card>
-            </Grid>
+          <Grid item xs={12} sm={6} md={12} lg={12} key={workItem.id}>
+          <Card>
+            <CardContent>
+            <Grid container alignItems="center" justifyContent="space-between">
+            <Typography variant="h6">{workItem.description}</Typography>
+          </Grid>
+              <Typography variant="body2" color="textSecondary">
+                {t("Time")} {workItem.time}
+              </Typography>
+              <Typography variant="body2" color="textSecondary">
+                {t("Date")} {workItem.date}
+              </Typography>
+              <Typography variant="body2" color="textSecondary">
+                {t("User")} {workItem.profiles.username}
+              </Typography>
+              <Typography variant="body2" color="textSecondary">
+                {t("Location")} {workItem.geoLocation}
+              </Typography>
+            </CardContent>
+            <CardActions style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="success"
+              startIcon={<LocationOnIcon />}
+              onClick={() => handleButtonClickLocation(workItem.geoLocation)}
+              style={{ minWidth: 'auto' }}
+            >
+              {t('Open in Google Maps')}
+            </Button>
+            <Button
+              color="error"
+              variant="contained"
+              disabled={status === 'completed'}
+              onClick={(event) => {
+                DeleteWorktime(event, { row: { id: workItem.id } });
+              }}
+            >
+              {t("Delete")}
+            </Button>
+            </CardActions>
+          </Card>
+          </Grid>
         ))}
       </div>
     </div>
@@ -361,7 +274,6 @@ const WorkerWorkingTime = () => {
         </Container>
         </AccordionDetails>
         </Accordion>
-      </div>
       </Container>
     </div>
   );

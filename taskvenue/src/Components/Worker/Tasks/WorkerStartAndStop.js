@@ -32,14 +32,14 @@ const stop='Stop'
     const handleStartClick = () => {
         // Tu możesz umieścić kod, który ma być wywołany po naciśnięciu przycisku "Start"
         setDescription("Start");
-        getUserLocation(start);
+        getUserLocation(start,currentDateTime);
         setIsRunning(true);
     };
 
     const handleStopClick = () => {
         // Tu możesz umieścić kod, który ma być wywołany po naciśnięciu przycisku "Stop"
         setDescription("Stop");
-        getUserLocation(stop);
+        getUserLocation(stop,currentDateTime);
         setIsRunning(false);
     };
 
@@ -56,16 +56,16 @@ const stop='Stop'
     }, [isRunning]);
 
     useEffect(() => {
-        if (isRunning) {
+        
             const getCurrentDateTime = () => {
                 const currentDate = new Date();
-                const formattedDateTime = format(addHours(currentDate, 2), 'dd/MM/yyyy HH:mm'); // Format daty i godziny
+                const formattedDateTime = format(currentDate, 'dd/MM/yyyy HH:mm'); // Format daty i godziny
                 setCurrentDateTime(formattedDateTime);
             };
 
             getCurrentDateTime();
-        }
-    }, [isRunning]);
+      
+    },);
 
     useEffect(() => {
         const checkSession = async () => {
@@ -91,7 +91,7 @@ const stop='Stop'
         }
       }
 
-      const insertWorkTime = async (description,userLocation) => {
+      const insertWorkTime = async (description,userLocation,currentDateTime) => {
         const { data, error } = await supabase
           .from('workTime')
           .insert([{ 
@@ -123,12 +123,12 @@ const stop='Stop'
       };
 
 
-      const getUserLocation = (description) => {
+      const getUserLocation = (description,currentDateTime) => {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition((position) => {
             const { latitude, longitude } = position.coords;
             setUserLocation(`${latitude},${longitude}`);
-            insertWorkTime(description,(`${latitude},${longitude}`));
+            insertWorkTime(description,(`${latitude},${longitude}`),currentDateTime);
           }, (error) => {
             console.error(error);
             setUserLocation('Unable to retrieve location');
@@ -170,9 +170,6 @@ const stop='Stop'
                             <FmdBadIcon></FmdBadIcon>
                             {t('Note, when you click the Start and Stop buttons, geolocation data and the current date and time will be downloaded.')}
                         </Typography>
-                        {isRunning && (
-                            <Typography>{t('Current Date and Time')}: {currentDateTime}</Typography>
-                        )}
                     </Grid>
                 </Grid>
                 <Snackbar open={open}
