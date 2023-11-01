@@ -146,9 +146,6 @@ const WorkerWorkingTime = () => {
             <Typography variant="h6">{workItem.description}</Typography>
           </Grid>
               <Typography variant="body2" color="textSecondary">
-                {t("Time")} {workItem.time}
-              </Typography>
-              <Typography variant="body2" color="textSecondary">
                 {t("Date")} {workItem.date}
               </Typography>
               <Typography variant="body2" color="textSecondary">
