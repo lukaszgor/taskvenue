@@ -233,7 +233,10 @@
       "Search by Email":"Search by Email",
       "Download":"Download",
       "Tasks on the map":"Tasks on the map",
-      "Working time history":"Working time history"
+      "Working time history":"Working time history",
+      "Note, when you click the Start and Stop buttons, geolocation data and the current date and time will be downloaded.":      "Note, when you click the Start and Stop buttons, geolocation data and the current date and time will be downloaded.",
+      "Start":"Start",
+      "Stop":"Stop"
    
     
     

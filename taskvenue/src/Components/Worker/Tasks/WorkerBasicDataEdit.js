@@ -287,9 +287,26 @@ const WorkerBasicDataEdit = () => {
         <form onSubmit={handleSubmit}>
 
         <Grid item xs={12}>
+  <Box display="flex" justifyContent="flex-end">
+   <Button
+      variant="contained"
+      color="primary"
+      style={{ minWidth: 'auto', marginRight: '16px' }}
+      onClick={handleOpenChangeStatusDialog}
+      startIcon={<SaveIcon />}
+      disabled={status === 'completed'}
+    >
+      {t('Submit')}
+    </Button>
+
+  </Box>
+</Grid>
+<p></p>
+
+        <Grid item xs={12}>
              <Accordion defaultExpanded >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t('Start Stop')}</Typography>
+          <Typography variant="h6" fontWeight="bold">{t('Start')} / {t('Stop')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
              <WorkerStartAndStop></WorkerStartAndStop>
@@ -495,22 +512,6 @@ const WorkerBasicDataEdit = () => {
       </Accordion>
             </Grid>
             <p></p>
-
-             <Grid item xs={12}>
-  <Box display="flex" justifyContent="flex-end">
-   <Button
-      variant="contained"
-      color="primary"
-      style={{ minWidth: 'auto', marginRight: '16px' }}
-      onClick={handleOpenChangeStatusDialog}
-      startIcon={<SaveIcon />}
-      disabled={status === 'completed'}
-    >
-      {t('Submit')}
-    </Button>
-
-  </Box>
-</Grid>
       <Dialog
         open={openChangeStatusDialog}
         onClose={handleCloseChangeStatusDialog}

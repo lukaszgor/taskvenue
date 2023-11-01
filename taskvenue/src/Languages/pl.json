@@ -233,7 +233,10 @@
       "Search by Email":"Szukaj po Email",
       "Download":"Pobierz",
       "Tasks on the map":"Zadania na mapie",
-      "Working time history":"Historia czasu pracy"
+      "Working time history":"Historia czasu pracy",
+      "Note, when you click the Start and Stop buttons, geolocation data and the current date and time will be downloaded.":"Uwaga, po kliknięciu przycisków Start i Stop zostaną pobrane dane geolokalizacyjne oraz aktualna data i godzina.",
+      "Start":"Start",
+      "Stop":"Stop"
 
 
 
