@@ -86,7 +86,7 @@ const WorkerClosedTasks = () => {
                 )
             ` )
             .eq('id_configuration', idConfig)
-            .eq('status', 'completed')
+            .in('status', ['completed', 'cancelled'])
             .eq('asigned_user', userID);
 
         if (error) {
