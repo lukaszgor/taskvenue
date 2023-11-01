@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent,CardActions, Typography, Button, Grid, Container, Box, Snackbar, Alert, Accordion, AccordionSummary, AccordionDetails, TextField } from '@mui/material'; // Dodaj import TextField
-import styled from 'styled-components';
 import supabase from '../../../supabaseClient';
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { format } from 'date-fns';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
-const DateInput = styled.input`
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  box-sizing: border-box;
-`;
+
 
 const WorkerWorkingTime = () => {
   const { t, i18n } = useTranslation();
@@ -25,25 +16,11 @@ const WorkerWorkingTime = () => {
   const [idConfig, setIdConfiguration] = useState('');
   const [fetchError, setFetchError] = useState(null)
   const [workTime, setWorkTime] = useState(null)
-  const [description, setDescription] = useState('');
-  const [time, setTime] = useState(0);
   const [fullTime, setFullTime] = useState(0);
-  const [selectedDateTime, setSelectedDateTime] = useState('');
   const [status, setStatus] = useState('');
-  const [userLocation, setUserLocation] = useState('');
 
-  const handleDateTimeChange = (event) => {
-    setSelectedDateTime(event.target.value);
-  };
 
-  const [formattedDate, setFormattedDate] = useState('');
 
-  useEffect(() => {
-    if (selectedDateTime) {
-      const formattedDate = format(new Date(selectedDateTime), 'dd/MM/yyyy HH:mm');
-      setFormattedDate(formattedDate);
-    }
-  }, [selectedDateTime]);
 
   useEffect(() => {
     const checkSession = async () => {
@@ -97,10 +74,7 @@ const WorkerWorkingTime = () => {
     }
   }, [workTime]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    insertWorkTime();
-  };
+
 
   const DeleteWorktime = async (event, cellValues) => {
     const { data, error } = await supabase
@@ -116,28 +90,6 @@ const WorkerWorkingTime = () => {
     }
   }
 
-  const insertWorkTime = async () => {
-    const { data, error } = await supabase
-      .from('workTime')
-      .insert([{ 
-        id_configuration: idConfig, 
-        time: time, 
-        description: description, 
-        idTask: id, 
-        date: formattedDate, 
-        id_user: userID,
-        geoLocation: userLocation, // Dodaj geolokalizację
-      }]);
-    handleClickAlert();
-    fetchWorkTime(idConfig, id);
-    if (error) {
-      console.log(error);
-    }
-    if (data) {
-      setDescription("");
-      setTime(0);
-    }
-  };
   const fetchWorkTime = async (idConfiguration, id) => {
     const { data, error } = await supabase
       .from('workTime')
@@ -161,27 +113,6 @@ const WorkerWorkingTime = () => {
 
   const handleClickAlert = () => {
     setOpen(true);
-  };
-
-  const handleCloseAlert = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-    setOpen(false);
-  };
-
-  const getUserLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const { latitude, longitude } = position.coords;
-        setUserLocation(`${latitude},${longitude}`);
-      }, (error) => {
-        console.error(error);
-        setUserLocation('Unable to retrieve location');
-      });
-    } else {
-      setUserLocation('Geolocation is not supported by your browser');
-    }
   };
 
    //redirection to googlemaps
@@ -222,7 +153,7 @@ const WorkerWorkingTime = () => {
     <div>
       <p> </p>
       <div style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column' }}>
-        {workTime.map((workItem) => (
+        {workTime.sort((a, b) => b.id - a.id).map((workItem) => (
           <Grid item xs={12} sm={6} md={12} lg={12} key={workItem.id}>
           <Card>
             <CardContent>
