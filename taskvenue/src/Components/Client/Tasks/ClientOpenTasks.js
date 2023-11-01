@@ -346,6 +346,7 @@ const ClientOpenTasks = () => {
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
               style={{ marginBottom: '8px' }}
+              fullWidth
             />
           </div>
           <div style={{ marginBottom: '16px' }}>
@@ -358,6 +359,7 @@ const ClientOpenTasks = () => {
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
               style={{ marginBottom: '8px' }}
+              fullWidth
             />
           </div>
           <div style={{ marginBottom: '16px' }}>
