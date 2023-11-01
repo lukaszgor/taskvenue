@@ -3,11 +3,12 @@ import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import { useState,useEffect } from 'react';
 import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
-import { TextField, Button, Grid, Container, Typography, Select, MenuItem,FormControl,InputLabel,Box,Tooltip } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography, Select, MenuItem,FormControl,InputLabel,Box,Tooltip,Accordion,AccordionSummary,AccordionDetails } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import ManagerVenueBreadcrumbs from '../../Components/Breadcrumbs/ManagerVenueBreadcrumbs';
 import { useNavigate } from "react-router-dom";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const AddNewVenue = () => {
     const { t, i18n } = useTranslation();
@@ -108,6 +109,13 @@ const handleCloseAlert = (event, reason) => {
             <ManagerNavBar></ManagerNavBar>
             <ManagerVenueBreadcrumbs></ManagerVenueBreadcrumbs>
             <Container maxWidth="md">
+            <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">
+            {t('Venues details')}
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
 
         <form onSubmit={handleSubmit} >
           <Grid container spacing={2}>
@@ -183,6 +191,8 @@ const handleCloseAlert = (event, reason) => {
             onClose={handleCloseAlert}>
           <Alert severity="success"> {t("Updated!")}!</Alert>
           </Snackbar>
+        </AccordionDetails>
+      </Accordion>
       </Container>
       </div>
       );
