@@ -3,19 +3,18 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import { useTranslation } from "react-i18next";
-import supabase from '../../supabaseClient';
+import supabase from '../../../../supabaseClient';
 import { useState, useEffect } from 'react';
-import ClientNavBar from '../../Components/NavigationBar/ClientNavBar';
-import ClientContactBreadcrumbs from '../../Components/Breadcrumbs/Client/ClientClientBreadcrumbs';
-import { Container } from '@mui/system';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
-const ClientContact = () => {
+const ManagerContact = () => {
     const { t, i18n } = useTranslation();
     const [userID, setUserID] = useState('');
     const [idConfig, setIdConfiguration] = useState('');
     const [email, setEmail] = useState(''); // State for email
     const [phone, setPhone] = useState(''); // State for phone
-  
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         const checkSession = async () => {
@@ -64,19 +63,48 @@ const ClientContact = () => {
     }
   };
 
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePhoneChange = (event) => {
+    setPhone(event.target.value);
+  };
+
+  const handleUpdateData = async () => {
+    // Update the data in the 'konfiguracja' table
+    const { data, error } = await supabase
+      .from('configurations')
+      .update({ email, phone })
+      .eq('id', idConfig);
+
+    if (error) {
+      console.error(error);
+    } else {
+        handleClickAlert();
+
+    }
+  };
+
+  const handleClickAlert = () => {
+    setOpen(true);
+  };
+
+  const handleCloseAlert = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
+
   return (
-    <div>
-      <Container maxWidth="md">
-      <ClientNavBar></ClientNavBar>
-<ClientContactBreadcrumbs></ClientContactBreadcrumbs>
-<p></p>
     <Grid container spacing={2}>
       <Grid item xs={12} sm={6}>
         <TextField
           label={t('Email')}
           fullWidth
           value={email}
-          disabled
+          onChange={handleEmailChange}
         />
       </Grid>
       <Grid item xs={12} sm={6}>
@@ -84,17 +112,25 @@ const ClientContact = () => {
           label={t('Phone number')}
           fullWidth
           value={phone}
-          disabled
+          onChange={handlePhoneChange}
         />
       </Grid>
+      <Grid item xs={12} container justifyContent="flex-end">
+        <Button variant="contained" color="primary" onClick={handleUpdateData}>
+          {t('Submit')}
+        </Button>
+      </Grid>
+      <Snackbar
+          open={open}
+          autoHideDuration={2000}
+          onClose={handleCloseAlert}
+        >
+          <Alert severity="success">{t('Updated!')}</Alert>
+        </Snackbar>
+
     </Grid>
-    </Container>
-    </div>
+    
   );
 };
 
-export default ClientContact;
-
-
-
-
+export default ManagerContact;

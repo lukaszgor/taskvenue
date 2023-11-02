@@ -1,7 +1,7 @@
 import React from 'react';
 import MyBreadcrumbs from '../../../Config/MyBreadcrumbs';
 import { useTranslation } from "react-i18next";
-const ClientClientBreadcrumbs = () => {
+const ClientContactBreadcrumbs = () => {
   const { t, i18n } = useTranslation();
   const breadcrumbItems = [
     { text: 'Home', url: '/home' },
@@ -18,4 +18,4 @@ const ClientClientBreadcrumbs = () => {
   );
 };
 
-export default ClientClientBreadcrumbs;
+export default ClientContactBreadcrumbs;

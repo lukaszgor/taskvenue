@@ -3,6 +3,8 @@ import { Accordion, AccordionSummary, AccordionDetails, Typography,Container } f
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useTranslation } from "react-i18next";
 import Language from '../../Common/Language';
+import ManagerContact from './Settings/ManagerContact';
+
 const Settings = () => {
   const { t, i18n } = useTranslation();
   return (
@@ -15,6 +17,16 @@ const Settings = () => {
         <AccordionDetails>
           <Typography></Typography>
           <Language></Language>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Contact')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+          <ManagerContact></ManagerContact>
         </AccordionDetails>
       </Accordion>
       </Container>
