@@ -240,7 +240,19 @@
       "Do you want to change the status of the task to closed?":"Czy chcez zmienić status zadania na zamknięty?",
       "The functionality works correctly only with geolocation enabled in your browser. If you want to make use of the full features, please turn on your location services.":"Funkcja działa poprawnie tylko z włączoną geolokalizacją w przeglądarce. Jeśli chcesz w pełni korzystać z funkcji, włącz usługi lokalizacyjne.",
       "Geolocation is not supported by your browser":"Twoja przeglądarka nie obsługuje geolokalizacji",
-      "Invalid geolocation data":"Niepoprawne dane geolokalizacyjne"
+      "Invalid geolocation data":"Niepoprawne dane geolokalizacyjne",
+      "Create a new organization configuration":"Załóż nową konfigurację organizacji",
+      "Last step":"Ostatni krok",
+      "Name of the organization":"Nazwa organizacji",
+      "Continue":"Dalej",
+      "Finish":"Zakończ",
+      "Your trial period is valid until":"Twój okres próbny ważny jest do",
+      "Name the organization":"Podaj nazwę organizacji",
+      "Free trial period":"Darmowy okres próbny",
+      "Congratulations":"Gratuluje",
+      "Provide the name of your company, facility or organization so that we can better tailor our services to your needs":"Podaj nazwę firmy, zakładu lub organizacji, abyśmy mogli lepiej dostosować nasze usługi do Twoich potrzeb",
+      "The trial period lasts 30 days and is completely free. It allows you to use all the features of the TaskVenue system, allowing you to manage your company and add employees to your setup.":"Okres próbny trwa 30 dni i jest całkowicie darmowy. Dzięki niemu możesz korzystać ze wszystkich funkcji systemu TaskVenue, co pozwala na zarządzanie firmą i dodawanie pracowników do swojej konfiguracji.",
+      "You have successfully created the configuration. Clicking the button below will take you to the system.":"Udało się utworzyć konfigurację. Klikając przycisk poniżej, zostaniesz przeniesiony do systemu."
 
 
 

@@ -7,6 +7,8 @@ import clipboardCopy from 'clipboard-copy';
 import WaitingRoomNavBar from '../../Components/NavigationBar/WaitingRoomNavBar';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Username from '../../Components/Common/Username';
+import CreateNewConfiguration from '../../Components/Common/CreateNewConfiguration';
+import Footer from '../../Components/Info/Footer';
 
 const WaitingRoomForNewUser = () => {
     const { t, i18n } = useTranslation();
@@ -99,18 +101,20 @@ const WaitingRoomForNewUser = () => {
         </AccordionDetails>
       </Accordion>
       </Container>
-{/* 
-      <Accordion defaultExpanded>
+<p></p>
+      <Container maxWidth="md">
+      <Accordion >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t("Are you waiting? let's play a game")}</Typography>
+          <Typography variant="h6" fontWeight="bold">{t("Create a new organization configuration")}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
-<Game></Game>
+<CreateNewConfiguration></CreateNewConfiguration>
         </AccordionDetails>
-      </Accordion> */}
-
-
+      </Accordion>
+      </Container>
+      <p></p>
+<Footer></Footer>
  
       
       </div>
