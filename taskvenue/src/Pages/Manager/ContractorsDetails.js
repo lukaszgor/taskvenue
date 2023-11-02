@@ -1,7 +1,7 @@
 import React from 'react';
 import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import { useState,useEffect } from 'react';
-import { TextField, Button, Grid, Container, Typography, Select, MenuItem,Box,Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography, Select, MenuItem,Box,Accordion, AccordionSummary, AccordionDetails,Rating } from '@mui/material';
 import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
@@ -14,6 +14,8 @@ import ManagerContractorTasks from '../../Components/Manager/Administration/Cont
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ManagerContractorVenues from '../../Components/Manager/Administration/Contractors/ManagerContractorVenues';
 import ManagerContractorsDocuments from '../../Components/Manager/Documents/ManagerContractorsDocuments';
+
+
 
 const ContractorsDetails = () => {
     const navigate = useNavigate()
@@ -29,6 +31,11 @@ const [name, setName] = useState('');
   const [contactPerson, setContactPerson] = useState('');
   const [userID, setUserID] = useState('');
   const [idConfig, setIdConfiguration] = useState('');
+  const [rating, setRating] = useState(null);
+  const handleRatingChange = (event, newRating) => {
+    setRating(newRating);
+  };
+
 
 
   useEffect(() => {
@@ -82,13 +89,14 @@ const [name, setName] = useState('');
         setPhone_number(data.phone_number);
         setEmail(data.email);
         setContactPerson(data.contactPerson);
+        setRating(data.rating)
     }
 }
 
 const updateContrator =async()=>{
     const{data,error}=await supabase
     .from('contractor')
-    .update({'nameOrCompanyName':name,'description':description,'taxId':taxtId,'nationalEconomyRegisterNumber':nationalEconomyRegisterNumber,'phone_number':phone_number,'address':address,'email':email,'contactPerson':contactPerson})
+    .update({'nameOrCompanyName':name,'description':description,'taxId':taxtId,'nationalEconomyRegisterNumber':nationalEconomyRegisterNumber,'phone_number':phone_number,'address':address,'email':email,'contactPerson':contactPerson,'rating': rating})
     .eq('id',id)
     handleClickAlert()
 }
@@ -210,6 +218,15 @@ const handleSubmit = (event) => {
               />
             </Grid>
             <Grid item xs={12}>
+              <Rating
+                name="rating"
+                value={rating}
+                onChange={handleRatingChange}
+                size="large"
+                max={3}
+              />
+            </Grid>
+            <Grid item xs={12}>
               <Box display="flex" justifyContent="flex-end" marginTop={1}>
                                 <Button
                                   type="submit"
@@ -268,7 +285,7 @@ const handleSubmit = (event) => {
         <Snackbar open={open}
             autoHideDuration={2000}
             onClose={handleCloseAlert}>
-          <Alert severity="success"> {t("Updated!")}!</Alert>
+          <Alert severity="success"> {t("Updated!")}</Alert>
           </Snackbar>
       </Container>
          </div>
