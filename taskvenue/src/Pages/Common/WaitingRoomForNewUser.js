@@ -114,8 +114,9 @@ const WaitingRoomForNewUser = () => {
       </Accordion>
       </Container>
       <p></p>
-<Footer></Footer>
- 
+<div style={{  marginTop: '20px', width: '100%',padding:'20px' }}>
+  <p></p>
+</div>
       
       </div>
       );
