@@ -8,7 +8,6 @@ import WaitingRoomNavBar from '../../Components/NavigationBar/WaitingRoomNavBar'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Username from '../../Components/Common/Username';
 import CreateNewConfiguration from '../../Components/Common/CreateNewConfiguration';
-import Footer from '../../Components/Info/Footer';
 
 const WaitingRoomForNewUser = () => {
     const { t, i18n } = useTranslation();
