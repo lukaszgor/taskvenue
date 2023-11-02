@@ -109,6 +109,10 @@ function TaskDetails() {
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
+          allowScrollButtonsMobile 
+          variant="scrollable"
+          scrollButtons
+          sx={{ display: 'flex' }}
         >
           <Tab label={t('Basic data')} {...a11yProps(0)} />
           <Tab label={t('Venue')} {...a11yProps(1)} />

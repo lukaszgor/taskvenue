@@ -112,6 +112,10 @@ function Administration() {
             value={value}
             onChange={handleChange}
             aria-label="basic tabs example"
+            allowScrollButtonsMobile 
+            variant="scrollable"
+            scrollButtons
+            sx={{ display: 'flex' }}
           >
             <Tab label={t("Users")} {...a11yProps(0)} />
             <Tab label={t("License")} {...a11yProps(1)} />
