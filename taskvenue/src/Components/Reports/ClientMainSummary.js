@@ -119,7 +119,7 @@ const ClientMainSummary = ({ status, time }) => {
 
   return (
     <Grid container spacing={4}>
-      <Grid item xs={12} sm={2}>
+      <Grid item xs={12} sm={6} md={6} lg={2}>
         <Card style={{ backgroundColor: '#CAF0F8' }}>
           <CardContent>
 <HourglassEmptyOutlinedIcon></HourglassEmptyOutlinedIcon>
@@ -136,7 +136,7 @@ const ClientMainSummary = ({ status, time }) => {
         </Card>
       </Grid>
 
-      <Grid item xs={12} sm={2}>
+      <Grid item xs={12} sm={6} md={6} lg={2}>
         <Card style={{ backgroundColor: '#D6EEFF' }}>
           <CardContent>
             <HourglassTopOutlinedIcon></HourglassTopOutlinedIcon>

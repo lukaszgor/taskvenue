@@ -105,7 +105,7 @@ const ClientStatusOfImplementation30Report = () => {
   return (
     <div>
       <Grid container spacing={2}>
-      <Grid item xs={12} sm={2}>
+      <Grid item xs={12} sm={12} md={6} lg={2}>
         <TextField
           type="datetime-local"
           id="daysAgo"
@@ -116,7 +116,7 @@ const ClientStatusOfImplementation30Report = () => {
           label={t('Date from : ')}
         />
       </Grid>
-      <Grid item xs={12} sm={2}>
+      <Grid item xs={12} sm={12} md={6} lg={2}>
         <TextField
           type="datetime-local"
           id="currentDate"

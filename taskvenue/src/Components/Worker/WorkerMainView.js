@@ -28,7 +28,7 @@ const WorkerMainView = () => {
       {/* <Grid item xs={12} sm={8}>
       </Grid> */}
 
-      <Grid item xs={12} sm={4}>
+      <Grid item xs={12} sm={12}>
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">{t('Your open and in progress tasks')}</Typography>
