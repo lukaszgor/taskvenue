@@ -38,17 +38,17 @@ function CreateNewConfiguration() {
 
   const steps = [
     {
-      label: t("Podaj nazwę organizacji"),
-      description: t("Podaj nazwę firmy, zakładu lub organizacji, abyśmy mogli lepiej dostosować nasze usługi do Twoich potrzeb"),
+      label: t("Name the organization"),
+      description: t("Provide the name of your company, facility or organization so that we can better tailor our services to your needs"),
     },
     {
-      label: t("Darmowy okres próbny"),
+      label: t("Free trial period"),
       description:
-      t("Okres próbny trwa 30 dni i jest całkowicie darmowy. Dzięki niemu możesz korzystać ze wszystkich funkcji systemu TaskVenue, co pozwala na zarządzanie firmą i dodawanie pracowników do swojej konfiguracji."),
+      t("The trial period lasts 7 days and is completely free. It allows you to use all the features of the TaskVenue system, allowing you to manage your company and add employees to your setup."),
     },
     {
-      label: t("Gratuluje"),
-      description: t("Udało się utworzyć konfigurację. Klikając przycisk poniżej, zostaniesz przeniesiony do systemu."),
+      label: t("Congratulations"),
+      description: t("You have successfully created the configuration. Clicking the button below will take you to the system."),
     },
   ];
 
@@ -115,8 +115,8 @@ useEffect(() => {
     const formattedDateTime = now.format('DD:MM:YYYY HH:mm');
     setCurrentDateTime(formattedDateTime);
 
-    // Oblicz datę 30 dni w przód i ustaw ją w stanie
-    const newValidityDate = now.add(30, 'days').format('DD:MM:YYYY HH:mm');
+    // Oblicz datę 7 dni w przód i ustaw ją w stanie
+    const newValidityDate = now.add(7, 'days').format('DD:MM:YYYY HH:mm');
     setValidityDate(newValidityDate);
   };
   updateCurrentDateTime();
