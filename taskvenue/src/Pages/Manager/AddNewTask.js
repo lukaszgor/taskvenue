@@ -342,7 +342,7 @@ function AddNewTask() {
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <FormControl fullWidth>
+              <FormControl fullWidth required>
                 <InputLabel id="contractor-select-select-label">
                   {t('Select Contractor')}
                 </InputLabel>
@@ -352,6 +352,7 @@ function AddNewTask() {
                   value={selectedContractorId}
                   onChange={handleChangeContractor}
                   label={t('Select Contractor')}
+                  
                 >
                   {contractors.map((contractor) => (
                     <MenuItem key={contractor.id} value={contractor.id}>
