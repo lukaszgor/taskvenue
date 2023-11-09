@@ -134,7 +134,7 @@ function ManagerNavBar() {
     <div>
     <AppBar position="fixed" >
         <IdConfigurationGuard></IdConfigurationGuard>
-      <Container maxWidth="xl">
+      <Container maxWidth="lx">
         <Toolbar disableGutters>
           <Typography
             variant="h6"

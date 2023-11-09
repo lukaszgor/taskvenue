@@ -59,7 +59,7 @@ function WaitingRoomNavBar() {
     <div>
     <AppBar position="fixed" >
             <FetchSupabaseData sendData={handleGetData}></FetchSupabaseData>
-      <Container maxWidth="xl">
+      <Container maxWidth="lx">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
           </Box>

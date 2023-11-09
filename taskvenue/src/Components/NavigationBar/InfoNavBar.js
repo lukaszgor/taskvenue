@@ -60,7 +60,7 @@ function InfoNavBar() {
   return (
     <div>
     <AppBar position="fixed" >
-      <Container maxWidth="xl">
+    <Container maxWidth="lx">
         <Toolbar disableGutters>
           <Typography
             variant="h6"
