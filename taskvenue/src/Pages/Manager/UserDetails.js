@@ -112,7 +112,7 @@ const FetchUserData = async () => {
 const updateUser =async()=>{
     const{data,error}=await supabase
     .from('profiles')
-    .update({'username':name,'full_name':email,'profile_type':profile_type,'description':description,'phone_number':phone_number,'address':address,'id_contractor':selectedContractorId,'isBlocked':isBlocked})
+    .update({'username':name,'profile_type':profile_type,'description':description,'phone_number':phone_number,'address':address,'id_contractor':selectedContractorId,'isBlocked':isBlocked})
     .eq('id',id)
     handleClickAlert()
 }
@@ -149,9 +149,8 @@ const handleCloseAlert = (event, reason) => {
                 name="Email"
                 label={t("Email")}
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
                 fullWidth
-                required
+                disabled
               />
             </Grid>
             <Grid item xs={12} sm={6}>
