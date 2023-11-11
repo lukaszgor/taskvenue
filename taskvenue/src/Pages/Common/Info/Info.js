@@ -10,6 +10,7 @@ import Difficulties from '../../../Components/Info/MainPage/Difficulties';
 import DescriptionOfTheMainFunction from '../../../Components/Info/MainPage/DescriptionOfTheMainFunction';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import YouTubePlayer from '../../../Components/Info/MainPage/YouTubePlayer';
 
 
 const Info = () => {
@@ -26,6 +27,8 @@ const Info = () => {
 <TargetCompany></TargetCompany>
 <p></p>
 <ProductInfo></ProductInfo>
+<p></p>
+<YouTubePlayer videoUrl="plXtqNL1Mh4" />
 <p></p>
 <StepperInfo></StepperInfo>
 <TryInfo></TryInfo>
