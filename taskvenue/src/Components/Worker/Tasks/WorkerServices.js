@@ -261,7 +261,7 @@ function WorkerServices() {
             <Container maxWidth="md">
             <div>
                 <p></p>
-                <div>
+                {/* <div>
                     {fetchError && <p>{fetchError}</p>}
                     {service && (
                         <div style={{ textAlign: 'right' }}>
@@ -272,7 +272,7 @@ function WorkerServices() {
                             </div>
                         </div>
                     )}
-                </div>
+                </div> */}
             </div>
 
             <Accordion>
@@ -318,7 +318,7 @@ function WorkerServices() {
                                         fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={12} sm={6}>
+                                {/* <Grid item xs={12} sm={6}>
                                     <TextField
                                         label={t('Cost')}
                                         value={cost}
@@ -327,7 +327,7 @@ function WorkerServices() {
                                         type="number"
                                         fullWidth
                                     />
-                                </Grid>
+                                </Grid> */}
                                 <Grid item xs={12} sm={6}>
                                     <TextField
                                         label={t('Unit')}
@@ -346,7 +346,7 @@ function WorkerServices() {
                                         fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={12} sm={6}>
+                                {/* <Grid item xs={12} sm={6}>
                                     <TextField
                                         label={t('Total')}
                                         value={total}
@@ -354,7 +354,7 @@ function WorkerServices() {
                                         fullWidth
                                         disabled
                                     />
-                                </Grid>
+                                </Grid> */}
                                 <Grid item xs={12} sm={6}>
                                 <TextField
                                         type="datetime-local"
@@ -421,10 +421,10 @@ function WorkerServices() {
                                                             <Typography variant="h6">{serviceItem.name}</Typography>
                                                         </Grid>
                                                         <Typography variant="body2">{serviceItem.description}</Typography>
-                                                        <Typography variant="body2">{t('Cost')}: {serviceItem.cost}</Typography>
+                                                        {/* <Typography variant="body2">{t('Cost')}: {serviceItem.cost}</Typography> */}
                                                         <Typography variant="body2">{t('Quantity')}: {serviceItem.quantity}</Typography>
                                                         <Typography variant="body2">{t('Unit')}: {serviceItem.unit}</Typography>
-                                                        <Typography variant="body2">{t('Total')}: {serviceItem.total}</Typography>
+                                                        {/* <Typography variant="body2">{t('Total')}: {serviceItem.total}</Typography> */}
                                                         <Typography variant="body2">{t('Date')}: {serviceItem.date}</Typography>
                                                     </CardContent>
                                                     <CardActions style={{ display: 'flex', justifyContent: 'space-between' }}>
