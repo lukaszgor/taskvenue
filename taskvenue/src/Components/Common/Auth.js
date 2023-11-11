@@ -317,10 +317,22 @@ return (
       <Card>
       <CardContent>
       <h1>{t("Sign in via magic link")}</h1>
-      <br/>
+
       <br/>
       <TextField style={{ width: "250px" }} id="standard-basic" label={t("Enter your email")} placeholder={t("Enter your email")}  type="email" onChange={(e) => setEmail(e.target.value)} variant="standard" />
       <br/> 
+      <br/>
+      <FormControlLabel
+          control={<Checkbox onChange={(e) => setCheckboxChecked(e.target.checked)} />}
+          label={
+            <Link
+            onClick={() => navigate('/termsAndConditions')} // Kliknij, aby nawigować do '/termsAndConditions'
+          >
+            {t("I agree to the terms and conditions")}
+          </Link>
+          }
+        />
+              <br/>
       <br/> 
       <Button size="small" variant="contained" style={{ minWidth: '250px'}} onClick={SendMagicLink}>{t("send magic link")}</Button>
       <p>{LmsgL}</p>
