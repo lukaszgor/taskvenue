@@ -233,5 +233,31 @@
 "Search by Email": "Пошук за Email",
 "Download": "Завантажити",
 "Tasks on the map": "Завдання на мапі",
-"Working time history": "Історія робочого часу"
+"Working time history": "Історія робочого часу",
+"Note, when you click the Start and Stop buttons, geolocation data and the current date and time will be downloaded.": "Зверніть увагу, що при натисканні кнопок «Старт» та «Стоп» будуть завантажені геолокаційні дані, а також поточна дата і час.",
+"Start": "Старт",
+"Stop": "Стоп",
+"Do you want to change the status of the task to closed?": "Чи бажаєте змінити статус завдання на закритий?",
+"The functionality works correctly only with geolocation enabled in your browser. If you want to make use of the full features, please turn on your location services.": "Функціональність працює коректно лише з увімкненою геолокацією у вашому браузері. Якщо ви хочете використовувати всі можливості, будь ласка, увімкніть послуги місцезнаходження.",
+"Geolocation is not supported by your browser": "Геолокація не підтримується вашим браузером",
+"Invalid geolocation data": "Недійсні геолокаційні дані",
+"Create a new organization configuration": "Створити нову конфігурацію організації",
+"Last step": "Останній крок",
+"Name of the organization": "Назва організації",
+"Continue": "Продовжити",
+"Finish": "Закінчити",
+"Your trial period is valid until": "Термін вашого пробного періоду діє до",
+"Name the organization": "Назвіть організацію",
+"Free trial period": "Безкоштовний пробний період",
+"Congratulations": "Вітаємо",
+"Provide the name of your company, facility or organization so that we can better tailor our services to your needs": "Вкажіть назву вашої компанії, закладу чи організації, щоб ми могли краще адаптувати наші послуги до ваших потреб",
+"The trial period lasts 7 days and is completely free. It allows you to use all the features of the TaskVenue system, allowing you to manage your company and add employees to your setup.": "Пробний період триває 7 днів і є повністю безкоштовним. Він дозволяє вам використовувати всі функції системи TaskVenue, що дозволяє керувати вашою компанією та додавати працівників до вашої конфігурації.",
+"You have successfully created the configuration. Clicking the button below will take you to the system.": "Ви успішно створили конфігурацію. Натискання кнопки внизу перенесе вас до системи.",
+"Terms and conditions": "Умови та положення",
+"I agree to the terms and conditions": "Я погоджуюсь з умовами та положеннями"
+
+
+
+
+
 }  
