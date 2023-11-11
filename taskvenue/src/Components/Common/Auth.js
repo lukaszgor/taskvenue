@@ -334,7 +334,7 @@ return (
         />
               <br/>
       <br/> 
-      <Button size="small" variant="contained" style={{ minWidth: '250px'}} onClick={SendMagicLink}>{t("send magic link")}</Button>
+      <Button size="small" variant="contained" style={{ minWidth: '250px'}} disabled={!checkboxChecked}  onClick={SendMagicLink}>{t("send magic link")}</Button>
       <p>{LmsgL}</p>
       </CardContent>
     </Card>
