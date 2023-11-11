@@ -42,6 +42,7 @@ import AboutUs from "../Pages/Common/Info/AboutUs";
 import InfoContact from "../Pages/Common/Info/InfoContact";
 import Knowledge from "../Pages/Common/Info/Knowledge";
 import Map from "../Pages/Manager/Map";
+import TermsAndConditions from "../Pages/Common/Info/TermsAndConditions";
 
 function Routing() {
   return (
@@ -91,8 +92,7 @@ function Routing() {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/infocontact" element={<InfoContact />} />
         <Route path="/knowledge" element={<Knowledge />} />
-
-
+        <Route path="/termsAndConditions" element={<TermsAndConditions />} />
 
       </Routes>
     </BrowserRouter>

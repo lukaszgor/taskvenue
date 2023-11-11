@@ -32,7 +32,12 @@ function Footer() {
   const handleKnowledge = () => {
     navigate('/knowledge');
   };
+  const termsAndConditions = () => {
+    navigate('/termsAndConditions');
+  };
 
+
+  
   return (
     <footer style={footerStyles}>
       <Container maxWidth="lg">
@@ -48,6 +53,9 @@ function Footer() {
           </Link>
           <Link style={linkStyles} onClick={handleKnowledge}>
           {t("Knowledge")}
+          </Link>
+          <Link style={linkStyles} onClick={termsAndConditions}>
+          {t("Terms and conditions")}
           </Link>
         </Typography>
       </Container>
