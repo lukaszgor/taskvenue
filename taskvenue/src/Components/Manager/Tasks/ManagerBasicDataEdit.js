@@ -106,7 +106,8 @@ const ManagerBasicDataEdit = () => {
       .from('profiles')
       .select()
       .eq('id_configuration', idConfig)
-      .in('profile_type', ['manager', 'worker']);
+      .in('profile_type', ['manager', 'worker'])
+      .is('isBlocked', null);
 
     if (error) {
       console.log(error);
