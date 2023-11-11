@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
 import Link from "@mui/material/Link";
 import { useTranslation } from "react-i18next";
-import { Box, Select, MenuItem, FormControl, InputLabel, Accordion, AccordionSummary,CardContent,Card,Container } from '@mui/material';
+import { Box, Select, MenuItem, FormControl, InputLabel, Accordion, AccordionSummary,CardContent,Card,Container, Checkbox,FormControlLabel } from '@mui/material';
 import InfoNavBar from "../NavigationBar/InfoNavBar";
 import Footer from "../Info/Footer";
 
@@ -76,6 +76,7 @@ const handleChange = (event, newValue) => {
   const [Resetmsg, setResetMsg] = useState('');
   const [user, setUser] = useState(''); // User object after registration / login
   const [session, setSession] = useState(''); // session object after registration / login
+  const [checkboxChecked, setCheckboxChecked] = useState(false); // terms and coditions
 
   useEffect(() => {
     const checkSession = async () => {
@@ -292,7 +293,19 @@ return (
         {/* <TextField id="standard-basic" label="Imie" variant="standard" onChange={(e) => 
         setUsername(e.target.value)} /> */}
           <br/>
-      <Button size="small" variant="contained" style={{ minWidth: '250px'}} onClick={Register}>{t("sign up")}</Button>
+          <FormControlLabel
+          control={<Checkbox onChange={(e) => setCheckboxChecked(e.target.checked)} />}
+          label={
+            <Link
+            onClick={() => navigate('/termsAndConditions')} // Kliknij, aby nawigować do '/termsAndConditions'
+          >
+            {t("I agree to the terms and conditions")}
+          </Link>
+          }
+        />
+        <br />
+
+      <Button size="small" variant="contained" style={{ minWidth: '250px'}} onClick={Register}   disabled={!checkboxChecked}  >{t("sign up")}</Button>
       <p>{Rmsg}</p>
       </CardContent>
     </Card>
