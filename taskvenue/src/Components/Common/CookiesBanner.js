@@ -41,7 +41,7 @@ const CookiesBanner = () => {
         <Link
             onClick={() => navigate('/termsAndConditions')} // Kliknij, aby nawigować do '/termsAndConditions'
           >
-            {t("Terms and Conditions")}
+            {t("Terms and conditions")}
           </Link>
           <p></p>
         <Button onClick={handleAcceptCookies} color="primary">
