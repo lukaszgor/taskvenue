@@ -27,12 +27,12 @@ const Info = () => {
 <p></p>
 <TargetCompany></TargetCompany>
 <p></p>
-<ProductInfo></ProductInfo>
+{/* <ProductInfo></ProductInfo> */}
 <p></p>
 <YouTubePlayer videoUrl="plXtqNL1Mh4" />
-<p></p>
+{/* <p></p>
 <StepperInfo></StepperInfo>
-<TryInfo></TryInfo>
+<TryInfo></TryInfo> */}
 <p></p>
 <Footer></Footer>
 

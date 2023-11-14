@@ -40,9 +40,9 @@ const HeaderInfo = () => {
                   </Typography>
                 
                   <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <Link to="/infocontact">
+                    <Link to="/">
                       <Button variant="contained" color="primary" sx={{ marginTop: 3}}>
-                        {t("Order a consultation")}
+                        {t("Try it for free")}
                       </Button>
                     </Link>
                   </div>
