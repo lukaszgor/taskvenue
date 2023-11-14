@@ -11,7 +11,7 @@ import DescriptionOfTheMainFunction from '../../../Components/Info/MainPage/Desc
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import YouTubePlayer from '../../../Components/Info/MainPage/YouTubePlayer';
-
+import CookiesBanner from '../../../Components/Common/CookiesBanner';
 
 const Info = () => {
   const navigate = useNavigate();
@@ -19,6 +19,7 @@ const Info = () => {
   return (
 <div>
 <InfoNavBar></InfoNavBar>
+<CookiesBanner></CookiesBanner>
 <HeaderInfo></HeaderInfo>
 {/* <Difficulties></Difficulties> */}
 <p></p>

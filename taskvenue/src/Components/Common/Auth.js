@@ -17,7 +17,7 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-
+import CookiesBanner from "./CookiesBanner";
 export let userEmail
 export let userId
 
@@ -201,7 +201,7 @@ return (
 </Box> */}
 
 <InfoNavBar></InfoNavBar>
-
+<CookiesBanner></CookiesBanner>
 </div>
       <Box sx={{ width: '100%' }} style={{ background: 'white', minHeight: '90vh',paddingTop: '16px' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }} >
