@@ -148,9 +148,9 @@ const WorkerWorkingTime = () => {
               <Typography variant="body2" color="textSecondary">
                 {t("User")} {workItem.profiles.username}
               </Typography>
-              <Typography variant="body2" color="textSecondary">
+              {/* <Typography variant="body2" color="textSecondary">
                 {t("Location")} {workItem.geoLocation}
-              </Typography>
+              </Typography> */}
               <p></p>
               <GeoLocationMap geoLocation={workItem.geoLocation} />
             </CardContent>
