@@ -18,7 +18,7 @@ import {
   };
 
   
-const YouTubePlayer = ({ videoUrl }) => {
+const YouTubePlayer = ({ videoUrl,title }) => {
  
   return (
 <div>
@@ -27,6 +27,7 @@ const YouTubePlayer = ({ videoUrl }) => {
       <Grid container spacing={2}>
         <Grid item xs={12}>
         <div>
+            <h3>{title}</h3>
       <iframe
         title="YouTube Video Player"
         width="100%"

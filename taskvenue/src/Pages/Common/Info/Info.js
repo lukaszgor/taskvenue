@@ -29,7 +29,7 @@ const Info = () => {
 <p></p>
 {/* <ProductInfo></ProductInfo> */}
 <p></p>
-<YouTubePlayer videoUrl="plXtqNL1Mh4" />
+<YouTubePlayer videoUrl="plXtqNL1Mh4" title={t('Check us out on Youtube')} />
 {/* <p></p>
 <StepperInfo></StepperInfo>
 <TryInfo></TryInfo> */}
