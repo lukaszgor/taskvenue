@@ -3,7 +3,7 @@ import { Accordion, AccordionSummary, AccordionDetails, Typography, Box, Contain
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useTranslation } from 'react-i18next';
 import InfoNavBar from '../../../Components/NavigationBar/InfoNavBar';
-
+import YouTubePlayer from '../../../Components/Info/MainPage/YouTubePlayer';
 function Knowledge() {
   const { t, i18n } = useTranslation();
 
@@ -22,6 +22,7 @@ function Knowledge() {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
+                  <YouTubePlayer videoUrl="plXtqNL1Mh4" title={t('')} />
                     <Typography>
                       <strong>Zarządzanie Pracownikami:</strong> Administrator lub manager może dodawać, edytować i usuwać informacje o pracownikach, w tym ich dane osobowe, umiejętności i inne istotne informacje.
                       <br /><br />
@@ -56,6 +57,7 @@ function Knowledge() {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
+                  <YouTubePlayer videoUrl="V8R2mdvlv7o" title={t('')} />
                     <Typography>
                       <strong>Podgląd Harmonogramu Pracy:</strong> Pracownik ma dostęp do swojego harmonogramu pracy, dzięki czemu może sprawdzać daty, godziny i miejsca swoich zadań.
                       <br /><br />
