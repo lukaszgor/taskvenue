@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import YouTubePlayer from '../../../Components/Info/MainPage/YouTubePlayer';
 import CookiesBanner from '../../../Components/Common/CookiesBanner';
+import Problems from '../../../Components/Info/MainPage/Problems';
 
 const Info = () => {
   const navigate = useNavigate();
@@ -22,6 +23,8 @@ const Info = () => {
 <CookiesBanner></CookiesBanner>
 <HeaderInfo></HeaderInfo>
 {/* <Difficulties></Difficulties> */}
+<p></p>
+{/* <Problems></Problems><--- to do dokonczenia */}
 <p></p>
 <DescriptionOfTheMainFunction></DescriptionOfTheMainFunction>
 <p></p>
