@@ -18,7 +18,7 @@ const HeaderInfo = () => {
                       sx={{
                         mr: 2,
                         mt: 10,
-                        fontFamily: 'monospace',
+                        fontFamily: 'lato',
                         fontWeight: 700,
                         letterSpacing: '.3rem',
                         textDecoration: 'none',
@@ -27,7 +27,7 @@ const HeaderInfo = () => {
               TaskVenue
             </Typography>
             <Typography variant="h4" align="left" sx={{ mt: 2 ,
-                                    fontFamily: 'monospace',
+                                    fontFamily: 'lato',
                                     fontWeight: 700,
                                     // letterSpacing: '.3rem',
                                     textDecoration: 'none',

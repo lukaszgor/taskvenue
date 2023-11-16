@@ -144,7 +144,7 @@ function ManagerNavBar() {
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              fontFamily: 'lato',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
@@ -211,7 +211,7 @@ function ManagerNavBar() {
               mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: 'lato',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
