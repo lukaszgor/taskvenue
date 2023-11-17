@@ -24,7 +24,7 @@ const Info = () => {
 <HeaderInfo></HeaderInfo>
 {/* <Difficulties></Difficulties> */}
 <p></p>
-{/* <Problems></Problems><--- to do dokonczenia */}
+<Problems></Problems>
 <p></p>
 <DescriptionOfTheMainFunction></DescriptionOfTheMainFunction>
 <p></p>

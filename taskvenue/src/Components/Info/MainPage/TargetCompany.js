@@ -24,7 +24,7 @@ const TargetCompany = () => {
   return (
     <div style={centerStyles}>
       <Container maxWidth="md">
-      <Typography variant="h4" gutterBottom style={contentStyles}>
+      <Typography variant="h5" gutterBottom style={contentStyles}>
           Dla kogo jest Task Venue?
         </Typography>
         <Accordion >

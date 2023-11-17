@@ -24,63 +24,54 @@ const Problems = () => {
   return (
     <div style={centerStyles}>
       <Container maxWidth="md">
-      <Typography variant="h4" gutterBottom style={contentStyles}>
-          Nasze oprogramowanie rozwiązuje problemy:
+      <Typography variant="h5" gutterBottom style={contentStyles}>
+      Kluczowe Funkcjonalności
         </Typography>
-        <Accordion >
+        <Accordion  >
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<Divider>Pracownicy nie na miejscu? Zarządzaj efektywnie lokalizacją.</Divider>
+<Divider>Monitoring czasu i lokalizacji pracowników</Divider>
 </AccordionSummary>
 <AccordionDetails>
-Firmy oferujące różnego rodzaju usługi, takie jak sprzątanie, konserwacja, naprawy itp., mogą korzystać z tej aplikacji do lepszej organizacji swojej pracy i monitorowania wyników.
+Aplikacja umożliwia śledzenie czasu oraz dokładnej lokalizacji pracowników podczas wykonywania zadań. To rozwiązuje problem związany z nadzorem i kontrolą nad pracą zespołu, a także pozwala na skuteczne zarządzanie czasem pracy.
+</AccordionDetails>
+</Accordion>
+
+<Accordion  >
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+<Divider>Zarządzanie miejscami i kontrahentami</Divider>
+</AccordionSummary>
+<AccordionDetails>
+Poprzez zapisywanie miejsc, w których realizowane są zadania, oraz agregowanie danych pod kątem kontrahentów, aplikacja dostarcza narzędzi do skutecznego zarządzania klientami i miejscami wykonywania usług. To pozwala na lepsze planowanie działań i skupienie się na kluczowych obszarach biznesowych.
 </AccordionDetails>
 </Accordion>
 
 <Accordion >
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<Divider>Rozliczenia za rzeczywiste usługi. Unikaj strat. Zabezpiecz finanse.</Divider>
+<Divider>Rzetelne rozliczanie klientów:</Divider>
 </AccordionSummary>
 <AccordionDetails>
-Aplikacja ta może być wykorzystywana przez firmy zarządzające nieruchomościami do monitorowania i zarządzania zadaniami związanymi z utrzymaniem budynków, naprawami, przeglądami, czyszczeniem itp.
+Dzięki możliwości zapisywania miejsc i czasu, w którym zadania zostały zrealizowane, aplikacja umożliwia dokładne rozliczanie klientów tylko za faktycznie zrealizowane usługi. To eliminuje nieścisłości w rozliczeniach i buduje zaufanie między firmą a klientami.
 </AccordionDetails>
 </Accordion>
 
 <Accordion >
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<Divider>Nieuporządkowane dane o miejscach, zadaniach, kontrahentach? Systematyzuj</Divider>
+<Divider>Skuteczna komunikacja z pracownikami:</Divider>
 </AccordionSummary>
 <AccordionDetails>
-Firmy świadczące usługi serwisowe dla różnych urządzeń i maszyn mogą korzystać z tej aplikacji do rejestrowania lokalizacji urządzeń, przypisywania zadań serwisowych i śledzenia postępów prac.
+Slownik z zadaniami pozwala pracownikom jasno zrozumieć, jakie zadania mają zrealizować. To eliminuje nieporozumienia i ułatwia skuteczną komunikację w zespole, co jest kluczowe dla efektywnej realizacji projektów.
 </AccordionDetails>
 </Accordion>
 
 <Accordion >
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<Divider>Planowanie pracy zespołu z problemem? Zapewnij klarowność kalendarza.</Divider>
+<Divider>Planowanie i harmonogramowanie zadań:</Divider>
 </AccordionSummary>
 <AccordionDetails>
-W branży budowlanej aplikacja ta może pomóc w rejestrowaniu lokalizacji różnych etapów projektu, przypisywaniu zadań podwykonawcom i monitorowaniu postępów prac na budowie.
+Dzięki modułowi harmonogramu, aplikacja wspiera planowanie działań do przodu. Monitorowanie absencji pracowników oraz zadań na bieżąco umożliwia elastyczne dostosowanie harmonogramu, co eliminuje problemy związane z nieefektywnym wykorzystaniem zasobów.
 </AccordionDetails>
 </Accordion>
 
-<Accordion >
-  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<Divider>Przewidywanie zasobów dla zadań. Optymalizuj efektywność organizacji</Divider>
-</AccordionSummary>
-<AccordionDetails>
-W przypadku obiektów użyteczności publicznej, takich jak szkoły, szpitale lub instytucje rządowe, aplikacja ta może pomóc w zarządzaniu utrzymaniem, czyszczeniem i innymi zadaniami.
-W przypadku zarządzania biurami, centrów handlowych lub innymi obiektami komercyjnymi, aplikacja ta może pomóc w monitorowaniu i zarządzaniu różnymi aspektami obsługi i utrzymania nieruchomości.
-</AccordionDetails>
-</Accordion>
-
-<Accordion >
-  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<Divider>Redukcja kosztów podróży, lepsze planowanie. Jasny obraz sytuacji.</Divider>
-</AccordionSummary>
-<AccordionDetails>
-W rolnictwie aplikacja ta może być wykorzystywana do zarządzania pracami na farmach, planowania i monitorowania zadań związanych z uprawą, nawadnianiem i pielęgnacją roślin.
-</AccordionDetails>
-</Accordion>
 
 <p></p>
       </Container>
