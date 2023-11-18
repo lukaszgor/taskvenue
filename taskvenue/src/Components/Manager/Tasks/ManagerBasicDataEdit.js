@@ -25,6 +25,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import ManagerTaskAttachments from '../Attachments/ManagerTaskAttachments';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import sendEmail from '../../../Config/EmailSender';
 
 const DateTimeInput = styled.input`
   width: 100%;
@@ -59,6 +60,14 @@ const ManagerBasicDataEdit = () => {
   const navigate = useNavigate();
   const [errorDate, setErrorDate] = useState(null);
 
+  const [originalAssignedUserId, setOriginalAssignedUserId] = useState('');
+
+
+  const [email, setEmail] = useState('lukasz.gg13@gmail.com');
+  const [message, setMessage] = useState(t("If you are an employee then click to move to a specific task ")+"https://taskvenue.com/WorkerTaskDetails/"+id);
+  const [subject, setSubject] = useState(t("You have been assigned to a task ")+id);
+
+
   const handleFetchData = async () => {
     const { data, error } = await supabase
       .from('tasks')
@@ -76,6 +85,7 @@ const ManagerBasicDataEdit = () => {
       setDescription(data.description);
       setSelectedContractorId(data.id_contractor);
       setSelectedAsignedId(data.asigned_user);
+      setOriginalAssignedUserId(data.asigned_user); 
       setCreatedDate(data.createdDate);
       setKickoff(data.kickoffDate);
       setDeadline(data.deadline);
@@ -151,6 +161,14 @@ const ManagerBasicDataEdit = () => {
         setErrorDate(t('Incorrect dates'));
     } else {
         // Jeśli dane są poprawne, zresetuj stan błędu i wykonaj aktualizację absencji
+        if (originalAssignedUserId !== selectedAsignedId) {
+          // Została zmieniona wartość assigned_user, wyświetl alert
+          sendEmail({
+            toEmail: email, 
+            subject: subject,
+            message: message,
+          });
+        }
         setErrorDate(null);
         handleUpdateTask();
     }
@@ -212,6 +230,10 @@ const ManagerBasicDataEdit = () => {
   const handleChangeAsignedUser = (event) => {
     const value = event.target.value;
     setSelectedAsignedId(value);
+    const selectedUserProfile = profiles.find((profile) => profile.id === value);
+    if (selectedUserProfile) {
+      setEmail(selectedUserProfile.full_name);
+    }
   };
 
   const handleClickAlert = () => {
@@ -236,6 +258,8 @@ const ManagerBasicDataEdit = () => {
   const handleDeadlineChange = (event) => {
     setDeadline(event.target.value); // Przechowuje datę i godzinę w formacie YYYY-MM-DDTHH:MM
   };
+
+
 
   return (
     <div>
