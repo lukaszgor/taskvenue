@@ -47,7 +47,7 @@ Poprzez zapisywanie miejsc, w których realizowane są zadania, oraz agregowanie
 
 <Accordion >
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<Divider>Rzetelne rozliczanie klientów:</Divider>
+<Divider>Rzetelne rozliczanie klientów</Divider>
 </AccordionSummary>
 <AccordionDetails>
 Dzięki możliwości zapisywania miejsc i czasu, w którym zadania zostały zrealizowane, aplikacja umożliwia dokładne rozliczanie klientów tylko za faktycznie zrealizowane usługi. To eliminuje nieścisłości w rozliczeniach i buduje zaufanie między firmą a klientami.
