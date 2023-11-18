@@ -18,7 +18,7 @@ const HeaderInfo = () => {
                       sx={{
                         mr: 2,
                         mt: 10,
-                        fontFamily: 'lato',
+                        // fontFamily: 'lato',
                         fontWeight: 700,
                         letterSpacing: '.3rem',
                         textDecoration: 'none',
@@ -26,16 +26,21 @@ const HeaderInfo = () => {
                     >
               TaskVenue
             </Typography>
-            <Typography variant="h4" align="left" sx={{ mt: 2 ,
+            {/* <Typography variant="h4" align="left" sx={{ mt: 2 ,
                                     fontFamily: 'lato',
                                     fontWeight: 700,
                                     // letterSpacing: '.3rem',
                                     textDecoration: 'none',
             }}>
           {t("A place for your business")}
-            </Typography>
+            </Typography> */}
+                  {/* <Typography variant="h6" align='left' sx={{ mt: 2, marginTop: 4, marginBottom: 2 }}>
+                  {t("A place for your business")}
+                  </Typography> */}
 
                   <Typography variant="h6" align='left' sx={{ mt: 2, marginTop: 4, marginBottom: 2 }}>
+                  {t("A place for your business")+". "} 
+                  <br></br>
                     {t("That is, a system that improves management and communication between management, the customer, and those doing the work in the field.")}
                   </Typography>
                 
@@ -47,12 +52,14 @@ const HeaderInfo = () => {
                     </Link>
                   </div>
           </Grid>
-          <Grid item xs={12} md={8}>
+          <Grid item xs={12} md={8} >
+            <div style={{ padding: '20px' }}>
             <img
-               src="/StartPagePhoto.png"
+               src="/headerphoto.png"
               alt="Your Business"
               style={{ width: '100%', height: 'auto' }}
             />
+            </div>
           </Grid>
         </Grid>
       </Container>
