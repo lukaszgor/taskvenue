@@ -50,7 +50,7 @@ const InfoContact = () => {
                 <CardContent>
                   <Typography variant="h5">Email</Typography>
                   <EmailIcon style={iconStyle} />
-                  <Typography variant="body1">lgorski.taskvenue@gmail.com</Typography>
+                  <Typography variant="body1">taskvenueapp@gmail.com</Typography>
                 </CardContent>
               </Card>
             </Grid>
