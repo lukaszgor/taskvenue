@@ -80,8 +80,7 @@ const UserWorkTimeHistory = () => {
 
   const columns = [
     { field: 'idTask', headerName: t('ID'), width: 50 },
-    { field: 'time', headerName: t('Time'), width: 50 },
-    { field: 'description', headerName: t('Description'), width: 200 },
+    { field: 'description', headerName: t('Description'), width: 80 },
     {
       field: 'date',
       headerName: t('Creation date'),
