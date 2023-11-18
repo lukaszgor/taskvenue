@@ -83,8 +83,8 @@ function AddNewTask() {
 
   //emailjs
   const [email, setEmail] = useState('lukasz.gg13@gmail.com');
-  const [message, setMessage] = useState('Zostało zarejestrowane nowe zadanie w którym jesteś oznaczony. Sprawdź szczegóły w https://taskvenue.com');
-  const [subject, setSubject] = useState('Nowe zadanie w TaskVenue');
+  const [message, setMessage] = useState(t("A new task in which you are tagged has been registered. Check the details at https://taskvenue.com"));
+  const [subject, setSubject] = useState(t("Nowe zadanie w TaskVenue"));
 
 
   useEffect(() => {
