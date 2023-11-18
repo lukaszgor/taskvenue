@@ -140,8 +140,8 @@ const insertService = async()=>{
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
-          <Accordion >
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Accordion defaultExpanded >
+        <AccordionSummary  expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">{t('Add')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
