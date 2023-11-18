@@ -303,7 +303,7 @@ const handleOpenFilterChange = () => {
                                         <Divider textAlign="right">{t("Status")}: {user.isBlocked === 1 ? t("Blocked") : t("Active")}</Divider>
                                         {/* <Typography variant="h6">{user.id}</Typography> */}
                                             <Typography variant="h6">{user.username}</Typography>
-                                            <Typography>{t("Email")}: {user.full_name}</Typography>
+                                            <Typography> {user.full_name}</Typography>
                                             <Typography>{t("Type")}: {formatProfileType(user.profile_type)}</Typography>
                                         </CardContent>
                                         <CardActions>
