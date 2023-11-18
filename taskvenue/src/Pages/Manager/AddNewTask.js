@@ -14,7 +14,7 @@ import moment from 'moment';
 import ManagerTaskBreadcrumbs from '../../Components/Breadcrumbs/ManagerTaskBreadcrumbs';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-
+import sendEmail from '../../Config/EmailSender';
 
 const DateTimeInput = styled.input`
   width: 100%;
@@ -80,6 +80,12 @@ function AddNewTask() {
   const [currentDate, setCurrentDate] = useState('');
   const [errorDate, setErrorDate] = useState(null);
   const [author, setAuthor] = useState('');
+
+  //emailjs
+  const [email, setEmail] = useState('lukasz.gg13@gmail.com');
+  const [message, setMessage] = useState('Zostało zarejestrowane nowe zadanie w którym jesteś oznaczony. Sprawdź szczegóły w https://taskvenue.com');
+  const [subject, setSubject] = useState('Nowe zadanie w TaskVenue');
+
 
   useEffect(() => {
     const formattedDate = moment().format('YYYY-MM-DDTHH:mm');
@@ -155,6 +161,12 @@ function AddNewTask() {
         // Jeśli dane są poprawne, zresetuj stan błędu i wykonaj aktualizację absencji
         setErrorDate(null);
         handleInsertTask();
+
+        sendEmail({
+          toEmail: email, 
+          subject: subject,
+          message: message,
+        });
     }
 };
 
@@ -231,6 +243,11 @@ function AddNewTask() {
   const handleChangeAsignedUser = (event) => {
     const value = event.target.value;
     setSelectedAsignedId(value);
+
+    const selectedUserProfile = profiles.find((profile) => profile.id === value);
+    if (selectedUserProfile) {
+      setEmail(selectedUserProfile.full_name);
+    }
   };
 
   const handleCheckboxChange = (event) => {
@@ -301,7 +318,7 @@ function AddNewTask() {
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <FormControl fullWidth>
+              <FormControl fullWidth required>
                 <InputLabel id="status-select-select-label">
                   {t('Status')}
                 </InputLabel>
@@ -352,7 +369,7 @@ function AddNewTask() {
                   value={selectedContractorId}
                   onChange={handleChangeContractor}
                   label={t('Select Contractor')}
-                  
+                  required
                 >
                   {contractors.map((contractor) => (
                     <MenuItem key={contractor.id} value={contractor.id}>
@@ -363,7 +380,7 @@ function AddNewTask() {
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <FormControl fullWidth>
+              <FormControl fullWidth required>
                 <InputLabel id="asigned-select-label">
                   {t('Select Asigned user')}
                 </InputLabel>
@@ -373,6 +390,7 @@ function AddNewTask() {
                   value={selectedAsignedId}
                   onChange={handleChangeAsignedUser}
                   label={t('Select Asigned user')}
+                  required
                 >
                   {profiles.map((profile) => (
                     <MenuItem key={profile.id} value={profile.id}>
@@ -390,6 +408,7 @@ function AddNewTask() {
                 onChange={(e) => setEstimatedTime(e.target.value)}
                 fullWidth
                 type="number" 
+                required
               />
             </Grid>
             <Grid item xs={12} sm={6}>
