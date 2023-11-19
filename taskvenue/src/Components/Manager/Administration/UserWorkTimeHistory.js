@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
-import { DataGrid,GridToolbarContainer, GridToolbarExport } from '@mui/x-data-grid';
+import { DataGrid, GridToolbarContainer, GridToolbarExport } from '@mui/x-data-grid';
 import { Button } from '@mui/material';
 import supabase from '../../../supabaseClient';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import moment from 'moment'; // Dodaj moment do importów
 
 function CustomToolbar() {
-    return (
-      <GridToolbarContainer>
-        <GridToolbarExport />
-      </GridToolbarContainer>
-    );
-  }
+  return (
+    <GridToolbarContainer>
+      <GridToolbarExport />
+    </GridToolbarContainer>
+  );
+}
 
 const UserWorkTimeHistory = () => {
   const { t, i18n } = useTranslation();
@@ -20,7 +21,7 @@ const UserWorkTimeHistory = () => {
   const [userID, setUserID] = useState('');
   const [idConfig, setIdConfiguration] = useState('');
   const [fetchError, setFetchError] = useState(null);
-  const [tasks, setTasks] = useState(null);
+  const [tasksWithDetails, setTasksWithDetails] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -41,7 +42,7 @@ const UserWorkTimeHistory = () => {
       .eq('id', userId)
       .single();
     if (profileError) {
-      console.log(profileError);
+      console.error(profileError);
     } else if (profileData) {
       setIdConfiguration(profileData.id_configuration);
     }
@@ -49,44 +50,55 @@ const UserWorkTimeHistory = () => {
 
   useEffect(() => {
     if (idConfig) {
-      fetchTasks(idConfig, id);
+      fetchTasksWithDetails(idConfig, id);
     }
-  }, [idConfig]);
+  }, [idConfig, id]);
 
   const handleButtonClickVenueDetails = (event, cellValues) => {
     navigate('/TaskDetails/' + cellValues.row.idTask);
   };
 
+  const fetchTasksWithDetails = async (idConfiguration, id) => {
+    try {
+      const { data: workTimeData, error: workTimeError } = await supabase
+        .from('workTime')
+        .select('*, tasks(*)')
+        .eq('id_user', id)
+        .eq('id_configuration', idConfiguration);
 
+      if (workTimeError) {
+        console.error(workTimeError);
+        setTasksWithDetails(null);
+        setFetchError(t('Error fetching data.'));
+      }
 
-  // Download data
-  const fetchTasks = async (idConfiguration, id) => {
-    const { data, error } = await supabase
-      .from('workTime')
-      .select()
-      .eq('id_user', id)
-      .eq('id_configuration', idConfiguration);
-    if (error) {
-      console.log(error);
-      setTasks(null);
-      setFetchError(t('No Tasks'));
-    }
-    if (data) {
-      setTasks(data);
-      setFetchError(null);
+      if (workTimeData) {
+        const processedData = workTimeData.map((workTime, index) => ({
+          id: index,
+          idTask: workTime.tasks ? workTime.tasks.id : null,
+          plannedDeadline: workTime.tasks ? moment(workTime.tasks.deadline).format('DD/MM/YYYY HH:mm') : null,
+          plannedKickoff: workTime.tasks ? moment(workTime.tasks.kickoffDate).format('DD/MM/YYYY HH:mm') : null,
+          description: workTime.description,
+          date: workTime.date,
+          // Dodaj inne kolumny workTime, jeśli są potrzebne
+        }));
+
+        setTasksWithDetails(processedData);
+        setFetchError(null);
+      }
+    } catch (error) {
+      console.error(error);
+      setTasksWithDetails(null);
+      setFetchError(t('Error fetching data.'));
     }
   };
 
-
   const columns = [
-    { field: 'idTask', headerName: t('ID'), width: 50 },
+    { field: 'idTask', headerName: t('ID Task'), width: 50 },
+    { field: 'plannedKickoff', headerName: t('Start date'), width: 160 },
+    { field: 'plannedDeadline', headerName: t('End date'), width: 160 },
     { field: 'description', headerName: t('Description'), width: 80 },
-    {
-      field: 'date',
-      headerName: t('Creation date'),
-      width: 140,
-    },
-
+    { field: 'date', headerName: t('Creation date'), width: 140 },
     {
       field: 'Action',
       headerName: t('Action'),
@@ -111,17 +123,17 @@ const UserWorkTimeHistory = () => {
       <p></p>
       <div>
         {fetchError && <p>{fetchError}</p>}
-        {tasks && (
+        {tasksWithDetails && (
           <div>
             <div style={{ height: 400, width: '100%' }}>
               <DataGrid
-                rows={tasks}
+                rows={tasksWithDetails}
                 columns={columns}
                 pageSize={12}
                 rowsPerPageOptions={[12]}
                 slots={{
-                    toolbar: CustomToolbar,
-                  }}
+                  toolbar: CustomToolbar,
+                }}
               />
             </div>
             <div></div>
