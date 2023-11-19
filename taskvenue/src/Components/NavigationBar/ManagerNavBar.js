@@ -136,23 +136,28 @@ function ManagerNavBar() {
         <IdConfigurationGuard></IdConfigurationGuard>
       <Container maxWidth="lx">
         <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/home"
-            sx={{
+        <Typography 
+          variant="h6"
+          noWrap
+          component="a"
+          href="/home"
+          sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'lato',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
-            }}
-          >
-            TaskVenue
-          </Typography>
+            }}>
+        <a href="/home">
+        <img
+          src="/faviconnew.png"
+          alt="TaskVenue Icon"
+          style={{  height: 'auto', width: '40px', marginRight: '10px' }}
+        />
+      </a>
+      TaskVenue
+      </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
