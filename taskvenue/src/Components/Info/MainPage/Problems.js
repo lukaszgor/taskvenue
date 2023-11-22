@@ -25,7 +25,7 @@ const Problems = () => {
     <div style={centerStyles}>
       <Container maxWidth="md">
       <Typography variant="h5" gutterBottom style={contentStyles}>
-      Kluczowe Funkcjonalności
+      {t('Key functionalities')}
         </Typography>
         <Accordion  >
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>

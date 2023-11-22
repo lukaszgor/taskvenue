@@ -4,7 +4,7 @@ import { Grid, Typography, Paper, Container } from '@mui/material';
 const sections = [
   {
     title: 'Multiplatformowość',
-    description: 'Nasza aplikacja jest multiplatformowa, co oznacza, że działa płynnie na każdym urządzeniu, umożliwiając użytkownikom swobodne korzystanie z niej bez względu na rodzaj urządzenia.',
+    description: 'Nasza aplikacja jest dostępna na wielu platformach, co zapewnia płynne działanie na każdym urządzeniu, umożliwiając użytkownikom swobodne korzystanie bez względu na rodzaj sprzętu.',
     imageSrc: 'planning.png',
   },
   {
