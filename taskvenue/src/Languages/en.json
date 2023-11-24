@@ -265,7 +265,16 @@
       "If you are an employee then click to move to a specific task ":"If you are an employee then click to move to a specific task ",
       "You have been assigned to a task ":"You have been assigned to a task ",
       "Key functionalities":"Key functionalities",
-      "Which industry?":"Which industry?"
+      "Monitoring the time and location of employees":"Monitoring time and location of employees",
+      "Managing places and contractors":"Managing places and contractors",
+      "Accurate billing of clients":"Accurate billing of clients",
+      "Effective communication with employees":"Effective communication with employees",
+      "Planning and scheduling tasks":"Planning and scheduling tasks",
+      "The application makes it possible to track the time and exact location of employees while performing tasks. This solves the problem of supervising and controlling the work of the team, and allows for effective time management.":"The application enables tracking the time and precise location of employees during task execution. This addresses the issue of supervising and controlling team work, and facilitates efficient time management.",
+      "By recording task locations and aggregating data by contractor, the application provides tools to effectively manage clients and service locations. This allows for better planning of activities and focus on key business areas.":"By recording task locations and aggregating data by contractor, the application provides tools for effectively managing clients and service locations. This enables better planning of activities and focus on key business areas.",
+      "With the ability to record where and when tasks were completed, the application allows customers to be billed accurately only for services actually completed. This eliminates inaccuracies in billing and builds trust between the company and customers.":"With the ability to record where and when tasks were completed, the application allows accurate billing of customers only for services actually completed. This eliminates inaccuracies in billing and builds trust between the company and customers.",
+      "The task dictionary allows employees to clearly understand what tasks they are supposed to complete. This eliminates misunderstandings and facilitates effective communication within the team, which is crucial for effective project implementation.":"The task dictionary allows employees to clearly understand what tasks they are supposed to complete. This eliminates misunderstandings and facilitates effective communication within the team, which is crucial for effective project implementation.",
+      "With the scheduling module, the application supports forward planning of activities. Monitoring employee absenteeism and tasks in real time allows flexible schedule adjustments, eliminating problems associated with inefficient use of resources.":"With the scheduling module, the application supports forward planning of activities. Monitoring employee absenteeism and tasks in real time allows flexible schedule adjustments, eliminating problems associated with inefficient use of resources."
 
 
    

@@ -29,46 +29,46 @@ const Problems = () => {
         </Typography>
         <Accordion  >
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<Divider>Monitoring czasu i lokalizacji pracowników</Divider>
+<Divider> {t('Monitoring the time and location of employees')}</Divider>
 </AccordionSummary>
 <AccordionDetails>
-Aplikacja umożliwia śledzenie czasu oraz dokładnej lokalizacji pracowników podczas wykonywania zadań. To rozwiązuje problem związany z nadzorem i kontrolą nad pracą zespołu, a także pozwala na skuteczne zarządzanie czasem pracy.
+{t('The application makes it possible to track the time and exact location of employees while performing tasks. This solves the problem of supervising and controlling the work of the team, and allows for effective time management.')}
 </AccordionDetails>
 </Accordion>
 
 <Accordion  >
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<Divider>Zarządzanie miejscami i kontrahentami</Divider>
+<Divider>{t('Managing places and contractors')}</Divider>
 </AccordionSummary>
 <AccordionDetails>
-Poprzez zapisywanie miejsc, w których realizowane są zadania, oraz agregowanie danych pod kątem kontrahentów, aplikacja dostarcza narzędzi do skutecznego zarządzania klientami i miejscami wykonywania usług. To pozwala na lepsze planowanie działań i skupienie się na kluczowych obszarach biznesowych.
+{t('By recording task locations and aggregating data by contractor, the application provides tools to effectively manage clients and service locations. This allows for better planning of activities and focus on key business areas.')}
 </AccordionDetails>
 </Accordion>
 
 <Accordion >
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<Divider>Rzetelne rozliczanie klientów</Divider>
+<Divider>{t('Accurate billing of clients')}</Divider>
 </AccordionSummary>
 <AccordionDetails>
-Dzięki możliwości zapisywania miejsc i czasu, w którym zadania zostały zrealizowane, aplikacja umożliwia dokładne rozliczanie klientów tylko za faktycznie zrealizowane usługi. To eliminuje nieścisłości w rozliczeniach i buduje zaufanie między firmą a klientami.
+{t('With the ability to record where and when tasks were completed, the application allows customers to be billed accurately only for services actually completed. This eliminates inaccuracies in billing and builds trust between the company and customers.')}
 </AccordionDetails>
 </Accordion>
 
 <Accordion >
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<Divider>Skuteczna komunikacja z pracownikami:</Divider>
+<Divider>{t('Effective communication with employees')}</Divider>
 </AccordionSummary>
 <AccordionDetails>
-Slownik z zadaniami pozwala pracownikom jasno zrozumieć, jakie zadania mają zrealizować. To eliminuje nieporozumienia i ułatwia skuteczną komunikację w zespole, co jest kluczowe dla efektywnej realizacji projektów.
+{t('The task dictionary allows employees to clearly understand what tasks they are supposed to complete. This eliminates misunderstandings and facilitates effective communication within the team, which is crucial for effective project implementation.')}
 </AccordionDetails>
 </Accordion>
 
 <Accordion >
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<Divider>Planowanie i harmonogramowanie zadań:</Divider>
+<Divider>{t('Planning and scheduling tasks')}</Divider>
 </AccordionSummary>
 <AccordionDetails>
-Dzięki modułowi harmonogramu, aplikacja wspiera planowanie działań do przodu. Monitorowanie absencji pracowników oraz zadań na bieżąco umożliwia elastyczne dostosowanie harmonogramu, co eliminuje problemy związane z nieefektywnym wykorzystaniem zasobów.
+{t('With the scheduling module, the application supports forward planning of activities. Monitoring employee absenteeism and tasks in real time allows flexible schedule adjustments, eliminating problems associated with inefficient use of resources.')}
 </AccordionDetails>
 </Accordion>
 

@@ -265,7 +265,17 @@
       "If you are an employee then click to move to a specific task ":"Jeśli jesteś pracownikiem to kliknij w celu przeniesienia do konkretnego zadania ",
       "You have been assigned to a task ":"Zostałeś przydzielony do zadania ",
       "Key functionalities":"Kluczowe Funkcjonalności",
-      "Which industry?":"Jaka braża?"
+      "Monitoring the time and location of employees":"Monitoring czasu i lokalizacji pracowników",
+      "Managing places and contractors":"Zarządzanie miejscami i kontrahentami",
+      "Accurate billing of clients":"Rzetelne rozliczanie klientów",
+      "Effective communication with employees":"Skuteczna komunikacja z pracownikami",
+      "Planning and scheduling tasks":"Planowanie i harmonogramowanie zadań",
+      "The application makes it possible to track the time and exact location of employees while performing tasks. This solves the problem of supervising and controlling the work of the team, and allows for effective time management.":"Aplikacja umożliwia śledzenie czasu oraz dokładnej lokalizacji pracowników podczas wykonywania zadań. To rozwiązuje problem związany z nadzorem i kontrolą nad pracą zespołu, a także pozwala na skuteczne zarządzanie czasem pracy.",
+      "By recording task locations and aggregating data by contractor, the application provides tools to effectively manage clients and service locations. This allows for better planning of activities and focus on key business areas.":"Poprzez zapisywanie miejsc, w których realizowane są zadania, oraz agregowanie danych pod kątem kontrahentów, aplikacja dostarcza narzędzi do skutecznego zarządzania klientami i miejscami wykonywania usług. To pozwala na lepsze planowanie działań i skupienie się na kluczowych obszarach biznesowych.",
+      "With the ability to record where and when tasks were completed, the application allows customers to be billed accurately only for services actually completed. This eliminates inaccuracies in billing and builds trust between the company and customers.":"Dzięki możliwości zapisywania miejsc i czasu, w którym zadania zostały zrealizowane, aplikacja umożliwia dokładne rozliczanie klientów tylko za faktycznie zrealizowane usługi. To eliminuje nieścisłości w rozliczeniach i buduje zaufanie między firmą a klientami.",
+      "The task dictionary allows employees to clearly understand what tasks they are supposed to complete. This eliminates misunderstandings and facilitates effective communication within the team, which is crucial for effective project implementation.":"Slownik z zadaniami pozwala pracownikom jasno zrozumieć, jakie zadania mają zrealizować. To eliminuje nieporozumienia i ułatwia skuteczną komunikację w zespole, co jest kluczowe dla efektywnej realizacji projektów.",
+      "With the scheduling module, the application supports forward planning of activities. Monitoring employee absenteeism and tasks in real time allows flexible schedule adjustments, eliminating problems associated with inefficient use of resources.":"Dzięki modułowi harmonogramu, aplikacja wspiera planowanie działań do przodu. Monitorowanie absencji pracowników oraz zadań na bieżąco umożliwia elastyczne dostosowanie harmonogramu, co eliminuje problemy związane z nieefektywnym wykorzystaniem zasobów."
+
 
 
 

@@ -25,7 +25,7 @@ const TargetCompany = () => {
     <div style={centerStyles}>
       <Container maxWidth="md">
       <Typography variant="h5" gutterBottom style={contentStyles}>
-      {t('Which industry?')}
+
         </Typography>
         <Accordion >
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
