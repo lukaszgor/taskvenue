@@ -12,6 +12,8 @@ import { useNavigate } from "react-router-dom"
 import ManagerEmployeeDocuments from '../../Components/Manager/Documents/ManagerEmployeeDocuments';
 import UserWorkTimeHistory from '../../Components/Manager/Administration/UserWorkTimeHistory';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ConfirmationLocation from '../../Components/Reports/ConfirmationLocation';
+
 
 const UserDetails = () => {
     const {id} = useParams()
@@ -264,6 +266,23 @@ const handleCloseAlert = (event, reason) => {
           <UserWorkTimeHistory></UserWorkTimeHistory>
         </AccordionDetails>
       </Accordion>
+
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">
+            {t('Confirmation of location')}
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+          <ConfirmationLocation></ConfirmationLocation>
+        </AccordionDetails>
+      </Accordion>
+
+      
+
+
+
           </FormControl>
         )}
               </Box>
