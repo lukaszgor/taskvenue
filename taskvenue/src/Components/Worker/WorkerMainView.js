@@ -7,6 +7,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useTranslation } from "react-i18next";
 import WorkerMainSummary from '../Reports/WorkerMainSummary';
 import WorkerNavBar from '../NavigationBar/WorkerNavBar';
+import WorkerConfirmationLocation from './WorkerConfirmationLocation';
 
 const WorkerMainView = () => {
   const { t, i18n } = useTranslation();
@@ -14,7 +15,7 @@ const WorkerMainView = () => {
     <div>
         <WorkerNavBar></WorkerNavBar>
         <p></p>
-        <Accordion defaultExpanded>
+        <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">{t('Summary')}</Typography>
         </AccordionSummary>
@@ -28,7 +29,7 @@ const WorkerMainView = () => {
       {/* <Grid item xs={12} sm={8}>
       </Grid> */}
 
-      <Grid item xs={12} sm={12}>
+      {/* <Grid item xs={12} sm={12}>
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">{t('Your open and in progress tasks')}</Typography>
@@ -38,8 +39,23 @@ const WorkerMainView = () => {
           <YourOpenAndInProgressTasksReport></YourOpenAndInProgressTasksReport>
         </AccordionDetails>
       </Accordion>
+      </Grid> */}
+
+
+      <Grid item xs={12} sm={12}>
+      <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Confirmation of location')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+          <WorkerConfirmationLocation></WorkerConfirmationLocation>
+        </AccordionDetails>
+      </Accordion>
       </Grid>
+
     </Grid>
+
   </div>
   );
 };
