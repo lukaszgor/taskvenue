@@ -263,8 +263,33 @@
 "New task in TaskVenue": "Нове завдання в TaskVenue",
 "A new task in which you are tagged has been registered. Check the details at https://taskvenue.com": "Зареєстровано нове завдання, в якому вас відзначено. Перевірте деталі за адресою https://taskvenue.com",
 "If you are an employee then click to move to a specific task ": "Якщо ви співробітник, тоді клацніть, щоб перейти до конкретного завдання ",
-"You have been assigned to a task ": "Вам призначено завдання "
-
+"You have been assigned to a task ": "Вам призначено завдання ",
+"Key functionalities":"Основні функціональності",
+"Monitoring the time and location of employees":"Моніторинг часу та місцезнаходження працівників",
+"Managing places and contractors":"Управління місцями та підрядниками",
+"Accurate billing of clients":"Точне стягнення платежів від клієнтів",
+"Effective communication with employees":"Ефективна комунікація з працівниками",
+"Planning and scheduling tasks":"Планування та розкладання завдань",
+"The application makes it possible to track the time and exact location of employees while performing tasks. This solves the problem of supervising and controlling the work of the team, and allows for effective time management.":"Додаток дозволяє відстежувати час та точне місцезнаходження працівників під час виконання завдань. Це вирішує проблему нагляду та контролю за роботою команди і дозволяє ефективно управляти часом.",
+"By recording task locations and aggregating data by contractor, the application provides tools to effectively manage clients and service locations. This allows for better planning of activities and focus on key business areas.":"Записуючи місця виконання завдань та агрегуючи дані за підрядником, додаток надає інструменти для ефективного управління клієнтами та місцями обслуговування. Це дозволяє краще планувати діяльність і фокусуватися на ключових галузях бізнесу.",
+"With the ability to record where and when tasks were completed, the application allows customers to be billed accurately only for services actually completed. This eliminates inaccuracies in billing and builds trust between the company and customers.":"Можливість запису місця та часу виконання завдань дозволяє додатку точно стягувати оплату від клієнтів лише за фактично виконані послуги. Це усуває неточності в розрахунках та зміцнює довіру між компанією та клієнтами.",
+"The task dictionary allows employees to clearly understand what tasks they are supposed to complete. This eliminates misunderstandings and facilitates effective communication within the team, which is crucial for effective project implementation.":"Словник завдань дозволяє працівникам чітко розуміти, які завдання їм слід виконати. Це усуває непорозуміння та сприяє ефективній комунікації в команді, що є ключовим для успішної реалізації проекту.",
+"With the scheduling module, the application supports forward planning of activities. Monitoring employee absenteeism and tasks in real time allows flexible schedule adjustments, eliminating problems associated with inefficient use of resources.":"За допомогою модуля планування додаток підтримує планування активностей вперед. Моніторинг відсутності працівників та завдань в реальному часі дозволяє гнучко коригувати розклад, усуваючи проблеми, пов'язані з неефективним використанням ресурсів.",
+"Confirmation of location":"Підтвердження місцезнаходження",
+"Multiplatform":"Багатоплатформовий",
+"Our app runs smoothly on any device, providing users with a seamless experience regardless of the type of hardware.":"Наш додаток працює плавно на будь-якому пристрої, надаючи користувачам безшовний досвід незалежно від типу обладнання.",
+"Accessibility":"Доступність",
+"Provide access to the app to both managers, employees and customers who want to actively participate in the process.":"Забезпечте доступ до додатку як менеджерам, так і працівникам і клієнтам, які хочуть активно брати участь в процесі.",
+"Data centralization":"Централізація даних",
+"Centralize data collection and store all documentation in one place.":"Централізуйте збір даних та зберігайте всю документацію в одному місці.",
+"Service industry":"Галузь послуг",
+"Companies offering various types of services, such as cleaning, maintenance, repair, etc., can use this app to better organize their work and monitor results.":"Компанії, що надають різноманітні послуги, такі як прибирання, обслуговування, ремонт і т. д., можуть використовувати цей додаток для кращої організації роботи та моніторингу результатів.",
+"Real estate operation":"Операції з нерухомістю",
+"This application can be used by property management companies to monitor and manage tasks related to building maintenance, repairs, inspections, cleaning, etc.":"Цей додаток може бути використаний компаніями з управління нерухомістю для моніторингу та управління завданнями, пов'язаними з обслуговуванням будівель, ремонтом, інспекціями, прибиранням і т. д.",
+"Technical service":"Технічний сервіс",
+"Companies providing maintenance services for various equipment and machinery can use this app to record equipment locations, assign maintenance tasks and track work progress.":"Компанії, які надають послуги з технічного обслуговування різноманітного обладнання та машин, можуть використовувати цей додаток для запису місць розташування обладнання, призначення завдань з технічного обслуговування та відстеження ходу робіт.",
+"Agriculture":"Сільське господарство",
+"In agriculture, this application can be used to manage farm work, plan and monitor tasks related to cultivation, irrigation and plant care.":"У сільському господарстві цей додаток може бути використаний для управління сільськогосподарською роботою, планування та моніторингу завдань, пов'язаних з вирощуванням, поливом та доглядом за рослинами."
 
 
 

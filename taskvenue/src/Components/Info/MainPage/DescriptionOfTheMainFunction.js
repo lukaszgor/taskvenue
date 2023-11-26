@@ -1,25 +1,27 @@
 import React from 'react';
 import { Grid, Typography, Paper, Container } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
-const sections = [
-  {
-    title: 'Multiplatformowość',
-    description: 'Nasza aplikacja jest dostępna na wielu platformach, co zapewnia płynne działanie na każdym urządzeniu, umożliwiając użytkownikom swobodne korzystanie bez względu na rodzaj sprzętu.',
-    imageSrc: 'planning.png',
-  },
-  {
-    title: 'Dostępność',
-    description: 'Zapewnij dostęp do aplikacji zarówno menedżerom, pracownikom, jak i klientom, którzy chcą aktywnie uczestniczyć w procesie.',
-    imageSrc: '3mobile.png',
-  },
-  {
-    title: 'Centralizacja danych',
-    description: 'Centralizuj zbieranie danych i przechowuj całą dokumentację w jednym miejscu.',
-    imageSrc: 'collectData.png',
-  },
-];
 
 const DescriptionOfTheMainFunction = () => {
+  const { t, i18n } = useTranslation();
+  const sections = [
+    {
+      title: t('Multiplatform'),
+      description: t('Our app runs smoothly on any device, providing users with a seamless experience regardless of the type of hardware.'),
+      imageSrc: 'planning.png',
+    },
+    {
+      title: t('Accessibility'),
+      description: t('Provide access to the app to both managers, employees and customers who want to actively participate in the process.'),
+      imageSrc: '3mobile.png',
+    },
+    {
+      title: t('Data centralization'),
+      description: t('Centralize data collection and store all documentation in one place.'),
+      imageSrc: 'collectData.png',
+    },
+  ];
   return (
     <Container maxWidth="md"> 
     <Grid container spacing={2}>
