@@ -135,13 +135,6 @@ localStorage.setItem('userIdFromLocalStorage', session?.user.id);
 
   }
 
-
-
-
-
-
-
-
 let errorMessageLogin=t("Enter correct data")
   const Login = async () => {
     const { data, error } = await supabase.auth.signInWithPassword({
@@ -203,7 +196,13 @@ return (
 <InfoNavBar></InfoNavBar>
 <CookiesBanner></CookiesBanner>
 </div>
-      <Box sx={{ width: '100%' }} style={{ background: 'white', minHeight: '90vh',paddingTop: '16px' }}>
+      <Box sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '90vh',
+      }} style={{ background: 'white', minHeight: '70vh',paddingTop: '14px' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }} >
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label={t("sign in")} {...a11yProps(0)} />
@@ -215,7 +214,12 @@ return (
       <TabPanel value={value} index={0}>
       <Container maxWidth="md" style={{ padding: '16px' }}>
       <Card>
-      <CardContent>
+      <CardContent     sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}>
         <h1>{t("Sign in")}</h1>
         <TextField
           style={{ width: "250px" }}
@@ -253,7 +257,6 @@ return (
         <p>{Lmsg}</p>
         <br />
         <Link onClick={() => handleChange(null, 2)}>{t("I can't remember my password")}</Link>
-        <br />
         {t("Don’t have an account?")} <Link onClick={() => handleChange(null, 1)}>{t("Get started")}</Link>
       </CardContent>
     </Card>
@@ -263,7 +266,12 @@ return (
       <TabPanel value={value} index={1}>
       <Container maxWidth="md" style={{ padding: '16px' }}>
       <Card>
-      <CardContent>
+      <CardContent     sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}>
       <h1>{t("Sign up")}</h1>
          <TextField style={{ width: "250px" }} id="standard-basic" label={t("Enter your email")}variant="standard" onChange={(e) => 
         setEmail(e.target.value)} />
@@ -292,7 +300,7 @@ return (
            <br/>
         {/* <TextField id="standard-basic" label="Imie" variant="standard" onChange={(e) => 
         setUsername(e.target.value)} /> */}
-          <br/>
+         
           <FormControlLabel
           control={<Checkbox onChange={(e) => setCheckboxChecked(e.target.checked)} />}
           label={
@@ -315,13 +323,18 @@ return (
       <TabPanel value={value} index={2}>
       <Container maxWidth="md" style={{ padding: '16px' }}>
       <Card>
-      <CardContent>
+      <CardContent     sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}>
       <h1>{t("Sign in via magic link")}</h1>
 
       <br/>
       <TextField style={{ width: "250px" }} id="standard-basic" label={t("Enter your email")} placeholder={t("Enter your email")}  type="email" onChange={(e) => setEmail(e.target.value)} variant="standard" />
       <br/> 
-      <br/>
+
       <FormControlLabel
           control={<Checkbox onChange={(e) => setCheckboxChecked(e.target.checked)} />}
           label={
@@ -332,7 +345,7 @@ return (
           </Link>
           }
         />
-              <br/>
+         
       <br/> 
       <Button size="small" variant="contained" style={{ minWidth: '250px'}} disabled={!checkboxChecked}  onClick={SendMagicLink}>{t("send magic link")}</Button>
       <p>{LmsgL}</p>
