@@ -53,7 +53,10 @@ const ConfirmationLocation = () => {
   const fetchWorkTime = async (idConfiguration, id) => {
     const { data, error } = await supabase
       .from('location')
-      .select()
+      .select(`*,
+      venues (
+          name,GPS_location
+      )`)
       .eq('id_configuration', idConfiguration)
       .eq('assigned_user', id)
       .limit(50); 
@@ -95,7 +98,25 @@ const ConfirmationLocation = () => {
                 {t("Location")} {workItem.geoLocation}
               </Typography> */}
               <p></p>
+              <Container maxWidth="md">
+        <Grid container spacing={2}>
+        <Grid item xs={6} sm={6}>
+        <Typography variant="body2" color="textSecondary">
+                {t("Venue")} {workItem.venues?.name}
+              </Typography>
+              <p></p>
+              <GeoLocationMap geoLocation={workItem.venues?.GPS_location} />
+              </Grid>
+              <Grid item xs={6} sm={6}>
+              <Typography variant="body2" color="textSecondary">
+                {t("Location indicated by the user")}
+              </Typography>
+              <p></p>
               <GeoLocationMap geoLocation={workItem.gps} />
+              </Grid>
+
+              </Grid>
+              </Container>
             </CardContent>
           </Card>
           </Grid>
