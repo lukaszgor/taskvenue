@@ -3,7 +3,7 @@ import {
     Button,
     Grid,
     Container,
-    Typography,Snackbar,Alert,DialogContent,DialogActions,Dialog,DialogTitle,DialogContentText
+    Typography,Snackbar,Alert,DialogContent,DialogActions,Dialog,DialogTitle,DialogContentText,Select,MenuItem,FormControl,FormControlLabel,InputLabel
 } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import StopIcon from '@mui/icons-material/Stop';
@@ -21,6 +21,8 @@ const WorkerConfirmationLocation = () => {
     const [description, setDescription] = useState('');
     const [userLocation, setUserLocation] = useState('');
     const [lastRecordDescription, setLastRecordDescription] = useState(null);
+    const [venues, setVenues] = useState([]);
+    const [selectedOption, setSelectedOption] = useState('');
 
     const typographyStyle = {
         fontSize: '11px', // Zmniejszona czcionka tytułowa
@@ -39,6 +41,21 @@ const handleStartClick = () => {
   };
 
 // pobranie z useState isRunieng
+
+const handleFetchVenues = async (idConfig) => {
+    const { data, error } = await supabase
+      .from('venues')
+      .select()
+      .eq('id_configuration', idConfig)
+      .is('archived', null);
+
+    if (error) {
+      console.log(error);
+    }
+    if (data) {
+        setVenues(data);
+    }
+  };
 
     useEffect(() => {
             const getCurrentDateTime = () => {
@@ -123,6 +140,7 @@ const handleStartClick = () => {
                 date: currentDateTime,
                 description: description,
                 gps: userLocation,
+                venue:selectedOption
               },
             ]);
           if (error) {
@@ -167,24 +185,58 @@ const handleStartClick = () => {
 
       useEffect(() => {
         if (idConfig) {
+            handleFetchVenues(idConfig);
             if (userID) {
                 getLastRecord(idConfig,userID);
             }
         }
 
       }, [open,idConfig,userID]);
+
+      const handleChangeVelue = (event) => {
+        const value = event.target.value;
+        setSelectedOption(value);
+      };
   
     return (
         <div>
   <Container maxWidth="md">
         <Grid container spacing={2}>
+        <Grid item xs={12} sm={12}>
+        <FormControl fullWidth required>
+              <InputLabel id="contractor-select-select-label">
+                {t('Select venue')}
+              </InputLabel>
+              <Select
+                labelId="contractor-select-label"
+                id="contractor-select"
+                value={selectedOption}
+                onChange={handleChangeVelue}
+                label={t('Select venue')}
+                required
+                MenuProps={{
+                  PaperProps: {
+                    style: {
+                      maxHeight: 300, // Set your desired max height
+                    },
+                  },
+                }}
+              >
+                {venues.map((venue) => (
+                  <MenuItem key={venue.id} value={venue.id}>
+                    {venue.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            </Grid>
           <Grid item xs={6} sm={6}>
             <Button
               variant="contained"
               color="primary"
               startIcon={<PlayArrowIcon />}
               onClick={handleStartClick}
-              disabled={lastRecordDescription === 'Start'}
+              disabled={lastRecordDescription === 'Start'|| !selectedOption}
             >
               {t('Start')}
             </Button>
@@ -195,7 +247,7 @@ const handleStartClick = () => {
               color="secondary"
               startIcon={<StopIcon />}
               onClick={handleStopClick}
-              disabled={lastRecordDescription === null || lastRecordDescription === 'Stop'}
+              disabled={lastRecordDescription === null || lastRecordDescription === 'Stop'|| !selectedOption}
             >
               {t('Stop')}
             </Button>
