@@ -301,7 +301,7 @@ const VenueDashboard = () => {
                                     {t('Archived')} : {venue.archived ? t('Yes') : t('No') }
                                 </Typography>
                                 <p></p>
-                                <Box display="inline-block" marginRight={2}>
+                                <Box display="inline-block" padding={1}>
                                 <Button
                                     variant="contained"
                                     color="primary"
@@ -311,7 +311,7 @@ const VenueDashboard = () => {
                                     {t('details')}
                                 </Button>
                                 </Box>
-                                <Box display="inline-block" marginRight={2}>
+                                <Box display="inline-block" padding={1}>
                                 <Button
                                 variant="contained"
                                 color="primary"

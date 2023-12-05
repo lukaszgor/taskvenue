@@ -421,7 +421,7 @@ const ManagerOpenTasks = () => {
                 </Typography>
                 <p></p>
            
-                <Box display="inline-block" marginRight={2}>
+                <Box display="inline-block" padding={1}>
                 <Button
                   variant="contained"
                   color="primary"
@@ -430,7 +430,7 @@ const ManagerOpenTasks = () => {
                 > {t('details')}
                 </Button>
                 </Box>
-                <Box display="inline-block" marginRight={2}>
+                <Box display="inline-block" padding={1}>
                 <Button
                   variant="contained"
                   color="primary"

@@ -417,7 +417,7 @@ const ManagerClosedTasks = () => {
                   {t('Deadline')}: {formatDate(task.deadline)}
                 </Typography>
                 <p></p>
-                <Box display="inline-block" marginRight={2}>
+                <Box display="inline-block" padding={1}>
                 <Button
                   variant="contained"
                   color="primary"
@@ -426,7 +426,7 @@ const ManagerClosedTasks = () => {
                 > {t('details')}
                 </Button>
                 </Box>
-                <Box display="inline-block" marginRight={2}>
+                <Box display="inline-block" padding={1}>
                 <Button
                   variant="contained"
                   color="primary"
