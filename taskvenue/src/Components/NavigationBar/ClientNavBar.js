@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next";
 import IdConfigurationGuard from '../../Config/IdConfigurationGuard';
 import AddNewTask from '../../Pages/Manager/AddNewTask';
 import ClientReports from '../../Pages/Client/ClientReports';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const pages = ['ClientTasks','ClientTasks','ClientNewTask','ClientVenue','ClientContact','ClientReports'];
 
@@ -223,7 +224,7 @@ function ClientNavBar() {
 <Button onClick={ClientContact}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Contact")}</Button>
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center'}}>
             <Typography
             noWrap
             component="a"
@@ -234,7 +235,8 @@ function ClientNavBar() {
               textDecoration: 'none',
             }}
           >
-            {user}
+            {/* {user} */}
+            <AccountCircleIcon fontSize='large'></AccountCircleIcon>
           </Typography>&nbsp;
           <Button variant="contained" color="error" onClick={SignOut} >{t("Sign out")}</Button>
           </Box>

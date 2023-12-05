@@ -13,6 +13,7 @@ import { useState,useEffect } from 'react';
 import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
 import IdConfigurationGuard from '../../Config/IdConfigurationGuard';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const pages = ['Tasks','Absences','Schedule','Reports','Profile'];
 
@@ -215,7 +216,7 @@ function WorkerNavBar() {
 <Button onClick={Reports}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Reports")}</Button>
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center'}}>
             <Typography
             noWrap
             component="a"
@@ -226,7 +227,8 @@ function WorkerNavBar() {
               textDecoration: 'none',
             }}
           >
-            {user}
+            {/* {user} */}
+            <AccountCircleIcon fontSize='large'></AccountCircleIcon>
           </Typography>&nbsp;
           <Button variant="contained" color="error" onClick={SignOut} >{t("Sign out")}</Button>
           </Box>

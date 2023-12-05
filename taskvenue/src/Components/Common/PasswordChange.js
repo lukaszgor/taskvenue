@@ -24,7 +24,7 @@ function PasswordChange() {
       userIdFromLocalStorage = localStorage.getItem('userIdFromLocalStorage');
       const{data,error} =  await supabase
       .from('profiles')
-      .select('full_name')
+      .select()
       .eq('id',userIdFromLocalStorage)
       .single()
       if(error){
@@ -32,6 +32,7 @@ function PasswordChange() {
       }if(data){
         setUser(data.full_name)
         setUserID(userIdFromLocalStorage)
+        setFullName(data.username)
        
       }
       }

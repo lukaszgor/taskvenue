@@ -14,6 +14,7 @@ import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
 import IdConfigurationGuard from '../../Config/IdConfigurationGuard';
 import Map from '../../Pages/Manager/Map';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const pages = ['Administration','Locations','Tasks','Absences','Schedule','Reports','Profile','Map'];
 
@@ -234,7 +235,7 @@ function ManagerNavBar() {
 <Button onClick={Reports}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Reports")}</Button>
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center'}}>
             <Typography
             noWrap
             component="a"
@@ -245,7 +246,8 @@ function ManagerNavBar() {
               textDecoration: 'none',
             }}
           >
-            {user}
+            {/* {user} */}
+            <AccountCircleIcon fontSize='large'></AccountCircleIcon>
           </Typography>&nbsp;
           <Button variant="contained" color="error" onClick={SignOut} >{t("Sign out")}</Button>
           </Box>
