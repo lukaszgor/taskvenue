@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
     Button,
     Grid,
-    Container,
+    Container,Box,
     Typography,Snackbar,Alert,DialogContent,DialogActions,Dialog,DialogTitle,DialogContentText,Select,MenuItem,FormControl,FormControlLabel,InputLabel
 } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -242,6 +242,7 @@ const handleFetchVenues = async (idConfig) => {
             </Button>
           </Grid>
           <Grid item xs={6} sm={6}>
+          <Box display="flex" justifyContent="flex-end">
             <Button
               variant="contained"
               color="secondary"
@@ -251,6 +252,7 @@ const handleFetchVenues = async (idConfig) => {
             >
               {t('Stop')}
             </Button>
+            </Box>
           </Grid>
           <Grid item xs={12} sm={12}>
             <Typography style={typographyStyle}>
