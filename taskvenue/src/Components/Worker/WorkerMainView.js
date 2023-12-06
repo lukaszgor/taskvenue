@@ -7,7 +7,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useTranslation } from "react-i18next";
 import WorkerMainSummary from '../Reports/WorkerMainSummary';
 import WorkerNavBar from '../NavigationBar/WorkerNavBar';
-import WorkerConfirmationLocation from './WorkerConfirmationLocation';
 import WorkerConstantWorkingSheet from './WorkerConstantWorkingSheet';
 
 const WorkerMainView = () => {
@@ -38,19 +37,6 @@ const WorkerMainView = () => {
         <AccordionDetails>
           <Typography></Typography>
           <YourOpenAndInProgressTasksReport></YourOpenAndInProgressTasksReport>
-        </AccordionDetails>
-      </Accordion>
-      </Grid> */}
-
-
-      {/* <Grid item xs={12} sm={12}>
-      <Accordion defaultExpanded>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t('Confirmation of location')}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography></Typography>
-          <WorkerConfirmationLocation></WorkerConfirmationLocation>
         </AccordionDetails>
       </Accordion>
       </Grid> */}

@@ -12,7 +12,6 @@ import { useNavigate } from "react-router-dom"
 import ManagerEmployeeDocuments from '../../Components/Manager/Documents/ManagerEmployeeDocuments';
 import UserWorkTimeHistory from '../../Components/Manager/Administration/UserWorkTimeHistory';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ConfirmationLocation from '../../Components/Reports/ConfirmationLocation';
 import ConstantWorkingSheet from '../../Components/Reports/ConstantWorkingSheet';
 
 const UserDetails = () => {
