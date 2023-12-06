@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent,CardActions,Divider, Typography, Button, Grid, Container, Accordion, AccordionSummary, AccordionDetails } from '@mui/material'; // Dodaj import TextField
+import { Card, CardContent,CardActions,Divider,TextField, Typography, Button, Grid, Container, Accordion, AccordionSummary, AccordionDetails } from '@mui/material'; // Dodaj import TextField
 import supabase from '../../supabaseClient';
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -13,8 +13,11 @@ const ConstantWorkingSheet = () => {
   const { id } = useParams();
   const [userID, setUserID] = useState('');
   const [idConfig, setIdConfiguration] = useState('');
-  const [fetchError, setFetchError] = useState(null)
-  const [workTime, setWorkTime] = useState(null)
+  const [fetchError, setFetchError] = useState(null);
+  const [workTime, setWorkTime] = useState(null);
+
+  const [daysAgo, setDaysAgo] = useState('');
+  const [currentDate, setCurrentDate] = useState('');
 
   // State to store the total sum of time differences
   const [totalTimeDifference, setTotalTimeDifference] = useState({ hours: 0, minutes: 0 });
@@ -75,13 +78,13 @@ const ConstantWorkingSheet = () => {
   
   useEffect(() => {
     if (idConfig) {
-      fetchWorkTime(idConfig, id)
+      fetchWorkTime(idConfig, id,daysAgo, currentDate)
 
     }
-  }, [idConfig,id]);
+  }, [idConfig,id,daysAgo, currentDate]);
 
 
-  const fetchWorkTime = async (idConfiguration, id) => {
+  const fetchWorkTime = async (idConfiguration, id,fromDate, toDate) => {
     const { data, error } = await supabase
       .from('constant_working')
       .select(`*,
@@ -89,8 +92,9 @@ const ConstantWorkingSheet = () => {
           name,GPS_location
       )`)
       .eq('id_configuration', idConfiguration)
-      .eq('assigned_user', id)
-      .limit(50); 
+      .eq('assigned_user', id).gte('created_at', fromDate).lte('created_at', toDate);
+ 
+      
     if (error) {
       console.log(error)
       setWorkTime(null)
@@ -126,6 +130,33 @@ const ConstantWorkingSheet = () => {
   return (
     <div>
       <Container maxWidth="md">
+      <Grid container spacing={2}>
+      <Grid item xs={6} sm={6} md={6} lg={6}>
+          <TextField
+            type="datetime-local"
+            id="daysAgo"
+            value={daysAgo}
+            onChange={(e) => setDaysAgo(e.target.value)}
+            fullWidth
+            margin="normal"
+            label={t('Date from : ')}
+            focused
+          />
+        </Grid>
+        <Grid item xs={6} sm={6} md={6} lg={6}>
+          <TextField
+            type="datetime-local"
+            id="currentDate"
+            value={currentDate}
+            onChange={(e) => setCurrentDate(e.target.value)}
+            fullWidth
+            margin="normal"
+            label={t('Date to : ')}
+            focused
+          />
+        </Grid>
+        </Grid>
+        <p></p>
       <Typography variant="h7" gutterBottom>
           {t('Total amount of time for closed positions')}: {totalTimeDifference.hours} {t('hours')} {totalTimeDifference.minutes} {t('minutes')}
         </Typography>
