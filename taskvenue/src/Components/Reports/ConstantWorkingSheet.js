@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import GeoLocationMap from '../Common/GeoLocationMap';
-
+import GeoLocationConstantWorkingSheet from '../Common/GeoLocationConstantWorkingSheet';
 
 const ConstantWorkingSheet = () => {
   const { t, i18n } = useTranslation();
@@ -111,32 +111,28 @@ const ConstantWorkingSheet = () => {
           </Grid>
           <Divider textAlign='right'>{t("Status")} : {workItem.status === 'open' ? t("Open") : workItem.status === 'closed' ? t("Closed") : ''}</Divider>
               <Typography variant="body2" color="textSecondary">
-                {t("Start Date")} {workItem.start_date} 
+                {t("Start Date")}: {workItem.start_date} 
               </Typography>
               <Typography variant="body2" color="textSecondary">
-              {t("End Date")} {workItem.stop_date}
+              {t("End Date")}: {workItem.stop_date}
               </Typography>
               <Typography variant="body2" color="textSecondary">
-                {t("Time Difference")} {calculateTimeDifference(workItem.start_date, workItem.stop_date,workItem.status)}
+                {t("Time Difference")}: {calculateTimeDifference(workItem.start_date, workItem.stop_date,workItem.status)}
                 </Typography>
+                <Typography variant="body2" color="textSecondary">
+                {t("Venue")}: {workItem.venues?.name}
+              </Typography>
               <p></p>
               <Container maxWidth="md">
         <Grid container spacing={2}>
-        <Grid item xs={6} sm={6}>
-        <Typography variant="body2" color="textSecondary">
-                {t("Venue")} {workItem.venues?.name}
-              </Typography>
-              <p></p>
-              <GeoLocationMap geoLocation={workItem.venues?.GPS_location} />
-              </Grid>
-              <Grid item xs={6} sm={6}>
-              <Typography variant="body2" color="textSecondary">
-                {t("Location indicated by the user")}
-              </Typography>
-              <p></p>
-              <GeoLocationMap geoLocation={workItem.start_location} />
-              </Grid>
+        <Grid item xs={12} sm={12}>
 
+              <GeoLocationConstantWorkingSheet
+                venue={workItem.venues?.GPS_location}
+                start={workItem.start_location}
+                stop={workItem.stop_location}
+              ></GeoLocationConstantWorkingSheet>
+              </Grid>
               </Grid>
               </Container>
             </CardContent>
