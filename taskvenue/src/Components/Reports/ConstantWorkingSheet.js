@@ -16,6 +16,37 @@ const ConstantWorkingSheet = () => {
   const [fetchError, setFetchError] = useState(null)
   const [workTime, setWorkTime] = useState(null)
 
+  // State to store the total sum of time differences
+  const [totalTimeDifference, setTotalTimeDifference] = useState({ hours: 0, minutes: 0 });
+
+  useEffect(() => {
+    if (workTime) {
+      // Calculate the total sum of time differences for closed work items
+      const { totalHours, totalMinutes } = workTime
+        .filter((workItem) => workItem.status === 'closed')
+        .reduce(
+          (sum, workItem) => {
+            const timeDifference = calculateTimeDifference(
+              workItem.start_date,
+              workItem.stop_date,
+              workItem.status
+            );
+
+            if (!isNaN(timeDifference)) {
+              // Add the hours and minutes separately
+              sum.totalHours += Math.floor(timeDifference / 60);
+              sum.totalMinutes += timeDifference % 60;
+            }
+
+            return sum;
+          },
+          { totalHours: 0, totalMinutes: 0 }
+        );
+
+      // Update the state with the total sum
+      setTotalTimeDifference({ hours: totalHours, minutes: totalMinutes });
+    }
+  }, [workTime]);
 
   useEffect(() => {
     const checkSession = async () => {
@@ -71,23 +102,23 @@ const ConstantWorkingSheet = () => {
     }
   }
 
-  const calculateTimeDifference = (startDate, stopDate,status) => {
-    if(status === 'closed'){
-        const startDateTime = new Date(startDate);
-        const stopDateTime = new Date(stopDate);
-      
-        // Oblicz różnicę czasu w milisekundach
-        const timeDifference = stopDateTime - startDateTime;
-      
-        // Konwertuj różnicę czasu na godziny i minuty
-        const hours = Math.floor(timeDifference / (1000 * 60 * 60));
-        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-      
-        return `${hours} ${t("hours")} ${minutes} ${t("minutes")}`;
-    }else{
-        return `${t("No closing date")}`;
-    }
+  const calculateTimeDifference = (startDate, stopDate, status) => {
+    if (status === 'closed') {
+      const startDateTime = new Date(startDate);
+      const stopDateTime = new Date(stopDate);
   
+      // Check if the dates are valid
+      if (isNaN(startDateTime) || isNaN(stopDateTime)) {
+        return NaN;
+      }
+  
+      // Calculate the time difference in minutes
+      const timeDifference = (stopDateTime - startDateTime) / (1000 * 60);
+  
+      return timeDifference;
+    } else {
+      return 0; // Return 0 for open items or items with no closing date
+    }
   };
 
 
@@ -95,6 +126,10 @@ const ConstantWorkingSheet = () => {
   return (
     <div>
       <Container maxWidth="md">
+      <Typography variant="h7" gutterBottom>
+          {t('Total amount of time for closed positions')}: {totalTimeDifference.hours} {t('hours')} {totalTimeDifference.minutes} {t('minutes')}
+        </Typography>
+
         <p></p>
           <Container maxWidth="md">
           <div>
