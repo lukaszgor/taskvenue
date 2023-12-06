@@ -291,7 +291,11 @@
       "Agriculture":"Agriculture",
       "In agriculture, this application can be used to manage farm work, plan and monitor tasks related to cultivation, irrigation and plant care.":"In agriculture, this application can be used to manage farm work, plan and monitor tasks related to cultivation, irrigation and plant care.",
       "Select venue":"Select venue",
-      "Location indicated by the user":"Location indicated by the user"
+      "Location indicated by the user":"Location indicated by the user",
+      "Time Difference":"Time Difference",
+      "No closing date":"No closing date",
+      "minutes":"minutes",
+      "hours":"hours"
 
 
       

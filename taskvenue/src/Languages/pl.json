@@ -291,7 +291,11 @@
       "Agriculture":"Rolnictwo",
       "In agriculture, this application can be used to manage farm work, plan and monitor tasks related to cultivation, irrigation and plant care.":"W rolnictwie aplikacja ta może być wykorzystywana do zarządzania pracami na farmach, planowania i monitorowania zadań związanych z uprawą, nawadnianiem i pielęgnacją roślin.",
       "Select venue":"Wybierz miejsce",
-      "Location indicated by the user":"Lokalizacja wskazana przez użytkownika"
+      "Location indicated by the user":"Lokalizacja wskazana przez użytkownika",
+      "Time Difference":"Różnica czasu",
+      "No closing date":"Brak daty zakończenia",
+      "minutes":"minuty",
+      "hours":"godziny"
 
 
 

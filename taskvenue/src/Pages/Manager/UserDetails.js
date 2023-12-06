@@ -13,7 +13,7 @@ import ManagerEmployeeDocuments from '../../Components/Manager/Documents/Manager
 import UserWorkTimeHistory from '../../Components/Manager/Administration/UserWorkTimeHistory';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ConfirmationLocation from '../../Components/Reports/ConfirmationLocation';
-
+import ConstantWorkingSheet from '../../Components/Reports/ConstantWorkingSheet';
 
 const UserDetails = () => {
     const {id} = useParams()
@@ -267,7 +267,7 @@ const handleCloseAlert = (event, reason) => {
         </AccordionDetails>
       </Accordion>
 
-      {/* <Accordion>
+      <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">
             {t('Confirmation of location')}
@@ -275,9 +275,9 @@ const handleCloseAlert = (event, reason) => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
-          <ConfirmationLocation></ConfirmationLocation>
+          <ConstantWorkingSheet></ConstantWorkingSheet>
         </AccordionDetails>
-      </Accordion> */}
+      </Accordion>
 
       
 
