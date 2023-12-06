@@ -267,7 +267,7 @@ const handleCloseAlert = (event, reason) => {
         </AccordionDetails>
       </Accordion>
 
-      <Accordion>
+      {/* <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">
             {t('Confirmation of location')}
@@ -277,7 +277,7 @@ const handleCloseAlert = (event, reason) => {
           <Typography></Typography>
           <ConfirmationLocation></ConfirmationLocation>
         </AccordionDetails>
-      </Accordion>
+      </Accordion> */}
 
       
 
