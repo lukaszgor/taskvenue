@@ -178,7 +178,6 @@
       "Knowledge":"Knowledge",
       "Technology":"Technology",
       "I can't remember my password":"I can't remember my password",
-      "A place for your business":"A place for your business",
       "Learn more":"Learn more",
       "Task Venue simplicity and efficiency in every detail":"Task Venue simplicity and efficiency in every detail",
       "The use of the Task Venue system has a positive impact on building customer relationships, which in turn increases the dynamics of the final profit.":"The use of the Task Venue system has a positive impact on building customer relationships, which in turn increases the dynamics of the final profit.",
@@ -296,7 +295,9 @@
       "No closing date":"No closing date",
       "minutes":"minutes",
       "hours":"hours",
-      "Total amount of time for closed positions":"Total amount of time for closed positions"
+      "Total amount of time for closed positions":"Total amount of time for closed positions",
+      "Get started today!":"Get started today!",
+      "Improve the services provided by your company":"Improve the services provided by your company"
 
 
       

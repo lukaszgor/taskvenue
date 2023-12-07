@@ -178,7 +178,6 @@
       "Knowledge":"Baza wiedzy",
       "Technology":"Technologia",
       "I can't remember my password":"Nie pamiętam hasła",
-      "A place for your business":"Aplikacja dla Twojego biznesu",
       "Learn more":"Dowiedz się więcej",
       "Task Venue simplicity and efficiency in every detail":"Task Venue prostota i wydajność w każdym szczególe",
       "The use of the Task Venue system has a positive impact on building customer relationships, which in turn increases the dynamics of the final profit.":"Wykorzystanie systemu Task Venue wpływa pozytywnie na budowanie relacji z klientami, co z kolei zwiększa dynamikę końcowego zysku.",
@@ -296,7 +295,9 @@
       "No closing date":"Brak daty zakończenia",
       "minutes":"minuty",
       "hours":"godziny",
-      "Total amount of time for closed positions":"Całkowita suma czasu dla zamkniętych pozycji"
+      "Total amount of time for closed positions":"Całkowita suma czasu dla zamkniętych pozycji",
+      "Get started today!":"Rozpocznij",
+      "Improve the services provided by your company":"Usprawniaj usługi oferowane przez swoją firmę."
 
 
 

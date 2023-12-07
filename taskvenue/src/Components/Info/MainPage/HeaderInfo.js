@@ -14,7 +14,7 @@ const HeaderInfo = () => {
       <Container maxWidth="lg">
         <Grid container spacing={3}>
           <Grid item xs={12} md={4}>
-            <Typography variant="h3" align="left" 
+          <Typography variant="h3" align="left" 
                       sx={{
                         mr: 2,
                         mt: 10,
@@ -24,7 +24,7 @@ const HeaderInfo = () => {
                         textDecoration: 'none',
                       }}
                     >
-              TaskVenue
+              {t("Improve the services provided by your company")}
             </Typography>
             {/* <Typography variant="h4" align="left" sx={{ mt: 2 ,
                                     fontFamily: 'lato',
@@ -38,16 +38,19 @@ const HeaderInfo = () => {
                   {t("A place for your business")}
                   </Typography> */}
 
-                  <Typography variant="h6" align='left' sx={{ mt: 2, marginTop: 4, marginBottom: 2 }}>
-                  {t("A place for your business")+". "} 
-                  <br></br>
+                  <Typography variant="h9" align='left' sx={{  marginBottom: 2 }}>
                     {t("That is, a system that improves management and communication between management, the customer, and those doing the work in the field.")}
                   </Typography>
                 
-                  <div style={{ display: 'flex', justifyContent: 'center' }}>
+                  <div style={{ display: 'flex' }}>
                     <Link to="/">
-                      <Button variant="contained" color="primary" sx={{ marginTop: 3}}>
-                        {t("Try it for free")}
+                      <Button variant="contained" color="primary" sx={{ marginTop: 3, marginRight:1}}>
+                        {t("Get started today!")}
+                      </Button>
+                    </Link>
+                    <Link to="/infoContact">
+                      <Button color="primary" variant="outlined" sx={{ marginTop: 3}}>
+                        {t("Contact")}
                       </Button>
                     </Link>
                   </div>
