@@ -31,9 +31,17 @@ const DescriptionOfTheMainFunction = () => {
             <Grid container spacing={2}>
               <Grid item xs={12} md={5}>
                 <p></p>
-                <Typography variant="h5">{section.title}</Typography>
+                <Typography variant="h5" sx={{
+                        mr: 2,
+                        mt: 10,
+                        // fontFamily: 'lato',
+                        fontWeight: 700,
+                        textDecoration: 'none',
+                        color:"#338ede"
+                        
+                      }}>{section.title}</Typography>
                 <p></p>
-                <Typography variant="body1">{section.description}</Typography>
+                <Typography variant="body1" sx={{  marginBottom: 2 }}>{section.description}</Typography>
               </Grid>
               <Grid item xs={12} md={7}>
                 <img src={section.imageSrc} alt={section.title} style={{ width: '100%' }} />

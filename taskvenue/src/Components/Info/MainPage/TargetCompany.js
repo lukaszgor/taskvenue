@@ -12,6 +12,7 @@ const centerStyles = {
   alignItems: 'center',
   justifyContent: 'center',
   minHeight: '40vh', // Ustawia wysokość na całą dostępną wysokość okna przeglądarki
+  background:'#f0f8ff'
 };
 
 const contentStyles = {
