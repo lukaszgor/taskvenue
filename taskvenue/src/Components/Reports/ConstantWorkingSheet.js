@@ -176,16 +176,16 @@ const ConstantWorkingSheet = () => {
             <Grid container alignItems="center" justifyContent="space-between">
           </Grid>
           <Divider textAlign='right'>{t("Status")} : {workItem.status === 'open' ? t("Open") : workItem.status === 'closed' ? t("Closed") : ''}</Divider>
-              <Typography variant="body2" color="textSecondary">
+              <Typography variant="body2" color="#00FF00">
                 {t("Start Date")}: {workItem.start_date} 
               </Typography>
-              <Typography variant="body2" color="textSecondary">
+              <Typography variant="body2" color="#0000FF">
               {t("End Date")}: {workItem.stop_date}
               </Typography>
               <Typography variant="body2" color="textSecondary">
                 {t("Time Difference")}: {calculateTimeDifference(workItem.start_date, workItem.stop_date,workItem.status)}
                 </Typography>
-                <Typography variant="body2" color="textSecondary">
+                <Typography variant="body2" color="#FF0000">
                 {t("Venue")}: {workItem.venues?.name}
               </Typography>
               <p></p>
