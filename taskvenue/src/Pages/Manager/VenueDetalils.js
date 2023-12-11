@@ -29,6 +29,7 @@ import VenueHistory from '../../Components/Manager/Venue/VenueHistory';
 import ManagerVenueAttachments from '../../Components/Manager/Attachments/ManagerVenueAttachments';
 import Tooltip from '@mui/material/Tooltip';
 import ManagerMapVenue from '../../Components/Manager/Map/ManagerMapVenue';
+import ConstantWorkingVenueSheet from '../../Components/Reports/ConstantWorkingVenueSheet';
 
 const VenueDetalils = () => {
   const { t, i18n } = useTranslation();
@@ -285,6 +286,19 @@ const VenueDetalils = () => {
           <VenueHistory></VenueHistory>
         </AccordionDetails>
       </Accordion>
+
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">
+            {t('Confirmation of location')}
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+          <ConstantWorkingVenueSheet></ConstantWorkingVenueSheet>
+        </AccordionDetails>
+      </Accordion>
+
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">
