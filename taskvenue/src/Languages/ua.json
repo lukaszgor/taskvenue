@@ -289,9 +289,17 @@
 "Technical service":"Технічний сервіс",
 "Companies providing maintenance services for various equipment and machinery can use this app to record equipment locations, assign maintenance tasks and track work progress.":"Компанії, які надають послуги з технічного обслуговування різноманітного обладнання та машин, можуть використовувати цей додаток для запису місць розташування обладнання, призначення завдань з технічного обслуговування та відстеження ходу робіт.",
 "Agriculture":"Сільське господарство",
-"In agriculture, this application can be used to manage farm work, plan and monitor tasks related to cultivation, irrigation and plant care.":"У сільському господарстві цей додаток може бути використаний для управління сільськогосподарською роботою, планування та моніторингу завдань, пов'язаних з вирощуванням, поливом та доглядом за рослинами."
-
-
-
+"In agriculture, this application can be used to manage farm work, plan and monitor tasks related to cultivation, irrigation and plant care.":"У сільському господарстві цей додаток може бути використаний для управління сільськогосподарською роботою, планування та моніторингу завдань, пов'язаних з вирощуванням, поливом та доглядом за рослинами.",
+    "Select venue": "Виберіть місце",
+    "Location indicated by the user": "Місце, вказане користувачем",
+    "Time Difference": "Різниця часу",
+    "No closing date": "Немає кінцевої дати",
+    "minutes": "хвилини",
+    "hours": "години",
+    "Total amount of time for closed positions": "Загальна тривалість закритих позицій",
+    "Get started today!": "Почніть сьогодні!",
+    "Effectively manage tasks and location": "Ефективно керуйте завданнями та місцем",
+    "Our app makes it easy to log jobs, offering simple registration, precise location and verification of work, improving service quality.": "Наша програма полегшує ведення робіт, надаючи просту реєстрацію, точне місцезнаходження та підтвердження роботи, покращуючи якість обслуговування."
+  
 
 }  

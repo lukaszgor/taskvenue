@@ -17,14 +17,14 @@ const HeaderInfo = () => {
           <Typography variant="h3" align="left" 
                       sx={{
                         mr: 2,
-                        mt: 10,
+                        mt: 5,
                         // fontFamily: 'lato',
                         fontWeight: 700,
                         letterSpacing: '.3rem',
                         textDecoration: 'none',
                       }}
                     >
-              {t("Improve the services provided by your company")}
+              {t("Effectively manage tasks and location")}
             </Typography>
             {/* <Typography variant="h4" align="left" sx={{ mt: 2 ,
                                     fontFamily: 'lato',
@@ -37,9 +37,9 @@ const HeaderInfo = () => {
                   {/* <Typography variant="h6" align='left' sx={{ mt: 2, marginTop: 4, marginBottom: 2 }}>
                   {t("A place for your business")}
                   </Typography> */}
-
+<p></p>
                   <Typography variant="h9" align='left' sx={{  marginBottom: 2 }}>
-                    {t("That is, a system that improves management and communication between management, the customer, and those doing the work in the field.")}
+                    {t("Our app makes it easy to log jobs, offering simple registration, precise location and verification of work, improving service quality.")}
                   </Typography>
                 
                   <div style={{ display: 'flex' }}>

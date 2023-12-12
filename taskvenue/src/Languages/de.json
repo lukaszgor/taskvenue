@@ -268,7 +268,19 @@
   "Technical service":"Technischer Service",
   "Companies providing maintenance services for various equipment and machinery can use this app to record equipment locations, assign maintenance tasks and track work progress.":"Unternehmen, die Wartungsdienstleistungen für verschiedene Geräte und Maschinen anbieten, können diese App nutzen, um Standorte von Geräten aufzuzeichnen, Wartungsaufgaben zuzuweisen und den Arbeitsfortschritt zu verfolgen.",
   "Agriculture":"Landwirtschaft",
-  "In agriculture, this application can be used to manage farm work, plan and monitor tasks related to cultivation, irrigation and plant care.":"In der Landwirtschaft kann diese Anwendung genutzt werden, um landwirtschaftliche Arbeiten zu organisieren, Aufgaben im Zusammenhang mit Anbau, Bewässerung und Pflanzenpflege zu planen und zu überwachen."
+  "In agriculture, this application can be used to manage farm work, plan and monitor tasks related to cultivation, irrigation and plant care.":"In der Landwirtschaft kann diese Anwendung genutzt werden, um landwirtschaftliche Arbeiten zu organisieren, Aufgaben im Zusammenhang mit Anbau, Bewässerung und Pflanzenpflege zu planen und zu überwachen.",
+    "Select venue": "Veranstaltungsort auswählen",
+    "Location indicated by the user": "Vom Benutzer angegebener Standort",
+    "Time Difference": "Zeitunterschied",
+    "No closing date": "Kein Enddatum",
+    "minutes": "Minuten",
+    "hours": "Stunden",
+    "Total amount of time for closed positions": "Gesamtdauer für geschlossene Positionen",
+    "Get started today!": "Legen Sie los",
+    "Effectively manage tasks and location": "Aufgaben und Standort effektiv verwalten",
+    "Our app makes it easy to log jobs, offering simple registration, precise location and verification of work, improving service quality.": "Unsere App erleichtert das Protokollieren von Aufgaben durch einfache Registrierung, genaue Standortbestimmung und Überprüfung der Arbeit, was die Servicequalität verbessert."
+  
+  
 
   
 
