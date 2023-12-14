@@ -104,11 +104,20 @@ const WorkerConstantWorkingSheetRaport = () => {
 
   const calculateTimeDifference = (startDate, stopDate, status) => {
     if (status === 'closed') {
-      const startDateTime = new Date(startDate);
-      const stopDateTime = new Date(stopDate);
+      // Convert date strings to the format 'YYYY-MM-DDTHH:mm'
+      const convertToValidFormat = (dateString) => {
+        const [date, time] = dateString.split(' ');
+        const [day, month, year] = date.split('/');
+        const [hours, minutes] = time.split(':');
+        return `${year}-${month}-${day}T${hours}:${minutes}`;
+      };
+  
+      const startDateTime = new Date(convertToValidFormat(startDate));
+      const stopDateTime = new Date(convertToValidFormat(stopDate));
   
       // Check if the dates are valid
       if (isNaN(startDateTime) || isNaN(stopDateTime)) {
+        console.error('Invalid date format');
         return NaN;
       }
   
@@ -120,6 +129,7 @@ const WorkerConstantWorkingSheetRaport = () => {
       return 0; // Return 0 for open items or items with no closing date
     }
   };
+  
 
 
 
