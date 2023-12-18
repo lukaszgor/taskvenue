@@ -223,7 +223,7 @@ const handleSubmit = (event) => {
                 value={rating}
                 onChange={handleRatingChange}
                 size="large"
-                max={3}
+                max={5}
               />
             </Grid>
             <Grid item xs={12}>
