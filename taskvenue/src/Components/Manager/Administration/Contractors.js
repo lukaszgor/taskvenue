@@ -5,7 +5,9 @@ import supabase from '../../../supabaseClient';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { useTranslation } from "react-i18next";
-import { TextField, Button, Grid, Container, Typography,Box,Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import {
+  Container, Grid, Card, CardContent, CardActions, Button, Typography, Box, Accordion, AccordionSummary, AccordionDetails, TextField
+} from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
@@ -108,9 +110,6 @@ const insertContractor = async()=>{
             setIsLoading(false);
           }
   }
-  const ContractorsDetails=(event, cellValues)=>{
-    navigate('/ContractorsDetails/'+cellValues.row.id)
-}
   //alert configuration
   const [open,setOpen] =useState(null)
 
@@ -125,74 +124,28 @@ const insertContractor = async()=>{
     setOpen(false);
   };
   
-  const columns = [
-      {
-        field: 'nameOrCompanyName',
-        headerName: t("Name"),
-        width: 200, 
-        renderCell: (params) => (
-          <Tooltip title={params.value} arrow>
-            <div style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '100%' }}>
-              {params.value}
-            </div>
-          </Tooltip>
-        ),
-      },
-      {
-        field: 'description',
-        headerName: t("Description"),
-        width: 200, 
-        renderCell: (params) => (
-          <Tooltip title={params.value} arrow>
-            <div style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '100%' }}>
-              {params.value}
-            </div>
-          </Tooltip>
-        ),
-      },
-      { field: 'taxId', headerName: t("Tax ID"), width: 130 },
-      { field: 'nationalEconomyRegisterNumber', headerName: t("National Economy Register ID"), width: 110 },
-      {
-        field: 'address',
-        headerName: t("address"),
-        width: 130, 
-        renderCell: (params) => (
-          <Tooltip title={params.value} arrow>
-            <div style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '100%' }}>
-              {params.value}
-            </div>
-          </Tooltip>
-        ),
-      },
-      { field: 'phone_number', headerName: t("phone number"), width: 130 },
-      {
-        field: 'email',
-        headerName: t("email"),
-        width: 130, 
-        renderCell: (params) => (
-          <Tooltip title={params.value} arrow>
-            <div style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '100%' }}>
-              {params.value}
-            </div>
-          </Tooltip>
-        ),
-      },
-      { field: 'contactPerson', headerName: t("contact person"), width: 130 },
-      {
-          field: "Action",headerName: t("Action"), width: 200 ,
-          renderCell: (cellValues) => {
-            return ( 
-              <Button
-              color="primary"
-              onClick={(event) => {
-                  ContractorsDetails(event, cellValues);
-              }}
-              >{t("details")}</Button>
-            );
-          }
-        },
-     
-    ];
+  const renderContractors = () => {
+    return contractors.map((contractor, index) => (
+      <Grid item xs={12} sm={6} md={6} key={index}>
+        <Card>
+          <CardContent>
+            <Typography variant="h6">{contractor.nameOrCompanyName}</Typography>
+            <Typography color="textSecondary">{t("email")}: {contractor.email}</Typography>
+            <Typography color="textSecondary">{t("phone number")}: {contractor.phone_number}</Typography>
+            <Typography color="textSecondary">{t("address")}: {contractor.address}</Typography>
+            <Typography color="textSecondary">{t("Tax ID")}: {contractor.taxId}</Typography>
+            {/* Możesz dodać więcej szczegółów dotyczących wykonawcy tutaj */}
+          </CardContent>
+          <CardActions>
+            <Button size="small" color="primary" onClick={() => navigate('/ContractorsDetails/' + contractor.id)}>
+            {t("details")}
+            </Button>
+          </CardActions>
+        </Card>
+      </Grid>
+    ));
+  };
+
     return (
       <div>
             <div>
@@ -303,31 +256,21 @@ const insertContractor = async()=>{
         </AccordionDetails>
       </Accordion>
       </Container>
-      
+      <p></p>
       {isLoading ? (
-        <p>{t("Landing...")}</p>
+        <p>{t("Loading...")}</p>
       ) : hasError ? (
         <p>{t("An error occurred while downloading data.")}</p>
       ) : (
-        <div>
-        {contractors &&(
-        <div>
-      <p> </p>
-      <div style={{ height: 400, width: '100%' }}>
-            <DataGrid
-              rows={contractors}
-              columns={columns}
-              pageSize={12}
-              rowsPerPageOptions={[12]}
-            />
-          </div>
-      <div>
-      </div>
-        </div>
-        )}
-      
-      </div>
+        <Container maxWidth="md">
+          <Grid container spacing={3}>
+            {renderContractors()}
+          </Grid>
+        </Container>
       )}
+
+
+
    <Snackbar open={open}
      autoHideDuration={2000}
      onClose={handleCloseAlert}>
