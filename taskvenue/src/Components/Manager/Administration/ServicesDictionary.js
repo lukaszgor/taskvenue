@@ -271,7 +271,7 @@ function ServicesDictionary() {
               {service &&
                 service.sort((a, b) => b.id - a.id).map((item) => {
                   return (
-                    <Grid item xs={12} sm={6} md={6} lg={4} key={item.id}>
+                    <Grid item xs={12} sm={6} md={6} lg={6} key={item.id}>
                       <Card>
                         <CardContent>
                           <Typography variant="h6">{item.name}</Typography>

@@ -234,11 +234,7 @@ const handleOpenFilterChange = () => {
                 </AccordionDetails>
             </Accordion>
             
-            <Accordion defaultExpanded>
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography variant="h6" fontWeight="bold">{t('Users')}</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
+<p></p>
                 <Button
         style={{ marginLeft: '20px', marginBottom: '20px' }}
         variant="contained"
@@ -289,16 +285,13 @@ const handleOpenFilterChange = () => {
           </Button>
         </DialogContent>
       </Dialog>
-      <Container maxWidth="md">
+
                     <Typography></Typography>
-                   
+                    <Grid container spacing={3}>
                     {fetchError && (<p>{fetchError}</p>)}
-                    {user && (
-                        <div>
-                            <p> </p>
-                            <div>
-                            {filteredUsers.sort((a, b) => b.id - a.id).map((user) => (
-                                    <Card key={user.id} variant="outlined">
+                    {user && filteredUsers.sort((a, b) => b.id - a.id).map((user) => (
+                                      <Grid item xs={12} sm={6} md={6} lg={6} key={user.id}>
+                                    <Card>
                                         <CardContent>
                                         <Divider textAlign="right">{t("Status")}: {user.isBlocked === 1 ? t("Blocked") : t("Active")}</Divider>
                                         {/* <Typography variant="h6">{user.id}</Typography> */}
@@ -315,13 +308,11 @@ const handleOpenFilterChange = () => {
                                             </Button>
                                         </CardActions>
                                     </Card>
+                                    </Grid>
                                 ))}
-                            </div>
-                        </div>
-                    )}
-                    </Container>
-                </AccordionDetails>
-            </Accordion>
+                      </Grid>
+    
+
             </Container>
         </div>
     );
