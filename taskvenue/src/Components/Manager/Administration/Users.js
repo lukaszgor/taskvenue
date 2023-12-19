@@ -3,7 +3,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import supabase from '../../../supabaseClient';
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next";
-import { TextField, Button, Grid, Container, Typography, Accordion, AccordionSummary, AccordionDetails, Select, MenuItem, FormControlLabel, FormControl, InputLabel, Box, Card, CardContent, CardActions, Dialog,
+import { TextField, Button,Checkbox, Grid, Container, Typography, Accordion, AccordionSummary, AccordionDetails, Select, MenuItem, FormControlLabel, FormControl, InputLabel, Box, Card, CardContent, CardActions, Dialog,
   DialogContent,
   DialogTitle,
   DialogActions,Divider,
@@ -29,6 +29,8 @@ function Users() {
     const [searchID, setsearchID] = useState('');
     const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
     const [openFilter, setOpenFilter] = useState(true);
+    const [showActive, setShowActive] = useState(true);
+    const [showBlocked, setShowBlocked] = useState(false);
 
     useEffect(() => {
         const checkSession = async () => {
@@ -66,6 +68,13 @@ function Users() {
         filteredData = filteredData.filter((user) =>
           user.full_name.toLowerCase().includes(searchEmail.toLowerCase())
         );
+        
+      }
+      if (!showBlocked) {
+        filteredData = filteredData.filter((user) => user.isBlocked !== 1);
+      }
+      if (!showActive) {
+        filteredData = filteredData.filter((user) => user.isBlocked !== null);
       }
     
       setFilteredUsers(filteredData);
@@ -161,6 +170,12 @@ const applyFilters = () => {
     filteredData = filteredData.filter((user) =>
       user.full_name.toString().includes(searchEmail)
     );
+  }
+  if (!showBlocked) {
+    filteredData = filteredData.filter((user) => user.isBlocked !== 1);
+  }
+  if (!showActive) {
+    filteredData = filteredData.filter((user) => user.isBlocked !== null);
   }
 
   setFilteredUsers(filteredData);
@@ -275,6 +290,16 @@ const handleOpenFilterChange = () => {
               style={{ marginBottom: '8px' }}
             />
           </div>
+          <div>
+  <FormControlLabel
+    control={<Checkbox checked={showActive} onChange={(e) => setShowActive(e.target.checked)} />}
+    label={t('Active')}
+  />
+  <FormControlLabel
+    control={<Checkbox checked={showBlocked} onChange={(e) => setShowBlocked(e.target.checked)} />}
+    label={t('Blocked')}
+  />
+</div>
           <Button
             variant="contained"
             color="primary"
