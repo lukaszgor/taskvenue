@@ -282,6 +282,7 @@ function ServicesDictionary() {
                           <Typography>
                             {t('Unit')}: {item.unit}
                           </Typography>
+                          <p></p>
                           <Box display="inline-block" marginRight={1}>
                           <Button
                             variant="outlined"
