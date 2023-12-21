@@ -12,8 +12,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 import Tooltip from '@mui/material/Tooltip';
+import EditIcon from '@mui/icons-material/Edit';
 
-function Contractors() {
+function ManagerActiveContractors() {
     const navigate = useNavigate()
     const {id} = useParams()
   const { t, i18n } = useTranslation();
@@ -126,7 +127,7 @@ const insertContractor = async()=>{
   
   const renderContractors = () => {
     return contractors.map((contractor, index) => (
-      <Grid item xs={12} sm={6} md={6} key={index}>
+      <Grid item xs={12} sm={6} md={4} lg={3}key={index}>
         <Card>
           <CardContent>
             <Typography variant="h6">{contractor.nameOrCompanyName}</Typography>
@@ -137,7 +138,7 @@ const insertContractor = async()=>{
             {/* Możesz dodać więcej szczegółów dotyczących wykonawcy tutaj */}
           </CardContent>
           <CardActions>
-            <Button size="small" color="primary" onClick={() => navigate('/ContractorsDetails/' + contractor.id)}>
+            <Button size="small" variant="contained" color="primary" onClick={() => navigate('/ContractorsDetails/' + contractor.id)}  startIcon={<EditIcon />}>
             {t("details")}
             </Button>
           </CardActions>
@@ -150,7 +151,6 @@ const insertContractor = async()=>{
       <div>
             <div>
               <p></p>
-              <Container maxWidth="md">
               <Accordion >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">{t('Add')}</Typography>
@@ -255,18 +255,18 @@ const insertContractor = async()=>{
         </Container>
         </AccordionDetails>
       </Accordion>
-      </Container>
+ 
       <p></p>
       {isLoading ? (
         <p>{t("Loading...")}</p>
       ) : hasError ? (
         <p>{t("An error occurred while downloading data.")}</p>
       ) : (
-        <Container maxWidth="md">
+
           <Grid container spacing={3}>
             {renderContractors()}
           </Grid>
-        </Container>
+
       )}
 
 
@@ -281,5 +281,5 @@ const insertContractor = async()=>{
     );
   }
   
-  export default Contractors;
+  export default ManagerActiveContractors;
   

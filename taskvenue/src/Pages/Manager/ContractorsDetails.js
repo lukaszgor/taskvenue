@@ -10,9 +10,9 @@ import Alert from '@mui/material/Alert';
 import { useNavigate } from "react-router-dom"
 import ManagerAdministrationContractorBreadcrumbs from '../../Components/Breadcrumbs/ManagerAdministrationContractorBreadcrumbs';
 import { Margin } from '@mui/icons-material';
-import ManagerContractorTasks from '../../Components/Manager/Administration/Contractors/ManagerContractorTasks';
+import ManagerContractorTasks from '../../Components/Manager/Contractors/ManagerContractorTasks';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ManagerContractorVenues from '../../Components/Manager/Administration/Contractors/ManagerContractorVenues';
+import ManagerContractorVenues from '../../Components/Manager/Contractors/ManagerContractorVenues';
 import ManagerContractorsDocuments from '../../Components/Manager/Documents/ManagerContractorsDocuments';
 
 
@@ -74,12 +74,10 @@ const [name, setName] = useState('');
     .from('contractor')
     .select()
     .eq('id',id)
-    .is('isDeleted', null)
     .eq('id_configuration', idConfig) 
     .single()
     if(error){
         console.log(error)
-        navigate('/home')
     }if(data){
         setName(data.nameOrCompanyName);
         setDescription(data.description);

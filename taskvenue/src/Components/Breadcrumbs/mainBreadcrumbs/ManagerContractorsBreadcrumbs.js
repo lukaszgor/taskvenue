@@ -1,12 +1,11 @@
 import React from 'react';
-import MyBreadcrumbs from '../../Config/MyBreadcrumbs';
+import MyBreadcrumbs from '../../../Config/MyBreadcrumbs';
 import { useTranslation } from "react-i18next";
-const ManagerAdministrationContractorBreadcrumbs = () => {
+const ManagerContractorsBreadcrumbs = () => {
   const { t, i18n } = useTranslation();
   const breadcrumbItems = [
     { text: 'Home', url: '/home' },
     { text: t("Contractors"), url: '/Contractors' },
-    { text: t("Contractor edit") },
   ];
 
   return (
@@ -19,4 +18,4 @@ const ManagerAdministrationContractorBreadcrumbs = () => {
   );
 };
 
-export default ManagerAdministrationContractorBreadcrumbs;
+export default ManagerContractorsBreadcrumbs;

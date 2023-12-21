@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
 import { DataGrid,GridToolbarContainer, GridToolbarExport } from '@mui/x-data-grid';
 import { Button } from '@mui/material';
-import supabase from '../../../../supabaseClient';
+import supabase from '../../../supabaseClient';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import moment from 'moment'; // Import moment library
-
 
 function CustomToolbar() {
     return (
@@ -16,14 +14,13 @@ function CustomToolbar() {
     );
   }
 
-
-const ManagerContractorTasks = () => {
+const ManagerContractorVenues = () => {
   const { t, i18n } = useTranslation();
   const { id } = useParams();
   const [userID, setUserID] = useState('');
   const [idConfig, setIdConfiguration] = useState('');
   const [fetchError, setFetchError] = useState(null);
-  const [tasks, setTasks] = useState(null);
+  const [venues, setVenues] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -52,69 +49,40 @@ const ManagerContractorTasks = () => {
 
   useEffect(() => {
     if (idConfig) {
-      fetchTasks(idConfig, id);
+      fetchVenues(idConfig, id);
     }
   }, [idConfig]);
 
   const handleButtonClickVenueDetails = (event, cellValues) => {
-    navigate('/TaskDetails/' + cellValues.row.id);
+    navigate('/VenueDetalils/' + cellValues.row.id);
   };
 
-  // Function to format a date string
-  const formatDate = (dateStr) => {
-    const formattedDate = moment(dateStr).format('DD.MM.YY HH:mm');
-    return formattedDate;
-  };
+
 
   // Download data
-  const fetchTasks = async (idConfiguration, id) => {
+  const fetchVenues = async (idConfiguration, id) => {
     const { data, error } = await supabase
-      .from('tasks')
+      .from('venues')
       .select()
       .eq('id_contractor', id)
       .eq('id_configuration', idConfiguration);
     if (error) {
       console.log(error);
-      setTasks(null);
-      setFetchError(t('No Tasks'));
+      setVenues(null);
+      setFetchError(t('No Venues'));
     }
     if (data) {
-      setTasks(data);
+        setVenues(data);
       setFetchError(null);
     }
   };
 
-  const mapStatusToTranslation = (status) => {
-    switch (status) {
-      case 'inProgress':
-        return t('In progress');
-      case 'open':
-        return t('Open');
-        case 'cancelled':
-            return t('Cancelled');
-      case 'completed':
-        return t('Completed');
 
-      default:
-        return status;
-    }
-  };
 
   const columns = [
     { field: 'id', headerName: t('ID'), width: 50 },
-    { field: 'name', headerName: t('Name'), width: 200 },
-    {
-      field: 'createdDate',
-      headerName: t('Creation date'),
-      width: 140,
-      valueFormatter: (params) => formatDate(params.value), // Format the date using formatDate function
-    },
-    {
-      field: 'status',
-      headerName: t('Status'),
-      width: 140,
-      valueGetter: (params) => mapStatusToTranslation(params.row.status),
-    },
+    { field: 'name', headerName: t('Name'), width: 300 },
+    { field: 'GPS_location', headerName: t('Address'), width: 200 },
     {
       field: 'Action',
       headerName: t('Action'),
@@ -139,11 +107,11 @@ const ManagerContractorTasks = () => {
       <p></p>
       <div>
         {fetchError && <p>{fetchError}</p>}
-        {tasks && (
+        {venues && (
           <div>
             <div style={{ height: 400, width: '100%' }}>
               <DataGrid
-                rows={tasks}
+                rows={venues}
                 columns={columns}
                 pageSize={12}
                 rowsPerPageOptions={[12]}
@@ -160,4 +128,4 @@ const ManagerContractorTasks = () => {
   );
 };
 
-export default ManagerContractorTasks;
+export default ManagerContractorVenues;

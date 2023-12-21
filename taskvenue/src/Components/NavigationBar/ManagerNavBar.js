@@ -16,7 +16,8 @@ import IdConfigurationGuard from '../../Config/IdConfigurationGuard';
 import Map from '../../Pages/Manager/Map';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-const pages = ['Administration','Locations','Tasks','Absences','Schedule','Reports','Profile','Map'];
+
+const pages = ['Administration','Contractors','Locations','Tasks','Absences','Schedule','Reports','Profile','Map'];
 
 
 function ManagerNavBar() {
@@ -102,6 +103,10 @@ function ManagerNavBar() {
     const Profile =  () => {
         navigate('/Profile')
       }
+             //go to Contractors 
+      const Contractors =  () => {
+        navigate('/Contractors')
+        }
         //go to Venue 
     const Venue =  () => {
         navigate('/VenueDashboard')
@@ -130,6 +135,7 @@ function ManagerNavBar() {
     const Home =  () => {
         navigate('/home')
         }
+
 
   return (
     <div>
@@ -200,6 +206,7 @@ function ManagerNavBar() {
             >
  <Button onClick={Home}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Home")}</Button>
 <Button onClick={Administration}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Administration")}</Button>
+<Button onClick={Contractors}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Contractors")}</Button>
 <Button onClick={Venue}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Venues")}</Button>
 <Button onClick={Tasks}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Tasks")}</Button>
 <Button onClick={Absences}  sx={{ my: 2, color: 'blue', display: 'block' }}>{t("Absences")}</Button>
@@ -227,6 +234,7 @@ function ManagerNavBar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 <Button onClick={Administration} sx={{ my: 2, color: 'white', display: 'block' }}>{t("Administration")}</Button>
+<Button onClick={Contractors} sx={{ my: 2, color: 'white', display: 'block' }}>{t("Contractors")}</Button>
 <Button onClick={Venue}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Venues")}</Button>
 <Button onClick={Tasks}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Tasks")}</Button>
 <Button onClick={Absences}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Absences")}</Button>

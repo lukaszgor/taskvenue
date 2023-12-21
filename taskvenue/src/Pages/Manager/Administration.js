@@ -10,7 +10,6 @@ import License from '../../Components/Manager/Administration/License';
 import ServicesDictionary from '../../Components/Manager/Administration/ServicesDictionary';
 import Settings from '../../Components/Manager/Administration/Settings';
 import Users from '../../Components/Manager/Administration/Users';
-import Contractors from '../../Components/Manager/Administration/Contractors';
 import TaskTypeDictionary from '../../Components/Manager/Administration/TaskTypeDictionary';
 import ManagerAdministrationBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerAdministrationBreadcrumbs';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
@@ -121,8 +120,7 @@ function Administration() {
             <Tab label={t("License")} {...a11yProps(1)} />
             <Tab label={t("Settings")} {...a11yProps(2)} />
             <Tab label={t("Services")} {...a11yProps(3)} />
-            <Tab label={t("Contractors")} {...a11yProps(4)} />
-            <Tab label={t("Dictionaries")} {...a11yProps(5)} />
+            <Tab label={t("Dictionaries")} {...a11yProps(4)} />
           </Tabs>
         <TabPanel value={value} index={0}  handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
           <Users></Users>
@@ -137,9 +135,6 @@ function Administration() {
           <ServicesDictionary></ServicesDictionary>
         </TabPanel>
         <TabPanel value={value} index={4}  handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
-          <Contractors></Contractors>
-        </TabPanel>
-        <TabPanel value={value} index={5}  handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
           <TaskTypeDictionary></TaskTypeDictionary>
           <TaskNameDictionary></TaskNameDictionary>
         </TabPanel>
