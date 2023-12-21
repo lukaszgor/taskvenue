@@ -1,7 +1,8 @@
 import React from 'react';
 import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import { useState,useEffect } from 'react';
-import { TextField, Button, Grid, Container, Typography, Select, MenuItem,Box,Accordion, AccordionSummary, AccordionDetails,Rating } from '@mui/material';
+import { TextField, Button, Grid, Container, Typography, Select, MenuItem,Box,Accordion, AccordionSummary, AccordionDetails,Rating,  Checkbox, 
+  FormControlLabel } from '@mui/material';
 import supabase from '../../supabaseClient';
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
@@ -32,6 +33,7 @@ const [name, setName] = useState('');
   const [userID, setUserID] = useState('');
   const [idConfig, setIdConfiguration] = useState('');
   const [rating, setRating] = useState(null);
+  const [isChecked, setIsChecked] = useState(false); 
   const handleRatingChange = (event, newRating) => {
     setRating(newRating);
   };
@@ -88,29 +90,16 @@ const [name, setName] = useState('');
         setEmail(data.email);
         setContactPerson(data.contactPerson);
         setRating(data.rating)
+        setIsChecked(data.isDeleted === 1);
     }
 }
 
 const updateContrator =async()=>{
     const{data,error}=await supabase
     .from('contractor')
-    .update({'nameOrCompanyName':name,'description':description,'taxId':taxtId,'nationalEconomyRegisterNumber':nationalEconomyRegisterNumber,'phone_number':phone_number,'address':address,'email':email,'contactPerson':contactPerson,'rating': rating})
+    .update({'nameOrCompanyName':name,'description':description,'taxId':taxtId,'nationalEconomyRegisterNumber':nationalEconomyRegisterNumber,'phone_number':phone_number,'address':address,'email':email,'contactPerson':contactPerson,'rating': rating,'isDeleted':isChecked ? 1 : null,})
     .eq('id',id)
     handleClickAlert()
-}
-
-  //Delete
-  const DeleteContractor = async()=>{
-    const{data,error} =  await supabase
-    .from('contractor')
-    .update({'isDeleted':1})
-    .eq('id',id);
-handleClickAlert();
-navigate('/Administration');
-if(error){
-    console.log(error)
-}if(data){
-}
 }
 
 const handleSubmit = (event) => {
@@ -131,6 +120,9 @@ const handleSubmit = (event) => {
    }
    setOpen(false);
  };
+ const handleCheckboxChange = (event) => {
+  setIsChecked(event.target.checked); // Aktualizujemy stan Checkboxa
+};
  
     return (
         <div>
@@ -215,7 +207,20 @@ const handleSubmit = (event) => {
                 fullWidth
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={6}>
+                  {/* Checkbox */}
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={isChecked}
+                        onChange={handleCheckboxChange} // Obsługa zmiany stanu Checkboxa
+                      />
+                    }
+                    label= {t('Archived')}
+                  />
+                </Grid>
+                
+            <Grid item xs={12} sm={6}>
               <Rating
                 name="rating"
                 value={rating}
@@ -224,6 +229,7 @@ const handleSubmit = (event) => {
                 max={5}
               />
             </Grid>
+
             <Grid item xs={12}>
               <Box display="flex" justifyContent="flex-end" marginTop={1}>
                                 <Button
@@ -233,16 +239,6 @@ const handleSubmit = (event) => {
                                 >
                                   {t("Submit")}
                                 </Button>
-                          <Box marginLeft={1}> 
-                            <Button
-                                  type="error"
-                                  variant="contained"
-                                  color="error"
-                                  onClick={DeleteContractor} 
-                                >
-                                  {t("Delete")}
-                                </Button>
-                          </Box>
               </Box>
 </Grid>
           </Grid>
