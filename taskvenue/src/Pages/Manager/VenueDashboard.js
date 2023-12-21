@@ -24,6 +24,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
+
 const VenueDashboard = () => {
     const [venues, setVenues] = useState([]);
     const [filteredVenues, setFilteredVenues] = useState([]);

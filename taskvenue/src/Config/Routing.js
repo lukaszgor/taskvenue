@@ -44,6 +44,7 @@ import Knowledge from "../Pages/Common/Info/Knowledge";
 import Map from "../Pages/Manager/Map";
 import TermsAndConditions from "../Pages/Common/Info/TermsAndConditions";
 import Contractors from "../Pages/Manager/Contractors";
+import AddNewContractor from "../Pages/Manager/AddNewContractor";
 
 function Routing() {
   return (
@@ -61,6 +62,7 @@ function Routing() {
         <Route path="/Absences" element={<Absences />} />
         <Route path="/Profile" element={<Profile />} />
         <Route path="/AddNewVenue" element={<AddNewVenue />} />
+        <Route path="/AddNewContractor" element={<AddNewContractor />} />
         <Route path="/AddNewTask" element={<AddNewTask />} />
         <Route path="/AddNewAbsence" element={<AddNewAbsence />} />
         <Route path="/UserDetails/:id" element={<UserDetails />} />

@@ -112,7 +112,7 @@ const handleCloseAlert = (event, reason) => {
             <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">
-            {t('Venues details')}
+            {t('Add')}
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
