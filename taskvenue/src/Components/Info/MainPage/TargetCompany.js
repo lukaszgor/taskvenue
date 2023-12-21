@@ -11,7 +11,7 @@ const centerStyles = {
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  minHeight: '40vh', // Ustawia wysokość na całą dostępną wysokość okna przeglądarki
+  minHeight: '25vh', // Ustawia wysokość na całą dostępną wysokość okna przeglądarki
   background:'#f0f8ff'
 };
 
@@ -25,9 +25,6 @@ const TargetCompany = () => {
   return (
     <div style={centerStyles}>
       <Container maxWidth="md">
-      <Typography variant="h5" gutterBottom style={contentStyles}>
-
-        </Typography>
         <Accordion >
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
 <Divider>{t('Service industry')}</Divider>
