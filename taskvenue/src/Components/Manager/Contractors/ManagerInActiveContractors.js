@@ -144,9 +144,11 @@ const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
             <Typography color="textSecondary">{t("Tax ID")}: {contractor.taxId}</Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" variant="contained" color="primary" onClick={() => navigate('/ContractorsDetails/' + contractor.id)}  startIcon={<EditIcon />}>
+          <Box display="inline-block" padding={1}>
+            <Button  variant="contained" color="primary" onClick={() => navigate('/ContractorsDetails/' + contractor.id)}  startIcon={<EditIcon />}>
             {t("details")}
             </Button>
+            </Box>
           </CardActions>
         </Card>
       </Grid>
