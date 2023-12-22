@@ -25,10 +25,6 @@ function Footer() {
     navigate('/infocontact');
   };
 
-  const handleAboutUs = () => {
-    navigate('/aboutus');
-  };
-
   const handleKnowledge = () => {
     navigate('/knowledge');
   };
@@ -47,9 +43,6 @@ function Footer() {
         <Typography variant="body2" align="center">
           <Link style={linkStyles} onClick={handleContactClick}>
           {t("Contact")}
-          </Link>
-          <Link style={linkStyles} onClick={handleAboutUs}>
-          {t("About us")}
           </Link>
           <Link style={linkStyles} onClick={handleKnowledge}>
           {t("Knowledge")}
