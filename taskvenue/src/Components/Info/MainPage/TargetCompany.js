@@ -25,6 +25,7 @@ const TargetCompany = () => {
   return (
     <div style={centerStyles}>
       <Container maxWidth="md">
+        <p></p>
         <Accordion >
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
 <Divider>{t('Service industry')}</Divider>
