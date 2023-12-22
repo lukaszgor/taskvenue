@@ -219,7 +219,7 @@ const handleSubmit = (event) => {
                     label= {t('Archived')}
                   />
                 </Grid>
-                
+
             <Grid item xs={12} sm={6}>
               <Rating
                 name="rating"
@@ -231,7 +231,11 @@ const handleSubmit = (event) => {
             </Grid>
 
             <Grid item xs={12}>
-              <Box display="flex" justifyContent="flex-end" marginTop={1}>
+              <Box display="flex" justifyContent="flex-end" marginTop={1} padding={1}>
+              <Button color="primary" onClick={() => navigate('/AddNewVenue/')}>
+            {t("Add venue")}
+            </Button >
+            
                                 <Button
                                   type="submit"
                                   variant="contained"

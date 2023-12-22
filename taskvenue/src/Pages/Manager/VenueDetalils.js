@@ -248,6 +248,9 @@ const VenueDetalils = () => {
                 </Grid>
                 <Grid item xs={12}>
                   <Box display="flex" justifyContent="flex-end">
+                  <Button color="primary" onClick={() => navigate('/AddNewTask')}>
+            {t("Add task")}
+            </Button >
                     <Button
                       type="submit"
                       variant="contained"
