@@ -9,7 +9,7 @@ const HeaderInfo = () => {
   const { t, i18n } = useTranslation();
   return (
 <div>
-<div style={{ background: 'white', minHeight: '70vh' }}>
+<div style={{ background: 'white', minHeight: '60vh' }}>
 
       <Container maxWidth="lg">
         <Grid container spacing={3}>
@@ -39,7 +39,7 @@ const HeaderInfo = () => {
                   </Typography> */}
 <p></p>
                   <Typography variant="h9" align='left' sx={{  marginBottom: 2 }}>
-                    {t("Our app makes it easy to log jobs, offering simple registration, precise location and verification of work, improving service quality.")}
+                    {t("A tool for your company to work effectively in the field!")}
                   </Typography>
                 
                   <div style={{ display: 'flex' }}>
