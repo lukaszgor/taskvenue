@@ -5,7 +5,7 @@ const ManagerVenuesBreadcrumbs = () => {
   const { t, i18n } = useTranslation();
   const breadcrumbItems = [
     { text: 'Home', url: '/home' },
-    { text: t("Venue"), url: '/Venue' },
+    { text: t("Venues"), url: '/Venue' },
   ];
 
   return (
