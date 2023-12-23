@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom"
 import { useState,useEffect } from 'react';
 import { useTranslation } from "react-i18next";
 import LanguageForInfo from '../Common/LanguageForInfo';
+import SendIcon from '@mui/icons-material/Send';
 
 
 function InfoNavBar() {
@@ -156,6 +157,26 @@ function InfoNavBar() {
 <Button onClick={Knowledge}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Knowledge")}</Button>
 {/* <Button onClick={Technology}  sx={{ my: 2, color: 'white', display: 'block' }}>{t("Technology")}</Button> */}
           </Box>
+          <div sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' } }} >
+          <Button 
+  onClick={InfoContact} 
+  variant="contained" 
+  startIcon={<SendIcon />}
+  sx={{ 
+    display: { xs: 'none', md: 'flex' },
+    backgroundColor: '#D13E30', // Rozjaśniony kolor czerwony
+    color: 'white', // Kolor tekstu
+    '&:hover': {
+      backgroundColor: '#BF1809', // Kolor tła przycisku po najechaniu myszką
+    },
+  }}
+>
+  {t("Free consultation")}
+</Button>
+
+          </div>
+
+
           <Box sx={{ flexGrow: 0}}>
           <LanguageForInfo></LanguageForInfo>
           </Box>
