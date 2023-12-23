@@ -10,6 +10,7 @@ import Grid from '@mui/material/Grid';
 import Footer from '../../../Components/Info/Footer';
 import InfoNavBar from '../../../Components/NavigationBar/InfoNavBar';
 import { useTranslation } from 'react-i18next';
+import ContactForm from '../../../Components/Info/MainPage/ContactForm';
 
 const InfoContact = () => {
   const { t, i18n } = useTranslation();
@@ -28,18 +29,39 @@ const InfoContact = () => {
       <div style={{ background: 'white', minHeight: '85vh' }}>
         <p></p>
         <Container maxWidth="md" style={{ marginTop: '8rem' }}>
-          <Typography variant="h4" align="center">
-            {t("Contact")}
+          <Typography variant="h4" sx={{
+                        mr: 2,
+                        mt: 10,
+                        // fontFamily: 'lato',
+                        fontWeight: 700,
+                        textDecoration: 'none',
+                        color:"#338ede"
+                        
+                      }} align="center">
+            {t("Formularz kontaktowy")}
           </Typography>
           <p></p>
           <Typography variant="h6" align="center">
             {t("Have questions or suggestions about our software? Contact the Task Venue team in any convenient way.")}
           </Typography>
+          <ContactForm></ContactForm>
+          <p></p>
+          <Typography variant="h6" sx={{
+                        mr: 2,
+                        mt: 10,
+                        // fontFamily: 'lato',
+                        fontWeight: 700,
+                        textDecoration: 'none',
+                        color:"#338ede"
+                        
+                      }} align="center">
+            {t("Direct contact")}
+          </Typography>
           <Grid container spacing={2} justifyContent="space-between" style={{ marginTop: '2rem' }}>
             <Grid item xs={12} sm={4}>
               <Card style={{ textAlign: 'center' }}>
                 <CardContent>
-                  <Typography variant="h5">{t("Phone number")}</Typography>
+
                   <PhoneIcon style={iconStyle} />
                   <Typography variant="body1">+48 789 256 591</Typography>
                 </CardContent>
@@ -48,7 +70,7 @@ const InfoContact = () => {
             <Grid item xs={12} sm={4}>
               <Card style={{ textAlign: 'center' }}>
                 <CardContent>
-                  <Typography variant="h5">Email</Typography>
+
                   <EmailIcon style={iconStyle} />
                   <Typography variant="body1">taskvenueapp@gmail.com</Typography>
                 </CardContent>
@@ -58,8 +80,7 @@ const InfoContact = () => {
               <Card style={{ textAlign: 'center' }}>
                 <CardContent>
                   <RoomIcon style={iconStyle} /> {/* Use the RoomIcon for the location */}
-                  <Typography variant="h5">{t("Based in Cracow")}</Typography>
-                  <Typography variant="body1">{t("Poland")}</Typography>
+                  <Typography variant="body1">{t("Based in Cracow")}</Typography>
                 </CardContent>
               </Card>
             </Grid>
