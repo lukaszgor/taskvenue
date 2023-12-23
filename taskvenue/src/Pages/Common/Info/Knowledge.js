@@ -4,18 +4,40 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useTranslation } from 'react-i18next';
 import InfoNavBar from '../../../Components/NavigationBar/InfoNavBar';
 import YouTubePlayer from '../../../Components/Info/MainPage/YouTubePlayer';
+import FaqComponent from '../../../Components/Info/MainPage/FaqComponent';
 function Knowledge() {
   const { t, i18n } = useTranslation();
 
   return (
     <div>
       <InfoNavBar></InfoNavBar>
-      <Container maxWidth="md">
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <Grid container spacing={2}>
+      <p></p>
+      <div style={{ background: 'white', minHeight: '85vh' }}>
+        <p></p>
+        <Container maxWidth="md" style={{ marginTop: '8rem' }}>
+          <Typography variant="h4" sx={{
+                        mr: 2,
+                        mt: 10,
+                        // fontFamily: 'lato',
+                        fontWeight: 700,
+                        textDecoration: 'none',
+                        color:"#338ede"
+                        
+                      }} align="center">
+            {t("FAQ")}
+          </Typography>
+          <p></p>
+          <Typography variant="h6" align="center">
+            {t("Do you have questions about our software? We have collected the most frequently asked ones below.")}
+          </Typography>
+          <p></p>
+<FaqComponent></FaqComponent>
+
+        {/* <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <Grid container >
             <Grid item xs={12} sm={12}>
               <Box p={2}>
-                <Accordion defaultExpanded>
+                <Accordion>
                   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                     <Typography variant="h6" fontWeight="bold">
                       Widok Managera
@@ -110,8 +132,10 @@ function Knowledge() {
               </Box>
             </Grid>
           </Grid>
-        </div>
+        </div> */}
+        
       </Container>
+      </div>
     </div>
   );
 }

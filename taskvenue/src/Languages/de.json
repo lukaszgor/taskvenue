@@ -279,7 +279,30 @@
     "Get started today!": "Legen Sie los",
     "Effectively manage tasks and location": "Aufgaben und Standort effektiv verwalten",
     "Save":"Speichern",
-    "Edit":"Bearbeiten"
+    "Edit":"Bearbeiten",
+      "Inactive": "Inaktiv",
+      "Free consultation": "Kostenlose Beratung",
+      "Sent": "Gesendet",
+      "Content of the message": "Inhalt der Nachricht",
+      "Phone": "Telefon",
+      "Direct contact": "Direkter Kontakt",
+      "A tool for your company to work effectively in the field!": "Ein Werkzeug für Ihr Unternehmen, um effektiv im Feld zu arbeiten!",
+      "Industry": "Branche",
+      "Contact form": "Kontaktformular",
+      "Revolutionise your business by implementing an 'all-in-one' solution that creates processes and aggregates all the data you use in the business.": "Revolutionieren Sie Ihr Geschäft durch die Implementierung einer 'All-in-One'-Lösung, die Prozesse schafft und alle Daten, die Sie im Geschäft verwenden, aggregiert.",
+      "Unleash the potential of your business": "Entfesseln Sie das Potenzial Ihres Geschäfts",
+      "Do you have questions about our software? We have collected the most frequently asked ones below.": "Haben Sie Fragen zu unserer Software? Wir haben die am häufigsten gestellten unten gesammelt.",
+      "What is the cost of implementing and maintaining your software?": "Was sind die Kosten für die Implementierung und Wartung Ihrer Software?",
+      "Is the software scalable as my company grows?": "Ist die Software skalierbar, wenn mein Unternehmen wächst?",
+      "Can I try the software for free?": "Kann ich die Software kostenlos ausprobieren?",
+      "How long can I try the software for free?": "Wie lange kann ich die Software kostenlos ausprobieren?",
+      "What technology is the software written in?": "In welcher Technologie ist die Software geschrieben?",
+      "The cost depends on the chosen package and the range of necessary features. We offer various pricing models, including subscription options and one-time payments, to fit the budget of any company.": "Die Kosten hängen vom gewählten Paket und dem Umfang der notwendigen Funktionen ab. Wir bieten verschiedene Preismodelle an, einschließlich Abonnementoptionen und Einmalzahlungen, um in jedes Unternehmensbudget zu passen.",
+      "Absolutely, our solutions are scalable and can be adjusted to meet the growing needs of your business. We offer flexible options to meet both short and long-term business requirements.": "Absolut, unsere Lösungen sind skalierbar und können an die wachsenden Bedürfnisse Ihres Unternehmens angepasst werden. Wir bieten flexible Optionen, um sowohl kurz- als auch langfristige Geschäftsanforderungen zu erfüllen.",
+      "Yes. We offer a free 30-minute consultation, which allows you to quickly learn the system and configure all the necessary elements.": "Ja. Wir bieten eine kostenlose 30-minütige Beratung an, die es Ihnen ermöglicht, das System schnell zu erlernen und alle notwendigen Elemente zu konfigurieren.",
+      "The default trial period is 7 days.": "Die standardmäßige Testphase beträgt 7 Tage.",
+      "The application is built on React. Additionally, we have strengthened our application by integrating with the Supabase cloud.": "Die Anwendung basiert auf React. Zusätzlich haben wir unsere Anwendung durch die Integration mit der Supabase-Cloud verstärkt."
+    
   
   
 

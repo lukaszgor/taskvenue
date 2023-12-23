@@ -48,7 +48,7 @@ function Footer() {
           {t("Contact")}
           </Link>
           <Link style={linkStyles} onClick={handleKnowledge}>
-          {t("Knowledge")}
+          {t("FAQ")}
           </Link>
           <Link style={linkStyles} onClick={termsAndConditions}>
           {t("Terms and conditions")}

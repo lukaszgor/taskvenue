@@ -300,7 +300,28 @@
     "Get started today!": "Почніть сьогодні!",
     "Effectively manage tasks and location": "Ефективно керуйте завданнями та місцем",
     "Save":"Зберегти",
-    "Edit":"Редагувати"
-  
-
+    "Edit":"Редагувати",
+        "Inactive": "Неактивний",
+        "Free consultation": "Безкоштовна консультація",
+        "Sent": "Відправлено",
+        "Content of the message": "Зміст повідомлення",
+        "Phone": "Телефон",
+        "Direct contact": "Безпосередній контакт",
+        "A tool for your company to work effectively in the field!": "Інструмент для ефективної роботи вашої компанії в полі!",
+        "Industry": "Галузь",
+        "Contact form": "Форма зворотного зв'язку",
+        "Revolutionise your business by implementing an 'all-in-one' solution that creates processes and aggregates all the data you use in the business.": "Революціонізуйте ваш бізнес, впроваджуючи рішення 'все-в-одному', яке створює процеси і агрегує всі дані, які ви використовуєте в бізнесі.",
+        "Unleash the potential of your business": "Розкрийте потенціал свого бізнесу",
+        "Do you have questions about our software? We have collected the most frequently asked ones below.": "У вас є запитання щодо нашого програмного забезпечення? Нижче ми зібрали найчастіші з них.",
+        "What is the cost of implementing and maintaining your software?": "Яка вартість впровадження та підтримки вашого програмного забезпечення?",
+        "Is the software scalable as my company grows?": "Чи є програмне забезпечення масштабованим, як росте моя компанія?",
+        "Can I try the software for free?": "Чи можу я спробувати програмне забезпечення безкоштовно?",
+        "How long can I try the software for free?": "Як довго я можу випробувати програмне забезпечення безкоштовно?",
+        "What technology is the software written in?": "На якій технології написане програмне забезпечення?",
+        "The cost depends on the chosen package and the range of necessary features. We offer various pricing models, including subscription options and one-time payments, to fit the budget of any company.": "Вартість залежить від обраного пакету та необхідного спектру функцій. Ми пропонуємо різні цінові моделі, включаючи опції підписки та одноразові платежі, щоб відповідати бюджету будь-якої компанії.",
+        "Absolutely, our solutions are scalable and can be adjusted to meet the growing needs of your business. We offer flexible options to meet both short and long-term business requirements.": "Безумовно, наші рішення є масштабованими та можуть бути налаштовані для задоволення зростаючих потреб вашого бізнесу. Ми пропонуємо гнучкі опції, щоб задовольнити як короткострокові, так і довгострокові бізнес-вимоги.",
+        "Yes. We offer a free 30-minute consultation, which allows you to quickly learn the system and configure all the necessary elements.": "Так. Ми пропонуємо безкоштовну 30-хвилинну консультацію, яка дозволяє швидко ознайомитися з системою і налаштувати всі необхідні елементи.",
+        "The default trial period is 7 days.": "Стандартний період пробного використання становить 7 днів.",
+        "The application is built on React. Additionally, we have strengthened our application by integrating with the Supabase cloud.": "Додаток створено на React. Крім того, ми посилили наш додаток, інтегрувавши його з хмарою Supabase."
+      
 }  

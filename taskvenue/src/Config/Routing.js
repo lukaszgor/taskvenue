@@ -38,7 +38,6 @@ import ClientContact from "../Pages/Client/ClientContact";
 import ClientVenueDetalils from "../Pages/Client/ClientVenueDetalils";
 import ClientTaskDetails from "../Pages/Client/ClientTaskDetails";
 import Info from "../Pages/Common/Info/Info";
-import AboutUs from "../Pages/Common/Info/AboutUs";
 import InfoContact from "../Pages/Common/Info/InfoContact";
 import Knowledge from "../Pages/Common/Info/Knowledge";
 import Map from "../Pages/Manager/Map";
@@ -93,7 +92,6 @@ function Routing() {
         <Route path="/ClientTaskDetails/:id" element={<ClientTaskDetails />} />
 
         <Route path="/info" element={<Info />} />
-        <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/infocontact" element={<InfoContact />} />
         <Route path="/knowledge" element={<Knowledge />} />
         <Route path="/termsAndConditions" element={<TermsAndConditions />} />

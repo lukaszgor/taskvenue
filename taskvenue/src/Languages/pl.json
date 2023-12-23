@@ -310,7 +310,20 @@
       "Industry":"Branża",
       "Contact form":"Formularz kontaktowy",
       "Revolutionise your business by implementing an 'all-in-one' solution that creates processes and aggregates all the data you use in the business.":"Zrewolucjonizuj firmę, wdrażając rozwiązanie 'all-in-one', które stworzy procesy i zagreguje wszystkie dane, które wykorzystujesz w biznesie.",
-      "Unleash the potential of your business":"Uwolnij potencjał swojego biznesu"
+      "Unleash the potential of your business":"Uwolnij potencjał swojego biznesu",
+      "Do you have questions about our software? We have collected the most frequently asked ones below.":"Masz pytania dotyczące naszego oprogramowania? Poniżej zebraliśmy najczęściej zadawane.",
+        "What is the cost of implementing and maintaining your software?": "Jaki jest koszt wdrożenia i utrzymania Waszego oprogramowania?",
+        "Is the software scalable as my company grows?": "Czy oprogramowanie jest skalowalne w miarę rozwoju mojej firmy?",
+        "Can I try the software for free?": "Czy mogę wypróbować oprogramowanie bezpłatnie?",
+        "How long can I try the software for free?": "Na jaki czas mogę wypróbować oprogramowanie za darmo?",
+        "What technology is the software written in?": "W jakiej technologii zostało napisane oprogramowanie?",
+          "The cost depends on the chosen package and the range of necessary features. We offer various pricing models, including subscription options and one-time payments, to fit the budget of any company.": "Koszt zależy od wybranego pakietu oraz zakresu niezbędnych funkcji. Oferujemy różne modele cenowe, w tym opcje subskrypcji i jednorazowe płatności, aby dostosować się do budżetu każdej firmy.",
+          "Absolutely, our solutions are scalable and can be adjusted to meet the growing needs of your business. We offer flexible options to meet both short and long-term business requirements.": "Zdecydowanie, nasze rozwiązania są skalowalne i mogą być dostosowane do rosnących potrzeb Twojego biznesu. Oferujemy elastyczne opcje, aby sprostać zarówno krótko-, jak i długoterminowym wymaganiom biznesowym.",
+          "Yes. We offer a free 30-minute consultation, which allows you to quickly learn the system and configure all the necessary elements.": "Tak. Oferujemy darmową 30-minutową konsultację, która pozwala szybko poznać system i skonfigurować wszystkie niezbędne elementy.",
+          "The default trial period is 7 days.": "Domyślny okres próbny wynosi 7 dni.",
+          "The application is built on React. Additionally, we have strengthened our application by integrating with the Supabase cloud.": "Aplikacja jest zbudowana na React. Dodatkowo wzmocniliśmy naszą aplikację, integrując ją z chmurą Supabase."
+
+      
 
 
 

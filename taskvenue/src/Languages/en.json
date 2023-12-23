@@ -310,7 +310,21 @@
       "Industry":"Industry",
       "Contact form":"Contact form",
       "Revolutionise your business by implementing an 'all-in-one' solution that creates processes and aggregates all the data you use in the business.":"Revolutionise your business by implementing an 'all-in-one' solution that creates processes and aggregates all the data you use in the business.",
-      "Unleash the potential of your business":"Unleash the potential of your business"
+      "Unleash the potential of your business":"Unleash the potential of your business",
+      "Do you have questions about our software? We have collected the most frequently asked ones below.":"Do you have questions about our software? We have collected the most frequently asked ones below.",
+        "What is the cost of implementing and maintaining your software?": "What is the cost of implementing and maintaining your software?",
+        "Is the software scalable as my company grows?": "Is the software scalable as my company grows?",
+        "Can I try the software for free?": "Can I try the software for free?",
+        "How long can I try the software for free?": "How long can I try the software for free?",
+        "What technology is the software written in?": "What technology is the software written in?",
+        "The cost depends on the chosen package and the range of necessary features. We offer various pricing models, including subscription options and one-time payments, to fit the budget of any company.": "The cost depends on the chosen package and the range of necessary features. We offer various pricing models, including subscription options and one-time payments, to fit the budget of any company.",
+        "Absolutely, our solutions are scalable and can be adjusted to meet the growing needs of your business. We offer flexible options to meet both short and long-term business requirements.": "Absolutely, our solutions are scalable and can be adjusted to meet the growing needs of your business. We offer flexible options to meet both short and long-term business requirements.",
+        "Yes. We offer a free 30-minute consultation, which allows you to quickly learn the system and configure all the necessary elements.": "Yes. We offer a free 30-minute consultation, which allows you to quickly learn the system and configure all the necessary elements.",
+        "The default trial period is 7 days.": "The default trial period is 7 days.",
+        "The application is built on React. Additionally, we have strengthened our application by integrating with the Supabase cloud.": "The application is built on React. Additionally, we have strengthened our application by integrating with the Supabase cloud."
+ 
+        
+
       
       
 
