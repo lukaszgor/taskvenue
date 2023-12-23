@@ -58,7 +58,7 @@ const InfoContact = () => {
             {t("Direct contact")}
           </Typography>
           <Grid container spacing={2} justifyContent="space-between" style={{ marginTop: '2rem' }}>
-            <Grid item xs={12} sm={4}>
+            {/* <Grid item xs={12} sm={4}>
               <Card style={{ textAlign: 'center' }}>
                 <CardContent>
 
@@ -66,8 +66,8 @@ const InfoContact = () => {
                   <Typography variant="body1">+48 789 256 591</Typography>
                 </CardContent>
               </Card>
-            </Grid>
-            <Grid item xs={12} sm={4}>
+            </Grid> */}
+            <Grid item xs={12} sm={6}>
               <Card style={{ textAlign: 'center' }}>
                 <CardContent>
 
@@ -76,7 +76,7 @@ const InfoContact = () => {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={6}>
               <Card style={{ textAlign: 'center' }}>
                 <CardContent>
                   <RoomIcon style={iconStyle} /> {/* Use the RoomIcon for the location */}
