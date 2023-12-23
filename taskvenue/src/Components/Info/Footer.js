@@ -31,6 +31,9 @@ function Footer() {
   const termsAndConditions = () => {
     navigate('/termsAndConditions');
   };
+  const youtube = () => {
+    window.open('https://www.youtube.com/channel/UCLozK310C9C_AjE6ka8R1zg', '_blank');
+  };
 
 
   
@@ -49,6 +52,9 @@ function Footer() {
           </Link>
           <Link style={linkStyles} onClick={termsAndConditions}>
           {t("Terms and conditions")}
+          </Link>
+          <Link style={linkStyles} onClick={youtube}>
+          {t("YouTube")}
           </Link>
         </Typography>
       </Container>
