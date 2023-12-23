@@ -21,7 +21,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import FilterListIcon from '@mui/icons-material/FilterList';
 
-function ManagerInActiveContractors() {
+function ManagerArchivedContractors() {
     const navigate = useNavigate()
     const {id} = useParams()
   const { t, i18n } = useTranslation();
@@ -137,7 +137,7 @@ const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
       <Grid item xs={12} sm={6} md={4} lg={3}key={index}>
         <Card>
           <CardContent>
-            <Typography variant="h6">{contractor.nameOrCompanyName}</Typography>
+            <Typography variant="h6">{t('Name')} : {contractor.nameOrCompanyName}</Typography>
             <Typography color="textSecondary">{t("email")}: {contractor.email}</Typography>
             <Typography color="textSecondary">{t("phone number")}: {contractor.phone_number}</Typography>
             <Typography color="textSecondary">{t("address")}: {contractor.address}</Typography>
@@ -224,5 +224,5 @@ const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
     );
   }
   
-  export default ManagerInActiveContractors;
+  export default ManagerArchivedContractors;
   

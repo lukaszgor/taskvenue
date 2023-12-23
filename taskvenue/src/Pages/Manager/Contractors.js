@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import ManagerNavBar from '../../Components/NavigationBar/ManagerNavBar';
 import ManagerContractorsBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerContractorsBreadcrumbs';
 import ManagerActiveContractors from '../../Components/Manager/Contractors/ManagerActiveContractors';
-import ManagerInActiveContractors from '../../Components/Manager/Contractors/ManagerInActiveContractors';
+import ManagerArchivedContractors from '../../Components/Manager/Contractors/ManagerArchivedContractors';
 
 
 function TabPanel(props) {
@@ -58,14 +58,14 @@ function Contractors() {
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label={t("Active")} {...a11yProps(0)} />
-          <Tab label={t("Inactive")} {...a11yProps(1)} />
+          <Tab label={t("Archived")} {...a11yProps(1)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
 <ManagerActiveContractors></ManagerActiveContractors>
       </TabPanel>
       <TabPanel value={value} index={1}>
-<ManagerInActiveContractors></ManagerInActiveContractors>
+<ManagerArchivedContractors></ManagerArchivedContractors>
       </TabPanel>
     </Box>
       </div>   
