@@ -12,13 +12,10 @@ import Settings from '../../Components/Manager/Administration/Settings';
 import Users from '../../Components/Manager/Administration/Users';
 import TaskTypeDictionary from '../../Components/Manager/Administration/TaskTypeDictionary';
 import ManagerAdministrationBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerAdministrationBreadcrumbs';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import IconButton from '@mui/material/IconButton';
 import TaskNameDictionary from '../../Components/Manager/Administration/TaskNameDictionary';
 
 function TabPanel(props) {
-  const { children, value, index, handleScrollLeft, handleScrollRight } = props;
+  const { children, value, index, ...other } = props;
 
   return (
     <div
@@ -26,41 +23,11 @@ function TabPanel(props) {
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
-      style={{ position: 'relative' }}
+      {...other}
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          {value > 0 && (
-            <IconButton
-              onClick={handleScrollLeft}
-              style={{
-                position: 'fixed',
-                left: 0,
-                top: '35%',
-                transform: 'translateY(-50%)',
-                zIndex: 1,
-              }}
-            >
-              <NavigateBeforeIcon />
-            </IconButton>
-          )}
-          {value < 5 && (
-            <IconButton
-              onClick={handleScrollRight}
-              style={{
-                position: 'fixed',
-                right: 0,
-                top: '35%',
-                transform: 'translateY(-50%)',
-                zIndex: 1,
-                // backgroundColor: 'blue', // Kolor niebieski
-                // color: 'white', // Kolor tekstu na przycisku
-              }}
-            >
-              <NavigateNextIcon />
-            </IconButton>
-          )}
-          {children}
+          <Typography component={'span'} variant={'body2'}>{children}</Typography>
         </Box>
       )}
     </div>
@@ -71,8 +38,6 @@ TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
-  handleScrollLeft: PropTypes.func.isRequired,
-  handleScrollRight: PropTypes.func.isRequired,
 };
 
 function a11yProps(index) {
