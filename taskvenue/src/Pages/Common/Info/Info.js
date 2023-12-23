@@ -13,6 +13,9 @@ import { useTranslation } from 'react-i18next';
 import YouTubePlayer from '../../../Components/Info/MainPage/YouTubePlayer';
 import CookiesBanner from '../../../Components/Common/CookiesBanner';
 import Problems from '../../../Components/Info/MainPage/Problems';
+import ContactForm from '../../../Components/Info/MainPage/ContactForm';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 
 const Info = () => {
   const navigate = useNavigate();
@@ -31,6 +34,25 @@ const Info = () => {
 <TargetCompany></TargetCompany>
 <p></p>
 {/* <ProductInfo></ProductInfo> */}
+<p></p>
+<Container maxWidth="md" style={{ marginTop: '8rem' }}>
+<Typography variant="h4" sx={{
+                        mr: 2,
+                        mt: 10,
+                        // fontFamily: 'lato',
+                        fontWeight: 700,
+                        textDecoration: 'none',
+                        color:"#338ede"
+                        
+                      }} align="center">
+            {t("Formularz kontaktowy")}
+          </Typography>
+          <p></p>
+          <Typography variant="h6" align="center">
+            {t("Have questions or suggestions about our software? Contact the Task Venue team in any convenient way.")}
+          </Typography>
+<ContactForm></ContactForm>
+</Container>
 <p></p>
 <YouTubePlayer videoUrl="plXtqNL1Mh4" title={t('Check us out on Youtube')} />
 {/* <p></p>

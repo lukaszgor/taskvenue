@@ -26,6 +26,17 @@ const TargetCompany = () => {
     <div style={centerStyles}>
       <Container maxWidth="md">
         <p></p>
+        <Typography variant="h5" gutterBottom style={contentStyles} sx={{
+                        mr: 2,
+                        mt: 2,
+                        // fontFamily: 'lato',
+                        fontWeight: 700,
+                        textDecoration: 'none',
+                        color:"#338ede"
+                        
+                      }} align="center"> 
+      {t('Industry')}
+        </Typography>
         <Accordion >
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
 <Divider>{t('Service industry')}</Divider>
