@@ -58,7 +58,7 @@ const HeaderInfo = () => {
           <Grid item xs={12} md={8} >
             <div style={{ padding: '20px' }}>
             <img
-               src="/newHeader.png"
+               src="/newHeader-min.png"
               alt="Your Business"
               style={{ width: '100%', height: 'auto' }}
             />
