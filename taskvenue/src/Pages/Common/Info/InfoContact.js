@@ -38,7 +38,7 @@ const InfoContact = () => {
                         color:"#338ede"
                         
                       }} align="center">
-            {t("Formularz kontaktowy")}
+            {t("Contact form")}
           </Typography>
           <p></p>
           <Typography variant="h6" align="center">

@@ -16,7 +16,7 @@ import Problems from '../../../Components/Info/MainPage/Problems';
 import ContactForm from '../../../Components/Info/MainPage/ContactForm';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-
+import Summary from '../../../Components/Info/MainPage/Summary';
 const Info = () => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
@@ -34,18 +34,17 @@ const Info = () => {
 <TargetCompany></TargetCompany>
 <p></p>
 {/* <ProductInfo></ProductInfo> */}
-<p></p>
-<Container maxWidth="md" style={{ marginTop: '8rem' }}>
-<Typography variant="h4" sx={{
+<Container maxWidth="md" style={{ marginTop: '2rem' }}>
+<Typography variant="h5" sx={{
                         mr: 2,
-                        mt: 10,
+                        mt: 2,
                         // fontFamily: 'lato',
                         fontWeight: 700,
                         textDecoration: 'none',
                         color:"#338ede"
                         
                       }} align="center">
-            {t("Formularz kontaktowy")}
+            {t("Contact form")}
           </Typography>
           <p></p>
           <Typography variant="h6" align="center">
@@ -58,6 +57,8 @@ const Info = () => {
 {/* <p></p>
 <StepperInfo></StepperInfo>
 <TryInfo></TryInfo> */}
+<p></p>
+<Summary></Summary>
 <p></p>
 <Footer></Footer>
 
