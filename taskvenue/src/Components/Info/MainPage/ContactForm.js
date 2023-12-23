@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Paper, TextField, Button, Box, Snackbar, Alert } from '@mui/material';
+import { Paper, TextField, Button, Box, Snackbar, Alert, Checkbox, FormControlLabel } from '@mui/material';
 import sendEmail from '../../../Config/EmailSender';
 import { useTranslation } from 'react-i18next';
 
@@ -10,6 +10,7 @@ function ContactForm() {
   const [messageFromForm, setMessageFromForm] = useState('');
   const [openSnackbar, setOpenSnackbar] = useState(false); // New state for Snackbar
   const { t, i18n } = useTranslation();
+  const [checked, setChecked] = useState(false);
 
   const handleChange = (setter) => (event) => {
     setter(event.target.value);
@@ -48,6 +49,9 @@ function ContactForm() {
     }
     setOpenSnackbar(false);
   };
+  const handleCheckboxChange = (event) => {
+    setChecked(event.target.checked);
+  };
 
   return (
     <Paper style={{ padding: '20px', margin: '20px' }}>
@@ -83,8 +87,21 @@ function ContactForm() {
             onChange={handleChange(setMessage)}
           />
         </Box>
+        <Box marginBottom={2}>
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={checked}
+              onChange={handleCheckboxChange}
+              name="agreement"
+            />
+          }
+          label={t("You agree to be contacted by telephone and electronically to process this application. You agree to the use of email communication for marketing purposes")}
+        />
+        </Box>
+
         <Box display="flex" justifyContent="flex-end">
-          <Button variant="contained" color="primary" type="submit">
+          <Button variant="contained" color="primary" type="submit" disabled={!checked}>
             {t('Send')}
           </Button>
         </Box>
