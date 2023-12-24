@@ -19,12 +19,7 @@ const ManagerAllServicesWithContractor = () => {
     const [idConfig, setIdConfiguration] = useState('');
   const [services, setServices] = useState([]);
   const { t, i18n } = useTranslation();
-  const [sortModel, setSortModel] = useState([ 
-    {
-      field: 'idTask',
-      sort: 'desc', // 'desc' oznacza sortowanie malejące
-    },
-  ]);
+
 
   useEffect(() => {
     const checkSession = async () => {
@@ -128,7 +123,6 @@ const ManagerAllServicesWithContractor = () => {
         rows={services}
         columns={columns}
         pageSize={12}
-        sortModel={sortModel} 
         slots={{
             toolbar: CustomToolbar,
           }}
