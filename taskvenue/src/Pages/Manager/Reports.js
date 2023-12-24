@@ -9,7 +9,6 @@ import YourOpenAndInProgressTasksReport from '../../Components/Reports/YourOpenA
 import ManagerReportsBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerReportsBreadcrumbs';
 import ReportRealizationOfIssuesForTheCustomers from '../../Components/Reports/ReportRealizationOfIssuesForTheCustomers';
 import ManagerAllTasks from '../../Components/Reports/ManagerAllTasks';
-import ManagerWorkTime from '../../Components/Reports/ManagerWorkTime';
 import ManagerAllServicesWithContractor from '../../Components/Reports/ManagerAllServicesWithContractor';
 function Reports() {
     const { t, i18n } = useTranslation();
@@ -65,7 +64,7 @@ function Reports() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
-  <ManagerWorkTime></ManagerWorkTime>
+zrobic raport
         </AccordionDetails>
       </Accordion>
 

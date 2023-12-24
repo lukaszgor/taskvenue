@@ -10,7 +10,6 @@ import Alert from '@mui/material/Alert';
 import ManagerAdministrationUserBreadcrumbs from '../../Components/Breadcrumbs/ManagerAdministrationUserBreadcrumbs';
 import { useNavigate } from "react-router-dom"
 import ManagerEmployeeDocuments from '../../Components/Manager/Documents/ManagerEmployeeDocuments';
-import UserWorkTimeHistory from '../../Components/Manager/Administration/UserWorkTimeHistory';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ConstantWorkingSheet from '../../Components/Reports/ConstantWorkingSheet';
 
@@ -254,18 +253,6 @@ const handleCloseAlert = (event, reason) => {
             <Divider textAlign="left">{t("Documents")}</Divider>
             <p></p>
 <ManagerEmployeeDocuments></ManagerEmployeeDocuments>
-<Accordion>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">
-            {t('Working time history')}
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography></Typography>
-          <UserWorkTimeHistory></UserWorkTimeHistory>
-        </AccordionDetails>
-      </Accordion>
-
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">
