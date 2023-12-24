@@ -13,6 +13,8 @@ import ContactForm from '../../../Components/Info/MainPage/ContactForm';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Summary from '../../../Components/Info/MainPage/Summary';
+import GifManagerView from '../../../Components/Info/MainPage/GifManagerView';
+
 const Info = () => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
@@ -48,8 +50,9 @@ const Info = () => {
 <ContactForm></ContactForm>
 </Container>
 <p></p>
-<YouTubePlayer videoUrl="plXtqNL1Mh4" title={t('Check us out on Youtube')} />
+<GifManagerView></GifManagerView>
 <p></p>
+{/* <YouTubePlayer videoUrl="plXtqNL1Mh4" /> */}
 <Summary></Summary>
 <p></p>
 <Footer></Footer>
