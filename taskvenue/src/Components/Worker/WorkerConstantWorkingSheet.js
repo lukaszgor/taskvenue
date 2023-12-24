@@ -199,10 +199,10 @@ const handleFetchVenues = async (idConfig) => {
           }
           const { data, error } = await supabase
             .from('constant_working')
-            .select('status,id,venue')
+            .select('status,id,venue,assigned_user,idTask')
             .eq('id_configuration', idConfig)
             .eq('assigned_user', userID)
-            .eq('idTask', null)
+            .is('idTask', null)
             .order('id', { ascending: false })
             .limit(1)
             .single();
