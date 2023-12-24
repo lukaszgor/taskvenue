@@ -35,6 +35,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
 import ManagerTaskAttachments from '../../Manager/Attachments/ManagerTaskAttachments';
 import WorkerStartAndStop from './WorkerStartAndStop';
+import WorkerTasksWorkingSheet from './WorkerTasksWorkingSheet';
 
 const DateTimeInput = styled.input`
   width: 100%;
@@ -303,7 +304,7 @@ const WorkerBasicDataEdit = () => {
 </Grid>
 <p></p>
 
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
              <Accordion defaultExpanded >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">{t('Start')} / {t('Stop')}</Typography>
@@ -312,7 +313,19 @@ const WorkerBasicDataEdit = () => {
              <WorkerStartAndStop></WorkerStartAndStop>
              </AccordionDetails>
       </Accordion>
+             </Grid> */}
+<p></p>
+<Grid item xs={12}>
+             <Accordion defaultExpanded >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Start')} / {t('Stop')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+             <WorkerTasksWorkingSheet></WorkerTasksWorkingSheet>
+             </AccordionDetails>
+      </Accordion>
              </Grid>
+
 <p></p>
              <Grid item xs={12}>
              <Accordion defaultExpanded >

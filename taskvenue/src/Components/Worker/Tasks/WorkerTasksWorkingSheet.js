@@ -10,10 +10,10 @@ import StopIcon from '@mui/icons-material/Stop';
 import FmdBadIcon from '@mui/icons-material/FmdBad';
 import { useTranslation } from 'react-i18next';
 import { format, addHours } from 'date-fns'; 
-import supabase from '../../supabaseClient';
+import supabase from '../../../supabaseClient';
+import { useParams } from "react-router-dom";
 
-
-const WorkerConstantWorkingSheet = () => {
+const WorkerTasksWorkingSheet = () => {
     const { t, i18n } = useTranslation();
     const [currentDateTime, setCurrentDateTime] = useState('');
     const [userID, setUserID] = useState('');
@@ -21,10 +21,10 @@ const WorkerConstantWorkingSheet = () => {
     const [status, setStatus] = useState('');
     const [userLocation, setUserLocation] = useState('');
     const [lastRecordStatus, setLastRecordStatus] = useState(null);
-    const [venues, setVenues] = useState([]);
-    const [selectedOption, setSelectedOption] = useState('');
+    const [taskStatus, setTaskStatus] = useState(null);
+    const [idVenue, setIdVenue] = useState(null);
     const [constatntID, setConstatnID] = useState('');
-
+    const { id } = useParams();
 
     const typographyStyle = {
         fontSize: '11px', // Zmniejszona czcionka tytułowa
@@ -35,30 +35,18 @@ const WorkerConstantWorkingSheet = () => {
 const handleStartClick = () => {
     setStatus('open');
     getUserLocation('open', currentDateTime);
+    handleUpdateStatus('inProgress');
 
   };
 
   const handleStopClick = () => {
     setStatus('closed');
     getUserLocation('closed', currentDateTime);
+    handleButton();
   };
 
 // pobranie z useState isRunieng
 
-const handleFetchVenues = async (idConfig) => {
-    const { data, error } = await supabase
-      .from('venues')
-      .select()
-      .eq('id_configuration', idConfig)
-      .is('archived', null);
-
-    if (error) {
-      console.log(error);
-    }
-    if (data) {
-        setVenues(data);
-    }
-  };
 
     useEffect(() => {
             const getCurrentDateTime = () => {
@@ -148,7 +136,8 @@ const handleFetchVenues = async (idConfig) => {
                 start_date: currentDateTime,
                 status: status,
                 start_location: userLocation,
-                venue:selectedOption
+                idTask:id,
+                venue:idVenue
               },
             ]);
           if (error) {
@@ -173,6 +162,7 @@ const handleFetchVenues = async (idConfig) => {
               stop_date: currentDateTime,
               status: status,
               stop_location: userLocation,
+              venue:idVenue
             },
           ])
           .eq('id', constatntID);
@@ -189,20 +179,17 @@ const handleFetchVenues = async (idConfig) => {
         }
       };
 
-
-
-
-      const getLastRecord = async (idConfig, userID) => {
+      const getLastRecord = async (idConfig, userID,id) => {
         try {
           if (!idConfig || !userID) {
             return;
           }
           const { data, error } = await supabase
             .from('constant_working')
-            .select('status,id,venue')
+            .select()
             .eq('id_configuration', idConfig)
             .eq('assigned_user', userID)
-            .eq('idTask', null)
+            .eq('idTask', id)
             .order('id', { ascending: false })
             .limit(1)
             .single();
@@ -214,8 +201,6 @@ const handleFetchVenues = async (idConfig) => {
             if (data) {
               setLastRecordStatus(data.status);
               setConstatnID(data.id);
-              setSelectedOption(data.venue);
-              
             }
           }
         } catch (error) {
@@ -223,54 +208,69 @@ const handleFetchVenues = async (idConfig) => {
         }
       };
       
-      
-
       useEffect(() => {
-        if (idConfig) {
-            handleFetchVenues(idConfig);
+        checkTaskStatus();
             if (userID) {
-                getLastRecord(idConfig,userID);
+                getLastRecord(idConfig,userID,id);
             }
+      }, [open,idConfig,userID,id]);
+
+  
+      const handleUpdateStatus = async (status) => {
+        const { data, error } = await supabase
+          .from('tasks')
+          .update([
+            {
+              status: status,
+            },
+          ])
+          .eq('id', id);
+        if (error) {
+          console.log(error);
         }
+        if (data) {
+          handleClickAlert();
+        }
+      };
 
-      }, [open,idConfig,userID]);
+      const checkTaskStatus = async () => {
+        const { data, error } = await supabase
+          .from('tasks')
+          .select('status,id_venue')
+          .eq('id_configuration', idConfig)
+          .eq('id', id)
+          .single();
+        if (error) {
+          console.log(error);
+        }
+        if (data) {
+          setTaskStatus(data.status);
+          setIdVenue(data.id_venue);
+        }
+      };
 
-      const handleChangeVelue = (event) => {
-        const value = event.target.value;
-        setSelectedOption(value);
+      const [DialogOpen, setDialogOpen] = useState(false); // Dodajemy stan do kontrolowania widoczności dialogu
+  
+      const handleButton = () => {
+          setDialogOpen(true);
       };
   
+      const handleConfirm = () => {
+   //zmiena statusu
+          setDialogOpen(false);
+          handleUpdateStatus('completed');
+          handleClickAlert();
+      };
+  
+      const handleCancel = () => {
+          setDialogOpen(false);
+      };
+
     return (
         <div>
   <Container maxWidth="md">
         <Grid container spacing={2}>
         <Grid item xs={12} sm={12}>
-        <FormControl fullWidth required>
-              <InputLabel id="contractor-select-select-label">
-                {t('Select venue')}
-              </InputLabel>
-              <Select
-                labelId="contractor-select-label"
-                id="contractor-select"
-                value={selectedOption}
-                onChange={handleChangeVelue}
-                label={t('Select venue')}
-                required
-                MenuProps={{
-                  PaperProps: {
-                    style: {
-                      maxHeight: 300, // Set your desired max height
-                    },
-                  },
-                }}
-              >
-                {venues.map((venue) => (
-                  <MenuItem key={venue.id} value={venue.id}>
-                    {venue.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
             </Grid>
           <Grid item xs={6} sm={6}>
             <Button
@@ -278,7 +278,7 @@ const handleFetchVenues = async (idConfig) => {
               color="primary"
               startIcon={<PlayArrowIcon />}
               onClick={handleStartClick}
-              disabled={lastRecordStatus === 'open'|| !selectedOption}
+              disabled={lastRecordStatus === 'open'|| taskStatus === 'completed'}
             >
               {t('Start')}
             </Button>
@@ -290,7 +290,7 @@ const handleFetchVenues = async (idConfig) => {
               color="secondary"
               startIcon={<StopIcon />}
               onClick={handleStopClick}
-              disabled={lastRecordStatus === null || lastRecordStatus === 'closed'|| !selectedOption}
+              disabled={lastRecordStatus === null || lastRecordStatus === 'closed'}
             >
               {t('Stop')}
             </Button>
@@ -307,9 +307,32 @@ const handleFetchVenues = async (idConfig) => {
           <Alert severity="success"> {t("Updated!")}</Alert>
         </Snackbar>
       </Container>
+
+
+      <Dialog
+                open={DialogOpen}
+                onClose={handleCancel}
+                aria-labelledby="copy-dialog-title"
+                aria-describedby="copy-dialog-description"
+            >
+                <DialogTitle id="copy-dialog-title">{t('Change Status')}</DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="copy-dialog-description">
+                        {t('Do you want to change the status of the task to closed?')}
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCancel} color="primary">
+                        {t('Cancel')}
+                    </Button>
+                    <Button onClick={handleConfirm} color="primary" variant="contained">
+                        {t('Yes')}
+                    </Button>
+                </DialogActions>
+            </Dialog>
          
         </div>
     );
 };
 
-export default WorkerConstantWorkingSheet;
+export default WorkerTasksWorkingSheet;
