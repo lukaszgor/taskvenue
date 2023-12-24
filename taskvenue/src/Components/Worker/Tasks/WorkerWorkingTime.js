@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent,CardActions, Typography, Button, Grid, Container, Accordion, AccordionSummary, AccordionDetails } from '@mui/material'; // Dodaj import TextField
+import { Card, CardContent,CardActions,Divider,TextField, Typography, Button, Grid, Container, Accordion, AccordionSummary, AccordionDetails } from '@mui/material'; // Dodaj import TextField
 import supabase from '../../../supabaseClient';
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import GeoLocationMap from '../../Common/GeoLocationMap';
+import GeoLocationConstantWorkingSheet from '../../Common/GeoLocationConstantWorkingSheet';
 
 const WorkerWorkingTime = () => {
   const { t, i18n } = useTranslation();
-  const { id } = useParams();
   const [userID, setUserID] = useState('');
   const [idConfig, setIdConfiguration] = useState('');
-  const [fetchError, setFetchError] = useState(null)
-  const [workTime, setWorkTime] = useState(null)
-  const [fullTime, setFullTime] = useState(0);
-  const [status, setStatus] = useState('');
+  const [fetchError, setFetchError] = useState(null);
+  const [workTime, setWorkTime] = useState(null);
+  const { id } = useParams();
 
+  // State to store the total sum of time differences
 
   useEffect(() => {
     const checkSession = async () => {
@@ -41,59 +38,25 @@ const WorkerWorkingTime = () => {
       setIdConfiguration(profileData.id_configuration);
     }
   }
-  const handleFetchDataStatus = async (idConfig, id) => {
-    const { data, error } = await supabase
-      .from('tasks')
-      .select('status')
-      .eq('id', id)
-      .eq('id_configuration', idConfig)
-      .single();
-    if (error) {
-      console.error(error);
-    }
-    if (data) {
-      setStatus(data.status);
-    }
-  };
+
   
   useEffect(() => {
     if (idConfig) {
-      fetchWorkTime(idConfig, id)
-      handleFetchDataStatus(idConfig, id);
+      fetchWorkTime(idConfig,userID,id)
+
     }
-  }, [idConfig,id]);
-
-  useEffect(() => {
-    if (workTime) {
-      const calculatedFullTotal = workTime.reduce((acc, serviceItem) => acc + serviceItem.time, 0);
-      setFullTime(calculatedFullTotal);
-    }
-  }, [workTime]);
+  }, [idConfig, userID,id]);
 
 
-
-  const DeleteWorktime = async (event, cellValues) => {
+  const fetchWorkTime = async (idConfiguration,userID,id) => {
     const { data, error } = await supabase
-      .from('workTime')
-      .delete().eq('id', cellValues.row.id);
-    handleClickAlert();
-    fetchWorkTime(idConfig, id);
-    if (error) {
-      console.log(error)
-    }
-    if (data) {
-
-    }
-  }
-
-  const fetchWorkTime = async (idConfiguration, id) => {
-    const { data, error } = await supabase
-      .from('workTime')
+      .from('constant_working')
       .select(`*,
-        profiles:profiles(username) as profiles_username
-        `)
+      profiles (
+          username
+      ),venues (name,GPS_location)`)
+      .eq('id_configuration', idConfiguration)
       .eq('idTask', id)
-      .eq('id_configuration', idConfiguration);
     if (error) {
       console.log(error)
       setWorkTime(null)
@@ -104,30 +67,10 @@ const WorkerWorkingTime = () => {
       setFetchError(null)
     }
   }
-
-  const [open, setOpen] = useState(null)
-
-  const handleClickAlert = () => {
-    setOpen(true);
-  };
-
-   //redirection to googlemaps
-   const handleButtonClickLocation = (selectedVenue) => {
-    const [latitude, longitude] = selectedVenue.split(',').map((coordinate) => coordinate.trim());
-    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
-    window.open(googleMapsUrl);
-  };
-
-
+  
   return (
     <div>
       <Container maxWidth="md">
-        <p></p>
-        <Accordion defaultExpanded>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography variant="h6" fontWeight="bold">{t('Working time')}</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
           <Container maxWidth="md">
           <div>
   {fetchError && (<p>{fetchError}</p>)}
@@ -140,43 +83,34 @@ const WorkerWorkingTime = () => {
           <Card>
             <CardContent>
             <Grid container alignItems="center" justifyContent="space-between">
-            <Typography variant="h6">{workItem.description}</Typography>
           </Grid>
-              <Typography variant="body2" color="textSecondary">
-                {t("Date")} {workItem.date}
+          <Divider textAlign='right'>{t("Status")} : {workItem.status === 'open' ? t("Open") : workItem.status === 'closed' ? t("Closed") : ''}</Divider>
+          <Typography variant="body2" color="#00FF00">
+                {t("Start Date")}: {workItem.start_date} 
               </Typography>
-              <Typography variant="body2" color="textSecondary">
-                {t("User")} {workItem.profiles.username}
+              <Typography variant="body2" color="#0000FF">
+              {t("End Date")}: {workItem.stop_date}
               </Typography>
-              {/* <Typography variant="body2" color="textSecondary">
-                {t("Location")} {workItem.geoLocation}
-              </Typography> */}
+              <Typography variant="body2" color="#FF0000">
+                {t("Venue")}: {workItem.venues?.name}
+              </Typography>
+              <Typography variant="body2">
+                {t("User")}: {workItem.profiles?.username}
+              </Typography>
               <p></p>
-              <GeoLocationMap geoLocation={workItem.geoLocation} />
+              <Container maxWidth="md">
+        <Grid container spacing={2}>
+        <Grid item xs={12} sm={12}>
+
+              <GeoLocationConstantWorkingSheet
+                venue={workItem.venues?.GPS_location}
+                start={workItem.start_location}
+                stop={workItem.stop_location}
+              ></GeoLocationConstantWorkingSheet>
+              </Grid>
+              </Grid>
+              </Container>
             </CardContent>
-            <p></p>
-            <CardActions style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Button
-              type="submit"
-              variant="contained"
-              color="success"
-              startIcon={<LocationOnIcon />}
-              onClick={() => handleButtonClickLocation(workItem.geoLocation)}
-              style={{ minWidth: 'auto' }}
-            >
-              {t('Open in Google Maps')}
-            </Button>
-            <Button
-              color="error"
-              variant="contained"
-              disabled={status === 'completed'}
-              onClick={(event) => {
-                DeleteWorktime(event, { row: { id: workItem.id } });
-              }}
-            >
-              {t("Delete")}
-            </Button>
-            </CardActions>
           </Card>
           </Grid>
         ))}
@@ -185,8 +119,7 @@ const WorkerWorkingTime = () => {
   )}
 </div>
         </Container>
-        </AccordionDetails>
-        </Accordion>
+
       </Container>
     </div>
   );
