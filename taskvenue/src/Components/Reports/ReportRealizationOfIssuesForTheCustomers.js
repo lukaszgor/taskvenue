@@ -152,6 +152,7 @@ const ReportRealizationOfIssuesForTheCustomers = () => {
     <CartesianGrid strokeDasharray="3 3" />
     <YAxis dataKey="nameOrCompanyName" type="category" /> 
     <XAxis type="number" />
+    <Tooltip />
     <Legend />
     <Bar dataKey="value" fill="#0077B6" name={t('Tasks')} />
   </BarChart>
