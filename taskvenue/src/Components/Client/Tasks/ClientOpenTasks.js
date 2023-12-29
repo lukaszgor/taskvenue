@@ -399,6 +399,7 @@ const ClientOpenTasks = () => {
                 {/* <Typography variant="h6" gutterBottom>
                   ID: {task.id}
                 </Typography> */}
+                              <div  onClick={() => handleButtonClickTaskDetails(task)} style={{ cursor: 'pointer' }}>
                 <Divider textAlign='left'>{t('ID')} {task.id} </Divider>
                 <Typography variant="h6" gutterBottom>
                   {t('Name')} : {task.name}
@@ -423,6 +424,7 @@ const ClientOpenTasks = () => {
                 <Typography variant="body2" color="textSecondary">
                   {t('Deadline')}: {formatDate(task.deadline)}
                 </Typography>
+                </div>
                 <p></p>
                 <Box display="inline-block" marginRight={2}>
                 <Button

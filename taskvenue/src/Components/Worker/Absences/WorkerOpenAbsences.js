@@ -166,6 +166,7 @@ const WorkerOpenAbsences = () => {
                                 {/* <Typography variant="h6" gutterBottom>
                                     ID: {absence.id}
                                 </Typography> */}
+             <div onClick={() => handleButtonClickAbsenceDetails(absence)} style={{ cursor: 'pointer' }}>
                                     <Divider textAlign='left'>{t('ID')} {absence.id} </Divider>
                                 <Typography variant="body2" color="textSecondary" >
                                     {t("Absence")} : {{ vacation: t("Vacation"),sickleave: t("Sick leave")}[absence.typeOfAbsence]}
@@ -182,6 +183,7 @@ const WorkerOpenAbsences = () => {
                                 <Typography variant="body2" color="textSecondary">
                                     {t("User")} : {absence.profiles?.username}
                                 </Typography>
+                                </div>
                                 <p></p>
                                 <Button
                                     variant="contained"

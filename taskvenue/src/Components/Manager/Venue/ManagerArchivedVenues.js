@@ -262,6 +262,7 @@ const ManagerArchivedVenues = () => {
                     <Grid key={venue.id} item xs={12} sm={6} md={4} lg={3}>
                         <Card>
                             <CardContent>
+                            <div  onClick={() => handleButtonClickVenueDetails(venue)} style={{ cursor: 'pointer' }}>
                             <Divider textAlign='left'>{t('ID')} {venue.id} </Divider>
                                 {/* <Typography variant="h6" gutterBottom>
                                     ID: {venue.id}
@@ -275,6 +276,7 @@ const ManagerArchivedVenues = () => {
                                 <Typography variant="body2" color="textSecondary">
                                     {t('Contractor')} : {venue.contractor?.nameOrCompanyName}
                                 </Typography>
+                                </div>
                                 <p></p>
                                 <Box display="inline-block" padding={1}>
                                 <Button

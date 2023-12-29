@@ -165,6 +165,7 @@ const ManagerOpenAbsences = () => {
                                 {/* <Typography variant="h6" gutterBottom>
                                     ID: {absence.id}
                                 </Typography> */}
+                                              <div onClick={() => handleButtonClickAbsenceDetails(absence)} style={{ cursor: 'pointer' }}>
                                    <Divider textAlign='left'>{t('ID')} {absence.id} </Divider>
                                 <Typography variant="h6" gutterBottom>
                                     {t("User")} : {absence.profiles?.username}
@@ -181,6 +182,7 @@ const ManagerOpenAbsences = () => {
                                 <Typography variant="body2" color="textSecondary">
                                 {t("Status")} : {{ open: t("Open"),approved: t("Approved"),rejected:t("Rejected")}[absence.status]}
                                 </Typography>
+                                </div>
                                 <p></p>
                                 <Button
                                     variant="contained"

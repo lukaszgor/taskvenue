@@ -274,6 +274,7 @@ function ServicesDictionary() {
                     <Grid item xs={12} sm={6} md={6} lg={6} key={item.id}>
                       <Card>
                         <CardContent>
+                        <div onClick={() => handleEditClick(item)} style={{ cursor: 'pointer' }}>
                           <Typography variant="h6">{item.name}</Typography>
                           <Typography>{item.description}</Typography>
                           <Typography>
@@ -282,6 +283,7 @@ function ServicesDictionary() {
                           <Typography>
                             {t('Unit')}: {item.unit}
                           </Typography>
+                          </div>
                           <p></p>
                           <Box display="inline-block" marginRight={1}>
                           <Button

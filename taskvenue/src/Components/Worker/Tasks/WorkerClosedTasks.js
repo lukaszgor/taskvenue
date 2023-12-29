@@ -216,6 +216,7 @@ const WorkerClosedTasks = () => {
                     <Grid key={task.id} item xs={12} sm={6} md={4} lg={3}>
                         <Card>
                             <CardContent>
+                            <div  onClick={() => handleButtonClickTaskDetails(task)} style={{ cursor: 'pointer' }}>
                                 {/* <Typography variant="h6" gutterBottom>
                                     ID: {task.id}
                                 </Typography> */}
@@ -232,6 +233,7 @@ const WorkerClosedTasks = () => {
                                     <Typography variant="body2" color="textSecondary">
                                     {t('Deadline')}: {formatDate(task.deadline)}
                                     </Typography>
+                                    </div>
                                 <p></p>
                                 <Button
                                     variant="contained"

@@ -137,11 +137,13 @@ const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
       <Grid item xs={12} sm={6} md={4} lg={3}key={index}>
         <Card>
           <CardContent>
+          <div  onClick={() => navigate('/ContractorsDetails/' + contractor.id)} style={{ cursor: 'pointer' }}>
             <Typography variant="h6">{t('Name')} : {contractor.nameOrCompanyName}</Typography>
             <Typography color="textSecondary">{t("email")}: {contractor.email}</Typography>
             <Typography color="textSecondary">{t("phone number")}: {contractor.phone_number}</Typography>
             <Typography color="textSecondary">{t("address")}: {contractor.address}</Typography>
             <Typography color="textSecondary">{t("Tax ID")}: {contractor.taxId}</Typography>
+            </div>
           </CardContent>
           <CardActions>
           <Box display="inline-block" padding={1}>

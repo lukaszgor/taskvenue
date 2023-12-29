@@ -318,11 +318,13 @@ const handleOpenFilterChange = () => {
                                       <Grid item xs={12} sm={6} md={6} lg={6} key={user.id}>
                                     <Card>
                                         <CardContent>
+                                        <div onClick={(event) => UserDetails(event, { row: user })} style={{ cursor: 'pointer' }}>
                                         <Divider textAlign="right">{t("Status")}: {user.isBlocked === 1 ? t("Blocked") : t("Active")}</Divider>
                                         {/* <Typography variant="h6">{user.id}</Typography> */}
                                             <Typography variant="h6">{user.username}</Typography>
                                             <Typography> {user.full_name}</Typography>
                                             <Typography>{t("Type")}: {formatProfileType(user.profile_type)}</Typography>
+                                            </div>
                                         </CardContent>
                                         <CardActions>
                                             <Button
