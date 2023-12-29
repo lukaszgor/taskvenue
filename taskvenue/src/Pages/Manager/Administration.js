@@ -14,6 +14,12 @@ import TaskTypeDictionary from '../../Components/Manager/Administration/TaskType
 import ManagerAdministrationBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerAdministrationBreadcrumbs';
 import TaskNameDictionary from '../../Components/Manager/Administration/TaskNameDictionary';
 
+import GroupIcon from '@mui/icons-material/Group';
+import PublicIcon from '@mui/icons-material/Public';
+import SettingsIcon from '@mui/icons-material/Settings';
+import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
+import NoteAddIcon from '@mui/icons-material/NoteAdd';
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -81,11 +87,11 @@ function Administration() {
             scrollButtons
             sx={{ display: 'flex' }}
           >
-            <Tab label={t("Users")} {...a11yProps(0)} />
-            <Tab label={t("License")} {...a11yProps(1)} />
-            <Tab label={t("Settings")} {...a11yProps(2)} />
-            <Tab label={t("Services")} {...a11yProps(3)} />
-            <Tab label={t("Dictionaries")} {...a11yProps(4)} />
+            <Tab icon={<GroupIcon />} label={t("Users")} {...a11yProps(0)} />
+            <Tab icon={<PublicIcon />} label={t("License")} {...a11yProps(1)} />
+            <Tab icon={<SettingsIcon />} label={t("Settings")} {...a11yProps(2)} />
+            <Tab icon={<CleaningServicesIcon />} label={t("Services")} {...a11yProps(3)} />
+            <Tab icon={<NoteAddIcon />} label={t("Dictionaries")} {...a11yProps(4)} />
           </Tabs>
         <TabPanel value={value} index={0}  handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
           <Users></Users>

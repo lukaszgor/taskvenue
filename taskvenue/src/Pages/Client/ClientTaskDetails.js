@@ -13,6 +13,8 @@ import ClientTaskBreadcrumbs from '../../Components/Breadcrumbs/Client/ClientTas
 import ClientBasicDataEdit from '../../Components/Client/Tasks/ClientBasicDataEdit';
 import ClientTaskServices from '../../Components/Client/Tasks/ClientTaskServices';
 import ClientTaskVenue from '../../Components/Client/Tasks/ClientTaskVenue';
+import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
+import DescriptionIcon from '@mui/icons-material/Description';
 
 
 function TabPanel(props) {
@@ -81,8 +83,8 @@ function ClientTaskDetails() {
           scrollButtons
           sx={{ display: 'flex' }}
         >
-          <Tab label={t('Basic data')} {...a11yProps(0)} />
-          <Tab label={t('Services')} {...a11yProps(1)} />
+          <Tab icon={<DescriptionIcon />} label={t('Basic data')} {...a11yProps(0)} />
+          <Tab icon={<CleaningServicesIcon />} label={t('Services')} {...a11yProps(1)} />
         </Tabs>
         <TabPanel value={value} index={0} handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
           <ClientBasicDataEdit></ClientBasicDataEdit>

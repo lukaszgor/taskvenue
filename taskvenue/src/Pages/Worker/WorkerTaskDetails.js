@@ -15,6 +15,10 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import IconButton from '@mui/material/IconButton';
 
+import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import DescriptionIcon from '@mui/icons-material/Description';
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -82,9 +86,9 @@ function WorkerTaskDetails() {
           scrollButtons
           sx={{ display: 'flex' }}
         >
-          <Tab label={t('Basic data')} {...a11yProps(0)} />
-          <Tab label={t('Services')} {...a11yProps(1)} />
-          <Tab label={t('Working time')} {...a11yProps(2)} />
+          <Tab icon={<DescriptionIcon />} label={t('Basic data')} {...a11yProps(0)} />
+          <Tab icon={<CleaningServicesIcon />} label={t('Services')} {...a11yProps(1)} />
+          <Tab icon={<AccessTimeIcon />} label={t('Working time')} {...a11yProps(2)} />
         </Tabs>
         <TabPanel value={value} index={0} handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
           <WorkerBasicDataEdit></WorkerBasicDataEdit>
