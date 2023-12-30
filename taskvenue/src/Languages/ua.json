@@ -323,5 +323,7 @@
         "Yes. We offer a free 30-minute consultation, which allows you to quickly learn the system and configure all the necessary elements.": "Так. Ми пропонуємо безкоштовну 30-хвилинну консультацію, яка дозволяє швидко ознайомитися з системою і налаштувати всі необхідні елементи.",
         "The default trial period is 7 days.": "Стандартний період пробного використання становить 7 днів.",
         "The application is built on React. Additionally, we have strengthened our application by integrating with the Supabase cloud.": "Додаток створено на React. Крім того, ми посилили наш додаток, інтегрувавши його з хмарою Supabase.",
-        "You agree to be contacted by telephone and electronically to process this application. You agree to the use of email communication for marketing purposes":"Ви погоджуєтеся на телефонний та електронний контакт для обробки цієї заявки. Ви погоджуєтеся на використання електронної пошти для маркетингових цілей."
+        "You agree to be contacted by telephone and electronically to process this application. You agree to the use of email communication for marketing purposes":"Ви погоджуєтеся на телефонний та електронний контакт для обробки цієї заявки. Ви погоджуєтеся на використання електронної пошти для маркетингових цілей.",
+        "No card required": "Карта не потрібна",
+        "Customer care": "Обслуговування клієнтів"
 }  

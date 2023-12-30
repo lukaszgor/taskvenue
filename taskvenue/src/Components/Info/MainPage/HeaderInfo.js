@@ -3,6 +3,8 @@ import { Button, Card, CardContent, Container, Grid, Typography } from '@mui/mat
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom'; 
+import CreditCardOffIcon from '@mui/icons-material/CreditCardOff';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 
 const HeaderInfo = () => {
   const navigate = useNavigate();
@@ -54,6 +56,24 @@ const HeaderInfo = () => {
                       </Button>
                     </Link>
                   </div>
+                  <p></p>
+<div>
+    <Grid container spacing={2}>
+        <Grid item xs>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+                <CreditCardOffIcon color="primary"    /> {/* Replace with actual icon */}
+                <Typography variant="subtitle1" style={{ marginLeft: '8px' }}>{t("No card required")}</Typography>
+            </div>
+        </Grid>
+        <Grid item xs>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+                <SupportAgentIcon color="primary"   /> {/* Replace with actual icon */}
+                <Typography variant="subtitle1" style={{ marginLeft: '8px' }}>{t("Customer care")}</Typography>
+            </div>
+        </Grid>
+    </Grid>
+</div>
+<p></p>
           </Grid>
           <Grid item xs={12} md={8} >
             <div style={{ padding: '20px' }}>
