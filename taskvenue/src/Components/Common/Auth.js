@@ -202,7 +202,15 @@ return (
         minHeight: '90vh',
       }} style={{ background: 'white', minHeight: '70vh',paddingTop: '14px' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }} >
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+      <Tabs
+            value={value}
+            onChange={handleChange}
+            aria-label="basic tabs example"
+            allowScrollButtonsMobile 
+            variant="scrollable"
+            scrollButtons
+            sx={{ display: 'flex' }}
+          >
           <Tab label={t("sign in")} {...a11yProps(0)} />
           <Tab label={t("sign up")} {...a11yProps(1)} />
           <Tab label={t("sign in via magic link")} {...a11yProps(2)} />
