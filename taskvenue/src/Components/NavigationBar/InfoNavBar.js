@@ -58,6 +58,15 @@ function InfoNavBar() {
         navigate('/info')
         }
 
+          //automatyczna zmiena jezyka
+          const languageCode = (navigator.language || 'pl').split('-')[0];
+          const [language, setLanguage] = useState(languageCode);
+        console.log(language)
+          useEffect(() => {
+            // Tutaj możesz również zaimplementować logikę zapisu do usestats
+            localStorage.setItem("lng", language);
+          }, [language]);
+// koniec kodu automatycznej zmiany jezyka
   return (
     <div>
     <AppBar position="fixed" >
