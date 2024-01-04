@@ -56,7 +56,7 @@ const Summary = () => {
                         {t("Get started today!")}
                       </Button>
                     </Link>
-                    <Link to="/">
+                    <Link to="/infoContact">
                       <Button color="primary" variant="outlined" sx={{ marginTop: 3}}>
                         {t("Contact")}
                       </Button>
