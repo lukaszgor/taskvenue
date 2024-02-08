@@ -363,7 +363,6 @@ function ManagerServicesEdit() {
                                         id="Date"
                                         value={selectedDateTime}
                                         onChange={handleDateTimeChange}
-                                        required
                                         fullWidth
                                         label={t('Date')}
                                         focused
