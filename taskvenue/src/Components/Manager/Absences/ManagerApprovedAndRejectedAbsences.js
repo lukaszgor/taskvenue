@@ -7,6 +7,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import moment from 'moment';
 import 'moment/locale/pl'; 
 import EditIcon from '@mui/icons-material/Edit';
+import PersonOffIcon from '@mui/icons-material/PersonOff';
 
 const ManagerApprovedAndRejectedAbsences = () => {
     const [absences, setAbsences] = useState([]);
@@ -159,8 +160,8 @@ const ManagerApprovedAndRejectedAbsences = () => {
                                 <div onClick={() => handleButtonClickAbsenceDetails(absence)} style={{ cursor: 'pointer' }}>
                                     <Divider textAlign='left'>{t('ID')} {absence.id} </Divider>
                                 <Typography variant="h6" gutterBottom>
-                                    {t("User")} : {absence.profiles?.username}
-                                </Typography>
+                                <PersonOffIcon style={{  marginRight: '10px', fontSize: 'large' }} />
+                                {absence.profiles?.username}</Typography>
                                 <Typography variant="body2" color="textSecondary" >
                                     {t("Absence")} : {{ vacation: t("Vacation"),sickleave: t("Sick leave")}[absence.typeOfAbsence]}
                                 </Typography>

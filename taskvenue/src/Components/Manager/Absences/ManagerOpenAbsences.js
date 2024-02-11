@@ -8,6 +8,7 @@ import moment from 'moment';
 import 'moment/locale/pl'; 
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
+import PersonOffIcon from '@mui/icons-material/PersonOff';
 
 const ManagerOpenAbsences = () => {
     const [absences, setAbsences] = useState([]);
@@ -167,9 +168,9 @@ const ManagerOpenAbsences = () => {
                                 </Typography> */}
                                               <div onClick={() => handleButtonClickAbsenceDetails(absence)} style={{ cursor: 'pointer' }}>
                                    <Divider textAlign='left'>{t('ID')} {absence.id} </Divider>
-                                <Typography variant="h6" gutterBottom>
-                                    {t("User")} : {absence.profiles?.username}
-                                </Typography>
+                                   <Typography variant="h6" gutterBottom>
+                                <PersonOffIcon style={{  marginRight: '10px', fontSize: 'large' }} />
+                                {absence.profiles?.username}</Typography>
                                 <Typography variant="body2" color="textSecondary" >
                                     {t("Absence")} : {{ vacation: t("Vacation"),sickleave: t("Sick leave")}[absence.typeOfAbsence]}
                                 </Typography>

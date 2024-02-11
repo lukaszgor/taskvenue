@@ -23,6 +23,7 @@ import moment from 'moment';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
+import DescriptionIcon from '@mui/icons-material/Description';
 
 const ManagerOpenTasks = () => {
   const [tasks, setTasks] = useState([]);
@@ -397,8 +398,8 @@ const ManagerOpenTasks = () => {
                 </Typography> */}
                 {/* <Divider variant="middle"/> */}
                 <Divider textAlign='left'>{t('ID')} {task.id} </Divider>
-                <Typography variant="h6" gutterBottom>
-                  {t('Name')} : {task.name}
+                <Typography variant="h6"> <DescriptionIcon style={{  marginRight: '10px', fontSize: 'large' }} />
+                {task.name}
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
                   {t('Status')} :{' '}

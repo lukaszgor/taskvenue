@@ -22,6 +22,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import moment from 'moment';
 import EditIcon from '@mui/icons-material/Edit';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import DescriptionIcon from '@mui/icons-material/Description';
 
 const ManagerClosedTasks = () => {
   const [tasks, setTasks] = useState([]);
@@ -394,8 +395,8 @@ const ManagerClosedTasks = () => {
                   ID: {task.id}
                 </Typography> */}
                 <Divider textAlign='left'>{t('ID')} {task.id} </Divider>
-                <Typography variant="h6" gutterBottom>
-                  {t('Name')} : {task.name}
+                <Typography variant="h6"> <DescriptionIcon style={{  marginRight: '10px', fontSize: 'large' }} />
+                {task.name}
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
                   {t('Status')} :{' '}

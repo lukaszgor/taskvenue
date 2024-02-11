@@ -21,6 +21,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import RoomIcon from '@mui/icons-material/Room';
 
 
 const ManagerArchivedVenues = () => {
@@ -267,9 +268,9 @@ const ManagerArchivedVenues = () => {
                                 {/* <Typography variant="h6" gutterBottom>
                                     ID: {venue.id}
                                 </Typography> */}
-                                <Typography variant="h6" gutterBottom>
-                                    {t('Name')} : {venue.name}
-                                </Typography>
+                <Typography variant="h6"> <RoomIcon style={{  marginRight: '10px', fontSize: 'large' }} />
+                {venue.name}
+                </Typography>
                                 <Typography variant="body2" color="textSecondary">
                                     {t('Description')} : {venue.description}
                                 </Typography>

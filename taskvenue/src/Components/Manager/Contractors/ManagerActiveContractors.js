@@ -7,7 +7,7 @@ import Alert from '@mui/material/Alert';
 import { useTranslation } from "react-i18next";
 import {
   Container, Grid, Card, CardContent, CardActions, Button, Typography, Box, Accordion, AccordionSummary, AccordionDetails, TextField,Rating,
-  Dialog,
+  Dialog,Divider,
   DialogContent,
   DialogTitle,
   DialogActions,
@@ -20,6 +20,7 @@ import Tooltip from '@mui/material/Tooltip';
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import FilterListIcon from '@mui/icons-material/FilterList';
+import BusinessIcon from '@mui/icons-material/Business';
 
 function ManagerActiveContractors() {
     const navigate = useNavigate()
@@ -138,7 +139,10 @@ const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
         <Card>
           <CardContent>
           <div  onClick={() => navigate('/ContractorsDetails/' + contractor.id)} style={{ cursor: 'pointer' }}>
-            <Typography variant="h6">{t('Name')} : {contractor.nameOrCompanyName}</Typography>
+          <Divider textAlign='left'>{t('ID')} {contractor.id} </Divider>
+            <Typography variant="h6">
+            <BusinessIcon style={{  marginRight: '10px', fontSize: 'large' }} />
+               {contractor.nameOrCompanyName}</Typography>
             <Typography color="textSecondary">{t("email")}: {contractor.email}</Typography>
             <Typography color="textSecondary">{t("phone number")}: {contractor.phone_number}</Typography>
             <Typography color="textSecondary">{t("address")}: {contractor.address}</Typography>
