@@ -397,7 +397,7 @@ const ManagerOpenTasks = () => {
                   ID: {task.id}
                 </Typography> */}
                 {/* <Divider variant="middle"/> */}
-                <Divider textAlign='left'>{t('ID')} {task.id} </Divider>
+                <Divider textAlign='right'>{t('ID')} {task.id} </Divider>
                 <Typography variant="h6"> <DescriptionIcon style={{  marginRight: '10px', fontSize: 'large' }} />
                 {task.name}
                 </Typography>

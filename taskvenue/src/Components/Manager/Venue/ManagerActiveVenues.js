@@ -264,7 +264,7 @@ const ManagerActiveVenues = () => {
                         <Card>
                             <CardContent>
                             <div  onClick={() => handleButtonClickVenueDetails(venue)} style={{ cursor: 'pointer' }}>
-                            <Divider textAlign='left'>{t('ID')} {venue.id} </Divider>
+                            <Divider textAlign='right'>{t('ID')} {venue.id} </Divider>
                                 {/* <Typography variant="h6" gutterBottom>
                                     ID: {venue.id}
                                 </Typography> */}

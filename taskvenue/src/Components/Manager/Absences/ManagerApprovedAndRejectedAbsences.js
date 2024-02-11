@@ -158,7 +158,7 @@ const ManagerApprovedAndRejectedAbsences = () => {
                                     ID: {absence.id}
                                 </Typography> */}
                                 <div onClick={() => handleButtonClickAbsenceDetails(absence)} style={{ cursor: 'pointer' }}>
-                                    <Divider textAlign='left'>{t('ID')} {absence.id} </Divider>
+                                    <Divider textAlign='right'>{t('ID')} {absence.id} </Divider>
                                 <Typography variant="h6" gutterBottom>
                                 <PersonOffIcon style={{  marginRight: '10px', fontSize: 'large' }} />
                                 {absence.profiles?.username}</Typography>

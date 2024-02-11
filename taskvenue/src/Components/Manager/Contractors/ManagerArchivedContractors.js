@@ -139,7 +139,7 @@ const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
         <Card>
           <CardContent>
           <div  onClick={() => navigate('/ContractorsDetails/' + contractor.id)} style={{ cursor: 'pointer' }}>
-          <Divider textAlign='left'>{t('ID')} {contractor.id} </Divider>
+          <Divider textAlign='right'>{t('ID')} {contractor.id} </Divider>
           <Typography variant="h6">
             <BusinessIcon style={{  marginRight: '10px', fontSize: 'large' }} />
                {contractor.nameOrCompanyName}</Typography>
