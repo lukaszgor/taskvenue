@@ -6,7 +6,7 @@ import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { useTranslation } from "react-i18next";
 import {
-  Container, Grid, Card, CardContent, CardActions, Button, Typography, Box, Accordion, AccordionSummary, AccordionDetails, TextField,
+  Container, Grid, Card, CardContent, CardActions, Button, Typography, Box, Accordion, AccordionSummary, AccordionDetails, TextField,Rating,
   Dialog,
   DialogContent,
   DialogTitle,
@@ -143,6 +143,13 @@ const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
             <Typography color="textSecondary">{t("phone number")}: {contractor.phone_number}</Typography>
             <Typography color="textSecondary">{t("address")}: {contractor.address}</Typography>
             <Typography color="textSecondary">{t("Tax ID")}: {contractor.taxId}</Typography>
+            <Rating
+                                    name="rating"
+                                    value={contractor.rating}
+                                    size="large"
+                                    max={5}
+                                    readOnly
+                                />
             </div>
           </CardContent>
           <CardActions>
