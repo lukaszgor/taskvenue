@@ -32,7 +32,7 @@ const Info = () => {
 <TargetCompany></TargetCompany>
 <p></p>
 <Container maxWidth="md" style={{ marginTop: '2rem' }}>
-<Typography variant="h5" sx={{
+<Typography variant="h4" sx={{
                         mr: 2,
                         mt: 2,
                         // fontFamily: 'lato',

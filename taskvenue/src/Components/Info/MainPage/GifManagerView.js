@@ -26,7 +26,7 @@ const GifManagerView = () => {
     <Container maxWidth="md" style={containerStyle}>
 
     <Paper elevation={3} style={paperStyle}>
-    <Typography variant="h5" gutterBottom sx={{
+    <Typography variant="h4" gutterBottom sx={{
                         mr: 2,
                         mt: 2,
                         // fontFamily: 'lato',

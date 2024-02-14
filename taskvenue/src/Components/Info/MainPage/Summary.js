@@ -23,7 +23,7 @@ const Summary = () => {
   return (
     <div style={centerStyles}>
       <Container maxWidth="md">
-      <Typography variant="h5" align="left" 
+      <Typography variant="h4" align="left" 
                    sx={{
                     mr: 2,
                     mt: 2,

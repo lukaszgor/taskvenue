@@ -26,7 +26,7 @@ const TargetCompany = () => {
     <div style={centerStyles}>
       <Container maxWidth="md">
         <p></p>
-        <Typography variant="h5" gutterBottom style={contentStyles} sx={{
+        <Typography variant="h4" gutterBottom style={contentStyles} sx={{
                         mr: 2,
                         mt: 2,
                         // fontFamily: 'lato',

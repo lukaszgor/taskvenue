@@ -31,7 +31,7 @@ const DescriptionOfTheMainFunction = () => {
             <Grid container spacing={2}>
               <Grid item xs={12} md={5}>
                 <p></p>
-                <Typography variant="h5" sx={{
+                <Typography variant="h4" sx={{
                         mr: 2,
                         mt: 10,
                         // fontFamily: 'lato',
