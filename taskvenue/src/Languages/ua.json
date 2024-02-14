@@ -326,5 +326,14 @@
         "You agree to be contacted by telephone and electronically to process this application. You agree to the use of email communication for marketing purposes":"Ви погоджуєтеся на телефонний та електронний контакт для обробки цієї заявки. Ви погоджуєтеся на використання електронної пошти для маркетингових цілей.",
         "No card required": "Карта не потрібна",
         "Customer care": "Обслуговування клієнтів",
-        "New task":"нове завдання"
+        "New task":"нове завдання",
+            "Location Registration": "Реєстрація місцезнаходження",
+            "Task Planning": "Планування завдань",
+            "Task Execution": "Виконання завдань",
+            "Settlement report": "Звіт з розрахунків",
+            "Record the places where your employees work. This will allow you to track the progress of tasks and make settlements easier. Employees will also know exactly where to go.": "Реєструйте місця роботи ваших співробітників. Це дозволить вам відстежувати прогрес завдань і спростить розрахунки. Співробітники також будуть точно знати, куди їм іти.",
+            "Consider your team's availability and plan tasks accordingly. This will ensure peace of mind for you and your coworkers. Use the TaskVenue calendar to see tasks and scheduled staff absences.": "Враховуйте наявність вашої команди та плануйте завдання відповідно. Це забезпечить спокій вам і вашим колегам. Використовуйте календар TaskVenue для перегляду завдань і запланованих відсутностей персоналу.",
+            "Employees will receive notifications about tasks directly on their mobile devices. Confirming the completion of tasks, along with the location and time taken, will help you stay updated with the progress.": "Співробітники будуть отримувати повідомлення про завдання безпосередньо на свої мобільні пристрої. Підтвердження виконання завдань разом з місцем і часом виконання допоможе вам залишатися в курсі прогресу.",
+            "The system allows for secure data management that is accessible at all times. You can easily create summaries and reports, for both employees and contractors.": "Система дозволяє безпечно керувати даними, які завжди доступні. Ви легко можете створювати зведення та звіти як для співробітників, так і для підрядників."
+          
 }  

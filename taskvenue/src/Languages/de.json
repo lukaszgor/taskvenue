@@ -305,8 +305,17 @@
       "You agree to be contacted by telephone and electronically to process this application. You agree to the use of email communication for marketing purposes":"Sie stimmen zu, telefonisch und elektronisch kontaktiert zu werden, um diesen Antrag zu bearbeiten. Sie stimmen der Verwendung von E-Mail-Kommunikation zu Marketingzwecken zu.",
       "No card required": "Keine Karte erforderlich",
       "Customer care": "Kundenservice",
-      "New task":"Neue Aufgabe"
-    
+      "New task":"Neue Aufgabe",
+        "Location Registration": "Standortregistrierung",
+        "Task Planning": "Aufgabenplanung",
+        "Task Execution": "Aufgabendurchführung",
+        "Settlement report": "Abrechnungsbericht",
+        "Record the places where your employees work. This will allow you to track the progress of tasks and make settlements easier. Employees will also know exactly where to go.": "Erfassen Sie die Arbeitsorte Ihrer Mitarbeiter. Dies ermöglicht Ihnen, den Fortschritt der Aufgaben zu verfolgen und Abrechnungen zu erleichtern. Mitarbeiter wissen auch genau, wohin sie gehen müssen.",
+        "Consider your team's availability and plan tasks accordingly. This will ensure peace of mind for you and your coworkers. Use the TaskVenue calendar to see tasks and scheduled staff absences.": "Berücksichtigen Sie die Verfügbarkeit Ihres Teams und planen Sie Aufgaben entsprechend. Dies wird Ihnen und Ihren Kollegen Ruhe geben. Nutzen Sie den TaskVenue-Kalender, um Aufgaben und geplante Abwesenheiten des Personals zu sehen.",
+        "Employees will receive notifications about tasks directly on their mobile devices. Confirming the completion of tasks, along with the location and time taken, will help you stay updated with the progress.": "Mitarbeiter erhalten Benachrichtigungen über Aufgaben direkt auf ihren mobilen Geräten. Die Bestätigung der Aufgabenerfüllung zusammen mit dem Ort und der benötigten Zeit hilft Ihnen, über den Fortschritt auf dem Laufenden zu bleiben.",
+        "The system allows for secure data management that is accessible at all times. You can easily create summaries and reports, for both employees and contractors.": "Das System ermöglicht ein sicheres Datenmanagement, das jederzeit zugänglich ist. Sie können leicht Zusammenfassungen und Berichte sowohl für Mitarbeiter als auch für Auftragnehmer erstellen."
+
+      
   
   
 

@@ -14,6 +14,7 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Summary from '../../../Components/Info/MainPage/Summary';
 import GifManagerView from '../../../Components/Info/MainPage/GifManagerView';
+import ProcesTimeline from '../../../Components/Info/MainPage/ProcesTimeline';
 
 const Info = () => {
   const navigate = useNavigate();
@@ -23,9 +24,10 @@ const Info = () => {
 <InfoNavBar></InfoNavBar>
 <CookiesBanner></CookiesBanner>
 <HeaderInfo></HeaderInfo>
-
 <p></p>
 <Problems></Problems>
+<p></p>
+<ProcesTimeline></ProcesTimeline>
 <p></p>
 <DescriptionOfTheMainFunction></DescriptionOfTheMainFunction>
 <p></p>
