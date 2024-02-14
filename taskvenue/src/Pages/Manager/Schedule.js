@@ -232,27 +232,41 @@ const Schedule = () => {
      
     }
   };
-  // Handle event resize
+
 const handleEventResize = ({ event, start, end }) => {
   const formattedStart = moment(start).format("YYYY-MM-DDTHH:mm");
   const formattedEnd = moment(end).format("YYYY-MM-DDTHH:mm");
+  const id = event.id;
   
-  const id = event.id; // Get the event's ID
+  // Update the event in the state
+  const updatedEvents = events.map((e) =>
+    e.id === id
+      ? { ...e, start: new Date(formattedStart), end: new Date(formattedEnd) }
+      : e
+  );
+  setEvents(updatedEvents);
+  
+  // Call API to update event in the database if needed
   handleUpdateTask(formattedStart, formattedEnd, id);
   handleUpdateAbsences(formattedStart, formattedEnd, id);
-  fetchEvents(idConfig, selectedUser);
-
 };
 
-// Handle event drop
 const handleEventDrop = ({ event, start, end }) => {
   const formattedStart = moment(start).format("YYYY-MM-DDTHH:mm");
   const formattedEnd = moment(end).format("YYYY-MM-DDTHH:mm");
-  
-  const id = event.id; // Get the event's ID
+  const id = event.id;
+
+  // Update the event in the state
+  const updatedEvents = events.map((e) =>
+    e.id === id
+      ? { ...e, start: new Date(formattedStart), end: new Date(formattedEnd) }
+      : e
+  );
+  setEvents(updatedEvents);
+
+  // Call API to update event in the database if needed
   handleUpdateTask(formattedStart, formattedEnd, id);
   handleUpdateAbsences(formattedStart, formattedEnd, id);
-  fetchEvents(idConfig, selectedUser);
 };
 
 
