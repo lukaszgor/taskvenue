@@ -42,7 +42,7 @@ const Summary = () => {
         {t("Revolutionise your business by implementing an 'all-in-one' solution that creates processes and aggregates all the data you use in the business.")}
         </Typography>
 
-            
+
         {/* <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Link to="/infocontact">
             <Button variant="contained" color="primary">
@@ -61,6 +61,7 @@ const Summary = () => {
                         {t("Contact")}
                       </Button>
                     </Link>
+                    <p></p>
                   </div>
       </Container>
     </div>

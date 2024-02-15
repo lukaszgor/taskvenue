@@ -18,15 +18,16 @@ const HeaderInfo = () => {
           <Grid item xs={12} md={4}>
           <Typography variant="h3" align="left" 
                       sx={{
-                        mr: 2,
+                        mr: 1,
                         mt: 5,
                         // fontFamily: 'lato',
-                        fontWeight: 700,
+                        fontWeight: 800,
                         letterSpacing: '.3rem',
                         textDecoration: 'none',
+                        color:"#338ede"
                       }}
                     >
-              {t("Effectively manage tasks and location")}
+              {t("Time and place of work registration system")}
             </Typography>
             {/* <Typography variant="h4" align="left" sx={{ mt: 2 ,
                                     fontFamily: 'lato',
