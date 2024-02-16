@@ -54,7 +54,6 @@ const WorkerBasicDataEdit = () => {
   const [contractors, setContractors] = useState([]);
   const [profiles, setProfiles] = useState([]);
   const [status, setStatus] = useState('');
-  const [type, setType] = useState('');
   const [isSettled, setSettled] = useState(null);
   const [selectedContractorId, setSelectedContractorId] = useState('');
   const [selectedAsignedId, setSelectedAsignedId] = useState('');
@@ -65,7 +64,6 @@ const WorkerBasicDataEdit = () => {
   const [estimatedTime, setEstimatedTime] = useState('');
   const [kickoff, setKickoff] = useState('');
   const [createdDate, setCreatedDate] = useState('');
-  const [taskTypes, setTaskTypes] = useState([]);
   const navigate = useNavigate();
   const [errorDate, setErrorDate] = useState(null);
 
@@ -129,7 +127,6 @@ const WorkerBasicDataEdit = () => {
       setEstimatedTime(data.estimatedTime);
       setSettled(data.settled);
       setStatus(data.status);
-      setType(data.type);
     }
   };
 
@@ -174,7 +171,6 @@ const WorkerBasicDataEdit = () => {
           kickoffDate: kickoff,
           deadline: deadline,
           // status: status, // status aktualnie zmieniany jest w innej funkcji
-          type: type,
           estimatedTime: estimatedTime,
         },
       ])
@@ -226,25 +222,12 @@ const WorkerBasicDataEdit = () => {
     }
   };
 
-  const handleFetchTaskTypes = async (idConfig) => {
-    const { data, error } = await supabase
-      .from('task_type_dictionary')
-      .select('name')
-      .eq('id_configuration', idConfig);
 
-    if (error) {
-      console.log(error);
-    }
-    if (data) {
-      setTaskTypes(data);
-    }
-  };
 
   useEffect(() => {
     if (idConfig) {
       handleFetchContractors(idConfig);
       handleFetchUsers(idConfig);
-      handleFetchTaskTypes(idConfig);
       handleFetchData();
     }
   }, [idConfig]);
@@ -378,29 +361,6 @@ const WorkerBasicDataEdit = () => {
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <FormControl fullWidth>
-                <InputLabel id="type-select-label">
-                  {t('Type')}
-                </InputLabel>
-                <Select
-                  name="type"
-                  label={t('Type')}
-                  labelId="type-select-label"
-                  id="type-select"
-                  value={type}
-                  onChange={(e) => setType(e.target.value)}
-                  fullWidth
-                  disabled
-                >
-                  {taskTypes.map((taskType) => (
-                    <MenuItem key={taskType.name} value={taskType.name}>
-                      {taskType.name}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={12} sm={6}>
               <FormControl fullWidth disabled>
                 <InputLabel id="contractor-select-select-label">
                   {t('Select Contractor')}
@@ -451,6 +411,17 @@ const WorkerBasicDataEdit = () => {
               />
             </Grid> */}
                         <Grid item xs={12} sm={6}>
+              <TextField
+                name="Estimated time"
+                label={t('Estimated time')}
+                value={estimatedTime}
+                onChange={(e) => setEstimatedTime(e.target.value)}
+                fullWidth
+                type="number"
+                disabled
+              />
+            </Grid>
+                        <Grid item xs={12} sm={6}>
                         <TextField
                         type="datetime-local"
                         id="startDate"
@@ -476,17 +447,6 @@ const WorkerBasicDataEdit = () => {
                         disabled={status === 'completed' ||  status === 'cancelled'}
                         />
                     </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                name="Estimated time"
-                label={t('Estimated time')}
-                value={estimatedTime}
-                onChange={(e) => setEstimatedTime(e.target.value)}
-                fullWidth
-                type="number"
-                disabled
-              />
-            </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 name="Description"
