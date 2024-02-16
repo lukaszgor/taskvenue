@@ -114,7 +114,7 @@ const insertService = async()=>{
   
 
   const columns = [
-      { field: 'name', headerName: t("Name"), width: 130 },
+      { field: 'name', headerName: t("Name"), width: 300 },
       {
           field: "Action",headerName: t("Action"), width: 200 ,
           renderCell: (cellValues) => {
@@ -153,7 +153,7 @@ const insertService = async()=>{
 <p></p>
  </Typography>
    <Grid container spacing={2}>
-     <Grid item xs={12} sm={6}>
+     <Grid item xs={12} sm={12}>
      <TextField
              label={t("Name")}
              value={name}

@@ -10,7 +10,6 @@ import License from '../../Components/Manager/Administration/License';
 import ServicesDictionary from '../../Components/Manager/Administration/ServicesDictionary';
 import Settings from '../../Components/Manager/Administration/Settings';
 import Users from '../../Components/Manager/Administration/Users';
-import TaskTypeDictionary from '../../Components/Manager/Administration/TaskTypeDictionary';
 import ManagerAdministrationBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcrumbs/ManagerAdministrationBreadcrumbs';
 import TaskNameDictionary from '../../Components/Manager/Administration/TaskNameDictionary';
 
@@ -106,7 +105,6 @@ function Administration() {
           <ServicesDictionary></ServicesDictionary>
         </TabPanel>
         <TabPanel value={value} index={4}  handleScrollLeft={handleScrollLeft} handleScrollRight={handleScrollRight}>
-          <TaskTypeDictionary></TaskTypeDictionary>
           <TaskNameDictionary></TaskNameDictionary>
         </TabPanel>
       </Box>
