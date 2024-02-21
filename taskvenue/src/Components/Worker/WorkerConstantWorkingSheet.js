@@ -11,7 +11,7 @@ import FmdBadIcon from '@mui/icons-material/FmdBad';
 import { useTranslation } from 'react-i18next';
 import { format, addHours } from 'date-fns'; 
 import supabase from '../../supabaseClient';
-
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 const WorkerConstantWorkingSheet = () => {
     const { t, i18n } = useTranslation();
@@ -250,7 +250,7 @@ const handleFetchVenues = async (idConfig) => {
         <Grid item xs={12} sm={12}>
           <Box display="flex" justifyContent="flex-end">
           <Typography >
-              {t('Date')} {currentDateTime}
+          <AccessTimeIcon fontSize='small'></AccessTimeIcon> {currentDateTime}
             </Typography>
           </Box>
           </Grid>

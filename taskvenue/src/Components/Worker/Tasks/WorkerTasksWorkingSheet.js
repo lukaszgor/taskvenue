@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { format, addHours } from 'date-fns'; 
 import supabase from '../../../supabaseClient';
 import { useParams } from "react-router-dom";
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 const WorkerTasksWorkingSheet = () => {
     const { t, i18n } = useTranslation();
@@ -274,7 +275,7 @@ setCurrentDateTime(formattedDateTime);
         <Grid item xs={12} sm={12}>
           <Box display="flex" justifyContent="flex-end">
           <Typography >
-              {t('Date')} {currentDateTime}
+          <AccessTimeIcon fontSize='small'></AccessTimeIcon> {currentDateTime}
             </Typography>
           </Box>
           </Grid>

@@ -288,7 +288,7 @@ const WorkerBasicDataEdit = () => {
 <Grid item xs={12}>
              <Accordion defaultExpanded >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t('Start')} / {t('Stop')}</Typography>
+        <Typography variant="h6" fontWeight="bold">{t('Confirmation of location')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
              <WorkerTasksWorkingSheet></WorkerTasksWorkingSheet>
