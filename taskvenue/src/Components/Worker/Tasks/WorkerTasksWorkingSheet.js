@@ -29,8 +29,8 @@ const WorkerTasksWorkingSheet = () => {
     const typographyStyle = {
         fontSize: '11px', // Zmniejszona czcionka tytułowa
         color: 'red',     // Kolor czerwony
+        fontWeight: 'bold'
     };
-
 
 const handleStartClick = () => {
     setStatus('open');
@@ -48,14 +48,14 @@ const handleStartClick = () => {
 // pobranie z useState isRunieng
 
 
-    useEffect(() => {
-            const getCurrentDateTime = () => {
-                const currentDate = new Date();
-                const formattedDateTime = format(currentDate, 'dd/MM/yyyy HH:mm'); // Format daty i godziny
-                setCurrentDateTime(formattedDateTime);
-            };
-            getCurrentDateTime();
-    },);
+useEffect(() => {
+    getCurrentDateTime();
+},);
+const getCurrentDateTime = () => {
+const currentDate = new Date();
+const formattedDateTime = format(currentDate, 'dd/MM/yyyy HH:mm'); // Format daty i godziny
+setCurrentDateTime(formattedDateTime);
+};
 
     useEffect(() => {
         const checkSession = async () => {
@@ -201,6 +201,7 @@ const handleStartClick = () => {
             if (data) {
               setLastRecordStatus(data.status);
               setConstatnID(data.id);
+            //   getCurrentDateTime();
             }
           }
         } catch (error) {
@@ -271,6 +272,13 @@ const handleStartClick = () => {
   <Container maxWidth="md">
         <Grid container spacing={2}>
         <Grid item xs={12} sm={12}>
+          <Box display="flex" justifyContent="flex-end">
+          <Typography >
+              {t('Date')} {currentDateTime}
+            </Typography>
+          </Box>
+          </Grid>
+        <Grid item xs={12} sm={12}>
             </Grid>
           <Grid item xs={6} sm={6}>
             <Button
@@ -297,10 +305,12 @@ const handleStartClick = () => {
             </Box>
           </Grid>
           <Grid item xs={12} sm={12}>
-            <Typography style={typographyStyle}>
-              <FmdBadIcon></FmdBadIcon>
+          <Box display="flex" justifyContent="center">
+            <Typography style={typographyStyle} >
               {t('Note, when you click the Start and Stop buttons, geolocation data and the current date and time will be downloaded.')}
+              <FmdBadIcon></FmdBadIcon>
             </Typography>
+            </Box>
           </Grid>
         </Grid>
         <Snackbar open={open} autoHideDuration={2000} onClose={handleCloseAlert}>

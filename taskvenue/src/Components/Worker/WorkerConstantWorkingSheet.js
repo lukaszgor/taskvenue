@@ -29,6 +29,7 @@ const WorkerConstantWorkingSheet = () => {
     const typographyStyle = {
         fontSize: '11px', // Zmniejszona czcionka tytułowa
         color: 'red',     // Kolor czerwony
+        fontWeight: 'bold'
     };
 
 
@@ -61,13 +62,13 @@ const handleFetchVenues = async (idConfig) => {
   };
 
     useEffect(() => {
-            const getCurrentDateTime = () => {
-                const currentDate = new Date();
-                const formattedDateTime = format(currentDate, 'dd/MM/yyyy HH:mm'); // Format daty i godziny
-                setCurrentDateTime(formattedDateTime);
-            };
             getCurrentDateTime();
     },);
+    const getCurrentDateTime = () => {
+      const currentDate = new Date();
+      const formattedDateTime = format(currentDate, 'dd/MM/yyyy HH:mm'); // Format daty i godziny
+      setCurrentDateTime(formattedDateTime);
+  };
 
     useEffect(() => {
         const checkSession = async () => {
@@ -91,6 +92,8 @@ const handleFetchVenues = async (idConfig) => {
         } else if (profileData) {
           setIdConfiguration(profileData.id_configuration);
           getLastRecord(profileData.id_configuration,userID)
+          // getCurrentDateTime();
+          
         }
       }
 
@@ -245,6 +248,13 @@ const handleFetchVenues = async (idConfig) => {
   <Container maxWidth="md">
         <Grid container spacing={2}>
         <Grid item xs={12} sm={12}>
+          <Box display="flex" justifyContent="flex-end">
+          <Typography >
+              {t('Date')} {currentDateTime}
+            </Typography>
+          </Box>
+          </Grid>
+        <Grid item xs={12} sm={12}>
         <FormControl fullWidth required>
               <InputLabel id="contractor-select-select-label">
                 {t('Select venue')}
@@ -297,10 +307,12 @@ const handleFetchVenues = async (idConfig) => {
             </Box>
           </Grid>
           <Grid item xs={12} sm={12}>
-            <Typography style={typographyStyle}>
-              <FmdBadIcon></FmdBadIcon>
+          <Box display="flex" justifyContent="center">
+            <Typography style={typographyStyle} >
               {t('Note, when you click the Start and Stop buttons, geolocation data and the current date and time will be downloaded.')}
+              <FmdBadIcon></FmdBadIcon>
             </Typography>
+            </Box>
           </Grid>
         </Grid>
         <Snackbar open={open} autoHideDuration={2000} onClose={handleCloseAlert}>
