@@ -7,6 +7,8 @@ import { useTranslation } from "react-i18next";
 import { Accordion, AccordionSummary, AccordionDetails, Typography,FormControl,Grid,Container} from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Language from './Language';
+import Username from './Username';
+import { userId } from './Auth';
 
 
 function PasswordChange() {
@@ -77,6 +79,17 @@ const handleCloseAlert = (event, reason) => {
         <Language></Language>
         <p></p>
         <Container maxWidth="md">
+        <Accordion >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('User information')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+        <Typography>{fullName}</Typography>
+          <Typography>{user}</Typography>
+          <Typography>{userID}</Typography>
+        </AccordionDetails>
+      </Accordion>
+
         <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">{t('Password change')}</Typography>
@@ -134,6 +147,8 @@ const handleCloseAlert = (event, reason) => {
         </Snackbar>
         </AccordionDetails>
       </Accordion>
+
+
       </Container>
         </div>
      
