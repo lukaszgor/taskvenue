@@ -27,7 +27,7 @@ const DescriptionOfTheMainFunction = () => {
     <Grid container spacing={2}>
       {sections.map((section, index) => (
         <Grid item xs={12} md={12} key={index}>
-          <Paper elevation={3} style={{ padding: '20px' }}>
+          {/* <Paper elevation={3} style={{ padding: '20px' }}> */}
             <Grid container spacing={2}>
               <Grid item xs={12} md={5}>
                 <p></p>
@@ -47,7 +47,7 @@ const DescriptionOfTheMainFunction = () => {
                 <img src={section.imageSrc} alt={section.title} style={{ width: '100%' }} />
               </Grid>
             </Grid>
-          </Paper>
+          {/* </Paper> */}
         </Grid>
       ))}
     </Grid>

@@ -25,7 +25,7 @@ const GifManagerView = () => {
 <div>
     <Container maxWidth="md" style={containerStyle}>
 
-    <Paper elevation={3} style={paperStyle}>
+    {/* <Paper elevation={3} style={paperStyle}> */}
     <Typography variant="h4" gutterBottom sx={{
                         mr: 2,
                         mt: 2,
@@ -39,7 +39,7 @@ const GifManagerView = () => {
         </Typography>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-        <div style={{ padding: '20px' }}>
+        <div style={{ padding: '30px' }}>
             <img
                src="/animationmanagershort.gif"
               alt="Your Business"
@@ -49,7 +49,7 @@ const GifManagerView = () => {
         </Grid>
 
       </Grid>
-    </Paper>
+    {/* </Paper> */}
   </Container>
 
     </div>
