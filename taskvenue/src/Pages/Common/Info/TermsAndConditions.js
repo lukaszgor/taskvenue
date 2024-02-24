@@ -26,7 +26,7 @@ const TermsAndConditions = () => {
 
     <p>1. Administratorem Pana/Pani danych osobowych jest firma Kamil Nogacki Business z siedzibą w Stara Zagość 46, 28-400 Pińczów.</p>
 
-    <p>2. W sprawach związanych z ochroną danych osobowych można kontaktować się z inspektorem ochrony danych, pisząc na adres e-mail <a href="mailto:lgorski.taskvenue@gmail.com">lgorski.taskvenue@gmail.com</a> lub adres siedziby.</p>
+    <p>2. W sprawach związanych z ochroną danych osobowych można kontaktować się z inspektorem ochrony danych, pisząc na adres e-mail <a href="mailto:taskvenueapp@gmail.com">taskvenueapp@gmail.com</a> lub adres siedziby.</p>
 
     <p>3. Pana/Pani dane osobowe będą przetwarzane w celu świadczenia naszych usług, na podstawie art. 6 ust. 1 lit. a, b oraz c.</p>
 
