@@ -71,7 +71,6 @@ function AddNewTask() {
   const [userID, setUserID] = useState('');
   const [idConfig, setIdConfiguration] = useState('');
   const [deadline, setDeadline] = useState('');
-  const [estimatedTime, setEstimatedTime] = useState('');
   const [kickoff, setKickoff] = useState('');
   const [createdDate, setCreatedDate] = useState('');
 
@@ -112,7 +111,8 @@ function AddNewTask() {
       .from('profiles')
       .select()
       .eq('id_configuration', idConfig)
-      .in('profile_type', ['manager', 'worker']);
+      .in('profile_type', ['manager', 'worker'])
+      .is('isBlocked', null);
 
     if (error) {
       console.log(error);
@@ -133,7 +133,6 @@ function AddNewTask() {
           kickoffDate: kickoff,
           deadline: deadline,
           status: status,
-          estimatedTime: estimatedTime,
           id_configuration:idConfig,
           id_contractor:selectedContractorId,
           createdDate:currentDate,
@@ -387,17 +386,6 @@ function AddNewTask() {
                         focused
                         />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
-              <TextField
-                name="Estimated time"
-                label={t('Estimated time')}
-                value={estimatedTime}
-                onChange={(e) => setEstimatedTime(e.target.value)}
-                fullWidth
-                type="number" 
-                required
-              />
-            </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 name="Description"

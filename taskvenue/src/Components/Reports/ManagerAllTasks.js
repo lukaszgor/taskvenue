@@ -119,7 +119,6 @@ const formatDate = (date) => {
             return taskStatus;
         }
     }, },
-    { field: 'estimatedTime', headerName: t("Estimated time"), width: 150 },
     { field: 'settled', headerName: t("Settled"), width: 100, valueGetter: (params) => {
         const taskSettled = params.value;
         if (taskSettled === 1) {

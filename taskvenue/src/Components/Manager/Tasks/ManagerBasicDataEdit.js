@@ -51,7 +51,6 @@ const ManagerBasicDataEdit = () => {
   const [idConfig, setIdConfiguration] = useState('');
   const [open, setOpen] = useState(false);
   const [deadline, setDeadline] = useState('');
-  const [estimatedTime, setEstimatedTime] = useState('');
   const [kickoff, setKickoff] = useState('');
   const [createdDate, setCreatedDate] = useState('');
   const [author, setAuthor] = useState('');
@@ -87,7 +86,6 @@ const ManagerBasicDataEdit = () => {
       setCreatedDate(data.createdDate);
       setKickoff(data.kickoffDate);
       setDeadline(data.deadline);
-      setEstimatedTime(data.estimatedTime);
       setSettled(data.settled);
       setStatus(data.status);
       setAuthor(data.author);
@@ -135,8 +133,7 @@ const ManagerBasicDataEdit = () => {
           createdDate: createdDate,
           kickoffDate: kickoff,
           deadline: deadline,
-          status: status,
-          estimatedTime: estimatedTime,
+          status: status
         },
       ])
       .eq('id', id);
@@ -360,16 +357,6 @@ const ManagerBasicDataEdit = () => {
                 fullWidth
                 multiline
                 disabled
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                name="Estimated time"
-                label={t('Estimated time')}
-                value={estimatedTime}
-                onChange={(e) => setEstimatedTime(e.target.value)}
-                fullWidth
-                type="number"
               />
             </Grid>
             <Grid item xs={12} sm={6}>

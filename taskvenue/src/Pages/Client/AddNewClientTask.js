@@ -71,7 +71,6 @@ function AddNewClientTask() {
   const [userID, setUserID] = useState('');
   const [idConfig, setIdConfiguration] = useState('');
   const [deadline, setDeadline] = useState('');
-  const [estimatedTime, setEstimatedTime] = useState(0);
   const [kickoff, setKickoff] = useState('');
   const [createdDate, setCreatedDate] = useState('');
   const [taskName, setTaskName] = useState([]);
@@ -140,7 +139,6 @@ function AddNewClientTask() {
           kickoffDate: currentDate,
           deadline: nextWeekDate,
           status: status,
-        //   estimatedTime: estimatedTime,
           id_configuration:idConfig,
           id_contractor:selectedContractorId,
           createdDate:currentDate,
@@ -349,16 +347,6 @@ function AddNewClientTask() {
                   ))}
                 </Select>
               </FormControl>
-            </Grid> */}
-            {/* <Grid item xs={12} sm={6}>
-              <TextField
-                name="Estimated time"
-                label={t('Estimated time')}
-                value={estimatedTime}
-                onChange={(e) => setEstimatedTime(e.target.value)}
-                fullWidth
-                type="number" 
-              />
             </Grid> */}
             {/* <Grid item xs={12} sm={6}>
                         <TextField

@@ -51,7 +51,6 @@ const ClientBasicDataEdit = () => {
   const [idConfig, setIdConfiguration] = useState('');
   const [open, setOpen] = useState(false);
   const [deadline, setDeadline] = useState('');
-  const [estimatedTime, setEstimatedTime] = useState('');
   const [kickoff, setKickoff] = useState('');
   const [createdDate, setCreatedDate] = useState('');
   const [author, setAuthor] = useState('');
@@ -79,7 +78,6 @@ const ClientBasicDataEdit = () => {
       setCreatedDate(data.createdDate);
       setKickoff(data.kickoffDate);
       setDeadline(data.deadline);
-      setEstimatedTime(data.estimatedTime);
       setSettled(data.settled);
       setStatus(data.status);
       setType(data.type);
@@ -129,7 +127,6 @@ const ClientBasicDataEdit = () => {
           deadline: deadline,
           status: status,
           type: type,
-          estimatedTime: estimatedTime,
         },
       ])
       .eq('id', id);
@@ -334,16 +331,6 @@ const ClientBasicDataEdit = () => {
                   ))}
                 </Select>
               </FormControl>
-            </Grid> */}
-            {/* <Grid item xs={12} sm={6}>
-              <TextField
-                name="Estimated time"
-                label={t('Estimated time')}
-                value={estimatedTime}
-                onChange={(e) => setEstimatedTime(e.target.value)}
-                fullWidth
-                type="number"
-              />
             </Grid> */}
                         <Grid item xs={12} sm={6}>
                 <TextField

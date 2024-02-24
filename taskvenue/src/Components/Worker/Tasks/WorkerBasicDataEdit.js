@@ -60,7 +60,6 @@ const WorkerBasicDataEdit = () => {
   const [idConfig, setIdConfiguration] = useState('');
   const [open, setOpen] = useState(false);
   const [deadline, setDeadline] = useState('');
-  const [estimatedTime, setEstimatedTime] = useState('');
   const [kickoff, setKickoff] = useState('');
   const [createdDate, setCreatedDate] = useState('');
   const navigate = useNavigate();
@@ -123,7 +122,6 @@ const WorkerBasicDataEdit = () => {
       setCreatedDate(data.createdDate);
       setKickoff(data.kickoffDate);
       setDeadline(data.deadline);
-      setEstimatedTime(data.estimatedTime);
       setSettled(data.settled);
       setStatus(data.status);
     }
@@ -170,7 +168,6 @@ const WorkerBasicDataEdit = () => {
           kickoffDate: kickoff,
           deadline: deadline,
           // status: status, // status aktualnie zmieniany jest w innej funkcji
-          estimatedTime: estimatedTime,
         },
       ])
       .eq('id', id);
@@ -347,27 +344,6 @@ const WorkerBasicDataEdit = () => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <FormControl fullWidth disabled>
-                <InputLabel id="contractor-select-select-label">
-                  {t('Select Contractor')}
-                </InputLabel>
-                <Select
-                  labelId="contractor-select-label"
-                  id="contractor-select"
-                  value={selectedContractorId}
-                  disabled
-                  onChange={handleChangeContractor}
-                  label={t('Select Contractor')}
-                >
-                  {contractors.map((contractor) => (
-                    <MenuItem key={contractor.id} value={contractor.id}>
-                      {contractor.nameOrCompanyName}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Grid>
             {/* <Grid item xs={12} sm={6}>
               <FormControl fullWidth disabled>
                 <InputLabel id="asigned-select-label">
@@ -398,17 +374,6 @@ const WorkerBasicDataEdit = () => {
               />
             </Grid> */}
                         <Grid item xs={12} sm={6}>
-              <TextField
-                name="Estimated time"
-                label={t('Estimated time')}
-                value={estimatedTime}
-                onChange={(e) => setEstimatedTime(e.target.value)}
-                fullWidth
-                type="number"
-                disabled
-              />
-            </Grid>
-                        <Grid item xs={12} sm={6}>
                         <TextField
                         type="datetime-local"
                         id="startDate"
@@ -434,6 +399,27 @@ const WorkerBasicDataEdit = () => {
                         disabled={status === 'completed' ||  status === 'cancelled'}
                         />
                     </Grid>
+                    <Grid item xs={12} sm={6}>
+              <FormControl fullWidth disabled>
+                <InputLabel id="contractor-select-select-label">
+                  {t('Select Contractor')}
+                </InputLabel>
+                <Select
+                  labelId="contractor-select-label"
+                  id="contractor-select"
+                  value={selectedContractorId}
+                  disabled
+                  onChange={handleChangeContractor}
+                  label={t('Select Contractor')}
+                >
+                  {contractors.map((contractor) => (
+                    <MenuItem key={contractor.id} value={contractor.id}>
+                      {contractor.nameOrCompanyName}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 name="Description"
