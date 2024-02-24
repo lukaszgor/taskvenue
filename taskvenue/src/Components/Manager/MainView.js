@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import ManagerMainSummary from '../Reports/ManagerMainSummary';
 import { useNavigate } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
+import WorkerConstantWorkingSheet from '../Worker/WorkerConstantWorkingSheet';
 
 const MainView = () => {
   const { t, i18n } = useTranslation();
@@ -43,6 +44,20 @@ const MainView = () => {
           <ManagerMainSummary></ManagerMainSummary>
         </AccordionDetails>
       </Accordion>
+      <p></p>
+      <Grid item xs={12} sm={12}>
+      <Accordion >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Confirmation of location')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+          <WorkerConstantWorkingSheet></WorkerConstantWorkingSheet>
+        </AccordionDetails>
+      </Accordion>
+      </Grid>
+
+      <p></p>
       
       <Grid container spacing={4}>
       <Grid item xs={12} sm={8}>
