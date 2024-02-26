@@ -10,6 +10,8 @@ import ManagerReportsBreadcrumbs from '../../Components/Breadcrumbs/mainBreadcru
 import ReportRealizationOfIssuesForTheCustomers from '../../Components/Reports/ReportRealizationOfIssuesForTheCustomers';
 import ManagerAllTasks from '../../Components/Reports/ManagerAllTasks';
 import ManagerAllServicesWithContractor from '../../Components/Reports/ManagerAllServicesWithContractor';
+import ManagerConstantWorkingSheetRaport from '../../Components/Reports/ManagerConstantWorkingSheetRaport';
+
 function Reports() {
     const { t, i18n } = useTranslation();
 
@@ -66,6 +68,16 @@ function Reports() {
         <AccordionDetails>
           <Typography></Typography>
   <ManagerAllServicesWithContractor></ManagerAllServicesWithContractor>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Confirmation of location')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+  <ManagerConstantWorkingSheetRaport></ManagerConstantWorkingSheetRaport>
         </AccordionDetails>
       </Accordion>
     </div>
