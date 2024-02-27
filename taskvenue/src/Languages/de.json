@@ -316,7 +316,21 @@
         "Time and place of work registration system":"System zur Registrierung von Arbeitszeit und -ort",
         "User information": "Benutzer",
         "Confirmation of time":"Zeitbestätigung",
-        "Check the correctness and length of the User ID":"Überprüfen Sie die Richtigkeit und Länge der User ID"
+        "Check the correctness and length of the User ID":"Überprüfen Sie die Richtigkeit und Länge der User ID",
+          "Field work management (FSM) systems enable the organisation and monitoring of offsite tasks, which is key to the effective management of mobile teams.": "Systeme für das Management von Außendienstarbeiten (FSM) ermöglichen die Organisation und Überwachung von externen Aufgaben, was für das effektive Management von mobilen Teams entscheidend ist.",
+          "TaskVenue is an FSM system that facilitates the management of mobile teams, providing tools for effective planning, monitoring and analysis of fieldwork": "TaskVenue ist ein FSM-System, das das Management von mobilen Teams erleichtert, indem es Werkzeuge für effektive Planung, Überwachung und Analyse der Außendienstarbeit bereitstellt.",
+          "Benefits": "Vorteile",
+          "Applications": "Anwendungen",
+          "Improvement of Efficiency and Productivity of Mobile Workers": "Verbesserung der Effizienz und Produktivität mobiler Mitarbeiter",
+          "Increased Visibility and Control Over Field Work": "Erhöhte Sichtbarkeit und Kontrolle über die Außendienstarbeit",
+          "Optimization of Routes and Schedules": "Optimierung von Routen und Zeitplänen",
+          "Improvement of Communication and Information Flow": "Verbesserung der Kommunikation und des Informationsflusses",
+          "Management of Tasks and Service Orders": "Verwaltung von Aufgaben und Serviceaufträgen",
+          "Monitoring of Work Progress and Worker Localization": "Überwachung des Arbeitsfortschritts und der Lokalisierung der Mitarbeiter",
+          "Management of Schedules and Worker Availability": "Verwaltung von Zeitplänen und Mitarbeiterverfügbarkeit",
+          "Data Collection and Reporting from the Field": "Datenerfassung und Berichterstattung aus dem Feld"
+
+        
 
       
   

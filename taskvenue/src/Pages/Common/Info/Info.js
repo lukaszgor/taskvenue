@@ -15,6 +15,7 @@ import Typography from '@mui/material/Typography';
 import Summary from '../../../Components/Info/MainPage/Summary';
 import GifManagerView from '../../../Components/Info/MainPage/GifManagerView';
 import ProcesTimeline from '../../../Components/Info/MainPage/ProcesTimeline';
+import FieldManagmentSystem from '../../../Components/Info/MainPage/FieldManagmentSystem';
 
 const Info = () => {
   const navigate = useNavigate();
@@ -54,6 +55,7 @@ const Info = () => {
 <p></p>
 <GifManagerView></GifManagerView>
 <p></p>
+<FieldManagmentSystem></FieldManagmentSystem>
 {/* <YouTubePlayer videoUrl="plXtqNL1Mh4" /> */}
 <Summary></Summary>
 <p></p>

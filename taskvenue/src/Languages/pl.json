@@ -336,7 +336,21 @@
             "Time and place of work registration system":"System  rejestracji czasu i miejsca pracy",
             "User information":"Użytkownik",
             "Confirmation of time":"Potwierdzenie czasu",
-            "Check the correctness and length of the User ID":"Sprawdź poprawność i długość User ID"
+            "Check the correctness and length of the User ID":"Sprawdź poprawność i długość User ID",
+              "Field work management (FSM) systems enable the organisation and monitoring of offsite tasks, which is key to the effective management of mobile teams.": "Systemy zarządzania pracą w terenie (FSM) umożliwiają organizację i monitorowanie zadań wykonywanych poza firmą, co jest kluczowe dla efektywnego zarządzania zespołami mobilnymi.",
+              "TaskVenue is an FSM system that facilitates the management of mobile teams, providing tools for effective planning, monitoring and analysis of fieldwork": "TaskVenue jest systemem FSM, który ułatwia zarządzanie mobilnymi zespołami, zapewniając narzędzia do efektywnego planowania, monitorowania i analizy pracy w terenie.",
+              "Benefits": "Korzyści",
+              "Applications": "Zastosowania",
+              "Improvement of Efficiency and Productivity of Mobile Workers": "Poprawa efektywności i produktywności pracowników mobilnych",
+              "Increased Visibility and Control Over Field Work": "Zwiększenie widoczności i kontroli nad pracą w terenie",
+              "Optimization of Routes and Schedules": "Optymalizacja tras i harmonogramów",
+              "Improvement of Communication and Information Flow": "Usprawnienie komunikacji i przepływu informacji",
+              "Management of Tasks and Service Orders": "Zarządzanie zadaniami i zleceniami serwisowymi",
+              "Monitoring of Work Progress and Worker Localization": "Monitorowanie postępów prac i lokalizacji pracowników",
+              "Management of Schedules and Worker Availability": "Zarządzanie harmonogramem i dostępnością pracowników",
+              "Data Collection and Reporting from the Field": "Zbieranie danych z terenu i raportowanie"
+
+            
 
           
 

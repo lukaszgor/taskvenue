@@ -337,7 +337,21 @@
             "Time and place of work registration system":"Система реєстрації часу та місця роботи",
             "User information": "Користувач",
             "Confirmation of time":"підтвердження часу",
-            "Check the correctness and length of the User ID":"Перевірте правильність та довжину User ID"
+            "Check the correctness and length of the User ID":"Перевірте правильність та довжину User ID",
+                "Field work management (FSM) systems enable the organisation and monitoring of offsite tasks, which is key to the effective management of mobile teams.": "Системи управління роботою в полі (FSM) дозволяють організувати та моніторити завдання, що виконуються поза офісом, що є ключовим для ефективного управління мобільними командами.",
+                "TaskVenue is an FSM system that facilitates the management of mobile teams, providing tools for effective planning, monitoring and analysis of fieldwork": "TaskVenue — це система FSM, яка сприяє управлінню мобільними командами, надаючи інструменти для ефективного планування, моніторингу та аналізу роботи в полі.",
+                "Benefits": "Переваги",
+                "Applications": "Застосування",
+                "Improvement of Efficiency and Productivity of Mobile Workers": "Підвищення ефективності та продуктивності мобільних працівників",
+                "Increased Visibility and Control Over Field Work": "Підвищення видимості та контролю над роботою в полі",
+                "Optimization of Routes and Schedules": "Оптимізація маршрутів та розкладів",
+                "Improvement of Communication and Information Flow": "Покращення комунікації та потоку інформації",
+                "Management of Tasks and Service Orders": "Управління завданнями та сервісними замовленнями",
+                "Monitoring of Work Progress and Worker Localization": "Моніторинг прогресу робіт та локалізації працівників",
+                "Management of Schedules and Worker Availability": "Управління розкладами та доступністю працівників",
+                "Data Collection and Reporting from the Field": "Збір даних та звітність з поля"
+
+              
             
           
 }  
