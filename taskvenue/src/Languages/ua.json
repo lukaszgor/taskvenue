@@ -335,7 +335,8 @@
             "Employees will receive notifications about tasks directly on their mobile devices. Confirming the completion of tasks, along with the location and time taken, will help you stay updated with the progress.": "Співробітники будуть отримувати повідомлення про завдання безпосередньо на свої мобільні пристрої. Підтвердження виконання завдань разом з місцем і часом виконання допоможе вам залишатися в курсі прогресу.",
             "The system allows for secure data management that is accessible at all times. You can easily create summaries and reports, for both employees and contractors.": "Система дозволяє безпечно керувати даними, які завжди доступні. Ви легко можете створювати зведення та звіти як для співробітників, так і для підрядників.",
             "Time and place of work registration system":"Система реєстрації часу та місця роботи",
-            "User information": "Користувач"
+            "User information": "Користувач",
+            "Confirmation of time":"підтвердження часу"
             
           
 }  

@@ -73,7 +73,7 @@ function Reports() {
 
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t('Confirmation of location')}</Typography>
+          <Typography variant="h6" fontWeight="bold">{t('Confirmation of time')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
