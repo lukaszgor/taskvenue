@@ -12,6 +12,13 @@ import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FilterListIcon from '@mui/icons-material/FilterList';
+import FmdBadIcon from '@mui/icons-material/FmdBad';
+
+const typographyStyle = {
+  fontSize: '11px', // Zmniejszona czcionka tytułowa
+  color: 'green',     // Kolor czerwony
+  fontWeight: 'bold'
+};
 
 function Users() {
     const { t, i18n } = useTranslation();
@@ -225,6 +232,14 @@ const handleOpenFilterChange = () => {
                                         </Select>
                                     </FormControl>
                                 </Grid>
+                                <Grid item xs={12} sm={12}>
+                                  <Box display="flex" justifyContent="center">
+                                    <Typography style={typographyStyle} >
+                                      {t('Check the correctness and length of the User ID')}
+                                      <FmdBadIcon></FmdBadIcon>
+                                    </Typography>
+                                    </Box>
+                                  </Grid>
                                 <Grid item xs={12}>
                                     <Box display="flex" justifyContent="flex-end">
                                         <Button
