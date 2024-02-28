@@ -3,7 +3,8 @@ import {
     Button,
     Grid,
     Container,Box,
-    Typography,Snackbar,Alert,DialogContent,DialogActions,Dialog,DialogTitle,DialogContentText,Select,MenuItem,FormControl,FormControlLabel,InputLabel
+    Typography,Snackbar,Alert,DialogContent,DialogActions,Dialog,DialogTitle,DialogContentText,Select,MenuItem,FormControl,FormControlLabel,InputLabel,  Backdrop,
+    CircularProgress
 } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import StopIcon from '@mui/icons-material/Stop';
@@ -24,6 +25,9 @@ const WorkerConstantWorkingSheet = () => {
     const [venues, setVenues] = useState([]);
     const [selectedOption, setSelectedOption] = useState('');
     const [constatntID, setConstatnID] = useState('');
+    
+    //dodanie ładowania:
+    const [loading, setLoading] = useState(false); 
 
 
     const typographyStyle = {
@@ -34,12 +38,17 @@ const WorkerConstantWorkingSheet = () => {
 
 
 const handleStartClick = () => {
+    //dodanie ładowania:
+    setLoading(true); 
     setStatus('open');
     getUserLocation('open', currentDateTime);
+  
 
   };
 
   const handleStopClick = () => {
+    //dodanie ładowania:
+    setLoading(true); 
     setStatus('closed');
     getUserLocation('closed', currentDateTime);
   };
@@ -121,10 +130,12 @@ const handleFetchVenues = async (idConfig) => {
               }else{
                 insertWorkTime(status, userLocation, currentDateTime);
               }
+              setLoading(false);
             },
             (error) => {
               console.error(error);
               setUserLocation('Unable to retrieve location');
+              setLoading(false);
               
               // Wyświetl komunikat o błędzie lokalizacji jako przeglądarkowy alert
               const errorMessage = t('The functionality works correctly only with geolocation enabled in your browser. If you want to make use of the full features, please turn on your location services.') ;
@@ -133,6 +144,7 @@ const handleFetchVenues = async (idConfig) => {
           );
         } else {
           setUserLocation('Geolocation is not supported by your browser');
+          setLoading(false);
           
           // Wyświetl komunikat o braku wsparcia dla geolokalizacji jako przeglądarkowy alert
           const errorMessage = t('Geolocation is not supported by your browser');
@@ -313,6 +325,18 @@ const handleFetchVenues = async (idConfig) => {
               <FmdBadIcon></FmdBadIcon>
             </Typography>
             </Box>
+
+            <Grid item xs={12}>
+            <Backdrop
+              sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+              open={loading}
+            >
+              <CircularProgress color="inherit" />
+            </Backdrop>
+          </Grid>
+
+
+
           </Grid>
         </Grid>
         <Snackbar open={open} autoHideDuration={2000} onClose={handleCloseAlert}>
