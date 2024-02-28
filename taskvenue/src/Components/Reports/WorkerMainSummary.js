@@ -6,8 +6,6 @@ import HourglassTopOutlinedIcon from '@mui/icons-material/HourglassTopOutlined';
 import { useTranslation } from 'react-i18next';
 
 const WorkerMainSummary = ({ status, time }) => {
-    const [totalEstimatedTimeOpen, setTotalEstimatedTimeOpen] = useState(0);
-    const [totalEstimatedTimeInProgress, setTotalEstimatedTimeInprogress] = useState(0);
     const [totalSumOpen, setTotalSumOpen] = useState(0);
     const [totalSumInprogress, setTotalSumInprogress] = useState(0);
     const { t } = useTranslation();
@@ -41,44 +39,15 @@ const WorkerMainSummary = ({ status, time }) => {
 
     useEffect(() => {
         if (idConfig) {
-            fetchTotalEstimatedTimeOpen(idConfig,userID);
-            fetchTotalEstimatedTimeInprogress(idConfig,userID);
             fetchTotalSumOpen(idConfig,userID);
             fetchTotalSumInprogress(idConfig,userID);
             }
       
       }, [idConfig,userID]);
 
-      async function fetchTotalEstimatedTimeOpen(idConfig,userID) {
-        const { data, error } = await supabase
-          .from('tasks')
-          .select()
-          .eq('id_configuration', idConfig)
-          .eq('status', 'open')
-          .eq('asigned_user', userID)
-        if (error) {
-          console.error('Błąd podczas pobierania danych z Supabase:', error);
-          return;
-        }
-        const total = data.reduce((acc, task) => acc + task.estimatedTime, 0);
-        setTotalEstimatedTimeOpen(total);
-      } 
 
-      async function fetchTotalEstimatedTimeInprogress(idConfig,userID) {
-        const { data, error } = await supabase
-          .from('tasks')
-          .select('estimatedTime')
-          .eq('id_configuration', idConfig)
-          .eq('status', 'inProgress')
-          .eq('asigned_user', userID)
-    
-        if (error) {
-          console.error('Błąd podczas pobierania danych z Supabase:', error);
-          return;
-        }
-        const total = data.reduce((acc, task) => acc + task.estimatedTime, 0);
-        setTotalEstimatedTimeInprogress(total);
-      } 
+
+
 
       async function fetchTotalSumOpen(idConfig,userID) {
         const { data, error } = await supabase
@@ -122,9 +91,6 @@ const WorkerMainSummary = ({ status, time }) => {
             {t('Status')} : {t('Open')}
             </Typography>
             <Typography variant="body2" color="textSecondary">
-            {t('Estimated time')}  : {totalEstimatedTimeOpen}
-            </Typography>
-            <Typography variant="body2" color="textSecondary">
             {t('Amount of tasks')}  : {totalSumOpen}
             </Typography>
           </CardContent>
@@ -137,9 +103,6 @@ const WorkerMainSummary = ({ status, time }) => {
             <HourglassTopOutlinedIcon></HourglassTopOutlinedIcon>
             <Typography variant="body2" color="textSecondary">
             {t('Status')} : {t('In progress')}
-            </Typography>
-            <Typography variant="body2" color="textSecondary">
-            {t('Estimated time')} : {totalEstimatedTimeInProgress}
             </Typography>
             <Typography variant="body2" color="textSecondary">
             {t('Amount of tasks')}  : {totalSumInprogress}
