@@ -54,7 +54,7 @@ const WaitingRoomForNewUser = () => {
             </Container>
         </AccordionDetails>
       </Accordion>
-      
+
 <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">{t('Hi, your ID can be found below')} </Typography>
@@ -120,7 +120,7 @@ const WaitingRoomForNewUser = () => {
       </Accordion>
       </Container>
       <p></p>
-<div style={{  marginTop: '20px', width: '100%',padding:'20px' }}>
+<div style={{  marginTop: '20px',padding:'20px' }}>
   <p></p>
 </div>
       
