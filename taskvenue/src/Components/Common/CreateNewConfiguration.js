@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import StepContent from '@mui/material/StepContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
 import supabase from '../../supabaseClient';
 import moment from 'moment';
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next";
+import {
+  TextField,
+  Button,
+  Grid,
+  Box,
+  Typography
+} from '@mui/material';
 
 
 function CreateNewConfiguration() {
@@ -127,7 +130,9 @@ const Home =  () => {
     }
 
   return (
-    <Box sx={{ maxWidth: 400 }}>
+    <Box>
+              <Grid container spacing={2}>
+            <Grid item xs={12} sm={12}>
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map((step, index) => (
           <Step key={step.label}>
@@ -209,6 +214,8 @@ const Home =  () => {
         ))}
       </Stepper>
       <p></p>
+      </Grid>
+      </Grid>
     </Box>
   );
 }
