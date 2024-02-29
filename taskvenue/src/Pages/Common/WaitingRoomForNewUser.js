@@ -8,6 +8,7 @@ import WaitingRoomNavBar from '../../Components/NavigationBar/WaitingRoomNavBar'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Username from '../../Components/Common/Username';
 import CreateNewConfiguration from '../../Components/Common/CreateNewConfiguration';
+import QRCode from 'react-qr-code';
 
 const WaitingRoomForNewUser = () => {
     const { t, i18n } = useTranslation();
@@ -33,6 +34,29 @@ const WaitingRoomForNewUser = () => {
 <Container maxWidth="md">
 <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t("First and last name")}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+        <Container maxWidth="sm">
+        <Grid container spacing={2}>
+        <Grid item xs={12}>
+            <p> {t("Give your name for easy identification")}</p>
+            </Grid>
+            </Grid>
+            </Container>
+<Username></Username>
+<Container maxWidth="md">
+        <Grid container spacing={2}>
+        <Grid item xs={12}>
+            <p> {t("After adding your account to the configuration, log in again")}</p>
+            </Grid>
+            </Grid>
+            </Container>
+        </AccordionDetails>
+      </Accordion>
+      
+<Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">{t('Hi, your ID can be found below')} </Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -41,6 +65,11 @@ const WaitingRoomForNewUser = () => {
             <Container maxWidth="sm">
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
+          <Grid item xs={12}>
+                      <Container  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+          <QRCode value={receivedData.userId} level={"H"} />
+          </Container>
+          </Grid>
             <Grid item xs={12}>
               <TextField
                 name="UserID"
@@ -77,28 +106,6 @@ const WaitingRoomForNewUser = () => {
         </AccordionDetails>
       </Accordion>
 
-      <Accordion defaultExpanded>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t("First and last name")}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-        <Container maxWidth="sm">
-        <Grid container spacing={2}>
-        <Grid item xs={12}>
-            <p> {t("Give your name for easy identification")}</p>
-            </Grid>
-            </Grid>
-            </Container>
-<Username></Username>
-<Container maxWidth="md">
-        <Grid container spacing={2}>
-        <Grid item xs={12}>
-            <p> {t("After adding your account to the configuration, log in again")}</p>
-            </Grid>
-            </Grid>
-            </Container>
-        </AccordionDetails>
-      </Accordion>
       </Container>
 <p></p>
       <Container maxWidth="md">
