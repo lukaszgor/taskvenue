@@ -9,6 +9,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Language from './Language';
 import Username from './Username';
 import { userId } from './Auth';
+import QRCode from 'react-qr-code';
 
 
 function PasswordChange() {
@@ -84,9 +85,16 @@ const handleCloseAlert = (event, reason) => {
           <Typography variant="h6" fontWeight="bold">{t('User information')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-        <Typography>{fullName}</Typography>
+
+<Container style={{  textAlign: 'center'}}>
+          <Typography>{fullName}</Typography>
           <Typography>{user}</Typography>
           <Typography>{userID}</Typography>
+          </Container>
+          <p></p>
+          <Container  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+          <QRCode value={userID} level={"H"} />
+          </Container>
         </AccordionDetails>
       </Accordion>
 
