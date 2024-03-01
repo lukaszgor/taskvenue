@@ -13,6 +13,10 @@ import Alert from '@mui/material/Alert';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import FmdBadIcon from '@mui/icons-material/FmdBad';
+import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import {QrScanner} from '@yudiel/react-qr-scanner';
 
 const typographyStyle = {
   fontSize: '11px', // Zmniejszona czcionka tytułowa
@@ -38,6 +42,17 @@ function Users() {
     const [openFilter, setOpenFilter] = useState(true);
     const [showActive, setShowActive] = useState(true);
     const [showBlocked, setShowBlocked] = useState(false);
+
+
+    //Qr dialog
+    const [openQR, setOpenQR] = useState(false);
+
+    const handleClickOpenQR = () => {
+      setOpenQR(true);
+    };
+    const handleCloseQR = () => {
+      setOpenQR(false);
+    };
 
     useEffect(() => {
         const checkSession = async () => {
@@ -210,9 +225,11 @@ const handleOpenFilterChange = () => {
                                     <TextField
                                         name="User ID"
                                         label={t("User ID")}
+                                        value={foreignUserID}
                                         onChange={(e) => setForeignUserID(e.target.value)}
                                         fullWidth
                                         required
+                                        focused
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
@@ -242,6 +259,18 @@ const handleOpenFilterChange = () => {
                                   </Grid>
                                 <Grid item xs={12}>
                                     <Box display="flex" justifyContent="flex-end">
+                                    <Box display="inline-block" marginRight={1}>
+                                        <Button
+                                            variant="contained"
+                                            color="secondary"
+                                            style={{ minWidth: 'auto' }}
+                                            onClick={handleClickOpenQR}
+                                            startIcon={<QrCodeScannerIcon/>}
+                                        >
+                                            {t('QR')}
+                                        </Button>
+                                        </Box>
+                                        <Box display="inline-block" marginRight={1}>
                                         <Button
                                             type="submit"
                                             variant="contained"
@@ -251,6 +280,7 @@ const handleOpenFilterChange = () => {
                                         >
                                             {t('Submit')}
                                         </Button>
+                                        </Box>
                                     </Box>
                                     <Snackbar open={open}
                                         autoHideDuration={2000}
@@ -264,6 +294,42 @@ const handleOpenFilterChange = () => {
                 </AccordionDetails>
             </Accordion>
             
+{/* QR dialog  */}
+<Dialog onClose={handleCloseQR}
+        open={openQR}
+        fullWidth={true}
+        maxWidth={"sm"} 
+        >
+<DialogTitle sx={{ m: 0, p: 2 }}>
+          QR
+        </DialogTitle>
+        <IconButton
+          onClick={handleCloseQR}
+          sx={{
+            position: 'absolute',
+            right: 8,
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+        <DialogContent dividers>
+          <Typography gutterBottom>
+{foreignUserID}
+          </Typography>
+          <QrScanner
+          // onDecode={(result) => console.log(result)}
+          onDecode={(result) => setForeignUserID(result)}
+          // onError={(error) => console.log(error?.message)}
+      />
+
+        </DialogContent>
+        <DialogActions>
+          <Button autoFocus onClick={handleCloseQR}>
+          {t('Save')}
+          </Button>
+        </DialogActions>
+        </Dialog>
+
 <p></p>
                 <Button
         style={{ marginLeft: '20px', marginBottom: '20px' }}
