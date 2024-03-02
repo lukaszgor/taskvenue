@@ -199,8 +199,8 @@ return (
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        minHeight: '90vh',
-      }} style={{ background: 'white', minHeight: '70vh',paddingTop: '14px' }}>
+        // minHeight: '90vh',
+      }} style={{ background: 'white',paddingTop: '14px' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }} >
       <Tabs
             value={value}
