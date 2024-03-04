@@ -258,7 +258,6 @@ const handleSubmit = (event) => {
         <ManagerContractorsDocuments></ManagerContractorsDocuments>
         </AccordionDetails>
       </Accordion>
-<p></p>
         <Accordion >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">{t('Tasks history')}</Typography>
@@ -267,8 +266,6 @@ const handleSubmit = (event) => {
         <ManagerContractorTasks></ManagerContractorTasks>
         </AccordionDetails>
       </Accordion>
-
-<p></p>
         <Accordion >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">{t('Venues')}</Typography>
