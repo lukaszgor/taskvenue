@@ -46,7 +46,7 @@ const InfoContact = () => {
           </Typography>
           <ContactForm></ContactForm>
           <p></p>
-          {/* <Typography variant="h6" sx={{
+          <Typography variant="h6" sx={{
                         mr: 2,
                         mt: 10,
                         // fontFamily: 'lato',
@@ -56,7 +56,7 @@ const InfoContact = () => {
                         
                       }} align="center">
             {t("Direct contact")}
-          </Typography> */}
+          </Typography>
           <Grid container spacing={2} justifyContent="space-between" style={{ marginTop: '2rem' }}>
             {/* <Grid item xs={12} sm={4}>
               <Card style={{ textAlign: 'center' }}>
@@ -67,15 +67,15 @@ const InfoContact = () => {
                 </CardContent>
               </Card>
             </Grid> */}
-            {/* <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={12}>
               <Card style={{ textAlign: 'center' }}>
                 <CardContent>
 
                   <EmailIcon style={iconStyle} />
-                  <Typography variant="body1">taskvenueapp@gmail.com</Typography>
+                  <Typography variant="body1">info@taskvenue.pl</Typography>
                 </CardContent>
               </Card>
-            </Grid> */}
+            </Grid>
             <Grid item xs={12} sm={12}>
               <Card style={{ textAlign: 'center' }}>
                 <CardContent>
