@@ -47,12 +47,12 @@ const HeaderInfo = () => {
                 
                   <div style={{ display: 'flex' }}>
                     <Link to="/">
-                      <Button variant="contained" color="primary" sx={{ marginTop: 3, marginRight:1}}>
+                      <Button size="medium" variant="contained" color="primary" sx={{ marginTop: 3, marginRight:1}}>
                         {t("Try it for free")}
                       </Button>
                     </Link>
                     <Link to="/infoContact">
-                      <Button color="primary" variant="outlined" sx={{ marginTop: 3}}>
+                      <Button size="medium" color="primary" variant="outlined" sx={{ marginTop: 3}}>
                         {t("Contact")}
                       </Button>
                     </Link>

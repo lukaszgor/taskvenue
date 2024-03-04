@@ -257,7 +257,7 @@ return (
         />
         <br />
         <br />
-        <Button size="small" variant="contained" style={{ minWidth: '250px' }} onClick={Login}>
+        <Button size="large" variant="contained" style={{ minWidth: '250px' }} onClick={Login}>
           {t("sign in")}
         </Button>
         <p>{Lmsg}</p>
@@ -319,7 +319,7 @@ return (
         />
         <br />
 
-      <Button size="small" variant="contained" style={{ minWidth: '250px'}} onClick={Register}   disabled={!checkboxChecked}  >{t("sign up")}</Button>
+      <Button size="large" variant="contained" style={{ minWidth: '250px'}} onClick={Register}   disabled={!checkboxChecked}  >{t("sign up")}</Button>
       <p>{Rmsg}</p>
       </CardContent>
     </Card>
@@ -353,7 +353,7 @@ return (
         />
          
       <br/> 
-      <Button size="small" variant="contained" style={{ minWidth: '250px'}} disabled={!checkboxChecked}  onClick={SendMagicLink}>{t("send magic link")}</Button>
+      <Button size="large" variant="contained" style={{ minWidth: '250px'}} disabled={!checkboxChecked}  onClick={SendMagicLink}>{t("send magic link")}</Button>
       <p>{LmsgL}</p>
       </CardContent>
     </Card>
