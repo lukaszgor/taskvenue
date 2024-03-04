@@ -46,7 +46,7 @@ const InfoContact = () => {
           </Typography>
           <ContactForm></ContactForm>
           <p></p>
-          <Typography variant="h6" sx={{
+          <Typography variant="h4" sx={{
                         mr: 2,
                         mt: 10,
                         // fontFamily: 'lato',
