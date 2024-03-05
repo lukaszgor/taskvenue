@@ -297,6 +297,7 @@ const handleFetchVenues = async (idConfig) => {
           <Grid item xs={6} sm={6}>
             <Button
               variant="contained"
+              size="large"
               color="primary"
               startIcon={<PlayArrowIcon />}
               onClick={handleStartClick}
@@ -309,6 +310,7 @@ const handleFetchVenues = async (idConfig) => {
           <Box display="flex" justifyContent="flex-end">
             <Button
               variant="contained"
+              size="large"
               color="secondary"
               startIcon={<StopIcon />}
               onClick={handleStopClick}

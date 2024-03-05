@@ -111,10 +111,10 @@ const YourOpenAndInProgressTasksReport = () => {
           display="flex"
           justifyContent="center"
           alignItems="center"
-          height="30vh"
+          // height="30vh"
           padding={2}
         >
-          <PieChart width={250} height={500}>
+          <PieChart width={250} height={150}>
             <Pie
               data={mockedData}
               dataKey="value"
@@ -123,7 +123,7 @@ const YourOpenAndInProgressTasksReport = () => {
               cy="50%"
               labelLine={false}
               label={renderCustomizedLabel}
-              outerRadius={80}
+              outerRadius={60}
               fill="#8884d8"
             >
               {mockedData.map((entry, index) => (
@@ -134,7 +134,7 @@ const YourOpenAndInProgressTasksReport = () => {
           </PieChart>
         </Box>
       </Container>
-      <OpenAndInProgressLegend></OpenAndInProgressLegend>
+      {/* <OpenAndInProgressLegend></OpenAndInProgressLegend> */}
     </div>
   );
 };

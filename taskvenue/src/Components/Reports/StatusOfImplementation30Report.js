@@ -102,7 +102,7 @@ const StatusOfImplementation30Report = () => {
   return (
     <div>
       <Grid container spacing={2}>
-        <Grid item  xs={12} sm={12} md={6} lg={4}>
+        <Grid item  xs={12} sm={12} md={6} lg={6}>
         <TextField
           type="datetime-local"
           id="daysAgo"
@@ -113,7 +113,7 @@ const StatusOfImplementation30Report = () => {
           label={t('Date from : ')}
         />
       </Grid>
-      <Grid item  xs={12} sm={12} md={6} lg={4}>
+      <Grid item  xs={12} sm={12} md={6} lg={6}>
         <TextField
           type="datetime-local"
           id="currentDate"
@@ -125,7 +125,7 @@ const StatusOfImplementation30Report = () => {
         />
       </Grid>
       </Grid>
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height={400}>
         <BarChart data={mockedData}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="status" />

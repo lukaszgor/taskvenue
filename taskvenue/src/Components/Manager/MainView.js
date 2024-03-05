@@ -9,6 +9,7 @@ import ManagerMainSummary from '../Reports/ManagerMainSummary';
 import { useNavigate } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import WorkerConstantWorkingSheet from '../Worker/WorkerConstantWorkingSheet';
+import ManagerConstantWorkingSheetRaport from '../Reports/ManagerConstantWorkingSheetRaport';
 
 const MainView = () => {
   const { t, i18n } = useTranslation();
@@ -34,16 +35,7 @@ const MainView = () => {
       {t('New task')}
       </Button>
 
-        <p></p>
-        <Accordion defaultExpanded>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">{t('Summary')}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography></Typography>
-          <ManagerMainSummary></ManagerMainSummary>
-        </AccordionDetails>
-      </Accordion>
+
       <p></p>
       <Grid item xs={12} sm={12}>
       <Accordion >
@@ -72,7 +64,34 @@ const MainView = () => {
       </Accordion>
       </Grid>
 
+
       <Grid item xs={12} sm={4}>
+      <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Confirmation of time')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+          <ManagerConstantWorkingSheetRaport></ManagerConstantWorkingSheetRaport>
+        </AccordionDetails>
+      </Accordion>
+      </Grid>
+    </Grid>
+<p></p>
+    <Grid container spacing={4}>
+      <Grid item xs={12} sm={6}>
+        <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6" fontWeight="bold">{t('Summary')}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography></Typography>
+          <ManagerMainSummary></ManagerMainSummary>
+        </AccordionDetails>
+      </Accordion>
+      </Grid>
+
+      <Grid item xs={12} sm={6}>
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h6" fontWeight="bold">{t('Your open and in progress tasks')}</Typography>
@@ -83,7 +102,12 @@ const MainView = () => {
         </AccordionDetails>
       </Accordion>
       </Grid>
-    </Grid>
+      </Grid>
+
+
+   <p></p>
+
+
   </div>
   );
 };
