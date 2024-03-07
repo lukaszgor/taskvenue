@@ -3,7 +3,8 @@ import {
     Button,
     Grid,
     Container,Box,
-    Typography,Snackbar,Alert,DialogContent,DialogActions,Dialog,DialogTitle,DialogContentText,Select,MenuItem,FormControl,FormControlLabel,InputLabel
+    Typography,Snackbar,Alert,DialogContent,DialogActions,Dialog,DialogTitle,DialogContentText,Select,MenuItem,FormControl,FormControlLabel,InputLabel,Backdrop,
+    CircularProgress
 } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import StopIcon from '@mui/icons-material/Stop';
@@ -26,6 +27,7 @@ const WorkerTasksWorkingSheet = () => {
     const [idVenue, setIdVenue] = useState(null);
     const [constatntID, setConstatnID] = useState('');
     const { id } = useParams();
+    const [loading, setLoading] = useState(false); 
 
     const typographyStyle = {
         fontSize: '11px', // Zmniejszona czcionka tytułowa
@@ -34,6 +36,7 @@ const WorkerTasksWorkingSheet = () => {
     };
 
 const handleStartClick = () => {
+    setLoading(true); 
     setStatus('open');
     getUserLocation('open', currentDateTime);
     handleUpdateStatus('inProgress');
@@ -41,6 +44,7 @@ const handleStartClick = () => {
   };
 
   const handleStopClick = () => {
+    setLoading(true); 
     setStatus('closed');
     getUserLocation('closed', currentDateTime);
     handleButton();
@@ -107,10 +111,12 @@ setCurrentDateTime(formattedDateTime);
               }else{
                 insertWorkTime(status, userLocation, currentDateTime);
               }
+              setLoading(false);
             },
             (error) => {
               console.error(error);
               setUserLocation('Unable to retrieve location');
+              setLoading(false);
               
               // Wyświetl komunikat o błędzie lokalizacji jako przeglądarkowy alert
               const errorMessage = t('The functionality works correctly only with geolocation enabled in your browser. If you want to make use of the full features, please turn on your location services.') ;
@@ -119,6 +125,7 @@ setCurrentDateTime(formattedDateTime);
           );
         } else {
           setUserLocation('Geolocation is not supported by your browser');
+          setLoading(false);
           
           // Wyświetl komunikat o braku wsparcia dla geolokalizacji jako przeglądarkowy alert
           const errorMessage = t('Geolocation is not supported by your browser');
@@ -341,6 +348,16 @@ setCurrentDateTime(formattedDateTime);
                     </Button>
                 </DialogActions>
             </Dialog>
+
+
+            <Grid item xs={12}>
+            <Backdrop
+              sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+              open={loading}
+            >
+              <CircularProgress color="inherit" />
+            </Backdrop>
+          </Grid>
          
         </div>
     );
