@@ -4,6 +4,11 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom'; 
 import { useTranslation } from 'react-i18next';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 const centerStyles = {
   display: 'flex',
   flexDirection: 'column',
@@ -20,6 +25,7 @@ const contentStyles = {
 
 const Summary = () => {
     const { t, i18n } = useTranslation();
+    const listItems = ["Automatic notifications of receipt of a report", "Notification of employees and planning of execution dates", "Generation of work execution protocols","Documentation of the implementation of reports in the client's system","Electronic confirmations instead of paper documents","Settlement of services using the application's price lists"]; 
   return (
     <div style={centerStyles}>
       <Container maxWidth="md">
@@ -39,17 +45,23 @@ const Summary = () => {
             </Typography>
 
             <Typography variant="h6" paragraph style={contentStyles}>
-        {t("Revolutionise your business by implementing an 'all-in-one' solution that creates processes and aggregates all the data you use in the business.")}
+        {t("Using the Task Venue system enables communication, quality reporting, and completeness of the services rendered.")}
         </Typography>
+        <p></p>
+        <div style={{ display: 'flex',justifyContent: 'center'  }}>
+        <List >
+          {listItems.map((item, index) => (
+            <ListItem key={index}>
+              <ListItemIcon>
+                <ArrowForwardIosIcon />
+              </ListItemIcon>
+              <ListItemText primary={t(item)} />
+            </ListItem>
+          ))}
+        </List>
+        <p></p>
+        </div>
 
-
-        {/* <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Link to="/infocontact">
-            <Button variant="contained" color="primary">
-              {t("Contact")}
-            </Button>
-          </Link>
-        </div> */}
                      <div style={{ display: 'flex',justifyContent: 'center'  }}>
                     <Link to="/">
                       <Button variant="contained" color="primary" sx={{ marginTop: 3, marginRight:1}}>

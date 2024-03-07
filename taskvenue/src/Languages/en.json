@@ -308,7 +308,7 @@
       "A tool for your company to work effectively in the field!":"A tool for your company to work effectively in the field!",
       "Industry":"Industry",
       "Contact form":"Contact form",
-      "Revolutionise your business by implementing an 'all-in-one' solution that creates processes and aggregates all the data you use in the business.":"Revolutionise your business by implementing an 'all-in-one' solution that creates processes and aggregates all the data you use in the business.",
+      "Using the Task Venue system enables communication, quality reporting, and completeness of the services rendered.":"Using the Task Venue system enables communication, quality reporting, and completeness of the services rendered.",
       "Unleash the potential of your business":"Unleash the potential of your business",
       "Do you have questions about our software? We have collected the most frequently asked ones below.":"Do you have questions about our software? We have collected the most frequently asked ones below.",
         "What is the cost of implementing and maintaining your software?": "What is the cost of implementing and maintaining your software?",
@@ -348,7 +348,15 @@
         "Management of Tasks and Service Orders": "Management of Tasks and Service Orders",
         "Monitoring of Work Progress and Worker Localization": "Monitoring of Work Progress and Worker Localization",
         "Management of Schedules and Worker Availability": "Management of Schedules and Worker Availability",
-        "Data Collection and Reporting from the Field": "Data Collection and Reporting from the Field"
+        "Data Collection and Reporting from the Field": "Data Collection and Reporting from the Field",
+          "Automatic notifications of receipt of a report": "Automatic notifications of receipt of a report",
+          "Notification of employees and planning of execution dates": "Notification of employees and planning of execution dates",
+          "Generation of work execution protocols": "Generation of work execution protocols",
+          "Documentation of the implementation of reports in the client's system": "Documentation of the implementation of reports in the client's system",
+          "Electronic confirmations instead of paper documents": "Electronic confirmations instead of paper documents",
+          "Settlement of services using the application's price lists": "Settlement of services using the application's price lists"
+    
+        
 
  
         

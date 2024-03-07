@@ -309,7 +309,7 @@
         "A tool for your company to work effectively in the field!": "Інструмент для ефективної роботи вашої компанії в полі!",
         "Industry": "Галузь",
         "Contact form": "Форма зворотного зв'язку",
-        "Revolutionise your business by implementing an 'all-in-one' solution that creates processes and aggregates all the data you use in the business.": "Революціонізуйте ваш бізнес, впроваджуючи рішення 'все-в-одному', яке створює процеси і агрегує всі дані, які ви використовуєте в бізнесі.",
+        "Using the Task Venue system enables communication, quality reporting, and completeness of the services rendered.": "Використання системи Task Venue дозволяє здійснювати комунікацію, звітувати про якість та повноту наданих послуг.",
         "Unleash the potential of your business": "Розкрийте потенціал свого бізнесу",
         "Do you have questions about our software? We have collected the most frequently asked ones below.": "У вас є запитання щодо нашого програмного забезпечення? Нижче ми зібрали найчастіші з них.",
         "What is the cost of implementing and maintaining your software?": "Яка вартість впровадження та підтримки вашого програмного забезпечення?",
@@ -349,7 +349,13 @@
                 "Management of Tasks and Service Orders": "Управління завданнями та сервісними замовленнями",
                 "Monitoring of Work Progress and Worker Localization": "Моніторинг прогресу робіт та локалізації працівників",
                 "Management of Schedules and Worker Availability": "Управління розкладами та доступністю працівників",
-                "Data Collection and Reporting from the Field": "Збір даних та звітність з поля"
+                "Data Collection and Reporting from the Field": "Збір даних та звітність з поля",
+                    "Automatic notifications of receipt of a report": "Автоматичні повідомлення про прийняття заявки",
+                    "Notification of employees and planning of execution dates": "Попередження працівників і планування дат виконання",
+                    "Generation of work execution protocols": "Генерація протоколів виконання робіт",
+                    "Documentation of the implementation of reports in the client's system": "Документація реалізації заявок у системі клієнта",
+                    "Electronic confirmations instead of paper documents": "Електронні підтвердження замість паперових документів",
+                    "Settlement of services using the application's price lists": "Розрахунки за послуги з використанням прайс-листів додатку"
 
               
             

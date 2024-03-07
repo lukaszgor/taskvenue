@@ -308,7 +308,7 @@
       "A tool for your company to work effectively in the field!":"Narzędzie dla Twojej firmy do efektywnej pracy w terenie!",
       "Industry":"Branża",
       "Contact form":"Formularz kontaktowy",
-      "Revolutionise your business by implementing an 'all-in-one' solution that creates processes and aggregates all the data you use in the business.":"Zrewolucjonizuj firmę, wdrażając rozwiązanie 'all-in-one', które stworzy procesy i zagreguje wszystkie dane, które wykorzystujesz w biznesie.",
+      "Using the Task Venue system enables communication, quality reporting, and completeness of the services rendered.":"Korzystanie  z systemu Task Venue umożliwia  komunikację, raportowanie jakości i kompletności zrealizowanych usług.",
       "Unleash the potential of your business":"Uwolnij potencjał swojego biznesu",
       "Do you have questions about our software? We have collected the most frequently asked ones below.":"Masz pytania dotyczące naszego oprogramowania? Poniżej zebraliśmy najczęściej zadawane.",
         "What is the cost of implementing and maintaining your software?": "Jaki jest koszt wdrożenia i utrzymania Waszego oprogramowania?",
@@ -348,7 +348,15 @@
               "Management of Tasks and Service Orders": "Zarządzanie zadaniami i zleceniami serwisowymi",
               "Monitoring of Work Progress and Worker Localization": "Monitorowanie postępów prac i lokalizacji pracowników",
               "Management of Schedules and Worker Availability": "Zarządzanie harmonogramem i dostępnością pracowników",
-              "Data Collection and Reporting from the Field": "Zbieranie danych z terenu i raportowanie"
+              "Data Collection and Reporting from the Field": "Zbieranie danych z terenu i raportowanie",
+                "Automatic notifications of receipt of a report": "Automatyczne powiadomienia o przyjęciu zgłoszenia",
+                "Notification of employees and planning of execution dates": "Awizacja pracowników i planowanie dat wykonania",
+                "Generation of work execution protocols": "Generowanie protokołów wykonania prac",
+                "Documentation of the implementation of reports in the client's system": "Dokumentacja realizacji zgłoszeń w systemie klienta",
+                "Electronic confirmations instead of paper documents": "Elektroniczne potwierdzenia zamiast papierowych dokumentów",
+                "Settlement of services using the application's price lists": "Rozliczenia usług z wykorzystaniem cenników aplikacji"
+
+              
 
             
 
