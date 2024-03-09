@@ -103,8 +103,10 @@ const [daysAgo, setDaysAgo] = useState(() => {
         disableColumnMenu: true,
         disableColumnReorder: true,
         renderCell: (params) => {
-          return <span>{params.row.profiles.username}</span>;
-        },
+            // Tworzenie linku do UserDetails, używając assigned_user jako ID
+            const userProfileLink = `/UserDetails/${params.row.assigned_user}`;
+            return <a href={userProfileLink}>{params.row.profiles.username}</a>;
+          },
       },
     { field: 'start_date', headerName: t("Start Date"), width: 150,  },
     { field: 'stop_date', headerName: t("End Date"), width: 140, },
