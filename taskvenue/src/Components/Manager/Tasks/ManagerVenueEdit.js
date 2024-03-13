@@ -227,9 +227,9 @@ const ManagerVenueEdit = () => {
 <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                name="Name"
-                label={t('Name')}
-                value={selectedVenue.name}
+                name="Address"
+                label={t('Address')}
+                value={selectedVenue.GPS_location}
                 fullWidth
                 disabled
               />
