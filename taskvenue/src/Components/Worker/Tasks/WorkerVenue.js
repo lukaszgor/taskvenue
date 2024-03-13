@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Grid,Container,Select,MenuItem,FormControl,InputLabel,Typography, Button,Box,  IconButton,} from '@mui/material';
+import {Grid,Container,Select,MenuItem,FormControl,InputLabel,Typography, Button,Box,  IconButton,TextField} from '@mui/material';
 import { useParams } from 'react-router-dom';
 import supabase from '../../../supabaseClient';
 import { useTranslation } from 'react-i18next';
@@ -186,17 +186,30 @@ const WorkerVenue = () => {
         <p></p>
         {selectedVenue && (
           <Grid item xs={12}>
-            <Typography variant="h11">{t('Name')}</Typography>
-           <Typography variant="h6">{selectedVenue.name}</Typography>
-            <Typography variant="h11">{t('Description')}</Typography>
-            <Typography variant="h6">{selectedVenue.description}</Typography>
-            {/* <Typography variant="h11">{t('Address')}</Typography>
-            <Typography variant="h6">{selectedVenue.GPS_location}</Typography> */}
-            <p></p>
-            <GeoLocationMap geoLocation={selectedVenue.GPS_location} />
-            <p></p>
-            <Box display="flex" justifyContent="flex-start">
-                <Button
+              <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="Name"
+                label={t('Name')}
+                value={selectedVenue.name}
+                fullWidth
+                disabled
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="Description"
+                label={t('Description')}
+                value={selectedVenue.description}
+                fullWidth
+                disabled
+                multiline
+              />
+            </Grid>
+            <Grid item xs={12} sm={12}>
+            <Box display="flex" justifyContent="flex-end">
+              <p></p>
+            <Button
                 type="submit"
                 variant="contained"
                 color="success"
@@ -206,7 +219,12 @@ const WorkerVenue = () => {
                 >
             {t('Open in Google Maps')} 
                 </Button>
-            </Box>
+          </Box>
+          </Grid>
+            </Grid>
+            <p></p>
+            <GeoLocationMap geoLocation={selectedVenue.GPS_location} />
+            <p></p>
           </Grid>
         )}
                 <Snackbar

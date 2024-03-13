@@ -290,6 +290,7 @@ setCurrentDateTime(formattedDateTime);
             </Grid>
           <Grid item xs={6} sm={6}>
             <Button
+              size="large"
               variant="contained"
               color="primary"
               startIcon={<PlayArrowIcon />}
@@ -302,6 +303,7 @@ setCurrentDateTime(formattedDateTime);
           <Grid item xs={6} sm={6}>
           <Box display="flex" justifyContent="flex-end">
             <Button
+              size="large"
               variant="contained"
               color="secondary"
               startIcon={<StopIcon />}
