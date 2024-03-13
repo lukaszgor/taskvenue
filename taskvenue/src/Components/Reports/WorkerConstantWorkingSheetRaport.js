@@ -18,6 +18,23 @@ const WorkerConstantWorkingSheetRaport = () => {
   // State to store the total sum of time differences
   const [totalTimeDifference, setTotalTimeDifference] = useState({ hours: 0, minutes: 0 });
 
+
+  useEffect(() => {
+    // Ustawienie domyślnej wartości dla Date from (31 dni temu)
+    const defaultDaysAgo = new Date();
+    defaultDaysAgo.setDate(defaultDaysAgo.getDate() - 31);
+    const formattedDefaultDaysAgo = defaultDaysAgo.toISOString().split('T')[0] + 'T00:00';
+  
+    // Ustawienie domyślnej wartości dla Date to (aktualny dzień + 1 dzień)
+    const defaultCurrentDate = new Date();
+    defaultCurrentDate.setDate(defaultCurrentDate.getDate() + 1);
+    const formattedDefaultCurrentDate = defaultCurrentDate.toISOString().split('T')[0] + 'T23:59';
+  
+    setDaysAgo(formattedDefaultDaysAgo);
+    setCurrentDate(formattedDefaultCurrentDate);
+  }, []);
+
+
   useEffect(() => {
     if (workTime) {
       // Calculate the total sum of time differences for closed work items
