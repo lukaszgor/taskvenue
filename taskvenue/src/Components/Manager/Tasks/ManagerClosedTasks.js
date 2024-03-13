@@ -68,16 +68,14 @@ const ManagerClosedTasks = () => {
   const handleCopyButtonClick = async (task) => {
     try {
       // Pobierz dane z istniejącego taska
-      const { id, name,kickoffDate, deadline,estimatedTime,id_configuration,description,asigned_user,type,settled,id_contractor,id_venue } = task;
+      const { id, name,kickoffDate, deadline,id_configuration,description,asigned_user,settled,id_contractor,id_venue } = task;
   
       // Utwórz nowy task na podstawie danych z istniejącego taska
       const newTask = {
         name: name,
-        estimatedTime:estimatedTime,
         id_configuration:id_configuration,
         description:description,
         asigned_user:asigned_user,
-        type:type,
         settled:settled,
         id_contractor:id_contractor,
         id_venue:id_venue,
