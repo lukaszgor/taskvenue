@@ -15,6 +15,11 @@ import {
   AccordionSummary,
   AccordionDetails,
   Typography,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
 } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
@@ -26,6 +31,8 @@ import { useNavigate } from 'react-router-dom';
 import ManagerTaskAttachments from '../Attachments/ManagerTaskAttachments';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import sendEmail from '../../../Config/EmailSender';
+import ManagerCopyTaskToUsers from './ManagerCopyTaskToUsers';
+
 
 const DateTimeInput = styled.input`
   width: 100%;
@@ -63,6 +70,19 @@ const ManagerBasicDataEdit = () => {
   const [email, setEmail] = useState('lukasz.gg13@gmail.com');
   const [message, setMessage] = useState(t("If you are an employee then click to move to a specific task ")+"https://taskvenue.com/WorkerTaskDetails/"+id);
   const [subject, setSubject] = useState(t("You have been assigned to a task ")+id);
+
+  const [openDialog, setOpenDialog] = useState(false);
+
+  // Your existing functions and useEffect hooks...
+
+  const handleDialogOpen = () => {
+    setOpenDialog(true);
+  };
+
+  const handleDialogClose = () => {
+    setOpenDialog(false);
+  };
+
 
 
   const handleFetchData = async () => {
@@ -393,9 +413,15 @@ const ManagerBasicDataEdit = () => {
       </Accordion>
             </Grid>
 
-
             <Grid item xs={12}>
               <Box display="flex" justifyContent="flex-end">
+              <Button
+                color="primary"
+                style={{ minWidth: 'auto',margin:'1px'}}
+                onClick={handleDialogOpen}
+                >
+            {t('Copy to users')}
+                </Button>
                 <Button
                   type="submit"
                   variant="contained"
@@ -420,6 +446,25 @@ const ManagerBasicDataEdit = () => {
                     {errorDate}
                 </Alert>
             </Snackbar>
+
+
+            <Dialog
+                  open={openDialog}
+                  onClose={handleDialogClose}
+                  aria-labelledby="alert-dialog-title"
+                  aria-describedby="alert-dialog-description"
+                >
+                  <DialogTitle id="alert-dialog-title">{t('Copy to users')}</DialogTitle>
+                  <DialogContent>
+                    <ManagerCopyTaskToUsers></ManagerCopyTaskToUsers>
+                  </DialogContent>
+                  {/* <DialogActions>
+                    <Button onClick={handleDialogClose} color="primary">
+                      {t('Cancel')}
+                    </Button>
+                  </DialogActions> */}
+                </Dialog>
+
       </Container>
     </div>
   );

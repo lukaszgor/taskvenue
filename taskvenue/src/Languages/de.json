@@ -335,7 +335,8 @@
             "Documentation of the implementation of reports in the client's system": "Dokumentation der Bearbeitung von Meldungen im Kundensystem",
             "Electronic confirmations instead of paper documents": "Elektronische Bestätigungen anstelle von Papierdokumenten",
             "Settlement of services using the application's price lists": "Abrechnung von Dienstleistungen unter Verwendung von App-Preislisten",
-            "Hidden simple location confirmation":"Versteckte einfache Standortbestätigung"
+            "Hidden simple location confirmation":"Versteckte einfache Standortbestätigung",
+            "Copy to users":"Kopie an Benutzer"
 
           
 

@@ -356,7 +356,8 @@
                     "Documentation of the implementation of reports in the client's system": "Документація реалізації заявок у системі клієнта",
                     "Electronic confirmations instead of paper documents": "Електронні підтвердження замість паперових документів",
                     "Settlement of services using the application's price lists": "Розрахунки за послуги з використанням прайс-листів додатку",
-                    "Hidden simple location confirmation":"Приховане просте підтвердження місцезнаходження"
+                    "Hidden simple location confirmation":"Приховане просте підтвердження місцезнаходження",
+                    "Copy to users":"Скопіювати користувачам"
 
               
             
