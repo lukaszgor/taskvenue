@@ -26,9 +26,9 @@ const Info = () => {
 <CookiesBanner></CookiesBanner>
 <HeaderInfo></HeaderInfo>
 <p></p>
-<Problems></Problems>
-<p></p>
 <ProcesTimeline></ProcesTimeline>
+<p></p>
+<Problems></Problems>
 <p></p>
 <DescriptionOfTheMainFunction></DescriptionOfTheMainFunction>
 <p></p>

@@ -16,7 +16,7 @@ const FieldManagmentSystem = () => {
 
   return (
     <div>
-    <Container maxWidth="md" style={containerStyle}>
+    <Container style={containerStyle}>
 <Typography variant="h4" gutterBottom sx={{
                     mr: 2,
                     mt: 2,
@@ -40,7 +40,7 @@ const FieldManagmentSystem = () => {
     <Grid item xs={12} sm={6} md={6} lg={6}>
     <Card sx={{ m: 2, bgcolor: 'background.paper' }}>
       <CardContent>
-        <Typography variant="h6" color="#338ede" align="center" >
+        <Typography variant="h5" color="#338ede" align="center" >
         {t('Benefits')}
         </Typography>
         <List dense>
@@ -63,7 +63,7 @@ const FieldManagmentSystem = () => {
         <Grid item xs={12} sm={6} md={6} lg={6}>
         <Card sx={{ m: 2, bgcolor: 'background.paper' }}>
       <CardContent>
-        <Typography variant="h6" color="#338ede" align="center">
+        <Typography variant="h5" color="#338ede" align="center">
         {t('Applications')}
         </Typography>
         <List dense>
