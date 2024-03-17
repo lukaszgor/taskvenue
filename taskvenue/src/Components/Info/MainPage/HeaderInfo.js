@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, CardContent, Container, Grid, Typography } from '@mui/material';
+import { Button, Card, CardContent, Container, Grid, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom'; 
@@ -9,6 +9,9 @@ import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 const HeaderInfo = () => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
+  const theme = useTheme();
+  // This will return true if the screen size is below the sm breakpoint
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   return (
 <div>
 <div style={{ background: 'white', minHeight: '60vh' }}>
@@ -76,15 +79,17 @@ const HeaderInfo = () => {
 </div>
 <p></p>
           </Grid>
-          <Grid item xs={12} md={8} >
-            <div style={{ padding: '20px' }}>
-            <img
-               src="/grafika6.png"
-              alt="Your Business"
-              style={{ width: '100%', height: 'auto' }}
-            />
-            </div>
-          </Grid>
+          {!isMobile && (
+              <Grid item xs={12} md={8}>
+                <div style={{ padding: '20px' }}>
+                  <img
+                    src="/grafika6.png"
+                    alt="Your Business"
+                    style={{ width: '100%', height: 'auto' }}
+                  />
+                </div>
+              </Grid>
+            )}
         </Grid>
       </Container>
     </div>
