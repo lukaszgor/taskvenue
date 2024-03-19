@@ -16,11 +16,32 @@ import Summary from '../../../Components/Info/MainPage/Summary';
 import GifManagerView from '../../../Components/Info/MainPage/GifManagerView';
 import ProcesTimeline from '../../../Components/Info/MainPage/ProcesTimeline';
 import FieldManagmentSystem from '../../../Components/Info/MainPage/FieldManagmentSystem';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+
+const GradientDiv = styled.div`
+  background: linear-gradient(90deg, #ffffff, #f0f8ff); /* From white to #f0f8ff */
+  background-size: 400% 400%;
+  animation: gradient_anim 10s ease infinite;
+
+  @keyframes gradient_anim {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+`;
 
 const Info = () => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   return (
+    <GradientDiv>
 <div>
 <InfoNavBar></InfoNavBar>
 <CookiesBanner></CookiesBanner>
@@ -60,8 +81,8 @@ const Info = () => {
 <Summary></Summary>
 <p></p>
 <Footer></Footer>
-
 </div>
+</GradientDiv>
   );
 };
 
