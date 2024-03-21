@@ -173,6 +173,7 @@ function AddNewTask() {
       if (data.session) {
         setUserID(data.session.user.id);
         fetchData(data.session.user.id);
+        setStatus('open');
       }
     };
     checkSession();
