@@ -82,7 +82,7 @@ const ApplicationSettings = () => {
     onChange={handleChange}
     inputProps={{ 'aria-label': 'Potwierdzenie lokalizacji' }}
   />
-  } label={t('Hidden simple location confirmation')} />
+  } label={t('Simple location confirmation')} />
 
 
 

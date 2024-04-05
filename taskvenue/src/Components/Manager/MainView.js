@@ -89,7 +89,7 @@ const addNewTask = () => {
 
 
       <p></p>
-      {hiddenSimpleLocationConfirmation !== 1 && (
+      {hiddenSimpleLocationConfirmation == 1 && (
         <Grid item xs={12} sm={12}>
           <Accordion>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
