@@ -93,7 +93,7 @@ const fetchData = async (userId) => {
       </Accordion>
       </Grid> */}
 
-{hiddenSimpleLocationConfirmation !== 1 && (
+{hiddenSimpleLocationConfirmation == 1 && (
       <Grid item xs={12} sm={12}>
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
