@@ -15,7 +15,7 @@ import {
   AccordionSummary,
   AccordionDetails,
   Checkbox, 
-  FormControlLabel// Import Checkbox from MUI
+  FormControlLabel
 } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
@@ -28,22 +28,24 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import VenueHistory from '../../Components/Manager/Venue/VenueHistory';
 import ManagerVenueAttachments from '../../Components/Manager/Attachments/ManagerVenueAttachments';
 import Tooltip from '@mui/material/Tooltip';
-import ManagerMapVenue from '../../Components/Manager/Map/ManagerMapVenue';
 import ConstantWorkingVenueSheet from '../../Components/Reports/ConstantWorkingVenueSheet';
+import { Map, Marker, ZoomControl } from 'pigeon-maps';
 
 const VenueDetalils = () => {
   const { t, i18n } = useTranslation();
   const { id } = useParams();
   const [name, setName] = useState('');
-  const [address, setAddress] = useState('');
+  const [address, setAddress] = useState(''); // Default value
   const [description, setDescription] = useState('');
   const [contractors, setContractors] = useState([]);
   const [selectedContractorId, setSelectedContractorId] = useState('');
   const [userID, setUserID] = useState('');
   const [idConfig, setIdConfiguration] = useState('');
   const [open, setOpen] = useState(false);
-  const [isChecked, setIsChecked] = useState(false); // Dodajemy stan dla Checkboxa
+  const [isChecked, setIsChecked] = useState(false); 
   const navigate = useNavigate();
+  const [center, setCenter] = useState([50.06503192508109, 19.943415777331357]);
+  const [zoom, setZoom] = useState(18);
 
   const handleFetchData = async () => {
     const { data, error } = await supabase
@@ -54,7 +56,6 @@ const VenueDetalils = () => {
       .single();
 
     if (error) {
-      // Handle error if needed
       navigate('/home');
     }
     if (data) {
@@ -62,7 +63,12 @@ const VenueDetalils = () => {
       setAddress(data.GPS_location);
       setDescription(data.description);
       setSelectedContractorId(data.id_contractor);
-      setIsChecked(data.archived === 1); // Ustawiamy stan Checkboxa na podstawie danych z bazy
+      setIsChecked(data.archived === 1);
+
+      const gpsCoords = data.GPS_location.split(',').map(coord => parseFloat(coord.trim()));
+      if (gpsCoords.length === 2) {
+        setCenter(gpsCoords);
+      }
     }
   };
 
@@ -90,7 +96,7 @@ const VenueDetalils = () => {
           GPS_location: address,
           description: description,
           id_contractor: selectedContractorId,
-          archived: isChecked ? 1 : null, // Ustawiamy wartość w bazie na podstawie stanu Checkboxa
+          archived: isChecked ? 1 : null,
         },
       ])
       .eq('id', id);
@@ -152,7 +158,7 @@ const VenueDetalils = () => {
   };
 
   const handleCheckboxChange = (event) => {
-    setIsChecked(event.target.checked); // Aktualizujemy stan Checkboxa
+    setIsChecked(event.target.checked);
   };
 
   const handleClickAlert = () => {
@@ -164,6 +170,10 @@ const VenueDetalils = () => {
       return;
     }
     setOpen(false);
+  };
+
+  const handleMapClick = ({ latLng }) => {
+    setAddress(`${latLng[0]}, ${latLng[1]}`);
   };
 
   return (
@@ -235,22 +245,30 @@ const VenueDetalils = () => {
                   </FormControl>
                 </Grid>
                 <Grid item xs={12}>
-                  {/* Checkbox */}
                   <FormControlLabel
                     control={
                       <Checkbox
                         checked={isChecked}
-                        onChange={handleCheckboxChange} // Obsługa zmiany stanu Checkboxa
+                        onChange={handleCheckboxChange}
                       />
                     }
                     label= {t('Archived')}
                   />
                 </Grid>
+                <Map 
+              height={300} 
+              center={center} 
+              zoom={zoom}
+              onClick={handleMapClick}
+            >
+              {address && <Marker anchor={[parseFloat(address.split(',')[0]), parseFloat(address.split(',')[1])]} />}
+            </Map>
+
                 <Grid item xs={12}>
                   <Box display="flex" justifyContent="flex-end">
-                  <Button color="primary" onClick={() => navigate('/AddNewTask')}>
-            {t("Add task")}
-            </Button >
+                    <Button color="primary" onClick={() => navigate('/AddNewTask')}>
+                      {t("Add task")}
+                    </Button>
                     <Button
                       type="submit"
                       variant="contained"
@@ -263,6 +281,7 @@ const VenueDetalils = () => {
                 </Grid>
               </Grid>
             </form>
+
           </Container>
         </AccordionDetails>
       </Accordion>
@@ -302,17 +321,6 @@ const VenueDetalils = () => {
         </AccordionDetails>
       </Accordion>
 
-      <Accordion>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6" fontWeight="bold">
-            {t('Map')}
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography></Typography>
-          <ManagerMapVenue></ManagerMapVenue>
-        </AccordionDetails>
-      </Accordion>
       </Container>
       <Snackbar
         open={open}

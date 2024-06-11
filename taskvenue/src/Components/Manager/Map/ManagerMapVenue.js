@@ -73,6 +73,7 @@ const ManagerMapVenue = () => {
     }
   }, [validVenues]);
 
+  
   return (
     <div style={{ width: '100%', height: '40vh' }}>
       <Map center={center} zoom={zoom}>
