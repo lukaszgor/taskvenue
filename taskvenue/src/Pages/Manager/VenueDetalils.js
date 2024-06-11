@@ -35,7 +35,7 @@ const VenueDetalils = () => {
   const { t, i18n } = useTranslation();
   const { id } = useParams();
   const [name, setName] = useState('');
-  const [address, setAddress] = useState(''); // Default value
+  const [address, setAddress] = useState(''); 
   const [description, setDescription] = useState('');
   const [contractors, setContractors] = useState([]);
   const [selectedContractorId, setSelectedContractorId] = useState('');
@@ -206,11 +206,12 @@ const VenueDetalils = () => {
                 <Grid item xs={12} sm={6}>
                 <Tooltip title={t('Enter an address in the geolocation data form and add text information about the address in the description field.')} arrow>
                   <TextField
-                    name="address"
-                    label={t('address')}
+                    name="GPS"
+                    label={t('GPS')}
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     fullWidth
+                    disabled
                   />
                   </Tooltip>
                 </Grid>
@@ -262,6 +263,7 @@ const VenueDetalils = () => {
               onClick={handleMapClick}
             >
               {address && <Marker anchor={[parseFloat(address.split(',')[0]), parseFloat(address.split(',')[1])]} />}
+              <ZoomControl />
             </Map>
 
                 <Grid item xs={12}>

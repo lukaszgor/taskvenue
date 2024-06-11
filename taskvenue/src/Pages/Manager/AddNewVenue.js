@@ -9,18 +9,20 @@ import Alert from '@mui/material/Alert';
 import ManagerVenueBreadcrumbs from '../../Components/Breadcrumbs/ManagerVenueBreadcrumbs';
 import { useNavigate } from "react-router-dom";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Map, Marker, ZoomControl } from 'pigeon-maps';
 
 const AddNewVenue = () => {
-    const { t, i18n } = useTranslation();
-    const [name, setName] = useState('');
-    const [address, setAddress] = useState('');
-    const [description, setDescription] = useState('');
-
+        const { t, i18n } = useTranslation();
+        const [name, setName] = useState('');
+        const [address, setAddress] = useState('');
+        const [description, setDescription] = useState('');
         const [contractors, setContractors] = useState([]);
         const [selectedContractorId, setSelectedContractorId] = useState(null);
         const navigate = useNavigate();
         const [userID, setUserID] = useState('');
         const [idConfig, setIdConfiguration] = useState('');
+        const [center, setCenter] = useState([50.06503192508109, 19.943415777331357]);
+        const [zoom, setZoom] = useState(18);
         
             useEffect(() => {
                 const checkSession = async () => {
@@ -90,6 +92,11 @@ const AddNewVenue = () => {
           insertVenue();
         }
       };
+
+
+      const handleMapClick = ({ latLng }) => {
+        setAddress(`${latLng[0]}, ${latLng[1]}`);
+      };
       
 //alert configuration
 const [open,setOpen] =useState(null)
@@ -132,11 +139,12 @@ const handleCloseAlert = (event, reason) => {
             <Grid item xs={12} sm={6}>
             <Tooltip title={t('Enter an address in the geolocation data form and add text information about the address in the description field.')} arrow>
               <TextField
-                name="address"
-                label={t("address")}
+                name="GPS"
+                label={t("GPS")}
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 fullWidth
+                disabled
               />
               </Tooltip>
             </Grid>
@@ -168,8 +176,20 @@ const handleCloseAlert = (event, reason) => {
               ))}
             </Select>
           </FormControl>
-   
+
              </Grid>
+             <Grid item xs={12} sm={12}>
+             <Map 
+              height={300} 
+              center={center} 
+              zoom={zoom}
+              onClick={handleMapClick}
+            >
+              {address && <Marker anchor={[parseFloat(address.split(',')[0]), parseFloat(address.split(',')[1])]} />}
+              <ZoomControl />
+            </Map>
+            </Grid>
+
             <Grid item xs={12}>
             <Box display="flex" justifyContent="flex-end">
               <Button
