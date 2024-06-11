@@ -22,6 +22,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import RoomIcon from '@mui/icons-material/Room';
+import GeoLocationMap from '../../Common/GeoLocationMap';
 
 
 const ManagerActiveVenues = () => {
@@ -277,9 +278,12 @@ const ManagerActiveVenues = () => {
                                 <Typography variant="body2" color="textSecondary">
                                     {t('Contractor')} : {venue.contractor?.nameOrCompanyName}
                                 </Typography>
+                                <GeoLocationMap geoLocation={venue?.GPS_location}></GeoLocationMap>
+                                <p></p>
                                 </div>
                                 <p></p>
                                 <Box display="inline-block" padding={1}>
+                                    <p></p>
                                 <Button
                                     variant="contained"
                                     color="primary"
