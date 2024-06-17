@@ -263,7 +263,12 @@ return (
         <p>{Lmsg}</p>
         <br />
         <Link onClick={() => handleChange(null, 2)}>{t("I can't remember my password")}</Link>
-        {t("Don’t have an account?")} <Link onClick={() => handleChange(null, 1)}>{t("Get started")}</Link>
+        <Link onClick={() => handleChange(null, 1)}>{t("Don’t have an account?")}  {t("Get started")}</Link>
+        <Link
+            onClick={() => navigate('/info')} // Kliknij, aby nawigować do '/termsAndConditions'
+          >
+            {t("What is a TaskVenue?")}
+          </Link>
       </CardContent>
     </Card>
     </Container>
