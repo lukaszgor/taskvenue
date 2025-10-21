@@ -36,7 +36,7 @@ function ContactForm() {
     if (messageFromForm) {
       sendEmail({
         toEmail: 'lukasz.gg13@gmail.com',
-        subject: 'Nowa szansa TaskVenue',
+        subject: 'Nowa szansa Task Venue',
         message: messageFromForm,
       });
     }
