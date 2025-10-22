@@ -54,6 +54,40 @@ function a11yProps(index) {
 }
 //end navigate
 function Auth() {
+
+
+
+  //////////
+
+  useEffect(() => {
+    console.log("🧪 ENV TEST:");
+    console.log("SUPABASE_URL:", process.env.REACT_APP_SUPABASE_URL);
+    console.log("SUPABASE_ANON_KEY:", process.env.REACT_APP_ANON_KEY);
+  
+    // Test połączenia z supabase
+    const testSupabase = async () => {
+      try {
+        const { data, error } = await supabase.auth.getSession();
+        if (error) {
+          console.error("❌ Supabase session error:", error.message);
+        } else {
+          console.log("✅ Supabase session data:", data);
+        }
+      } catch (e) {
+        console.error("❌ Error connecting to Supabase:", e);
+      }
+    };
+  
+    testSupabase();
+  }, []);
+  
+
+
+
+//////////////
+
+
+
 //set translate
 	const { t, i18n } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
@@ -193,6 +227,20 @@ return (
 </Box> */}
 
 <InfoNavBar></InfoNavBar>
+
+
+<Button onClick={async () => {
+  const { data, error } = await supabase.auth.getSession();
+  if (error) {
+    alert("Supabase błąd: " + error.message);
+  } else {
+    alert("Połączenie działa! Użytkownik: " + JSON.stringify(data));
+  }
+}}>Test Supabase Connection</Button>
+
+
+
+
 </div>
       <Box sx={{
         display: 'flex',
