@@ -169,21 +169,23 @@ localStorage.setItem('userIdFromLocalStorage', session?.user.id);
   }
 
 let errorMessageLogin=t("Enter correct data")
-  const Login = async () => {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
-    if(error){
-      setLMsg(errorMessageLogin)
-    }else{
-      setLMsg(t("Logged successfully"))
-      setUser(data.user)
-      setSession(data.session)
-      console.log(data.session)
-      navigate('/home')
-    }
+const Login = async () => {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
+
+  console.log("📥 LOGIN RESPONSE:", { data, error });
+
+  if (error) {
+    setLMsg("❌ " + error.message);
+  } else {
+    setLMsg("✅ Zalogowano pomyślnie");
+    setUser(data.user);
+    setSession(data.session);
+    navigate('/home');
   }
+};
 let ErrorMessageMagicLink=t("Enter a valid email address")
   const SendMagicLink = async () => {
     const {user,error}=await supabase.auth.signInWithOtp({email})
