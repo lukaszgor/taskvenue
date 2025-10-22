@@ -57,35 +57,7 @@ function Auth() {
 
 
 
-  //////////
-
-  useEffect(() => {
-    console.log("🧪 ENV TEST:");
-    console.log("SUPABASE_URL:", process.env.REACT_APP_SUPABASE_URL);
-    console.log("SUPABASE_ANON_KEY:", process.env.REACT_APP_ANON_KEY);
-  
-    // Test połączenia z supabase
-    const testSupabase = async () => {
-      try {
-        const { data, error } = await supabase.auth.getSession();
-        if (error) {
-          console.error("❌ Supabase session error:", error.message);
-        } else {
-          console.log("✅ Supabase session data:", data);
-        }
-      } catch (e) {
-        console.error("❌ Error connecting to Supabase:", e);
-      }
-    };
-  
-    testSupabase();
-  }, []);
-  
-
-
-
-//////////////
-
+ 
 
 
 //set translate
